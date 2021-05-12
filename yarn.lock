@@ -1946,6 +1946,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@plugola/logger@workspace:packages/logger":
+  version: 0.0.0-use.local
+  resolution: "@plugola/logger@workspace:packages/logger"
+  dependencies:
+    "@plugola/query-params": "workspace:packages/query-params"
+    "@types/jest": ^26.0.3
+    jest: ^26.1.0
+    rimraf: ^3.0.2
+    ts-jest: ^26.1.1
+    typescript: ^3.9.5
+  languageName: unknown
+  linkType: soft
+
 "@plugola/query-params@workspace:packages/query-params":
   version: 0.0.0-use.local
   resolution: "@plugola/query-params@workspace:packages/query-params"
