@@ -1,5 +1,6 @@
 {
   "name": "@plugola/ts-mono-repo",
+  "private": true,
   "version": "0.0.0",
   "description": "The MOL Ads mono-repo",
   "main": "index.js",
@@ -10,7 +11,7 @@
     "build": "yarn workspaces foreach --topological-dev --exclude @plugola/generator run build",
     "build:generator": "yarn workspace @plugola/generator run build",
     "commit": "yarn git-cz",
-    "generate:package": "yarn yo ./packages/generator/generators/package && yarn",
+    "generate:package": "yarn yo ./packages/generator/generators/package",
     "release": "yarn workspaces foreach --no-private run yarn semantic-release -e semantic-release-monorepo",
     "start": "yarn workspaces foreach --topological-dev --no-private run start",
     "test": "yarn workspaces foreach run test"

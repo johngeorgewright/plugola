@@ -87,9 +87,15 @@ export = class PluginGenerator extends Generator {
 
   install() {
     if (this.answers.public) {
-      this.spawnCommandSync('yarn', ['publish', '--access', 'public'], {
-        cwd: this.destinationPath(),
-      })
+      this.spawnCommandSync('yarn', [])
+      this.spawnCommandSync('yarn', [
+        'workspace',
+        `@plugola/${paramCase(this.answers.name!)}`,
+        'npm',
+        'publish',
+        '--access',
+        'public',
+      ])
     }
   }
 }
