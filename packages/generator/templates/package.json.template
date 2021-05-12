@@ -1,5 +1,5 @@
 {
-  "name": "@johngeorgewright/<%= name %>",<% if (!public) { %>
+  "name": "@plugola/<%= name %>",<% if (!public) { %>
   "private": true,<% } %>
   "version": "0.0.0",
   "description": "<%= description %>",

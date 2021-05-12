@@ -346,7 +346,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.8.4":
   version: 7.14.0
   resolution: "@babel/runtime@npm:7.14.0"
   dependencies:
@@ -813,54 +813,6 @@ __metadata:
   checksum: 5c511d7807f414b298299ae4a053abf265f39984942e0eefdfb17a7986a36f1047e0fd9a6f785bdddbf7343a5737595dfabe148719a80e118dd77486502009cc
   languageName: node
   linkType: hard
-
-"@johngeorgewright/generator@workspace:packages/generator":
-  version: 0.0.0-use.local
-  resolution: "@johngeorgewright/generator@workspace:packages/generator"
-  dependencies:
-    "@types/jest": ^26.0.23
-    "@types/yeoman-generator": 4.11.4
-    change-case: ^4.1.2
-    jest: ^26.6.3
-    rimraf: ^3.0.2
-    ts-jest: ^26.5.6
-    typescript: ^4.2.4
-    yeoman-generator: ^5.2.0
-  languageName: unknown
-  linkType: soft
-
-"@johngeorgewright/ts-mono-repo-package@workspace:packages/ts-mono-repo-package":
-  version: 0.0.0-use.local
-  resolution: "@johngeorgewright/ts-mono-repo-package@workspace:packages/ts-mono-repo-package"
-  dependencies:
-    "@types/jest": ^26.0.23
-    jest: ^26.6.3
-    redux: ^4.1.0
-    redux-event: ^1.0.0
-    rimraf: ^3.0.2
-    ts-jest: ^26.5.6
-    typescript: ^4.2.4
-  languageName: unknown
-  linkType: soft
-
-"@johngeorgewright/ts-mono-repo@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@johngeorgewright/ts-mono-repo@workspace:."
-  dependencies:
-    "@commitlint/cli": ^12.1.3
-    "@commitlint/config-conventional": ^12.1.3
-    "@commitlint/config-lerna-scopes": ^12.1.3
-    commitizen: ^4.2.4
-    cz-lerna-changelog: ^2.0.3
-    husky: ^6.0.0
-    lerna: ^4.0.0
-    lint-staged: ^11.0.0
-    prettier: ^2.3.0
-    semantic-release: ^17.4.2
-    semantic-release-monorepo: ^7.0.5
-    yo: ^4.1.0
-  languageName: unknown
-  linkType: soft
 
 "@lerna/add@npm:4.0.0":
   version: 4.0.0
@@ -1978,6 +1930,40 @@ __metadata:
   checksum: b717cb855c7ea65b721452e278d6543a0cbe9729f9dc1fa02da93d726202e6526f95f21870ef0c67d7dceeb769e4ff183f650f362aceb6bd6b766caa781ca025
   languageName: node
   linkType: hard
+
+"@plugola/generator@workspace:packages/generator":
+  version: 0.0.0-use.local
+  resolution: "@plugola/generator@workspace:packages/generator"
+  dependencies:
+    "@types/jest": ^26.0.23
+    "@types/yeoman-generator": 4.11.4
+    change-case: ^4.1.2
+    jest: ^26.6.3
+    rimraf: ^3.0.2
+    ts-jest: ^26.5.6
+    typescript: ^4.2.4
+    yeoman-generator: ^5.2.0
+  languageName: unknown
+  linkType: soft
+
+"@plugola/ts-mono-repo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@plugola/ts-mono-repo@workspace:."
+  dependencies:
+    "@commitlint/cli": ^12.1.3
+    "@commitlint/config-conventional": ^12.1.3
+    "@commitlint/config-lerna-scopes": ^12.1.3
+    commitizen: ^4.2.4
+    cz-lerna-changelog: ^2.0.3
+    husky: ^6.0.0
+    lerna: ^4.0.0
+    lint-staged: ^11.0.0
+    prettier: ^2.3.0
+    semantic-release: ^17.4.2
+    semantic-release-monorepo: ^7.0.5
+    yo: ^4.1.0
+  languageName: unknown
+  linkType: soft
 
 "@semantic-release/commit-analyzer@npm:^6.1.0":
   version: 6.3.3
@@ -11033,24 +11019,6 @@ fsevents@^2.1.2:
   dependencies:
     esprima: ~4.0.0
   checksum: 2e8e1eebac6266b9497c81863c8f8efb5aee9960aa0536e7fa9eb917e04674f2da0c2e3167ac9e47bf9a6814c47e9bd4f4575fc39bf53b853cf7620776e9db0b
-  languageName: node
-  linkType: hard
-
-"redux-event@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "redux-event@npm:1.0.0"
-  peerDependencies:
-    redux: ">=4.0.0"
-  checksum: 3607a5678a3862da9c45723063d09c5d9b477899f637d57b4c1cab32e7b89d26567f897893aeeee820c4bce124ab12268e304e64e8e73b37f72727072ff16412
-  languageName: node
-  linkType: hard
-
-"redux@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "redux@npm:4.1.0"
-  dependencies:
-    "@babel/runtime": ^7.9.2
-  checksum: d939d0df1e12982c66c0ea767c8ec98276ee981ce0381222239b7f823c6ad02ea3e3c622859bcb4934446b3f86d735db35d7bd8b1697d359070e5fbef1f4ad49
   languageName: node
   linkType: hard
 
