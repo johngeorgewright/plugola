@@ -6,64 +6,75 @@ export default function parseQueryParams(searchString: string) {
       .replace(/^\?/, '')
       .split('&')
       .reduce<QueryParams>((queryParams, searchParam) => {
-        let [key, value] = searchParam.split('=')
+        let [key, value] = searchParam.split('=') as [
+          string,
+          string | undefined
+        ]
+
         key = decodeURIComponent(key)
-        let queryParam: any
 
-        switch (true) {
-          case key.startsWith('!'):
-            queryParams[key.substr(1)] = false
-            break
-
-          case key.endsWith('[]'):
-            key = key.substr(0, key.length - 2)
-            queryParams[key] = value
-              ? decodeURIComponent(value).split(',')
-              : true
-            break
-
-          case key.endsWith('{}'):
-            key = key.substr(0, key.length - 2)
-            queryParams[key] = JSON.parse(decodeURIComponent(value))
-            break
-
-          case key.endsWith('[+]'):
-            key = key.substr(0, key.length - 3)
-            queryParam = queryParams[key]
-            queryParams[key] = [
-              ...(Array.isArray(queryParam) ? queryParam : []),
-              ...(value || '').split(',').map(decodeURIComponent),
-            ]
-            break
-
-          case key.endsWith('[-]'):
-            key = key.substr(0, key.length - 3)
-            queryParam = queryParams[key]
-            queryParam = Array.isArray(queryParam) ? queryParam : []
-            const toRemove = (value || '').split(',').map(decodeURIComponent)
-            for (const item of toRemove) {
-              const index: number = queryParam.indexOf(item)
-              if (index === -1) continue
-              queryParam = [
-                ...queryParam.slice(0, index),
-                ...queryParam.slice(index + 1),
-              ]
-            }
-            queryParams[key] = queryParam
-            break
-
-          default:
-            queryParams[key] = value
-              ? decodeURIComponent(value)
-              : typeof value === 'string'
-              ? value
-              : true
+        if (key.startsWith('!')) {
+          return { ...queryParams, ...toFalse(key) }
+        } else if (value === undefined) {
+          return { ...queryParams, [key]: true }
+        } else if (key.endsWith('[]')) {
+          return { ...queryParams, ...toArray(key, value) }
+        } else if (key.endsWith('[+]')) {
+          return { ...queryParams, ...appendArray(key, value, queryParams) }
+        } else if (key.endsWith('[-]')) {
+          return { ...queryParams, ...popArray(key, value, queryParams) }
+        } else if (key.endsWith('{}')) {
+          return { ...queryParams, ...toObject(key, value) }
+        } else {
+          return { ...queryParams, [key]: decodeURIComponent(value) }
         }
-
-        return queryParams
       }, {})
   } catch (error) {
     console.error('ads', error)
     return {}
   }
+}
+
+function toFalse(key: string) {
+  return { [key.substr(1)]: false }
+}
+
+function toArray(key: string, value: string) {
+  key = key.substr(0, key.length - 2)
+  return { [key]: value ? decodeURIComponent(value).split(',') : true }
+}
+
+function appendArray(key: string, value: string, queryParams: QueryParams) {
+  key = key.substr(0, key.length - 3)
+  const queryParam = queryParams[key]
+  return {
+    [key]: [
+      ...(Array.isArray(queryParam) ? queryParam : []),
+      ...(value || '').split(',').map(decodeURIComponent),
+    ],
+  }
+}
+
+function popArray(key: string, value: string, queryParams: QueryParams) {
+  key = key.substr(0, key.length - 3)
+  const queryParam = queryParams[key]
+  return {
+    [key]: (value || '')
+      .split(',')
+      .map(decodeURIComponent)
+      .reduce(
+        (queryParam, item) => {
+          const index: number = queryParam.indexOf(item)
+          return index === -1
+            ? queryParam
+            : [...queryParam.slice(0, index), ...queryParam.slice(index + 1)]
+        },
+        Array.isArray(queryParam) ? queryParam : []
+      ),
+  }
+}
+
+function toObject(key: string, value: string) {
+  key = key.substr(0, key.length - 2)
+  return { [key]: JSON.parse(decodeURIComponent(value)) }
 }
