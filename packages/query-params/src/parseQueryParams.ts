@@ -22,7 +22,7 @@ export default function parseQueryParams(searchString: string) {
         } else if (key.endsWith('[+]')) {
           return { ...queryParams, ...appendArray(key, value, queryParams) }
         } else if (key.endsWith('[-]')) {
-          return { ...queryParams, ...popArray(key, value, queryParams) }
+          return { ...queryParams, ...removeFromArray(key, value, queryParams) }
         } else if (key.endsWith('{}')) {
           return { ...queryParams, ...toObject(key, value) }
         } else {
@@ -55,11 +55,11 @@ function appendArray(key: string, value: string, queryParams: QueryParams) {
   }
 }
 
-function popArray(key: string, value: string, queryParams: QueryParams) {
+function removeFromArray(key: string, value: string, queryParams: QueryParams) {
   key = key.substr(0, key.length - 3)
   const queryParam = queryParams[key]
   return {
-    [key]: (value || '')
+    [key]: value
       .split(',')
       .map(decodeURIComponent)
       .reduce(
