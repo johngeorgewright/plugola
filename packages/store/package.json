@@ -1,8 +1,8 @@
 {
-  "name": "@plugola/query-params",
+  "name": "@plugola/store",
   "version": "0.0.0",
-  "description": "Parses location query parameters",
-  "main": "dist/index.js",
+  "description": "State managemenet",
+  "main": "dist/Store.js",
   "scripts": {
     "build": "yarn clean && yarn tsc && yarn rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
     "clean": "yarn rimraf dist",
@@ -21,5 +21,8 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^26.5.6",
     "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "@plugola/logger": "workspace:packages/logger"
   }
 }

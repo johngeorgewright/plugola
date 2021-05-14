@@ -10,10 +10,11 @@
   "scripts": {
     "build": "yarn workspaces foreach --topological-dev --exclude @plugola/generator run build",
     "build:generator": "yarn workspace @plugola/generator run build",
+    "clean": "yarn workspaces foreach run clean",
     "commit": "yarn git-cz",
     "generate:package": "yarn yo ./packages/generator/generators/package",
     "release": "yarn workspaces foreach --no-private run yarn semantic-release -e semantic-release-monorepo",
-    "start": "yarn workspaces foreach --topological-dev --no-private --parallel --interlaced run start",
+    "start": "yarn build && yarn workspaces foreach --no-private --parallel --interlaced run start",
     "test": "yarn workspaces foreach run test"
   },
   "author": "",
