@@ -1,4 +1,4 @@
-import type { Logger } from '@plugola/logger'
+import Logger, { DisabledLoggerBehavior } from '@plugola/logger'
 
 export default class Store<Action extends ActionI, State> {
   private dispatching = false
@@ -9,7 +9,7 @@ export default class Store<Action extends ActionI, State> {
   constructor(
     private reducer: (action: Action | InitAction, state: State) => State,
     initialState: State,
-    private log: Logger
+    private log: Logger = new Logger('store', new DisabledLoggerBehavior())
   ) {
     this._state = Object.freeze(initialState)
   }
@@ -37,10 +37,10 @@ export default class Store<Action extends ActionI, State> {
     this.dispatching = false
 
     if (state === this._state) {
-      this.log(action, 'NO_CHANGE')
+      this.log.info(action, 'NO_CHANGE')
     } else {
       this._state = Object.freeze(state)
-      this.log(action, this._state)
+      this.log.info(action, this._state)
       this.updateSubscribers(action)
     }
   }
