@@ -60,6 +60,10 @@ export default class Broker<
     return off
   }
 
+  hasSubscriber(eventName: keyof Events) {
+    return this.messageBus.hasSubscriber(eventName)
+  }
+
   /**
    * @todo Cannot correctly infer `Args` and therefore `UntilRtn` is always all args
    */

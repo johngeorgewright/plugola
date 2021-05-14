@@ -138,6 +138,10 @@ export default class MessageBus<
     }
   }
 
+  hasSubscriber(eventName: keyof Events) {
+    return !!this.subscribers[eventName]?.length
+  }
+
   register<InvokableName extends keyof Invokables>(
     broker: Broker<Events, Invokables>,
     invokableName: InvokableName,
