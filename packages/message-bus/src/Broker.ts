@@ -1,11 +1,9 @@
-import { last, replaceLastItem } from './array'
 import type MessageBus from './MessageBus'
 import type {
   EventsT,
   EventInterceptorArgs,
   InvokablesT,
   SubscriberArgs,
-  SubscriberFn,
   UntilArgs,
   UntilRtn,
   InvokerArgs,
@@ -46,38 +44,21 @@ export default class Broker<
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
   ): () => void {
-    const fn = last(args) as unknown as SubscriberFn<Events[EventName]>
-    const onceFn = ((...args: Events[EventName]) => {
-      off()
-      return fn(...args)
-    }) as SubscriberFn<Events[EventName]>
-    const off = this.messageBus.on(
-      this,
-      eventName,
-      // @ts-ignore
-      replaceLastItem(args, onceFn)
-    )
-    return off
+    return this.messageBus.once(this, eventName, args)
   }
 
   hasSubscriber(eventName: keyof Events) {
     return this.messageBus.hasSubscriber(eventName)
   }
 
-  /**
-   * @todo Cannot correctly infer `Args` and therefore `UntilRtn` is always all args
-   */
   async until<
     EventName extends keyof Events,
     Args extends UntilArgs<Events[EventName]>
-  >(eventName: EventName, ...args: Args): Promise<unknown[]> {
-    return new Promise<UntilRtn<Events[EventName], Args>>((resolve) => {
-      const subscriberArgs = [
-        ...args,
-        (...args: any) => resolve(args),
-      ] as unknown as SubscriberArgs<Events[EventName]>
-      this.once(eventName, ...subscriberArgs)
-    })
+  >(
+    eventName: EventName,
+    ...args: Args
+  ): Promise<UntilRtn<Events[EventName], Args>> {
+    return this.messageBus.until(this, eventName, args)
   }
 
   register<InvokableName extends keyof Invokables>(

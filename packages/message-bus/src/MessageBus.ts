@@ -1,4 +1,4 @@
-import { init, last, removeItem } from './array'
+import { init, last, removeItem, replaceLastItem } from './array'
 import Broker from './Broker'
 import { CancelEvent } from './symbols'
 import type {
@@ -14,6 +14,9 @@ import type {
   InvokerInterceptors,
   InvokerInterceptorArgs,
   UnpackResolvableValue,
+  SubscriberFn,
+  UntilRtn,
+  UntilArgs,
 } from './types'
 
 export default class MessageBus<
@@ -136,6 +139,41 @@ export default class MessageBus<
         this.subscribers[eventName] as any
       )
     }
+  }
+
+  once<EventName extends keyof Events>(
+    broker: Broker<Events, Invokables>,
+    eventName: EventName,
+    args: SubscriberArgs<Events[EventName]>
+  ): () => void {
+    const fn = last(args) as unknown as SubscriberFn<Events[EventName]>
+    const onceFn = ((...args: Events[EventName]) => {
+      off()
+      return fn(...args)
+    }) as SubscriberFn<Events[EventName]>
+    const off = this.on(
+      broker,
+      eventName,
+      // @ts-ignore
+      replaceLastItem(args, onceFn)
+    )
+    return off
+  }
+
+  /**
+   * @todo Cannot correctly infer `Args` and therefore `UntilRtn` is always all args
+   */
+  async until<
+    EventName extends keyof Events,
+    Args extends UntilArgs<Events[EventName]>
+  >(broker: Broker<Events, Invokables>, eventName: EventName, args: Args) {
+    return new Promise<UntilRtn<Events[EventName], Args>>((resolve) => {
+      const subscriberArgs = [
+        ...args,
+        (...args: any) => resolve(args),
+      ] as unknown as SubscriberArgs<Events[EventName]>
+      this.once(broker, eventName, subscriberArgs)
+    })
   }
 
   hasSubscriber(eventName: keyof Events) {
