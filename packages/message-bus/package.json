@@ -1,0 +1,28 @@
+{
+  "name": "@plugola/message-bus",
+  "version": "0.0.0",
+  "description": "Plugola event management",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "yarn rimraf dist && yarn tsc && yarn rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
+    "start": "yarn tsc --watch --preserveWatchOutput",
+    "test": "yarn jest"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johngeorgewright/ts-mono-repo/issues"
+  },
+  "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
+  "devDependencies": {
+    "@johngw/async": "^2.4.0",
+    "@types/jest": "^26.0.23",
+    "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.6",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "ts-toolbelt": "^9.6.0"
+  }
+}
