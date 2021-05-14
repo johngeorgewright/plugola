@@ -82,6 +82,16 @@ describe('events', () => {
     await broker.emit('foo')
     expect(foo).not.toHaveBeenCalled()
   })
+
+  test('partial subscribers', () => {
+    const fn = jest.fn()
+    messageBus.start()
+    broker.on('bar', 'mung', fn)
+    broker.emit('bar', 'mung')
+    broker.emit('bar', 'face')
+    expect(fn).toHaveBeenCalledTimes(1)
+    expect(fn).toHaveBeenCalledWith()
+  })
 })
 
 describe('invokables', () => {

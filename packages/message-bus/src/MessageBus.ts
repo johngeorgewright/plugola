@@ -313,19 +313,21 @@ export default class MessageBus<
   }
 
   private argumentIndex(args1: ArrayLike<unknown>, args2: ArrayLike<unknown>) {
-    if (args1.length > args2.length) {
+    if (!args1.length) {
+      return 0
+    } else if (args1.length > args2.length) {
       return -1
     }
 
     let i: number
 
-    for (i = 0; i < args1.length - 1; i++) {
+    for (i = 0; i < args1.length; i++) {
       if (args1[i] !== args2[i]) {
         return -1
       }
     }
 
-    return i
+    return i + 1
   }
 
   private async queue<T>(handler: () => T) {
