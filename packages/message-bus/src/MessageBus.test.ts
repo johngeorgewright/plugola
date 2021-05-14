@@ -1,6 +1,7 @@
 import Broker from './Broker'
 import MessageBus from './MessageBus'
 import { CancelEvent } from './symbols'
+import { timeout } from '@johngw/async'
 
 describe('events', () => {
   type Events = { foo: []; bar: [string] }
@@ -36,6 +37,17 @@ describe('events', () => {
     messageBus.start()
     expect(foo).toHaveBeenCalled()
     expect(bar).toHaveBeenCalledWith('hello world')
+  })
+
+  test('can wait for all asynchronous listeners', async () => {
+    const fn = jest.fn()
+    messageBus.start()
+    broker.on('foo', async () => {
+      await timeout()
+      fn()
+    })
+    await broker.emit('foo')
+    expect(fn).toHaveBeenCalled()
   })
 
   test('once listeners', () => {

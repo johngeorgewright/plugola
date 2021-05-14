@@ -91,7 +91,7 @@ export default class MessageBus<Events extends EventsT> {
     return () => {
       this.subscribers[eventName] = removeItem(
         subscriber,
-        this.subscribers[eventName]!
+        this.subscribers[eventName] as any
       )
     }
   }
@@ -135,14 +135,22 @@ export default class MessageBus<Events extends EventsT> {
   private callSubscribers<EventName extends keyof Events>(
     eventName: EventName,
     args: Events[EventName]
-  ) {
+  ): void | Promise<void> {
     const subscribers = (this.subscribers[eventName] || [])!
+    const promises = []
 
     for (const subscriber of subscribers) {
       const index = this.argumentIndex(subscriber.args, args)
       if (index >= 0) {
-        subscriber.fn(...args.slice(index))
+        const promise = subscriber.fn(...args.slice(index))
+        if (promise) {
+          promises.push(promise)
+        }
       }
+    }
+
+    if (promises.length) {
+      return Promise.all(promises).then(() => {})
     }
   }
 

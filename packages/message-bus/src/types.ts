@@ -2,7 +2,9 @@ import type Broker from './Broker'
 import type { CancelEvent } from './symbols'
 import { L, N } from 'ts-toolbelt'
 
-export type SubscriberFn<Args extends unknown[]> = (...args: Args) => void
+export type SubscriberFn<Args extends unknown[]> = (
+  ...args: Args
+) => void | Promise<void>
 
 export type SubscriberArgs<A extends unknown[], B extends unknown[] = []> =
   L.Length<A> extends 0

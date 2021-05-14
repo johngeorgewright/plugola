@@ -857,6 +857,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@johngw/async@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@johngw/async@npm:2.4.0"
+  checksum: a40f9299c1f83116fb731a072518dc31abf709806fa6a34a46917a87902a80012182520a301182288646a1d266c3e0093f7e5d1bfd5fe210df43d441d6b2feac
+  languageName: node
+  linkType: hard
+
 "@lerna/add@npm:4.0.0":
   version: 4.0.0
   resolution: "@lerna/add@npm:4.0.0"
@@ -2006,6 +2013,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/message-bus@workspace:packages/message-bus"
   dependencies:
+    "@johngw/async": ^2.4.0
     "@types/jest": ^26.0.23
     jest: ^26.6.3
     rimraf: ^3.0.2
