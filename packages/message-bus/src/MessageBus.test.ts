@@ -88,7 +88,7 @@ describe('invokables', () => {
   type Invokables = {
     foo: { args: []; return: string }
     bar: { args: [string]; return: string }
-    afoo: { args: []; return: Promise<string> }
+    afoo: { args: [string]; return: Promise<string> }
   }
   let messageBus: MessageBus<{}, Invokables>
   let broker: Broker<{}, Invokables>
@@ -101,7 +101,7 @@ describe('invokables', () => {
     broker = messageBus.broker('test')
     foo = jest.fn(() => 'foo')
     bar = jest.fn((x: string) => x + '1')
-    afoo = jest.fn(async () => foo())
+    afoo = jest.fn(async (x: string) => bar(x))
     broker.register('foo', foo)
     broker.register('bar', bar)
     broker.register('afoo', afoo)
@@ -113,16 +113,15 @@ describe('invokables', () => {
     expect(broker.invoke('bar', 'hello')).toEqual(['hello1'])
   })
 
-  test('queued messages', async () => {
-    const result = broker.invoke('foo')
-    expect(foo).not.toHaveBeenCalled()
-    await messageBus.start()
-    expect(await result).toEqual(['foo'])
+  test('queued messages', () => {
+    expect(() => {
+      broker.invoke('foo')
+    }).toThrowError()
   })
 
-  test('asynchronous handlers', async () => {
+  test('asynchronous handlers', () => {
     messageBus.start()
-    const result = broker.invoke('afoo')
+    const result = broker.invoke('afoo', 'hello')
     expect(result).toMatchInlineSnapshot(`
       Array [
         Promise {},
@@ -130,9 +129,20 @@ describe('invokables', () => {
     `)
   })
 
-  test('intercept invokers', async () => {
+  test('intercept invokers', () => {
     messageBus.start()
     broker.interceptInvoker('bar', (x) => [x + '1'])
-    expect(await broker.invoke('bar', 'hello')).toEqual(['hello11'])
+    expect(broker.invoke('bar', 'hello')).toEqual(['hello11'])
+  })
+
+  test('intercept asynchonous invokers', async () => {
+    messageBus.start()
+    broker.interceptInvoker('afoo', async (x) => [x + 1])
+    expect(broker.invoke('afoo', 'hello')).toBeInstanceOf(Promise)
+    expect(await broker.invoke('afoo', 'hello')).toMatchInlineSnapshot(`
+      Array [
+        Promise {},
+      ]
+    `)
   })
 })

@@ -31,21 +31,21 @@ export default class Broker<
   interceptEvent<EventName extends keyof Events>(
     eventName: EventName,
     ...args: EventInterceptorArgs<Events[EventName]>
-  ) {
+  ): () => void {
     return this.messageBus.interceptEvent(this, eventName, args)
   }
 
   on<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
-  ) {
+  ): () => void {
     return this.messageBus.on(this, eventName, args)
   }
 
   once<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
-  ) {
+  ): () => void {
     const fn = last(args) as unknown as SubscriberFn<Events[EventName]>
     const onceFn = ((...args: Events[EventName]) => {
       off()
@@ -82,21 +82,28 @@ export default class Broker<
       Invokables[InvokableName]['args'],
       Invokables[InvokableName]['return']
     >
-  ) {
+  ): () => void {
     return this.messageBus.register(this, invokableName, args)
   }
 
   invoke<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     ...args: Invokables[InvokableName]['args']
-  ) {
-    return this.messageBus.invoke(this, invokableName, args)
+  ): Invokables[InvokableName]['return'] extends Promise<unknown>
+    ?
+        | Invokables[InvokableName]['return'][]
+        | Promise<Invokables[InvokableName]['return'][]>
+    : Invokables[InvokableName]['return'][] {
+    return this.messageBus.invoke(this, invokableName, args) as any
   }
 
   interceptInvoker<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
-    ...args: InvokerInterceptorArgs<Invokables[InvokableName]['args']>
-  ) {
+    ...args: InvokerInterceptorArgs<
+      Invokables[InvokableName]['args'],
+      Invokables[InvokableName]['return']
+    >
+  ): () => void {
     return this.messageBus.interceptInvoker(this, invokableName, args)
   }
 }

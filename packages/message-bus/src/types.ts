@@ -103,18 +103,24 @@ export type Invokers<Invokables extends InvokablesT> = Partial<
 
 export type InvokerInterceptorFn<
   Args extends unknown[],
+  Return,
   NewArgs extends unknown[]
-> = (...args: Args) => void | NewArgs | Promise<void | NewArgs>
+> = (
+  ...args: Args
+) => Return extends Promise<unknown>
+  ? void | NewArgs | Promise<void | NewArgs>
+  : void | NewArgs
 
 export type InvokerInterceptorArgs<
   A extends unknown[],
+  R,
   B extends unknown[] = [],
   C extends unknown[] = A
 > = L.Length<A> extends 0
-  ? [InvokerInterceptorFn<B, C>]
+  ? [InvokerInterceptorFn<B, R, C>]
   :
-      | [...A, InvokerInterceptorFn<B, C>]
-      | InvokerInterceptorArgs<L.Pop<A>, [L.Last<A>, ...B], C>
+      | [...A, InvokerInterceptorFn<B, R, C>]
+      | InvokerInterceptorArgs<L.Pop<A>, R, [L.Last<A>, ...B], C>
 
 export type InvokerInterceptors<Invokables extends InvokablesT> = Partial<
   {
@@ -127,7 +133,7 @@ export type InvokerInterceptors<Invokables extends InvokablesT> = Partial<
 export interface InvokerInterceptor<B extends Broker<EventsT, InvokablesT>> {
   broker: B
   args: unknown[]
-  fn: InvokerInterceptorFn<unknown[], unknown[]>
+  fn: InvokerInterceptorFn<unknown[], unknown, unknown[]>
 }
 
 export type UnpackResolvableValue<T> = T extends Promise<infer R>

@@ -13,7 +13,6 @@ import type {
   Subscribers,
   InvokerInterceptors,
   InvokerInterceptorArgs,
-  InvokerInterceptorFn,
   UnpackResolvableValue,
 } from './types'
 
@@ -86,12 +85,15 @@ export default class MessageBus<
   interceptInvoker<InvokableName extends keyof Invokables>(
     broker: Broker<Events, Invokables>,
     invokableName: InvokableName,
-    args: InvokerInterceptorArgs<Invokables[InvokableName]['args']>
+    args: InvokerInterceptorArgs<
+      Invokables[InvokableName]['args'],
+      Invokables[InvokableName]['return']
+    >
   ) {
     const interceptor = {
       broker,
       args: init(args),
-      fn: last(args) as InvokerInterceptorFn<unknown[], unknown[]>,
+      fn: last(args) as any,
     }
 
     if (!this.invokerInterceptors[invokableName]) {
@@ -106,7 +108,7 @@ export default class MessageBus<
     return () => {
       this.invokerInterceptors[invokableName] = removeItem(
         interceptor,
-        this.invokerInterceptors[invokableName]!
+        this.invokerInterceptors[invokableName] as any
       )
     }
   }
@@ -169,15 +171,19 @@ export default class MessageBus<
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
   ) {
-    const handle = () => {
-      const interception = this.callInvokerInterceptors(invokableName, args)
-      return interception
-        ? interception.then((moddedArgs) =>
-            this.callInvokers(invokableName, moddedArgs)
-          )
-        : this.callInvokers(invokableName, args)
+    if (!this.started) {
+      throw new Error(
+        `Trying to invoke ${invokableName} before the message bus has bee started`
+      )
     }
-    return this.started ? handle() : this.queue(handle)
+
+    const interception = this.callInvokerInterceptors(invokableName, args)
+
+    return interception instanceof Promise
+      ? interception.then((moddedArgs) =>
+          this.callInvokers(invokableName, moddedArgs)
+        )
+      : this.callInvokers(invokableName, interception as any)
   }
 
   private callEventInterceptors<EventName extends keyof Events>(
@@ -219,36 +225,52 @@ export default class MessageBus<
   private callInvokerInterceptors<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
-  ): void | Promise<Invokables[InvokableName]['args']> {
+  ): Invokables[InvokableName]['return'] extends Promise<unknown>
+    ?
+        | Invokables[InvokableName]['args']
+        | Promise<Invokables[InvokableName]['args']>
+    : Invokables[InvokableName]['args'] {
     const invokerInterceptors = (this.invokerInterceptors[invokableName] || [])!
 
     if (!invokerInterceptors.length) {
-      return
+      return args as any
     }
 
-    return (async () => {
-      let moddedArgs: Invokables[InvokableName]['args'] | typeof CancelEvent =
-        args
+    let moddedArgs: Invokables[InvokableName]['args'] = args
 
-      for (const interceptor of invokerInterceptors) {
-        const index = this.argumentIndex(interceptor.args, moddedArgs)
+    let promiseChain: Promise<Invokables[InvokableName]['args']> | undefined
 
-        if (index === -1) {
-          continue
-        }
+    for (const interceptor of invokerInterceptors) {
+      const index = this.argumentIndex(interceptor.args, moddedArgs)
 
-        const newArgs = await interceptor.fn(moddedArgs.slice(index))
+      if (index === -1) {
+        continue
+      }
 
-        if (newArgs) {
+      if (promiseChain) {
+        promiseChain = promiseChain.then((moddedArgs) => {
+          const newArgs = interceptor.fn(moddedArgs.slice(index))
+          return newArgs
+            ? (moddedArgs = [
+                ...moddedArgs.slice(0, index),
+                ...newArgs,
+              ] as Invokables[InvokableName]['args'])
+            : moddedArgs
+        })
+      } else {
+        const newArgs = interceptor.fn(moddedArgs.slice(index))
+        if (newArgs instanceof Promise) {
+          promiseChain = newArgs
+        } else if (newArgs) {
           moddedArgs = [
             ...moddedArgs.slice(0, index),
             ...newArgs,
           ] as Invokables[InvokableName]['args']
         }
       }
+    }
 
-      return moddedArgs
-    })()
+    return promiseChain || (moddedArgs as any)
   }
 
   private callSubscribers<EventName extends keyof Events>(
