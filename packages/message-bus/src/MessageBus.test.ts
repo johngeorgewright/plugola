@@ -26,26 +26,42 @@ describe('events', () => {
     expect(bar).toHaveBeenCalledWith('hello world')
   })
 
-  test('queued events', async () => {
+  test('queued events', () => {
     broker.emit('foo')
     broker.emit('bar', 'hello world')
 
     expect(foo).not.toHaveBeenCalled()
     expect(bar).not.toHaveBeenCalled()
 
-    await messageBus.start()
+    messageBus.start()
     expect(foo).toHaveBeenCalled()
     expect(bar).toHaveBeenCalledWith('hello world')
   })
 
-  test('intercepting args', async () => {
+  test('once listeners', () => {
+    const fn = jest.fn()
+    messageBus.start()
+    broker.once('foo', fn)
+    broker.emit('foo')
+    broker.emit('foo')
+    expect(fn).toHaveBeenCalledTimes(1)
+  })
+
+  test('until listeners', async () => {
+    messageBus.start()
+    const result = broker.until('bar')
+    broker.emit('bar', 'hello')
+    expect(await result).toEqual(['hello'])
+  })
+
+  test('intercepting events', async () => {
     messageBus.start()
     broker.intercept('bar', async (x) => [x + '1'])
     await broker.emit('bar', 'hello')
     expect(bar).toHaveBeenCalledWith('hello1')
   })
 
-  test('cancelling with interception', async () => {
+  test('cancelling events with interception', async () => {
     messageBus.start()
     broker.intercept('foo', async () => CancelEvent)
     await broker.emit('foo')
