@@ -1,9 +1,8 @@
-export default interface LoggerBehavior {
-  (...args: any[]): void
-  debug(...args: any[]): void
-  error(...args: any[]): void
-  info(...args: any[]): void
-  log(...args: any[]): void
-  table(...args: any[]): void
-  warn(...args: any[]): void
+export default abstract class LoggerBehavior {
+  abstract debug(label: string, ...args: any[]): void
+  abstract error(label: string, ...args: any[]): void
+  abstract info(label: string, ...args: any[]): void
+  abstract log(label: string, ...args: any[]): void
+  abstract table(label: string, ...args: any[]): void
+  abstract warn(label: string, ...args: any[]): void
 }
