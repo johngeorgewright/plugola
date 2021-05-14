@@ -47,7 +47,7 @@ export default class Store<Action extends ActionI, State> {
 
   subscribe(listener: Listener<Action | InitAction, State>) {
     this.listeners.push(listener)
-    setTimeout(() => listener(this._state, { type: '__INIT__' }))
+    setTimeout(() => listener({ type: '__INIT__' }, this._state))
 
     return () => {
       const index = this.listeners.indexOf(listener)
@@ -60,7 +60,7 @@ export default class Store<Action extends ActionI, State> {
 
   private updateSubscribers(action: Action | InitAction) {
     for (const listener of this.listeners) {
-      listener(this._state, action)
+      listener(action, this._state)
     }
   }
 }
@@ -74,5 +74,5 @@ export interface InitAction {
 }
 
 interface Listener<Action extends ActionI, State> {
-  (state: State, action: Action): any
+  (action: Action, state: State): any
 }
