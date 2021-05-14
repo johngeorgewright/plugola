@@ -56,14 +56,17 @@ describe('events', () => {
 
   test('intercepting events', async () => {
     messageBus.start()
-    broker.intercept('bar', async (x) => [x + '1'])
+    broker.intercept('bar', (x) => [x + '1'])
     await broker.emit('bar', 'hello')
     expect(bar).toHaveBeenCalledWith('hello1')
   })
 
   test('cancelling events with interception', async () => {
     messageBus.start()
-    broker.intercept('foo', async () => CancelEvent)
+    broker.intercept(
+      'foo',
+      async (): Promise<typeof CancelEvent> => CancelEvent
+    )
     await broker.emit('foo')
     expect(foo).not.toHaveBeenCalled()
   })

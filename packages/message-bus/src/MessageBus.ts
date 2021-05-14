@@ -83,18 +83,17 @@ export default class MessageBus<Events extends EventsT> {
     const subscriber = {
       broker,
       args: init(args),
-      cancel: () => {
-        this.subscribers[eventName] = removeItem(
-          subscriber,
-          this.subscribers[eventName]!
-        )
-      },
       fn: last(args) as (...args: unknown[]) => any,
     }
 
     this.subscribers[eventName]!.push(subscriber)
 
-    return subscriber
+    return () => {
+      this.subscribers[eventName] = removeItem(
+        subscriber,
+        this.subscribers[eventName]!
+      )
+    }
   }
 
   private callInterceptors<EventName extends keyof Events>(

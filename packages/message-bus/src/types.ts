@@ -37,13 +37,16 @@ export type Subscribers<Events extends EventsT> = Partial<
 export interface Subscriber<B extends Broker<EventsT>> {
   broker: B
   args: unknown[]
-  cancel: () => void
   fn: SubscriberFn<unknown[]>
 }
 
 export type InterceptorFn<Args extends unknown[], NewArgs extends unknown[]> = (
   ...args: Args
-) => Promise<typeof CancelEvent | void | NewArgs>
+) =>
+  | typeof CancelEvent
+  | void
+  | NewArgs
+  | Promise<typeof CancelEvent | void | NewArgs>
 
 export type InterceptorArgs<
   A extends unknown[],

@@ -15,13 +15,11 @@ export default class Broker<Events extends EventsT> {
     public readonly id: string
   ) {}
 
-  async emit<EventName extends keyof Events>(
+  emit<EventName extends keyof Events>(
     eventName: EventName,
     ...args: Events[EventName]
-  ): Promise<void> {
-    // Deep recursion is breaking stuff
-    // @ts-ignore
-    await this.messageBus.emit(this, eventName, args)
+  ): void | Promise<void> {
+    return this.messageBus.emit(this, eventName, args)
   }
 
   intercept<EventName extends keyof Events>(
@@ -44,16 +42,16 @@ export default class Broker<Events extends EventsT> {
   ) {
     const fn = last(args) as unknown as SubscriberFn<Events[EventName]>
     const onceFn = ((...args: Events[EventName]) => {
-      subscriber.cancel()
+      off()
       return fn(...args)
     }) as SubscriberFn<Events[EventName]>
-    const subscriber = this.messageBus.on(
+    const off = this.messageBus.on(
       this,
       eventName,
       // @ts-ignore
       replaceLastItem(args, onceFn)
     )
-    return subscriber
+    return off
   }
 
   /**
