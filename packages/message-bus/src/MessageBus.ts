@@ -20,16 +20,25 @@ export default class MessageBus<Events extends EventsT> {
     return new Broker<Events>(this, id)
   }
 
-  async emit<EventName extends keyof Events>(
+  async start() {
+    this.started = true
+    return Promise.all(this.queued.map((handle) => handle()))
+  }
+
+  emit<EventName extends keyof Events>(
     _broker: Broker<Events>,
     eventName: EventName,
     args: Events[EventName]
-  ): Promise<void> {
-    const handle = async () => {
-      const moddedArgs = await this.callInterceptors(eventName, args)
-      if (moddedArgs !== CancelEvent) {
-        this.callSubscribers(eventName, moddedArgs)
-      }
+  ): void | Promise<void> {
+    const handle = () => {
+      const interception = this.callInterceptors(eventName, args)
+      return interception
+        ? interception.then((moddedArgs) => {
+            if (moddedArgs !== CancelEvent) {
+              this.callSubscribers(eventName, moddedArgs)
+            }
+          })
+        : this.callSubscribers(eventName, args)
     }
     return this.started ? handle() : this.queue(handle)
   }
@@ -88,33 +97,43 @@ export default class MessageBus<Events extends EventsT> {
     return subscriber
   }
 
-  private async callInterceptors<EventName extends keyof Events>(
+  private callInterceptors<EventName extends keyof Events>(
     eventName: EventName,
     args: Events[EventName]
-  ) {
-    let moddedArgs = args
+  ): void | Promise<Events[EventName] | typeof CancelEvent> {
     const interceptors = (this.interceptors[eventName] || [])!
 
-    for (const interceptor of interceptors) {
-      const index = this.argumentIndex(interceptor.args, moddedArgs)
-
-      if (index === -1) {
-        continue
-      }
-
-      const newArgs = await interceptor.fn(args.slice(index))
-
-      if (newArgs === CancelEvent) {
-        return CancelEvent
-      } else if (newArgs) {
-        moddedArgs = [...args.slice(0, index), ...newArgs] as Events[EventName]
-      }
+    if (!interceptors.length) {
+      return
     }
 
-    return moddedArgs
+    return (async () => {
+      let moddedArgs: Events[EventName] | typeof CancelEvent = args
+
+      for (const interceptor of interceptors) {
+        const index = this.argumentIndex(interceptor.args, moddedArgs)
+
+        if (index === -1) {
+          continue
+        }
+
+        const newArgs = await interceptor.fn(moddedArgs.slice(index))
+
+        if (newArgs === CancelEvent) {
+          return CancelEvent
+        } else if (newArgs) {
+          moddedArgs = [
+            ...moddedArgs.slice(0, index),
+            ...newArgs,
+          ] as Events[EventName]
+        }
+      }
+
+      return moddedArgs
+    })()
   }
 
-  private async callSubscribers<EventName extends keyof Events>(
+  private callSubscribers<EventName extends keyof Events>(
     eventName: EventName,
     args: Events[EventName]
   ) {
@@ -144,8 +163,8 @@ export default class MessageBus<Events extends EventsT> {
     return i
   }
 
-  private async queue<T>(handler: () => Promise<T>) {
-    return new Promise<T>((resolve) => {
+  private async queue(handler: () => void) {
+    return new Promise<void>((resolve) => {
       this.queued.push(() => resolve(handler()))
     })
   }
