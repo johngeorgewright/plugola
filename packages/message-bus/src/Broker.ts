@@ -2,16 +2,22 @@ import { last, replaceLastItem } from './array'
 import type MessageBus from './MessageBus'
 import type {
   EventsT,
-  InterceptorArgs,
+  EventInterceptorArgs,
+  InvokablesT,
   SubscriberArgs,
   SubscriberFn,
   UntilArgs,
   UntilRtn,
+  InvokerArgs,
+  InvokerInterceptorArgs,
 } from './types'
 
-export default class Broker<Events extends EventsT> {
+export default class Broker<
+  Events extends EventsT,
+  Invokables extends InvokablesT
+> {
   constructor(
-    private readonly messageBus: MessageBus<Events>,
+    private readonly messageBus: MessageBus<Events, Invokables>,
     public readonly id: string
   ) {}
 
@@ -22,11 +28,11 @@ export default class Broker<Events extends EventsT> {
     return this.messageBus.emit(this, eventName, args)
   }
 
-  intercept<EventName extends keyof Events>(
+  interceptEvent<EventName extends keyof Events>(
     eventName: EventName,
-    ...args: InterceptorArgs<Events[EventName]>
+    ...args: EventInterceptorArgs<Events[EventName]>
   ) {
-    return this.messageBus.intercept(this, eventName, args)
+    return this.messageBus.interceptEvent(this, eventName, args)
   }
 
   on<EventName extends keyof Events>(
@@ -68,5 +74,29 @@ export default class Broker<Events extends EventsT> {
       ] as unknown as SubscriberArgs<Events[EventName]>
       this.once(eventName, ...subscriberArgs)
     })
+  }
+
+  register<InvokableName extends keyof Invokables>(
+    invokableName: InvokableName,
+    ...args: InvokerArgs<
+      Invokables[InvokableName]['args'],
+      Invokables[InvokableName]['return']
+    >
+  ) {
+    return this.messageBus.register(this, invokableName, args)
+  }
+
+  invoke<InvokableName extends keyof Invokables>(
+    invokableName: InvokableName,
+    ...args: Invokables[InvokableName]['args']
+  ) {
+    return this.messageBus.invoke(this, invokableName, args)
+  }
+
+  interceptInvoker<InvokableName extends keyof Invokables>(
+    invokableName: InvokableName,
+    ...args: InvokerInterceptorArgs<Invokables[InvokableName]['args']>
+  ) {
+    return this.messageBus.interceptInvoker(this, invokableName, args)
   }
 }

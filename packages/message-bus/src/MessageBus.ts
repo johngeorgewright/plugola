@@ -3,21 +3,33 @@ import Broker from './Broker'
 import { CancelEvent } from './symbols'
 import type {
   EventsT,
-  InterceptorArgs,
-  InterceptorFn,
-  Interceptors,
+  EventInterceptorArgs,
+  EventInterceptorFn,
+  EventInterceptors,
+  InvokablesT,
+  InvokerArgs,
+  Invokers,
   SubscriberArgs,
   Subscribers,
+  InvokerInterceptors,
+  InvokerInterceptorArgs,
+  InvokerInterceptorFn,
+  UnpackResolvableValue,
 } from './types'
 
-export default class MessageBus<Events extends EventsT> {
-  private interceptors: Interceptors<Events> = {}
+export default class MessageBus<
+  Events extends EventsT,
+  Invokables extends InvokablesT
+> {
+  private eventInterceptors: EventInterceptors<Events> = {}
+  private invokers: Invokers<Invokables> = {}
+  private invokerInterceptors: InvokerInterceptors<Invokables> = {}
   private queued: Array<() => unknown> = []
   private started: boolean = false
   private subscribers: Subscribers<Events> = {}
 
   broker(id: string) {
-    return new Broker<Events>(this, id)
+    return new Broker<Events, Invokables>(this, id)
   }
 
   async start() {
@@ -26,12 +38,12 @@ export default class MessageBus<Events extends EventsT> {
   }
 
   emit<EventName extends keyof Events>(
-    _broker: Broker<Events>,
+    _broker: Broker<Events, InvokablesT>,
     eventName: EventName,
     args: Events[EventName]
-  ): void | Promise<void> {
+  ) {
     const handle = () => {
-      const interception = this.callInterceptors(eventName, args)
+      const interception = this.callEventInterceptors(eventName, args)
       return interception
         ? interception.then((moddedArgs) => {
             if (moddedArgs !== CancelEvent) {
@@ -43,36 +55,64 @@ export default class MessageBus<Events extends EventsT> {
     return this.started ? handle() : this.queue(handle)
   }
 
-  intercept<EventName extends keyof Events>(
-    broker: Broker<Events>,
+  interceptEvent<EventName extends keyof Events>(
+    broker: Broker<Events, InvokablesT>,
     eventName: EventName,
-    args: InterceptorArgs<Events[EventName]>
+    args: EventInterceptorArgs<Events[EventName]>
   ) {
     const interceptor = {
       broker,
       args: init(args),
-      fn: last(args) as InterceptorFn<unknown[], unknown[]>,
+      fn: last(args) as EventInterceptorFn<unknown[], unknown[]>,
     }
 
-    if (!this.interceptors[eventName]) {
-      this.interceptors[eventName] = []
+    if (!this.eventInterceptors[eventName]) {
+      this.eventInterceptors[eventName] = []
     }
 
-    const interceptors = this.interceptors[eventName]!
+    const eventInterceptors = this.eventInterceptors[eventName]!
 
     // @ts-ignore
-    interceptors.push(interceptor)
+    eventInterceptors.push(interceptor)
 
     return () => {
-      this.interceptors[eventName] = removeItem(
+      this.eventInterceptors[eventName] = removeItem(
         interceptor,
-        this.interceptors[eventName]!
+        this.eventInterceptors[eventName]!
+      )
+    }
+  }
+
+  interceptInvoker<InvokableName extends keyof Invokables>(
+    broker: Broker<Events, Invokables>,
+    invokableName: InvokableName,
+    args: InvokerInterceptorArgs<Invokables[InvokableName]['args']>
+  ) {
+    const interceptor = {
+      broker,
+      args: init(args),
+      fn: last(args) as InvokerInterceptorFn<unknown[], unknown[]>,
+    }
+
+    if (!this.invokerInterceptors[invokableName]) {
+      this.invokerInterceptors[invokableName] = []
+    }
+
+    const invokerInterceptors = this.invokerInterceptors[invokableName]!
+
+    // @ts-ignore
+    invokerInterceptors.push(interceptor)
+
+    return () => {
+      this.invokerInterceptors[invokableName] = removeItem(
+        interceptor,
+        this.invokerInterceptors[invokableName]!
       )
     }
   }
 
   on<EventName extends keyof Events>(
-    broker: Broker<Events>,
+    broker: Broker<Events, InvokablesT>,
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
   ) {
@@ -96,20 +136,64 @@ export default class MessageBus<Events extends EventsT> {
     }
   }
 
-  private callInterceptors<EventName extends keyof Events>(
+  register<InvokableName extends keyof Invokables>(
+    broker: Broker<Events, Invokables>,
+    invokableName: InvokableName,
+    args: InvokerArgs<
+      Invokables[InvokableName]['args'],
+      Invokables[InvokableName]['return']
+    >
+  ) {
+    if (!this.invokers[invokableName]) {
+      this.invokers[invokableName] = []
+    }
+
+    const invoker = {
+      broker,
+      args: init(args),
+      fn: last(args) as (...args: unknown[]) => any,
+    }
+
+    this.invokers[invokableName]!.push(invoker)
+
+    return () => {
+      this.invokers[invokableName] = removeItem(
+        invoker,
+        this.invokers[invokableName] as any
+      )
+    }
+  }
+
+  invoke<InvokableName extends keyof Invokables>(
+    _broker: Broker<Events, Invokables>,
+    invokableName: InvokableName,
+    args: Invokables[InvokableName]['args']
+  ) {
+    const handle = () => {
+      const interception = this.callInvokerInterceptors(invokableName, args)
+      return interception
+        ? interception.then((moddedArgs) =>
+            this.callInvokers(invokableName, moddedArgs)
+          )
+        : this.callInvokers(invokableName, args)
+    }
+    return this.started ? handle() : this.queue(handle)
+  }
+
+  private callEventInterceptors<EventName extends keyof Events>(
     eventName: EventName,
     args: Events[EventName]
   ): void | Promise<Events[EventName] | typeof CancelEvent> {
-    const interceptors = (this.interceptors[eventName] || [])!
+    const eventInterceptors = (this.eventInterceptors[eventName] || [])!
 
-    if (!interceptors.length) {
+    if (!eventInterceptors.length) {
       return
     }
 
     return (async () => {
       let moddedArgs: Events[EventName] | typeof CancelEvent = args
 
-      for (const interceptor of interceptors) {
+      for (const interceptor of eventInterceptors) {
         const index = this.argumentIndex(interceptor.args, moddedArgs)
 
         if (index === -1) {
@@ -132,12 +216,47 @@ export default class MessageBus<Events extends EventsT> {
     })()
   }
 
+  private callInvokerInterceptors<InvokableName extends keyof Invokables>(
+    invokableName: InvokableName,
+    args: Invokables[InvokableName]['args']
+  ): void | Promise<Invokables[InvokableName]['args']> {
+    const invokerInterceptors = (this.invokerInterceptors[invokableName] || [])!
+
+    if (!invokerInterceptors.length) {
+      return
+    }
+
+    return (async () => {
+      let moddedArgs: Invokables[InvokableName]['args'] | typeof CancelEvent =
+        args
+
+      for (const interceptor of invokerInterceptors) {
+        const index = this.argumentIndex(interceptor.args, moddedArgs)
+
+        if (index === -1) {
+          continue
+        }
+
+        const newArgs = await interceptor.fn(moddedArgs.slice(index))
+
+        if (newArgs) {
+          moddedArgs = [
+            ...moddedArgs.slice(0, index),
+            ...newArgs,
+          ] as Invokables[InvokableName]['args']
+        }
+      }
+
+      return moddedArgs
+    })()
+  }
+
   private callSubscribers<EventName extends keyof Events>(
     eventName: EventName,
     args: Events[EventName]
   ): void | Promise<void> {
     const subscribers = (this.subscribers[eventName] || [])!
-    const promises = []
+    const promises: Promise<void>[] = []
 
     for (const subscriber of subscribers) {
       const index = this.argumentIndex(subscriber.args, args)
@@ -152,6 +271,23 @@ export default class MessageBus<Events extends EventsT> {
     if (promises.length) {
       return Promise.all(promises).then(() => {})
     }
+  }
+
+  private callInvokers<InvokableName extends keyof Invokables>(
+    invokableName: InvokableName,
+    args: Invokables[InvokableName]['args']
+  ) {
+    const invokers = (this.invokers[invokableName] || [])!
+    const results: Invokables[InvokableName]['return'][] = []
+
+    for (const invoker of invokers) {
+      const index = this.argumentIndex(invoker.args, args)
+      if (index >= 0) {
+        results.push(invoker.fn(...args.slice(index)))
+      }
+    }
+
+    return results
   }
 
   private argumentIndex(args1: ArrayLike<unknown>, args2: ArrayLike<unknown>) {
@@ -170,9 +306,9 @@ export default class MessageBus<Events extends EventsT> {
     return i
   }
 
-  private async queue(handler: () => void) {
-    return new Promise<void>((resolve) => {
+  private async queue<T>(handler: () => T) {
+    return new Promise<T>((resolve) => {
       this.queued.push(() => resolve(handler()))
-    })
+    }) as Promise<UnpackResolvableValue<T>>
   }
 }
