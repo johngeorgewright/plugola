@@ -1,5 +1,5 @@
 {
-  "name": "@plugola/ts-mono-repo",
+  "name": "@plugola/mono-repo",
   "private": true,
   "version": "0.0.0",
   "description": "The MOL Ads mono-repo",
@@ -13,8 +13,8 @@
     "clean": "yarn workspaces foreach run clean",
     "commit": "yarn git-cz",
     "generate:package": "yarn yo ./packages/generator/generators/package",
-    "release": "yarn workspaces foreach --no-private run yarn semantic-release -e semantic-release-monorepo",
-    "start": "yarn build && yarn workspaces foreach --no-private --parallel --interlaced run start",
+    "release": "yarn workspaces foreach --no-private --topological-dev run release",
+    "start": "yarn build && yarn workspaces foreach --exclude @plugola/generator --parallel --interlaced run start",
     "test": "yarn workspaces foreach run test"
   },
   "author": "",
@@ -27,6 +27,10 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@commitlint/config-lerna-scopes": "^12.1.4",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/github": "^7.2.3",
+    "@semantic-release/npm": "^7.1.3",
+    "@semantic-release/release-notes-generator": "^9.0.2",
     "commitizen": "^4.2.4",
     "cz-lerna-changelog": "^2.0.3",
     "husky": "^6.0.0",

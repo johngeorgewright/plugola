@@ -857,6 +857,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@johngw/async@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "@johngw/async@npm:2.4.0"
+  checksum: a40f9299c1f83116fb731a072518dc31abf709806fa6a34a46917a87902a80012182520a301182288646a1d266c3e0093f7e5d1bfd5fe210df43d441d6b2feac
+  languageName: node
+  linkType: hard
+
 "@lerna/add@npm:4.0.0":
   version: 4.0.0
   resolution: "@lerna/add@npm:4.0.0"
@@ -1993,12 +2000,60 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/logger@workspace:packages/logger"
   dependencies:
-    "@plugola/query-params": "workspace:packages/query-params"
+    "@semantic-release/commit-analyzer": ^8.0.1
+    "@semantic-release/github": ^7.2.3
+    "@semantic-release/npm": ^7.1.3
+    "@semantic-release/release-notes-generator": ^9.0.2
     "@types/jest": ^26.0.23
     jest: ^26.6.3
     rimraf: ^3.0.2
+    semantic-release: ^17.4.3
+    semantic-release-monorepo: ^7.0.5
     ts-jest: ^26.5.6
     typescript: ^4.2.4
+  languageName: unknown
+  linkType: soft
+
+"@plugola/message-bus@workspace:packages/message-bus":
+  version: 0.0.0-use.local
+  resolution: "@plugola/message-bus@workspace:packages/message-bus"
+  dependencies:
+    "@johngw/async": ^2.4.0
+    "@semantic-release/commit-analyzer": ^8.0.1
+    "@semantic-release/github": ^7.2.3
+    "@semantic-release/npm": ^7.1.3
+    "@semantic-release/release-notes-generator": ^9.0.2
+    "@types/jest": ^26.0.23
+    jest: ^26.6.3
+    rimraf: ^3.0.2
+    semantic-release: ^17.4.3
+    semantic-release-monorepo: ^7.0.5
+    ts-jest: ^26.5.6
+    ts-toolbelt: ^9.6.0
+    typescript: ^4.2.4
+  languageName: unknown
+  linkType: soft
+
+"@plugola/mono-repo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@plugola/mono-repo@workspace:."
+  dependencies:
+    "@commitlint/cli": ^12.1.4
+    "@commitlint/config-conventional": ^12.1.4
+    "@commitlint/config-lerna-scopes": ^12.1.4
+    "@semantic-release/commit-analyzer": ^8.0.1
+    "@semantic-release/github": ^7.2.3
+    "@semantic-release/npm": ^7.1.3
+    "@semantic-release/release-notes-generator": ^9.0.2
+    commitizen: ^4.2.4
+    cz-lerna-changelog: ^2.0.3
+    husky: ^6.0.0
+    lerna: ^4.0.0
+    lint-staged: ^11.0.0
+    prettier: ^2.3.0
+    semantic-release: ^17.4.3
+    semantic-release-monorepo: ^7.0.5
+    yo: ^4.1.0
   languageName: unknown
   linkType: soft
 
@@ -2006,9 +2061,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/query-params@workspace:packages/query-params"
   dependencies:
+    "@semantic-release/commit-analyzer": ^8.0.1
+    "@semantic-release/github": ^7.2.3
+    "@semantic-release/npm": ^7.1.3
+    "@semantic-release/release-notes-generator": ^9.0.2
     "@types/jest": ^26.0.23
     jest: ^26.6.3
     rimraf: ^3.0.2
+    semantic-release: ^17.4.3
+    semantic-release-monorepo: ^7.0.5
     ts-jest: ^26.5.6
     typescript: ^4.2.4
   languageName: unknown
@@ -2019,30 +2080,17 @@ __metadata:
   resolution: "@plugola/store@workspace:packages/store"
   dependencies:
     "@plugola/logger": "workspace:packages/logger"
+    "@semantic-release/commit-analyzer": ^8.0.1
+    "@semantic-release/github": ^7.2.3
+    "@semantic-release/npm": ^7.1.3
+    "@semantic-release/release-notes-generator": ^9.0.2
     "@types/jest": ^26.0.23
     jest: ^26.6.3
     rimraf: ^3.0.2
-    ts-jest: ^26.5.6
-    typescript: ^4.2.4
-  languageName: unknown
-  linkType: soft
-
-"@plugola/ts-mono-repo@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@plugola/ts-mono-repo@workspace:."
-  dependencies:
-    "@commitlint/cli": ^12.1.4
-    "@commitlint/config-conventional": ^12.1.4
-    "@commitlint/config-lerna-scopes": ^12.1.4
-    commitizen: ^4.2.4
-    cz-lerna-changelog: ^2.0.3
-    husky: ^6.0.0
-    lerna: ^4.0.0
-    lint-staged: ^11.0.0
-    prettier: ^2.3.0
     semantic-release: ^17.4.3
     semantic-release-monorepo: ^7.0.5
-    yo: ^4.1.0
+    ts-jest: ^26.5.6
+    typescript: ^4.2.4
   languageName: unknown
   linkType: soft
 
@@ -2062,7 +2110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/commit-analyzer@npm:^8.0.0":
+"@semantic-release/commit-analyzer@npm:^8.0.0, @semantic-release/commit-analyzer@npm:^8.0.1":
   version: 8.0.1
   resolution: "@semantic-release/commit-analyzer@npm:8.0.1"
   dependencies:
@@ -2086,7 +2134,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/github@npm:^7.0.0":
+"@semantic-release/github@npm:^7.0.0, @semantic-release/github@npm:^7.2.3":
   version: 7.2.3
   resolution: "@semantic-release/github@npm:7.2.3"
   dependencies:
@@ -2112,7 +2160,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/npm@npm:^7.0.0":
+"@semantic-release/npm@npm:^7.0.0, @semantic-release/npm@npm:^7.1.3":
   version: 7.1.3
   resolution: "@semantic-release/npm@npm:7.1.3"
   dependencies:
@@ -2135,7 +2183,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/release-notes-generator@npm:^9.0.0":
+"@semantic-release/release-notes-generator@npm:^9.0.0, @semantic-release/release-notes-generator@npm:^9.0.2":
   version: 9.0.2
   resolution: "@semantic-release/release-notes-generator@npm:9.0.2"
   dependencies:
@@ -12916,6 +12964,13 @@ fsevents@^2.1.2:
   bin:
     ts-jest: cli.js
   checksum: fd32a8b256091d45d850c491fd090f74a368d44bccc8fedfa0dd074757727e7f07621eb2a69ebf081428f44a357a879237a2cf0aef970896410d454d0bf87ac6
+  languageName: node
+  linkType: hard
+
+"ts-toolbelt@npm:^9.6.0":
+  version: 9.6.0
+  resolution: "ts-toolbelt@npm:9.6.0"
+  checksum: c21a84624f02d285de1f4281e355e89bea1b5cb3e61b1b5feb4f2ae5fd7252e361949f44f9bd2d4c8c020735a86600e2c84f1b1c0a49bc1850df745b00f01e88
   languageName: node
   linkType: hard
 

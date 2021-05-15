@@ -20,7 +20,7 @@ let store: Store<Action, State>
 jest.useFakeTimers()
 
 beforeEach(() => {
-  store = new Store(reduce, { foo: '' }, jest.fn() as any)
+  store = new Store(reduce, { foo: '' })
   store.init()
 })
 

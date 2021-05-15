@@ -1,9 +1,8 @@
 export default interface LoggerBehavior {
-  (...args: any[]): void
-  debug(...args: any[]): void
-  error(...args: any[]): void
-  info(...args: any[]): void
-  log(...args: any[]): void
-  table(...args: any[]): void
-  warn(...args: any[]): void
+  debug(label: string, ...args: any[]): void
+  error(label: string, ...args: any[]): void
+  info(label: string, ...args: any[]): void
+  log(label: string, ...args: any[]): void
+  table(label: string, ...args: any[]): void
+  warn(label: string, ...args: any[]): void
 }

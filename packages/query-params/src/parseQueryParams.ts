@@ -1,6 +1,15 @@
 import type { QueryParams } from './queryParams'
 
-export default function parseQueryParams(searchString: string) {
+interface Options {
+  amendKey?(key: string): string
+  into?: QueryParams
+  filter?(key: string, value: string | undefined): boolean
+}
+
+export default function parseQueryParams(
+  searchString: string,
+  { amendKey = (k) => k, into = {}, filter = () => true }: Options = {}
+) {
   try {
     return searchString
       .replace(/^\?/, '')
@@ -13,68 +22,83 @@ export default function parseQueryParams(searchString: string) {
 
         key = decodeURIComponent(key)
 
-        if (key.startsWith('!')) {
-          return { ...queryParams, ...toFalse(key) }
-        } else if (value === undefined) {
-          return { ...queryParams, [key]: true }
-        } else if (key.endsWith('[]')) {
-          return { ...queryParams, ...toArray(key, value) }
-        } else if (key.endsWith('[+]')) {
-          return { ...queryParams, ...appendArray(key, value, queryParams) }
-        } else if (key.endsWith('[-]')) {
-          return { ...queryParams, ...removeFromArray(key, value, queryParams) }
-        } else if (key.endsWith('{}')) {
-          return { ...queryParams, ...toObject(key, value) }
-        } else {
-          return { ...queryParams, [key]: decodeURIComponent(value) }
+        if (!filter(key, value)) {
+          return queryParams
         }
-      }, {})
+
+        if (key.startsWith('!')) {
+          return { ...queryParams, [amendKey(key.substr(1))]: false }
+        } else if (value === undefined) {
+          return { ...queryParams, [amendKey(key)]: true }
+        } else if (key.endsWith('[]')) {
+          return {
+            ...queryParams,
+            [amendKey(key.substr(0, key.length - 2))]: toArray(value),
+          }
+        } else if (key.endsWith('[+]')) {
+          key = amendKey(key.substr(0, key.length - 3))
+          return { ...queryParams, [key]: appendArray(value, queryParams[key]) }
+        } else if (key.endsWith('[-]')) {
+          key = amendKey(key.substr(0, key.length - 3))
+          return {
+            ...queryParams,
+            [key]: removeFromArray(value, queryParams[key]),
+          }
+        } else if (key.endsWith('{x}')) {
+          return {
+            ...queryParams,
+            [amendKey(key.substr(0, key.length - 3))]: toFlags(value),
+          }
+        } else if (key.endsWith('{}')) {
+          return {
+            ...queryParams,
+            [amendKey(key.substr(0, key.length - 2))]: fromJSON(value),
+          }
+        } else {
+          return { ...queryParams, [amendKey(key)]: decodeURIComponent(value) }
+        }
+      }, into)
   } catch (error) {
     console.error('ads', error)
-    return {}
+    return into
   }
 }
 
-function toFalse(key: string) {
-  return { [key.substr(1)]: false }
+function toArray(value: string) {
+  return decodeURIComponent(value).split(',')
 }
 
-function toArray(key: string, value: string) {
-  key = key.substr(0, key.length - 2)
-  return { [key]: value ? decodeURIComponent(value).split(',') : true }
+function appendArray(value: string, queryParam: unknown) {
+  return [
+    ...(Array.isArray(queryParam) ? queryParam : []),
+    ...(value || '').split(',').map(decodeURIComponent),
+  ]
 }
 
-function appendArray(key: string, value: string, queryParams: QueryParams) {
-  key = key.substr(0, key.length - 3)
-  const queryParam = queryParams[key]
-  return {
-    [key]: [
-      ...(Array.isArray(queryParam) ? queryParam : []),
-      ...(value || '').split(',').map(decodeURIComponent),
-    ],
-  }
+function removeFromArray(value: string, queryParam: unknown) {
+  return value
+    .split(',')
+    .map(decodeURIComponent)
+    .reduce(
+      (queryParam, item) => {
+        const index: number = queryParam.indexOf(item)
+        return index === -1
+          ? queryParam
+          : [...queryParam.slice(0, index), ...queryParam.slice(index + 1)]
+      },
+      Array.isArray(queryParam) ? queryParam : []
+    )
 }
 
-function removeFromArray(key: string, value: string, queryParams: QueryParams) {
-  key = key.substr(0, key.length - 3)
-  const queryParam = queryParams[key]
-  return {
-    [key]: value
-      .split(',')
-      .map(decodeURIComponent)
-      .reduce(
-        (queryParam, item) => {
-          const index: number = queryParam.indexOf(item)
-          return index === -1
-            ? queryParam
-            : [...queryParam.slice(0, index), ...queryParam.slice(index + 1)]
-        },
-        Array.isArray(queryParam) ? queryParam : []
-      ),
-  }
+function toFlags(value: string) {
+  const strs = toArray(value)
+  return strs.reduce<Record<string, boolean>>((kvs, str) => {
+    const v = !str.startsWith('!')
+    const k = !v ? str.substr(1) : str
+    return { ...kvs, [k]: v }
+  }, {})
 }
 
-function toObject(key: string, value: string) {
-  key = key.substr(0, key.length - 2)
-  return { [key]: JSON.parse(decodeURIComponent(value)) }
+function fromJSON(value: string) {
+  return JSON.parse(decodeURIComponent(value))
 }
