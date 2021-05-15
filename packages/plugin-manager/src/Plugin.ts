@@ -21,8 +21,8 @@ export interface PluginState<Action extends ActionI, State> {
   initial: State
   reduce(action: Action, state: State): State
   onUpdate(
-    state: State,
     action: Action,
+    state: State,
     context: StatefulContext<Action, State>
   ): any
 }
