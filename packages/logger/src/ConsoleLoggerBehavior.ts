@@ -1,6 +1,6 @@
 import LoggerBehavior from './LoggerBehavior'
 
-export default class ConsoleLoggerBehavior extends LoggerBehavior {
+export default class ConsoleLoggerBehavior implements LoggerBehavior {
   debug(...args: any[]) {
     console.debug(...args)
   }

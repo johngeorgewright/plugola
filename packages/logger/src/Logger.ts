@@ -1,13 +1,11 @@
 import LoggerBehavior from './LoggerBehavior'
 
-export default class Logger extends LoggerBehavior {
+export default class Logger implements LoggerBehavior {
   constructor(
     protected name: string,
     private behavior: LoggerBehavior,
     private label: string = `[${name}]`
-  ) {
-    super()
-  }
+  ) {}
 
   debug(...args: any[]) {
     this.behavior.debug(this.label, ...args)
