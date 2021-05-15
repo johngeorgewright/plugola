@@ -2000,7 +2000,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/logger@workspace:packages/logger"
   dependencies:
-    "@plugola/query-params": "workspace:packages/query-params"
     "@semantic-release/commit-analyzer": ^8.0.1
     "@semantic-release/github": ^7.2.3
     "@semantic-release/npm": ^7.1.3
