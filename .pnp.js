@@ -75,11 +75,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 packageDependencies: [
                   ['@commitlint/cli', 'npm:12.1.4'],
                   ['@commitlint/config-conventional', 'npm:12.1.4'],
+                  [
+                    '@semantic-release/commit-analyzer',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:8.0.1',
+                  ],
+                  [
+                    '@semantic-release/github',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:7.2.3',
+                  ],
+                  [
+                    '@semantic-release/npm',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:7.1.3',
+                  ],
+                  [
+                    '@semantic-release/release-notes-generator',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:9.0.2',
+                  ],
                   ['commitizen', 'npm:4.2.4'],
                   ['cz-conventional-changelog', 'npm:3.3.0'],
                   ['husky', 'npm:6.0.0'],
                   ['lint-staged', 'npm:11.0.0'],
                   ['prettier', 'npm:2.3.0'],
+                  ['semantic-release', 'npm:17.4.3'],
+                  [
+                    'semantic-release-monorepo',
+                    'virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5',
+                  ],
                   [
                     'typescript',
                     'patch:typescript@npm%3A4.2.4#builtin<compat/typescript>::version=4.2.4&hash=a45b0e',
@@ -2303,7 +2324,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['semantic-release', 'npm:17.4.3'],
                   [
                     'semantic-release-monorepo',
-                    'virtual:78faaa61d8790925a44d46c9bb56e597d66c1768aa564f41267328744e174f36c50bd9762d2936d46d55729d55909260f839c4fb910bb9a0eb01729a9fe83663#npm:7.0.5',
+                    'virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5',
                   ],
                   [
                     'ts-jest',
@@ -2351,7 +2372,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['semantic-release', 'npm:17.4.3'],
                   [
                     'semantic-release-monorepo',
-                    'virtual:78faaa61d8790925a44d46c9bb56e597d66c1768aa564f41267328744e174f36c50bd9762d2936d46d55729d55909260f839c4fb910bb9a0eb01729a9fe83663#npm:7.0.5',
+                    'virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5',
                   ],
                   [
                     'ts-jest',
@@ -2379,11 +2400,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['@plugola/mono-repo', 'workspace:.'],
                   ['@commitlint/cli', 'npm:12.1.4'],
                   ['@commitlint/config-conventional', 'npm:12.1.4'],
+                  [
+                    '@semantic-release/commit-analyzer',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:8.0.1',
+                  ],
+                  [
+                    '@semantic-release/github',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:7.2.3',
+                  ],
+                  [
+                    '@semantic-release/npm',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:7.1.3',
+                  ],
+                  [
+                    '@semantic-release/release-notes-generator',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:9.0.2',
+                  ],
                   ['commitizen', 'npm:4.2.4'],
                   ['cz-conventional-changelog', 'npm:3.3.0'],
                   ['husky', 'npm:6.0.0'],
                   ['lint-staged', 'npm:11.0.0'],
                   ['prettier', 'npm:2.3.0'],
+                  ['semantic-release', 'npm:17.4.3'],
+                  [
+                    'semantic-release-monorepo',
+                    'virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5',
+                  ],
                   [
                     'typescript',
                     'patch:typescript@npm%3A4.2.4#builtin<compat/typescript>::version=4.2.4&hash=a45b0e',
@@ -2432,7 +2474,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['semantic-release', 'npm:17.4.3'],
                   [
                     'semantic-release-monorepo',
-                    'virtual:78faaa61d8790925a44d46c9bb56e597d66c1768aa564f41267328744e174f36c50bd9762d2936d46d55729d55909260f839c4fb910bb9a0eb01729a9fe83663#npm:7.0.5',
+                    'virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5',
                   ],
                   [
                     'ts-jest',
@@ -2479,7 +2521,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['semantic-release', 'npm:17.4.3'],
                   [
                     'semantic-release-monorepo',
-                    'virtual:78faaa61d8790925a44d46c9bb56e597d66c1768aa564f41267328744e174f36c50bd9762d2936d46d55729d55909260f839c4fb910bb9a0eb01729a9fe83663#npm:7.0.5',
+                    'virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5',
                   ],
                   [
                     'ts-jest',
@@ -2527,7 +2569,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['semantic-release', 'npm:17.4.3'],
                   [
                     'semantic-release-monorepo',
-                    'virtual:78faaa61d8790925a44d46c9bb56e597d66c1768aa564f41267328744e174f36c50bd9762d2936d46d55729d55909260f839c4fb910bb9a0eb01729a9fe83663#npm:7.0.5',
+                    'virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5',
                   ],
                   [
                     'ts-jest',
@@ -6540,6 +6582,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
               },
             ],
             [
+              'virtual:0e903cf8ad4f308afe256d25ad22fdc2d1324658cea778c0ba47a1cdb25eba9a77d63c703bc6fcf190da46437e4b2cadc1ea91ab4258ee863a88ff6b440e25a1#npm:3.2.7',
+              {
+                packageLocation:
+                  './.yarn/$$virtual/debug-virtual-8a6c80b357/0/cache/debug-npm-3.2.7-754e818c7a-9fc1277e66.zip/node_modules/debug/',
+                packageDependencies: [
+                  [
+                    'debug',
+                    'virtual:0e903cf8ad4f308afe256d25ad22fdc2d1324658cea778c0ba47a1cdb25eba9a77d63c703bc6fcf190da46437e4b2cadc1ea91ab4258ee863a88ff6b440e25a1#npm:3.2.7',
+                  ],
+                  ['ms', 'npm:2.1.3'],
+                  ['supports-color', null],
+                ],
+                packagePeers: ['supports-color'],
+                linkType: 'HARD',
+              },
+            ],
+            [
               'virtual:4b0eea214d83e6e05cbe9674d69cb7f553c930fbd95cf27b023ecb1d9ff23bce32ab3afc880c65a5b91bd3abeccea112435944b80702879b8337532cf8f5b466#npm:4.3.2',
               {
                 packageLocation:
@@ -6550,23 +6609,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                     'virtual:4b0eea214d83e6e05cbe9674d69cb7f553c930fbd95cf27b023ecb1d9ff23bce32ab3afc880c65a5b91bd3abeccea112435944b80702879b8337532cf8f5b466#npm:4.3.2',
                   ],
                   ['ms', 'npm:2.1.2'],
-                  ['supports-color', null],
-                ],
-                packagePeers: ['supports-color'],
-                linkType: 'HARD',
-              },
-            ],
-            [
-              'virtual:6c18bf1f1df84e12168f182db9d1f296e0cc122c91f8a2df8307e9884d45d2ff5fc5bde98723d052577ec63520d4c3b6be2a29e04da6fdffe28f010f97c7aff0#npm:3.2.7',
-              {
-                packageLocation:
-                  './.yarn/$$virtual/debug-virtual-7d3e96ae64/0/cache/debug-npm-3.2.7-754e818c7a-9fc1277e66.zip/node_modules/debug/',
-                packageDependencies: [
-                  [
-                    'debug',
-                    'virtual:6c18bf1f1df84e12168f182db9d1f296e0cc122c91f8a2df8307e9884d45d2ff5fc5bde98723d052577ec63520d4c3b6be2a29e04da6fdffe28f010f97c7aff0#npm:3.2.7',
-                  ],
-                  ['ms', 'npm:2.1.3'],
                   ['supports-color', null],
                 ],
                 packagePeers: ['supports-color'],
@@ -17454,19 +17496,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
               },
             ],
             [
-              'virtual:78faaa61d8790925a44d46c9bb56e597d66c1768aa564f41267328744e174f36c50bd9762d2936d46d55729d55909260f839c4fb910bb9a0eb01729a9fe83663#npm:7.0.5',
+              'virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5',
               {
                 packageLocation:
-                  './.yarn/$$virtual/semantic-release-monorepo-virtual-6c18bf1f1d/0/cache/semantic-release-monorepo-npm-7.0.5-a0d5a5336b-a2fc572578.zip/node_modules/semantic-release-monorepo/',
+                  './.yarn/$$virtual/semantic-release-monorepo-virtual-0e903cf8ad/0/cache/semantic-release-monorepo-npm-7.0.5-a0d5a5336b-a2fc572578.zip/node_modules/semantic-release-monorepo/',
                 packageDependencies: [
                   [
                     'semantic-release-monorepo',
-                    'virtual:78faaa61d8790925a44d46c9bb56e597d66c1768aa564f41267328744e174f36c50bd9762d2936d46d55729d55909260f839c4fb910bb9a0eb01729a9fe83663#npm:7.0.5',
+                    'virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5',
                   ],
                   ['@types/semantic-release', null],
                   [
                     'debug',
-                    'virtual:6c18bf1f1df84e12168f182db9d1f296e0cc122c91f8a2df8307e9884d45d2ff5fc5bde98723d052577ec63520d4c3b6be2a29e04da6fdffe28f010f97c7aff0#npm:3.2.7',
+                    'virtual:0e903cf8ad4f308afe256d25ad22fdc2d1324658cea778c0ba47a1cdb25eba9a77d63c703bc6fcf190da46437e4b2cadc1ea91ab4258ee863a88ff6b440e25a1#npm:3.2.7',
                   ],
                   ['execa', 'npm:0.8.0'],
                   ['p-limit', 'npm:1.3.0'],
@@ -17476,7 +17518,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['semantic-release', 'npm:17.4.3'],
                   [
                     'semantic-release-plugin-decorators',
-                    'virtual:6c18bf1f1df84e12168f182db9d1f296e0cc122c91f8a2df8307e9884d45d2ff5fc5bde98723d052577ec63520d4c3b6be2a29e04da6fdffe28f010f97c7aff0#npm:3.0.1',
+                    'virtual:0e903cf8ad4f308afe256d25ad22fdc2d1324658cea778c0ba47a1cdb25eba9a77d63c703bc6fcf190da46437e4b2cadc1ea91ab4258ee863a88ff6b440e25a1#npm:3.0.1',
                   ],
                 ],
                 packagePeers: ['@types/semantic-release', 'semantic-release'],
@@ -17500,14 +17542,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
               },
             ],
             [
-              'virtual:6c18bf1f1df84e12168f182db9d1f296e0cc122c91f8a2df8307e9884d45d2ff5fc5bde98723d052577ec63520d4c3b6be2a29e04da6fdffe28f010f97c7aff0#npm:3.0.1',
+              'virtual:0e903cf8ad4f308afe256d25ad22fdc2d1324658cea778c0ba47a1cdb25eba9a77d63c703bc6fcf190da46437e4b2cadc1ea91ab4258ee863a88ff6b440e25a1#npm:3.0.1',
               {
                 packageLocation:
-                  './.yarn/$$virtual/semantic-release-plugin-decorators-virtual-83f27d7d70/0/cache/semantic-release-plugin-decorators-npm-3.0.1-0ad95bf1b2-f795d9c023.zip/node_modules/semantic-release-plugin-decorators/',
+                  './.yarn/$$virtual/semantic-release-plugin-decorators-virtual-76a69b9ffb/0/cache/semantic-release-plugin-decorators-npm-3.0.1-0ad95bf1b2-f795d9c023.zip/node_modules/semantic-release-plugin-decorators/',
                 packageDependencies: [
                   [
                     'semantic-release-plugin-decorators',
-                    'virtual:6c18bf1f1df84e12168f182db9d1f296e0cc122c91f8a2df8307e9884d45d2ff5fc5bde98723d052577ec63520d4c3b6be2a29e04da6fdffe28f010f97c7aff0#npm:3.0.1',
+                    'virtual:0e903cf8ad4f308afe256d25ad22fdc2d1324658cea778c0ba47a1cdb25eba9a77d63c703bc6fcf190da46437e4b2cadc1ea91ab4258ee863a88ff6b440e25a1#npm:3.0.1',
                   ],
                   ['@types/semantic-release', null],
                   ['semantic-release', 'npm:17.4.3'],
