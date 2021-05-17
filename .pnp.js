@@ -2250,7 +2250,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                 packageDependencies: [
                   ['@plugola/generator', 'workspace:packages/generator'],
                   ['@types/jest', 'npm:26.0.23'],
-                  ['@types/yeoman-generator', 'npm:4.11.4'],
+                  ['@types/yeoman-generator', 'npm:5.0.0'],
                   ['change-case', 'npm:4.1.2'],
                   ['jest', 'npm:26.6.3'],
                   ['rimraf', 'npm:3.0.2'],
@@ -3348,6 +3348,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   './.yarn/cache/@types-yeoman-generator-npm-4.11.4-11bed63ff2-3683ae0a6b.zip/node_modules/@types/yeoman-generator/',
                 packageDependencies: [
                   ['@types/yeoman-generator', 'npm:4.11.4'],
+                  ['@types/debug', 'npm:4.1.5'],
+                  ['@types/ejs', 'npm:3.0.6'],
+                  ['@types/inquirer', 'npm:7.3.1'],
+                  ['@types/mem-fs-editor', 'npm:7.0.0'],
+                  ['@types/yeoman-environment', 'npm:2.10.3'],
+                  ['rxjs', 'npm:6.6.7'],
+                ],
+                linkType: 'HARD',
+              },
+            ],
+            [
+              'npm:5.0.0',
+              {
+                packageLocation:
+                  './.yarn/cache/@types-yeoman-generator-npm-5.0.0-cbd14a55dc-4e41f9a59d.zip/node_modules/@types/yeoman-generator/',
+                packageDependencies: [
+                  ['@types/yeoman-generator', 'npm:5.0.0'],
                   ['@types/debug', 'npm:4.1.5'],
                   ['@types/ejs', 'npm:3.0.6'],
                   ['@types/inquirer', 'npm:7.3.1'],
