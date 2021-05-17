@@ -2410,9 +2410,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
                   ['@plugola/logger', 'workspace:packages/logger'],
                   ['@plugola/query-params', 'workspace:packages/query-params'],
                   ['@plugola/store', 'workspace:packages/store'],
+                  [
+                    '@semantic-release/commit-analyzer',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:8.0.1',
+                  ],
+                  [
+                    '@semantic-release/github',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:7.2.3',
+                  ],
+                  [
+                    '@semantic-release/npm',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:7.1.3',
+                  ],
+                  [
+                    '@semantic-release/release-notes-generator',
+                    'virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:9.0.2',
+                  ],
                   ['@types/jest', 'npm:26.0.23'],
                   ['jest', 'npm:26.6.3'],
                   ['rimraf', 'npm:3.0.2'],
+                  ['semantic-release', 'npm:17.4.3'],
+                  [
+                    'semantic-release-monorepo',
+                    'virtual:78faaa61d8790925a44d46c9bb56e597d66c1768aa564f41267328744e174f36c50bd9762d2936d46d55729d55909260f839c4fb910bb9a0eb01729a9fe83663#npm:7.0.5',
+                  ],
                   [
                     'ts-jest',
                     'virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:26.5.6',
