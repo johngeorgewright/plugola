@@ -1,0 +1,29 @@
+{
+  "name": "@plugola/plugin-manager",
+  "version": "0.0.0",
+  "description": "Plugin system",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "yarn rimraf dist && yarn tsc && yarn rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
+    "start": "yarn tsc --watch --preserveWatchOutput",
+    "test": "yarn jest"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johngeorgewright/ts-mono-repo/issues"
+  },
+  "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.6",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "@plugola/logger": "workspace:packages/logger",
+    "@plugola/query-params": "workspace:packages/query-params",
+    "@plugola/store": "workspace:packages/store"
+  }
+}
