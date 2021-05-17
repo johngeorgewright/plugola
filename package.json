@@ -26,9 +26,8 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@commitlint/config-lerna-scopes": "^12.1.4",
     "commitizen": "^4.2.4",
-    "cz-lerna-changelog": "^2.0.3",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.0",
@@ -37,7 +36,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
+      "path": "cz-conventional-changelog"
     }
   },
   "lint-staged": {
