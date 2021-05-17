@@ -1,7 +1,5 @@
-.cache
 dist
 *.log
-node_modules
 *.validator.ts
 .yarn/*
 !.yarn/cache
