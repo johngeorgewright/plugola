@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"name": "✨ @plugola/mono-repo",
+			"path": "."
+		},
+		{
+			"name": "📦 @plugola/generator",
+			"path": "packages/generator"
+		},
+		{
+			"name": "📦 @plugola/logger",
+			"path": "packages/logger"
+		},
+		{
+			"name": "📦 @plugola/message-bus",
+			"path": "packages/message-bus"
+		},
+		{
+			"name": "📦 @plugola/plugin-manager",
+			"path": "packages/plugin-manager"
+		},
+		{
+			"name": "📦 @plugola/query-params",
+			"path": "packages/query-params"
+		},
+		{
+			"name": "📦 @plugola/store",
+			"path": "packages/store"
+		}
+	],
+	"settings": {}
+}
