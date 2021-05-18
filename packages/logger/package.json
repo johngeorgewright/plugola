@@ -7,7 +7,8 @@
     "build": "yarn clean && yarn tsc && yarn rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
     "clean": "yarn rimraf dist",
     "release": "yarn semantic-release -e semantic-release-monorepo",
-    "start": "yarn tsc --watch --preserveWatchOutput"
+    "start": "yarn tsc --watch --preserveWatchOutput",
+    "test": "echo 'no tests in this package'"
   },
   "author": "",
   "license": "MIT",
