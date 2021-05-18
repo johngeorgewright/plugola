@@ -2,12 +2,12 @@ import Logger, { DisabledLoggerBehavior } from '@plugola/logger'
 
 export default class Store<Action extends ActionI, State> {
   private dispatching = false
-  private listeners: Listener<Action | InitAction, State>[] = []
+  private listeners: Listener<Action, State>[] = []
   private running = false
   private _state: State
 
   constructor(
-    private reducer: (action: Action | InitAction, state: State) => State,
+    private reducer: Reducer<Action, State>,
     initialState: State,
     private log: Logger = new Logger('store', new DisabledLoggerBehavior())
   ) {
@@ -45,7 +45,7 @@ export default class Store<Action extends ActionI, State> {
     }
   }
 
-  subscribe(listener: Listener<Action | InitAction, State>) {
+  subscribe(listener: Listener<Action, State>) {
     this.listeners.push(listener)
     setTimeout(() => listener({ type: '__INIT__' }, this._state))
 
@@ -73,6 +73,12 @@ export interface InitAction {
   type: '__INIT__'
 }
 
-interface Listener<Action extends ActionI, State> {
-  (action: Action, state: State): any
-}
+export type Reducer<Action extends ActionI, State> = (
+  action: Action | InitAction,
+  state: State
+) => State
+
+export type Listener<Action extends ActionI, State> = (
+  action: Action | InitAction,
+  state: State
+) => any

@@ -1,4 +1,4 @@
-import Store, { InitAction } from './Store'
+import Store from './Store'
 
 interface FooAction {
   type: 'foo'
@@ -20,7 +20,20 @@ let store: Store<Action, State>
 jest.useFakeTimers()
 
 beforeEach(() => {
-  store = new Store(reduce, { foo: '' })
+  store = new Store(
+    (action, state) => {
+      switch (action.type) {
+        case 'foo':
+          return { ...state, foo: action.foo }
+        case 'bar':
+          return { ...state, foo: 'bar' }
+        default:
+          return state
+      }
+    },
+    { foo: '' }
+  )
+
   store.init()
 })
 
@@ -40,14 +53,3 @@ test('subscribing to state changes', () => {
   store.dispatch({ type: 'bar' })
   expect(onUpdate).toHaveBeenCalledWith({ type: 'bar' }, { foo: 'bar' })
 })
-
-function reduce(action: Action | InitAction, state: State) {
-  switch (action.type) {
-    case 'foo':
-      return { ...state, foo: action.foo }
-    case 'bar':
-      return { ...state, foo: 'bar' }
-    default:
-      return state
-  }
-}
