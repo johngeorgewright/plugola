@@ -3,7 +3,7 @@ import type { ActionI } from '@plugola/store'
 
 export function isStatefulPlugin(
   plugin: any
-): plugin is StatefulePlugin<any, any> {
+): plugin is StatefulPlugin<any, any> {
   return !!plugin.state
 }
 
@@ -12,7 +12,7 @@ export interface Plugin {
   run?(context: Context): any
 }
 
-export interface StatefulePlugin<Action extends ActionI, State> extends Plugin {
+export interface StatefulPlugin<Action extends ActionI, State> extends Plugin {
   run?(context: StatefulContext<Action, State>): any
   state: PluginState<Action, State>
 }

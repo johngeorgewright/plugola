@@ -1,4 +1,4 @@
-import { isStatefulPlugin, Plugin, StatefulePlugin } from './Plugin'
+import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
 import Store, { ActionI, InitAction } from '@plugola/store'
 import createLogger from './createLogger'
 
@@ -20,13 +20,13 @@ export function createInitContext(pluginName: string): InitContext {
 
 export function createRunContext<Action extends ActionI, State>(
   pluginName: string,
-  plugin: StatefulePlugin<Action, State>
-): StatefulContext<Action, Context>
+  plugin: StatefulPlugin<Action, State>
+): StatefulContext<Action, State>
 export function createRunContext(pluginName: string, plugin: Plugin): Context
 export function createRunContext(
   pluginName: string,
-  plugin: Plugin | StatefulePlugin<any, any>
-) {
+  plugin: Plugin | StatefulPlugin<any, any>
+): any {
   return isStatefulPlugin(plugin)
     ? createStatefulContext(pluginName, plugin)
     : createContext(pluginName)
@@ -47,7 +47,7 @@ function createContext(pluginName: string): Context {
 
 function createStatefulContext<Action extends ActionI, State>(
   pluginName: string,
-  plugin: StatefulePlugin<Action | InitAction, State>
+  plugin: StatefulPlugin<Action | InitAction, State>
 ) {
   const context = createContext(pluginName)
   return {
@@ -71,7 +71,7 @@ export interface Context {
   win: Window
 }
 
-export interface InitContext {
+export interface InitContext extends Context {
   addPlugins(pluginNames: string[]): void
   removePlugins(pluginNames: string[]): void
   registerPluginBouncer(bouncer: Bouncer): void

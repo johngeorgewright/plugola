@@ -3,15 +3,15 @@ import {
   createRunContext,
   isStatefulContext,
 } from './Context'
-import type { Plugin, StatefulePlugin } from './Plugin'
+import { Plugin, StatefulPlugin } from './Plugin'
 import type { ActionI } from '@plugola/store'
 
 export default class PluginManager {
-  private plugins: Record<string, Plugin | StatefulePlugin<any, any>> = {}
+  private plugins: Record<string, Plugin | StatefulPlugin<any, any>> = {}
 
   registerStatefulPlugin<Action extends ActionI, State>(
     name: string,
-    plugin: StatefulePlugin<Action, State>
+    plugin: StatefulPlugin<Action, State>
   ) {
     this.plugins[name] = plugin
   }

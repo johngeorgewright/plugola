@@ -9,9 +9,4 @@ export {
   StatefulContext,
 } from './Context'
 
-export {
-  isStatefulPlugin,
-  Plugin,
-  PluginState,
-  StatefulePlugin,
-} from './Plugin'
+export { isStatefulPlugin, Plugin, PluginState, StatefulPlugin } from './Plugin'
