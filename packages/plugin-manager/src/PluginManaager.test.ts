@@ -6,6 +6,46 @@ beforeEach(() => {
   pluginManager = new PluginManager()
 })
 
+test('initializing plugins', async () => {
+  let result: string
+
+  pluginManager.registerPlugin('mung', {
+    init() {
+      result = 'running mung'
+    },
+  })
+
+  await pluginManager.init()
+  expect(result!).toBe('running mung')
+})
+
+test('initialize dependency tree', async () => {
+  let result: string = ''
+
+  pluginManager.registerPlugin('mung', {
+    dependencies: ['bar', 'foo'],
+    init() {
+      result += 'mung'
+    },
+  })
+
+  pluginManager.registerPlugin('bar', {
+    dependencies: ['foo'],
+    init() {
+      result += 'bar'
+    },
+  })
+
+  pluginManager.registerPlugin('foo', {
+    init() {
+      result += 'foo'
+    },
+  })
+
+  await pluginManager.init()
+  expect(result!).toBe('foobarmung')
+})
+
 test('running normal plugins', async () => {
   let result: string
 
@@ -49,4 +89,31 @@ test('running stateful plugins', async () => {
 
   await pluginManager.run()
   expect(result!).toBe('foo')
+})
+
+test('running with a dependency tree', async () => {
+  let result: string = ''
+
+  pluginManager.registerPlugin('mung', {
+    dependencies: ['bar', 'foo'],
+    run() {
+      result += 'mung'
+    },
+  })
+
+  pluginManager.registerPlugin('bar', {
+    dependencies: ['foo'],
+    run() {
+      result += 'bar'
+    },
+  })
+
+  pluginManager.registerPlugin('foo', {
+    run() {
+      result += 'foo'
+    },
+  })
+
+  await pluginManager.run()
+  expect(result!).toBe('foobarmung')
 })

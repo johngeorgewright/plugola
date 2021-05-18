@@ -8,6 +8,7 @@ export function isStatefulPlugin(
 }
 
 export interface Plugin {
+  dependencies?: string[]
   init?(context: InitContext): any
   run?(context: Context): any
 }
