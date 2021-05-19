@@ -1,5 +1,6 @@
 import { init, last, removeItem, replaceLastItem } from './array'
 import Broker from './Broker'
+import { amend } from './object'
 import { CancelEvent } from './symbols'
 import type {
   EventsT,
@@ -8,6 +9,7 @@ import type {
   EventInterceptors,
   InvokablesT,
   InvokerArgs,
+  InvokerInterceptor,
   Invokers,
   SubscriberArgs,
   Subscribers,
@@ -68,14 +70,11 @@ export default class MessageBus<
       fn: last(args) as EventInterceptorFn<unknown[], unknown[]>,
     }
 
-    if (!this.eventInterceptors[eventName]) {
-      this.eventInterceptors[eventName] = []
-    }
-
-    const eventInterceptors = this.eventInterceptors[eventName]!
-
-    // @ts-ignore
-    eventInterceptors.push(interceptor)
+    this.eventInterceptors = amend(
+      this.eventInterceptors,
+      eventName,
+      (interceptors = []) => [...interceptors!, interceptor]
+    )
 
     return () => {
       this.eventInterceptors[eventName] = removeItem(
@@ -99,14 +98,11 @@ export default class MessageBus<
       fn: last(args) as any,
     }
 
-    if (!this.invokerInterceptors[invokableName]) {
-      this.invokerInterceptors[invokableName] = []
-    }
-
-    const invokerInterceptors = this.invokerInterceptors[invokableName]!
-
-    // @ts-ignore
-    invokerInterceptors.push(interceptor)
+    this.invokerInterceptors = amend(
+      this.invokerInterceptors,
+      invokableName,
+      (interceptors = []) => [...interceptors!, interceptor]
+    )
 
     return () => {
       this.invokerInterceptors[invokableName] = removeItem(
@@ -121,17 +117,17 @@ export default class MessageBus<
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
   ) {
-    if (!this.subscribers[eventName]) {
-      this.subscribers[eventName] = []
-    }
-
     const subscriber = {
       broker,
       args: init(args),
       fn: last(args) as (...args: unknown[]) => any,
     }
 
-    this.subscribers[eventName]!.push(subscriber)
+    this.subscribers = amend(
+      this.subscribers,
+      eventName,
+      (subscribers = []) => [...subscribers!, subscriber]
+    )
 
     return () => {
       this.subscribers[eventName] = removeItem(
@@ -154,8 +150,7 @@ export default class MessageBus<
     const off = this.on(
       broker,
       eventName,
-      // @ts-ignore
-      replaceLastItem(args, onceFn)
+      replaceLastItem(args, onceFn) as SubscriberArgs<Events[EventName]>
     )
     return off
   }
@@ -185,17 +180,16 @@ export default class MessageBus<
       Invokables[InvokableName]['return']
     >
   ) {
-    if (!this.invokers[invokableName]) {
-      this.invokers[invokableName] = []
-    }
-
     const invoker = {
       broker,
       args: init(args),
       fn: last(args) as (...args: unknown[]) => any,
     }
 
-    this.invokers[invokableName]!.push(invoker)
+    this.invokers = amend(this.invokers, invokableName, (invokers = []) => [
+      ...invokers!,
+      invoker,
+    ])
 
     return () => {
       this.invokers[invokableName] = removeItem(
@@ -275,41 +269,68 @@ export default class MessageBus<
       return args as any
     }
 
-    let moddedArgs: Invokables[InvokableName]['args'] = args
+    // @ts-ignore
+    return invokerInterceptors.reduce<
+      | Invokables[InvokableName]['args']
+      | Promise<Invokables[InvokableName]['args']>
+    >(
+      (acc, interceptor) =>
+        acc instanceof Promise
+          ? addToPromiseChain(this, acc, interceptor)
+          : addToArgs(this, acc, interceptor),
+      args
+    )
 
-    let promiseChain: Promise<Invokables[InvokableName]['args']> | undefined
-
-    for (const interceptor of invokerInterceptors) {
-      const index = this.argumentIndex(interceptor.args, moddedArgs)
+    async function addToPromiseChain(
+      messageBus: MessageBus<Events, Invokables>,
+      promiseChain: Promise<Invokables[InvokableName]['args']>,
+      interceptor: InvokerInterceptor<Broker<EventsT<unknown>, Invokables>>
+    ) {
+      const args = await promiseChain
+      const index = messageBus.argumentIndex(interceptor.args, args)
 
       if (index === -1) {
-        continue
+        return args
       }
 
-      if (promiseChain) {
-        promiseChain = promiseChain.then((moddedArgs) => {
-          const newArgs = interceptor.fn(moddedArgs.slice(index))
-          return newArgs
-            ? (moddedArgs = [
-                ...moddedArgs.slice(0, index),
-                ...newArgs,
-              ] as Invokables[InvokableName]['args'])
-            : moddedArgs
-        })
-      } else {
-        const newArgs = interceptor.fn(moddedArgs.slice(index))
-        if (newArgs instanceof Promise) {
-          promiseChain = newArgs
-        } else if (newArgs) {
-          moddedArgs = [
-            ...moddedArgs.slice(0, index),
+      const newArgs = await Promise.resolve(interceptor.fn(args.slice(index)))
+
+      return newArgs
+        ? ([
+            ...args.slice(0, index),
             ...newArgs,
-          ] as Invokables[InvokableName]['args']
-        }
-      }
+          ] as Invokables[InvokableName]['args'])
+        : args
     }
 
-    return promiseChain || (moddedArgs as any)
+    function addToArgs(
+      messageBus: MessageBus<Events, Invokables>,
+      args: Invokables[InvokableName]['args'],
+      interceptor: InvokerInterceptor<Broker<EventsT<unknown>, Invokables>>
+    ) {
+      const index = messageBus.argumentIndex(interceptor.args, args)
+
+      if (index === -1) {
+        return args
+      }
+
+      const newArgs = interceptor.fn(args.slice(index))
+
+      return newArgs instanceof Promise
+        ? newArgs.then(
+            (newArgs) =>
+              [
+                ...args.slice(0, index),
+                ...newArgs,
+              ] as Invokables[InvokableName]['args']
+          )
+        : newArgs
+        ? ([
+            ...args.slice(0, index),
+            ...newArgs,
+          ] as Invokables[InvokableName]['args'])
+        : args
+    }
   }
 
   private callSubscribers<EventName extends keyof Events>(

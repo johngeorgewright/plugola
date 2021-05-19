@@ -1,3 +1,5 @@
+import { L } from 'ts-toolbelt'
+
 export function init<T>(array: T[]) {
   return array.slice(0, -1)
 }
@@ -15,6 +17,11 @@ export function removeItem<T>(item: T, array: T[]) {
     : [...array.slice(0, index), ...array.slice(index + 1)]
 }
 
-export function replaceLastItem<T>(array: T[], item: T) {
+export function replaceLastItem(array: never[], item: unknown): never[]
+export function replaceLastItem<Ts extends unknown[], T>(
+  array: Ts,
+  item: T
+): L.Append<L.Pop<Ts>, T>
+export function replaceLastItem<Ts extends unknown[], T>(array: Ts, item: T) {
   return array.length === 0 ? array : [...init(array), item]
 }
