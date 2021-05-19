@@ -160,9 +160,6 @@ export default class MessageBus<
     return off
   }
 
-  /**
-   * @todo Cannot correctly infer `Args` and therefore `UntilRtn` is always all args
-   */
   async until<
     EventName extends keyof Events,
     Args extends UntilArgs<Events[EventName]>
