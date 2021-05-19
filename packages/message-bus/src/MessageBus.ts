@@ -8,17 +8,16 @@ import type {
   EventInterceptorFn,
   EventInterceptors,
   InvokablesT,
-  InvokerArgs,
   InvokerInterceptor,
   Invokers,
   SubscriberArgs,
   Subscribers,
   InvokerInterceptors,
-  InvokerInterceptorArgs,
   UnpackResolvableValue,
   SubscriberFn,
   UntilRtn,
   UntilArgs,
+  InvokerFn,
 } from './types'
 
 export default class MessageBus<
@@ -87,15 +86,12 @@ export default class MessageBus<
   interceptInvoker<InvokableName extends keyof Invokables>(
     broker: Broker<Events, Invokables>,
     invokableName: InvokableName,
-    args: InvokerInterceptorArgs<
-      Invokables[InvokableName]['args'],
-      Invokables[InvokableName]['return']
-    >
+    args: Invokables[InvokableName]['args']
   ) {
     const interceptor = {
       broker,
       args: init(args),
-      fn: last(args) as any,
+      fn: last(args as any) as any,
     }
 
     this.invokerInterceptors = amend(
@@ -175,27 +171,24 @@ export default class MessageBus<
   register<InvokableName extends keyof Invokables>(
     broker: Broker<Events, Invokables>,
     invokableName: InvokableName,
-    args: InvokerArgs<
+    fn: InvokerFn<
       Invokables[InvokableName]['args'],
       Invokables[InvokableName]['return']
     >
   ) {
-    const invoker = {
-      broker,
-      args: init(args),
-      fn: last(args) as (...args: unknown[]) => any,
+    if (this.invokers[invokableName]) {
+      throw new Error(
+        `Cannot register previously registered invoker ${invokableName}`
+      )
     }
 
-    this.invokers = amend(this.invokers, invokableName, (invokers = []) => [
-      ...invokers!,
-      invoker,
-    ])
+    this.invokers[invokableName] = {
+      broker,
+      fn,
+    }
 
     return () => {
-      this.invokers[invokableName] = removeItem(
-        invoker,
-        this.invokers[invokableName] as any
-      )
+      delete this.invokers[invokableName]
     }
   }
 
@@ -203,10 +196,10 @@ export default class MessageBus<
     _broker: Broker<Events, Invokables>,
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
-  ) {
+  ): Invokables[InvokableName]['return'] {
     if (!this.started) {
       throw new Error(
-        `Trying to invoke ${invokableName} before the message bus has bee started`
+        `Trying to invoke ${invokableName} before the message bus has been started`
       )
     }
 
@@ -214,9 +207,9 @@ export default class MessageBus<
 
     return interception instanceof Promise
       ? interception.then((moddedArgs) =>
-          this.callInvokers(invokableName, moddedArgs)
+          this.callInvoker(invokableName, moddedArgs)
         )
-      : this.callInvokers(invokableName, interception as any)
+      : this.callInvoker(invokableName, interception as any)
   }
 
   private callEventInterceptors<EventName extends keyof Events>(
@@ -355,21 +348,15 @@ export default class MessageBus<
     }
   }
 
-  private callInvokers<InvokableName extends keyof Invokables>(
+  private callInvoker<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
-  ) {
-    const invokers = (this.invokers[invokableName] || [])!
-    const results: Invokables[InvokableName]['return'][] = []
-
-    for (const invoker of invokers) {
-      const index = this.argumentIndex(invoker.args, args)
-      if (index >= 0) {
-        results.push(invoker.fn(...args.slice(index)))
-      }
+  ): Invokables[InvokableName]['return'] {
+    const invoker = this.invokers[invokableName]
+    if (!invoker) {
+      throw new Error(`Invoker ${invokableName} has not been registered`)
     }
-
-    return results
+    return invoker.fn(args)
   }
 
   private argumentIndex(args1: ArrayLike<unknown>, args2: ArrayLike<unknown>) {

@@ -6,8 +6,8 @@ import type {
   SubscriberArgs,
   UntilArgs,
   UntilRtn,
-  InvokerArgs,
   InvokerInterceptorArgs,
+  InvokerFn,
 } from './types'
 
 export default class Broker<
@@ -63,22 +63,18 @@ export default class Broker<
 
   register<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
-    ...args: InvokerArgs<
+    invoker: InvokerFn<
       Invokables[InvokableName]['args'],
       Invokables[InvokableName]['return']
     >
   ): () => void {
-    return this.messageBus.register(this, invokableName, args)
+    return this.messageBus.register(this, invokableName, invoker)
   }
 
   invoke<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     ...args: Invokables[InvokableName]['args']
-  ): Invokables[InvokableName]['return'] extends Promise<unknown>
-    ?
-        | Invokables[InvokableName]['return'][]
-        | Promise<Invokables[InvokableName]['return'][]>
-    : Invokables[InvokableName]['return'][] {
+  ): Invokables[InvokableName]['return'] {
     return this.messageBus.invoke(this, invokableName, args) as any
   }
 

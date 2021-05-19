@@ -119,8 +119,8 @@ describe('invokables', () => {
 
   test('returning values', () => {
     messageBus.start()
-    expect(broker.invoke('foo')).toEqual(['foo'])
-    expect(broker.invoke('bar', 'hello')).toEqual(['hello1'])
+    expect(broker.invoke('foo')).toEqual('foo')
+    expect(broker.invoke('bar', 'hello')).toEqual('hello1')
   })
 
   test('queued messages', () => {
@@ -129,30 +129,28 @@ describe('invokables', () => {
     }).toThrowError()
   })
 
-  test('asynchronous handlers', () => {
-    messageBus.start()
-    const result = broker.invoke('afoo', 'hello')
-    expect(result).toMatchInlineSnapshot(`
-      Array [
-        Promise {},
-      ]
-    `)
+  test('invoking unregistered', () => {
+    expect(() => {
+      // @ts-ignore
+      broker.invoke('not register')
+    }).toThrowError()
+  })
+
+  test('registering more than once', () => {
+    expect(() => {
+      broker.register('foo', () => 'foo')
+    }).toThrowError()
   })
 
   test('intercept invokers', () => {
     messageBus.start()
     broker.interceptInvoker('bar', (x) => [x + '1'])
-    expect(broker.invoke('bar', 'hello')).toEqual(['hello11'])
+    expect(broker.invoke('bar', 'hello')).toEqual('hello11')
   })
 
   test('intercept asynchonous invokers', async () => {
     messageBus.start()
     broker.interceptInvoker('afoo', async (x) => [x + 1])
-    expect(broker.invoke('afoo', 'hello')).toBeInstanceOf(Promise)
-    expect(await broker.invoke('afoo', 'hello')).toMatchInlineSnapshot(`
-      Array [
-        Promise {},
-      ]
-    `)
+    expect(await broker.invoke('afoo', 'hello')).toEqual('hello11')
   })
 })

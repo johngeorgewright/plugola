@@ -82,22 +82,14 @@ export type InvokerFn<Args extends unknown[], Result> = (
   ...args: Args
 ) => Result
 
-export type InvokerArgs<A extends unknown[], Return, B extends unknown[] = []> =
-  L.Length<A> extends 0
-    ? [InvokerFn<B, Return>]
-    :
-        | [...A, InvokerFn<B, Return>]
-        | InvokerArgs<L.Pop<A>, Return, [L.Last<A>, ...B]>
-
 export interface Invoker<B extends Broker<EventsT, InvokablesT>> {
   broker: B
-  args: unknown[]
   fn: InvokerFn<unknown[], unknown>
 }
 
 export type Invokers<Invokables extends InvokablesT> = Partial<
   {
-    [InvokableName in keyof Invokables]: Invoker<Broker<EventsT, Invokables>>[]
+    [InvokableName in keyof Invokables]: Invoker<Broker<EventsT, Invokables>>
   }
 >
 
