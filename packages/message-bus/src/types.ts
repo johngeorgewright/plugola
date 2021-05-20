@@ -9,7 +9,7 @@ export type InvokablesT<A = unknown, R = unknown> = Record<
   { args: A[]; return: R }
 >
 
-export type EventIterablesT<A = unknown, R = unknown> = Record<
+export type EventGeneratorsT<A = unknown, R = unknown> = Record<
   string,
   { args: A[]; yield: R }
 >
@@ -39,13 +39,13 @@ export type UntilRtn<T extends unknown[], Args extends unknown[]> = N.Greater<
 export type Subscribers<Events extends EventsT> = Partial<
   {
     [EventName in keyof Events]: Subscriber<
-      Broker<EventsT, EventIterablesT, InvokablesT>
+      Broker<EventsT, EventGeneratorsT, InvokablesT>
     >[]
   }
 >
 
 export interface Subscriber<
-  B extends Broker<EventsT, EventIterablesT, InvokablesT>
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
 > {
   broker: B
   args: unknown[]
@@ -76,13 +76,13 @@ export type EventInterceptorArgs<
 export type EventInterceptors<Events extends EventsT> = Partial<
   {
     [EventName in keyof Events]: EventInterceptor<
-      Broker<EventsT, EventIterablesT, InvokablesT>
+      Broker<EventsT, EventGeneratorsT, InvokablesT>
     >[]
   }
 >
 
 export interface EventInterceptor<
-  B extends Broker<EventsT, EventIterablesT, InvokablesT>
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
 > {
   broker: B
   args: unknown[]
@@ -94,7 +94,7 @@ export type InvokerFn<Args extends unknown[], Result> = (
 ) => Result
 
 export interface Invoker<
-  B extends Broker<EventsT, EventIterablesT, InvokablesT>
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
 > {
   broker: B
   fn: InvokerFn<unknown[], unknown>
@@ -103,7 +103,7 @@ export interface Invoker<
 export type Invokers<Invokables extends InvokablesT> = Partial<
   {
     [InvokableName in keyof Invokables]: Invoker<
-      Broker<EventsT, EventIterablesT, Invokables>
+      Broker<EventsT, EventGeneratorsT, Invokables>
     >
   }
 >
@@ -132,47 +132,45 @@ export type InvokerInterceptorArgs<
 export type InvokerInterceptors<Invokables extends InvokablesT> = Partial<
   {
     [InvokableName in keyof Invokables]: InvokerInterceptor<
-      Broker<EventsT, EventIterablesT, Invokables>
+      Broker<EventsT, EventGeneratorsT, Invokables>
     >[]
   }
 >
 
 export interface InvokerInterceptor<
-  B extends Broker<EventsT, EventIterablesT, InvokablesT>
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
 > {
   broker: B
   args: unknown[]
   fn: InvokerInterceptorFn<unknown[], unknown, unknown[]>
 }
 
-export type EventIteratorFn<Args extends unknown[], R> = (
+export type EventGeneratorFn<Args extends unknown[], R> = (
   ...args: Args
 ) => AsyncIterable<R>
 
-export interface EventIterator<
-  B extends Broker<EventsT, EventIterablesT, InvokablesT>
+export interface EventGenerator<
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
 > {
   broker: B
   args: unknown[]
-  fn: EventIteratorFn<unknown[], unknown>
+  fn: EventGeneratorFn<unknown[], unknown>
 }
 
-export type EventIteratorArgs<
+export type EventGeneratorArgs<
   A extends unknown[],
   R,
   B extends unknown[] = []
 > = L.Length<A> extends 0
-  ? [EventIteratorFn<B, R>]
+  ? [EventGeneratorFn<B, R>]
   :
-      | [...A, EventIteratorFn<B, R>]
-      | EventIteratorArgs<L.Pop<A>, R, [L.Last<A>, ...B]>
+      | [...A, EventGeneratorFn<B, R>]
+      | EventGeneratorArgs<L.Pop<A>, R, [L.Last<A>, ...B]>
 
-type M = EventIteratorArgs<[string], string>
-
-export type EventIterators<EventIterables extends EventIterablesT> = Partial<
+export type EventGenerators<EventGens extends EventGeneratorsT> = Partial<
   {
-    [EventName in keyof EventIterables]: EventIterator<
-      Broker<EventsT, EventIterablesT, InvokablesT>
+    [EventName in keyof EventGens]: EventGenerator<
+      Broker<EventsT, EventGeneratorsT, InvokablesT>
     >[]
   }
 >

@@ -8,17 +8,17 @@ import type {
   UntilRtn,
   InvokerInterceptorArgs,
   InvokerFn,
-  EventIterablesT,
-  EventIteratorArgs,
+  EventGeneratorsT,
+  EventGeneratorArgs,
 } from './types'
 
 export default class Broker<
   Events extends EventsT,
-  EventIterables extends EventIterablesT,
+  EventGens extends EventGeneratorsT,
   Invokables extends InvokablesT
 > {
   constructor(
-    private readonly messageBus: MessageBus<Events, EventIterables, Invokables>,
+    private readonly messageBus: MessageBus<Events, EventGens, Invokables>,
     public readonly id: string
   ) {}
 
@@ -65,20 +65,20 @@ export default class Broker<
     return this.messageBus.until(this as any, eventName, args)
   }
 
-  generator<EventName extends keyof EventIterables>(
+  generator<EventName extends keyof EventGens>(
     eventName: EventName,
-    ...args: EventIteratorArgs<
-      EventIterables[EventName]['args'],
-      EventIterables[EventName]['yield']
+    ...args: EventGeneratorArgs<
+      EventGens[EventName]['args'],
+      EventGens[EventName]['yield']
     >
   ): () => void {
     return this.messageBus.generator(this, eventName, args)
   }
 
-  iterate<EventName extends keyof EventIterables>(
+  iterate<EventName extends keyof EventGens>(
     eventName: EventName,
-    ...args: EventIterables[EventName]['args']
-  ): AsyncIterable<EventIterables[EventName]['yield']> {
+    ...args: EventGens[EventName]['args']
+  ): AsyncIterable<EventGens[EventName]['yield']> {
     return this.messageBus.iterate(this, eventName, args)
   }
 
