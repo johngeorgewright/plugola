@@ -18,13 +18,20 @@ import type {
   UntilRtn,
   UntilArgs,
   InvokerFn,
+  EventIterablesT,
+  EventIterators,
+  EventIteratorArgs,
+  EventIteratorFn,
+  EventIterator,
 } from './types'
 
 export default class MessageBus<
   Events extends EventsT,
+  EventIterables extends EventIterablesT,
   Invokables extends InvokablesT
 > {
   private eventInterceptors: EventInterceptors<Events> = {}
+  private eventIterators: EventIterators<EventIterables> = {}
   private invokers: Invokers<Invokables> = {}
   private invokerInterceptors: InvokerInterceptors<Invokables> = {}
   private queued: Array<() => unknown> = []
@@ -32,7 +39,7 @@ export default class MessageBus<
   private subscribers: Subscribers<Events> = {}
 
   broker(id: string) {
-    return new Broker<Events, Invokables>(this, id)
+    return new Broker<Events, EventIterables, Invokables>(this, id)
   }
 
   async start() {
@@ -41,7 +48,7 @@ export default class MessageBus<
   }
 
   emit<EventName extends keyof Events>(
-    _broker: Broker<Events, InvokablesT>,
+    _broker: Broker<Events, EventIterables, InvokablesT>,
     eventName: EventName,
     args: Events[EventName]
   ) {
@@ -59,7 +66,7 @@ export default class MessageBus<
   }
 
   interceptEvent<EventName extends keyof Events>(
-    broker: Broker<Events, InvokablesT>,
+    broker: Broker<Events, EventIterablesT, InvokablesT>,
     eventName: EventName,
     args: EventInterceptorArgs<Events[EventName]>
   ) {
@@ -84,7 +91,7 @@ export default class MessageBus<
   }
 
   interceptInvoker<InvokableName extends keyof Invokables>(
-    broker: Broker<Events, Invokables>,
+    broker: Broker<Events, EventIterablesT, Invokables>,
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
   ) {
@@ -109,7 +116,7 @@ export default class MessageBus<
   }
 
   on<EventName extends keyof Events>(
-    broker: Broker<Events, InvokablesT>,
+    broker: Broker<Events, EventIterablesT, InvokablesT>,
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
   ) {
@@ -134,7 +141,7 @@ export default class MessageBus<
   }
 
   once<EventName extends keyof Events>(
-    broker: Broker<Events, Invokables>,
+    broker: Broker<Events, EventIterables, Invokables>,
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
   ): () => void {
@@ -154,7 +161,11 @@ export default class MessageBus<
   async until<
     EventName extends keyof Events,
     Args extends UntilArgs<Events[EventName]>
-  >(broker: Broker<Events, Invokables>, eventName: EventName, args: Args) {
+  >(
+    broker: Broker<Events, EventIterables, Invokables>,
+    eventName: EventName,
+    args: Args
+  ) {
     return new Promise<UntilRtn<Events[EventName], Args>>((resolve) => {
       const subscriberArgs = [
         ...args,
@@ -168,8 +179,29 @@ export default class MessageBus<
     return !!this.subscribers[eventName]?.length
   }
 
+  generator<EventName extends keyof EventIterables>(
+    broker: Broker<EventsT, EventIterables, InvokablesT>,
+    eventName: EventName,
+    args: EventIteratorArgs<
+      EventIterables[EventName]['args'],
+      EventIterables[EventName]['yield']
+    >
+  ) {
+    const iterator = {
+      broker,
+      args: init(args) as any,
+      fn: last(args) as any,
+    }
+
+    this.eventIterators[eventName] = amend(
+      this.eventIterators,
+      eventName,
+      (iterators = []) => [...iterators!, iterator]
+    )
+  }
+
   register<InvokableName extends keyof Invokables>(
-    broker: Broker<Events, Invokables>,
+    broker: Broker<Events, EventIterables, Invokables>,
     invokableName: InvokableName,
     fn: InvokerFn<
       Invokables[InvokableName]['args'],
@@ -193,7 +225,7 @@ export default class MessageBus<
   }
 
   invoke<InvokableName extends keyof Invokables>(
-    _broker: Broker<Events, Invokables>,
+    _broker: Broker<Events, EventIterables, Invokables>,
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
   ): Invokables[InvokableName]['return'] {
@@ -275,9 +307,11 @@ export default class MessageBus<
     )
 
     async function addToPromiseChain(
-      messageBus: MessageBus<Events, Invokables>,
+      messageBus: MessageBus<Events, EventIterablesT, Invokables>,
       promiseChain: Promise<Invokables[InvokableName]['args']>,
-      interceptor: InvokerInterceptor<Broker<EventsT<unknown>, Invokables>>
+      interceptor: InvokerInterceptor<
+        Broker<EventsT, EventIterablesT, Invokables>
+      >
     ) {
       const args = await promiseChain
       const index = messageBus.argumentIndex(interceptor.args, args)
@@ -297,9 +331,11 @@ export default class MessageBus<
     }
 
     function addToArgs(
-      messageBus: MessageBus<Events, Invokables>,
+      messageBus: MessageBus<Events, EventIterablesT, Invokables>,
       args: Invokables[InvokableName]['args'],
-      interceptor: InvokerInterceptor<Broker<EventsT<unknown>, Invokables>>
+      interceptor: InvokerInterceptor<
+        Broker<EventsT, EventIterablesT, Invokables>
+      >
     ) {
       const index = messageBus.argumentIndex(interceptor.args, args)
 

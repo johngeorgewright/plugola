@@ -12,9 +12,11 @@ export function last<T>(array: T[]): T | undefined {
 
 export function removeItem<T>(item: T, array: T[]) {
   const index = array.indexOf(item)
-  return index === -1
-    ? array
-    : [...array.slice(0, index), ...array.slice(index + 1)]
+  return index === -1 ? array : removeIndex(index, array)
+}
+
+export function removeIndex<T>(index: number, array: T[]) {
+  return [...array.slice(0, index), ...array.slice(index + 1)]
 }
 
 export function replaceLastItem(array: never[], item: unknown): never[]

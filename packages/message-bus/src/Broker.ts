@@ -8,14 +8,16 @@ import type {
   UntilRtn,
   InvokerInterceptorArgs,
   InvokerFn,
+  EventIterablesT,
 } from './types'
 
 export default class Broker<
   Events extends EventsT,
+  EventIterables extends EventIterablesT,
   Invokables extends InvokablesT
 > {
   constructor(
-    private readonly messageBus: MessageBus<Events, Invokables>,
+    private readonly messageBus: MessageBus<Events, EventIterables, Invokables>,
     public readonly id: string
   ) {}
 
