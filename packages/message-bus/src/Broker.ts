@@ -9,6 +9,7 @@ import type {
   InvokerInterceptorArgs,
   InvokerFn,
   EventIterablesT,
+  EventIteratorArgs,
 } from './types'
 
 export default class Broker<
@@ -25,6 +26,7 @@ export default class Broker<
     eventName: EventName,
     ...args: Events[EventName]
   ): void | Promise<void> {
+    // @ts-ignore
     return this.messageBus.emit(this, eventName, args)
   }
 
@@ -32,21 +34,21 @@ export default class Broker<
     eventName: EventName,
     ...args: EventInterceptorArgs<Events[EventName]>
   ): () => void {
-    return this.messageBus.interceptEvent(this, eventName, args)
+    return this.messageBus.interceptEvent(this as any, eventName, args)
   }
 
   on<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
   ): () => void {
-    return this.messageBus.on(this, eventName, args)
+    return this.messageBus.on(this as any, eventName, args)
   }
 
   once<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
   ): () => void {
-    return this.messageBus.once(this, eventName, args)
+    return this.messageBus.once(this as any, eventName, args)
   }
 
   hasSubscriber(eventName: keyof Events) {
@@ -60,7 +62,24 @@ export default class Broker<
     eventName: EventName,
     ...args: Args
   ): Promise<UntilRtn<Events[EventName], Args>> {
-    return this.messageBus.until(this, eventName, args)
+    return this.messageBus.until(this as any, eventName, args)
+  }
+
+  generator<EventName extends keyof EventIterables>(
+    eventName: EventName,
+    ...args: EventIteratorArgs<
+      EventIterables[EventName]['args'],
+      EventIterables[EventName]['yield']
+    >
+  ): () => void {
+    return this.messageBus.generator(this, eventName, args)
+  }
+
+  iterate<EventName extends keyof EventIterables>(
+    eventName: EventName,
+    ...args: EventIterables[EventName]['args']
+  ): AsyncIterable<EventIterables[EventName]['yield']> {
+    return this.messageBus.iterate(this, eventName, args)
   }
 
   register<InvokableName extends keyof Invokables>(

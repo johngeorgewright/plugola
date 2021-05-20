@@ -4,14 +4,14 @@ import { combine } from './iterator'
 test('combine', async () => {
   async function* a() {
     for (let i = 0; i < 3; i++) {
-      await timeout(1)
+      await timeout(5)
       yield i
     }
   }
 
   async function* b() {
     for (let i = 10; i < 13; i++) {
-      await timeout(2)
+      await timeout(8)
       yield i
     }
   }
@@ -22,5 +22,14 @@ test('combine', async () => {
     results.push(result)
   }
 
-  console.info(results)
+  expect(results).toMatchInlineSnapshot(`
+    Array [
+      0,
+      10,
+      1,
+      2,
+      11,
+      12,
+    ]
+  `)
 })

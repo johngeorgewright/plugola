@@ -162,10 +162,12 @@ export type EventIteratorArgs<
   R,
   B extends unknown[] = []
 > = L.Length<A> extends 0
-  ? [EventIteratorFn<A, R>]
+  ? [EventIteratorFn<B, R>]
   :
       | [...A, EventIteratorFn<B, R>]
-      | EventIteratorArgs<L.Pop<A>, R, [...B, L.Last<A>]>
+      | EventIteratorArgs<L.Pop<A>, R, [L.Last<A>, ...B]>
+
+type M = EventIteratorArgs<[string], string>
 
 export type EventIterators<EventIterables extends EventIterablesT> = Partial<
   {

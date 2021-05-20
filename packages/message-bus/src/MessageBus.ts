@@ -1,5 +1,6 @@
 import { init, last, removeItem, replaceLastItem } from './array'
 import Broker from './Broker'
+import { combine } from './iterator'
 import { amend } from './object'
 import { CancelEvent } from './symbols'
 import type {
@@ -21,8 +22,6 @@ import type {
   EventIterablesT,
   EventIterators,
   EventIteratorArgs,
-  EventIteratorFn,
-  EventIterator,
 } from './types'
 
 export default class MessageBus<
@@ -48,7 +47,7 @@ export default class MessageBus<
   }
 
   emit<EventName extends keyof Events>(
-    _broker: Broker<Events, EventIterables, InvokablesT>,
+    _broker: Broker<Events, EventIterablesT, InvokablesT>,
     eventName: EventName,
     args: Events[EventName]
   ) {
@@ -91,7 +90,7 @@ export default class MessageBus<
   }
 
   interceptInvoker<InvokableName extends keyof Invokables>(
-    broker: Broker<Events, EventIterablesT, Invokables>,
+    broker: Broker<EventsT, EventIterablesT, Invokables>,
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
   ) {
@@ -141,7 +140,7 @@ export default class MessageBus<
   }
 
   once<EventName extends keyof Events>(
-    broker: Broker<Events, EventIterables, Invokables>,
+    broker: Broker<Events, EventIterablesT, InvokablesT>,
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
   ): () => void {
@@ -162,7 +161,7 @@ export default class MessageBus<
     EventName extends keyof Events,
     Args extends UntilArgs<Events[EventName]>
   >(
-    broker: Broker<Events, EventIterables, Invokables>,
+    broker: Broker<Events, EventIterablesT, InvokablesT>,
     eventName: EventName,
     args: Args
   ) {
@@ -189,14 +188,40 @@ export default class MessageBus<
   ) {
     const iterator = {
       broker,
-      args: init(args) as any,
+      args: init(args),
       fn: last(args) as any,
     }
 
-    this.eventIterators[eventName] = amend(
+    // @ts-ignore
+    this.eventIterators = amend(
       this.eventIterators,
       eventName,
       (iterators = []) => [...iterators!, iterator]
+    )
+
+    return () => {
+      this.eventIterators[eventName] = removeItem(
+        iterator,
+        this.eventIterators[eventName] as any
+      )
+    }
+  }
+
+  async *iterate<EventName extends keyof EventIterables>(
+    _broker: Broker<EventsT, EventIterables, Invokables>,
+    eventName: EventName,
+    args: EventIterables[EventName]['args']
+  ): AsyncIterable<EventIterables[EventName]['yield']> {
+    if (!this.started) {
+      await this.queue(() => {})
+    }
+
+    yield* combine(
+      ...(this.eventIterators[eventName] || [])!
+        .filter((iterator) => this.argumentIndex(iterator.args, args) !== -1)
+        .map((iterator) =>
+          iterator.fn(...args.slice(this.argumentIndex(iterator.args, args)))
+        )
     )
   }
 
