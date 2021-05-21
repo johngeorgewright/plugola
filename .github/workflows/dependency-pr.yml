@@ -33,4 +33,4 @@ jobs:
         with:
           add: .yarn .pnp.js yarn.lock
           default_author: github_actions
-          message: update dependencies
+          message: 'chore(package): update dependencies'
