@@ -1,4 +1,5 @@
 import type Broker from './Broker'
+import type MessageBus from './MessageBus'
 import type { CancelEvent } from './symbols'
 import { L, N } from 'ts-toolbelt'
 
@@ -174,6 +175,27 @@ export type EventGenerators<EventGens extends EventGeneratorsT> = Partial<
     >[]
   }
 >
+
+export type MessageBusEvents<MB extends MessageBus> = MB extends MessageBus<
+  infer Events,
+  any,
+  any
+>
+  ? Events
+  : never
+
+export type MessageBusEventGenerators<MB extends MessageBus> =
+  MB extends MessageBus<any, infer EventGenerators, any>
+    ? EventGenerators
+    : never
+
+export type MessageBusInvokers<MB extends MessageBus> = MB extends MessageBus<
+  any,
+  any,
+  infer Invokers
+>
+  ? Invokers
+  : never
 
 export type UnpackResolvableValue<T> = T extends Promise<infer R>
   ? UnpackResolvableValue<R>

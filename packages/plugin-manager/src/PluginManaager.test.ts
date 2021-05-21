@@ -1,9 +1,12 @@
+import { MessageBus } from '@plugola/message-bus'
 import PluginManager from './PluginManager'
 
-let pluginManager: PluginManager
+let pluginManager: PluginManager<{ foo: [string] }, {}, {}>
 
 beforeEach(() => {
-  pluginManager = new PluginManager()
+  const messageBus = new MessageBus()
+  messageBus.start()
+  pluginManager = new PluginManager(messageBus)
 })
 
 test('initializing plugins', async () => {
@@ -116,4 +119,23 @@ test('running with a dependency tree', async () => {
 
   await pluginManager.run()
   expect(result!).toBe('foobarmung')
+})
+
+test('using the message bus to communicate between plugins', async (done) => {
+  pluginManager.registerPlugin('foo', {
+    run({ broker }) {
+      broker.on('foo', (str) => {
+        expect(str).toBe('bar')
+        done()
+      })
+    },
+  })
+
+  pluginManager.registerPlugin('bar', {
+    run({ broker }) {
+      broker.emit('foo', 'bar')
+    },
+  })
+
+  pluginManager.run()
 })

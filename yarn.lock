@@ -1206,6 +1206,7 @@ __metadata:
   resolution: "@plugola/plugin-manager@workspace:packages/plugin-manager"
   dependencies:
     "@plugola/logger": "workspace:packages/logger"
+    "@plugola/message-bus": "workspace:packages/message-bus"
     "@plugola/query-params": "workspace:packages/query-params"
     "@plugola/store": "workspace:packages/store"
     "@semantic-release/commit-analyzer": ^8.0.1
