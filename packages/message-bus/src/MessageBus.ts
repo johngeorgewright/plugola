@@ -1,6 +1,6 @@
+import { combineIterators } from '@johngw/async'
 import { init, last, removeItem, replaceLastItem } from './array'
 import Broker from './Broker'
-import { combine } from './iterator'
 import { amend } from './object'
 import { CancelEvent } from './symbols'
 import type {
@@ -216,7 +216,7 @@ export default class MessageBus<
       await this.queue(() => {})
     }
 
-    yield* combine(
+    yield* combineIterators(
       ...(this.eventIterators[eventName] || [])!
         .filter((iterator) => this.argumentIndex(iterator.args, args) !== -1)
         .map((iterator) =>

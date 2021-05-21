@@ -797,10 +797,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/async@npm:^2.5.0":
-  version: 2.5.0
-  resolution: "@johngw/async@npm:2.5.0"
-  checksum: 006fbf87733f98af3537da6e7b8e9bee9022ca8319b9b0be0e821f42726f24c3fc37aee11e4da1714e2feb0fbf1a9e6c541622e8511349785920da12b0a8e011
+"@johngw/async@npm:^2.6.0":
+  version: 2.6.0
+  resolution: "@johngw/async@npm:2.6.0"
+  dependencies:
+    "@johngw/object": "*"
+  checksum: 8988fc3aeac8e2cc4ee42114c27250e0c0ee0f387b0b5a2789b61e9bf0dfd570bdd9c8f31b7b9485accedff42b52729176ec8848617b57b783ffa1d9b03b752e
+  languageName: node
+  linkType: hard
+
+"@johngw/object@npm:*":
+  version: 1.0.0
+  resolution: "@johngw/object@npm:1.0.0"
+  checksum: d68fc9a6e91a13f393187184bdc329f31339b783a55b19f998fa5b3b3e17c57d73d320ca4d93cda2087e69aaaa85d9f7465daede90fe2afcf3e5e338285cd92e
   languageName: node
   linkType: hard
 
@@ -1162,7 +1171,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/message-bus@workspace:packages/message-bus"
   dependencies:
-    "@johngw/async": ^2.5.0
+    "@johngw/async": ^2.6.0
     "@semantic-release/commit-analyzer": ^8.0.1
     "@semantic-release/github": ^7.2.3
     "@semantic-release/npm": ^7.1.3
@@ -1197,7 +1206,7 @@ __metadata:
     semantic-release: ^17.4.3
     semantic-release-monorepo: ^7.0.5
     typescript: ^4.2.4
-    yo: ^4.1.0
+    yo: ^4.2.0
   languageName: unknown
   linkType: soft
 
@@ -4927,7 +4936,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"globby@npm:^11.0.0, globby@npm:^11.0.1, globby@npm:^11.0.2":
+"globby@npm:^11.0.0, globby@npm:^11.0.1, globby@npm:^11.0.2, globby@npm:^11.0.3":
   version: 11.0.3
   resolution: "globby@npm:11.0.3"
   dependencies:
@@ -6023,7 +6032,7 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"isbinaryfile@npm:^4.0.0":
+"isbinaryfile@npm:^4.0.0, isbinaryfile@npm:^4.0.8":
   version: 4.0.8
   resolution: "isbinaryfile@npm:4.0.8"
   checksum: 414258852a8962a0e1c6dcbebfc0422489cc7684488fcde6f08de2378596d4888696b3593b40df5f9c7897538891d006fd3edc35994cc75473d71e4012aa2263
@@ -7472,6 +7481,28 @@ fsevents@^2.1.2:
     mem-fs:
       optional: true
   checksum: 82169f90d5e3df0e3557419ea6b1dc53f4508b939764f012f40c84b734f460c408c962dcc98bff8063a1e806b7e4e1bda9596daf438f7aa7bccecc2e091c51d3
+  languageName: node
+  linkType: hard
+
+"mem-fs-editor@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "mem-fs-editor@npm:9.0.1"
+  dependencies:
+    binaryextensions: ^4.15.0
+    commondir: ^1.0.1
+    deep-extend: ^0.6.0
+    ejs: ^3.1.6
+    globby: ^11.0.3
+    isbinaryfile: ^4.0.8
+    multimatch: ^5.0.0
+    normalize-path: ^3.0.0
+    textextensions: ^5.12.0
+  peerDependencies:
+    mem-fs: ^2.1.0
+  peerDependenciesMeta:
+    mem-fs:
+      optional: true
+  checksum: 09a4115d1447795e03d7e26dab0c283137465deeb444c9966311001012135a967596447c8dd2e14ff86064d2688fbf0d6ef6ba598054a01aec702b57f4bffaaf
   languageName: node
   linkType: hard
 
@@ -12004,9 +12035,9 @@ typescript@^4.2.4:
   languageName: node
   linkType: hard
 
-"yeoman-environment@npm:~3.3.0":
-  version: 3.3.0
-  resolution: "yeoman-environment@npm:3.3.0"
+"yeoman-environment@npm:~3.4.0":
+  version: 3.4.0
+  resolution: "yeoman-environment@npm:3.4.0"
   dependencies:
     "@npmcli/arborist": ^2.2.2
     are-we-there-yet: ^1.1.5
@@ -12047,7 +12078,7 @@ typescript@^4.2.4:
     mem-fs-editor: ^8.1.2 || ^9.0.0
   bin:
     yoe: cli/index.js
-  checksum: f443f09b0df2a56a75a62679a79888c6e43637fe055d71006d5e8729ca2e7a453e4ec9b732472a153ba7c08b1d2dc7f9a9bc35efad10d715285200eba3c0581f
+  checksum: f0d8f29e31044f541f9707c37e43667e444d7bc2f4e801f38ba8dd3a6592dd75443dde62eddb814d7a82936e245dfdbf4b1fc85e3daf61e2f17a541b4ea950a5
   languageName: node
   linkType: hard
 
@@ -12083,9 +12114,9 @@ typescript@^4.2.4:
   languageName: node
   linkType: hard
 
-"yo@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "yo@npm:4.1.0"
+"yo@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "yo@npm:4.2.0"
   dependencies:
     async: ^2.6.1
     chalk: ^2.4.1
@@ -12101,6 +12132,7 @@ typescript@^4.2.4:
     inquirer: ^6.0.0
     insight: ^0.10.3
     lodash: ^4.17.15
+    mem-fs-editor: ^9.0.1
     meow: ^3.0.0
     npm-keyword: ^5.0.0
     open: ^6.3.0
@@ -12116,12 +12148,12 @@ typescript@^4.2.4:
     user-home: ^2.0.0
     yeoman-character: ^1.0.0
     yeoman-doctor: ^4.0.0
-    yeoman-environment: ~3.3.0
+    yeoman-environment: ~3.4.0
     yosay: ^2.0.2
   bin:
     yo: lib/cli.js
     yo-complete: lib/completion/index.js
-  checksum: 2f2e405e9472817617aa745f814eaa1581f88fd24d5c8fa43a84b8d8c399ba978c51166abc4243b373ca939ada2fba9fab104bba5a56913aed04437781923074
+  checksum: 134d56a0f72ee991a8175d952a642d540d963d91c1b16268ff1968cefbc8ae01c5ef7992e9f85f57513f164af88ab5fd3839e64a0afa10857e56ee6759226cbb
   languageName: node
   linkType: hard
 
