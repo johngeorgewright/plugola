@@ -4,7 +4,6 @@ on:
   pull_request:
     branches: [master]
     paths-ignore:
-      - package.json
       - '**/package.json'
       - .pnp.js
       - yarn.lock
