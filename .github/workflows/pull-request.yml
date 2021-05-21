@@ -5,9 +5,6 @@ on:
     branches: [master]
     paths-ignore:
       - '**/package.json'
-      - .pnp.js
-      - yarn.lock
-      - .yarn/**
 
 jobs:
   test:
