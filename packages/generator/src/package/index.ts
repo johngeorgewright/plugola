@@ -85,7 +85,21 @@ export = class PluginGenerator extends Generator {
     )
   }
 
-  install() {
+  async install() {
+    await this.addDevDependencies([
+      '@semantic-release/commit-analyzer',
+      '@semantic-release/github',
+      '@semantic-release/npm',
+      '@semantic-release/release-notes-generator',
+      '@types/jest',
+      'jest',
+      'rimraf',
+      'semantic-release',
+      'semantic-release-monorepo',
+      'ts-jest',
+      'typescript',
+    ])
+
     if (this.answers.public) {
       this.spawnCommandSync('yarn', [])
       this.spawnCommandSync('yarn', [

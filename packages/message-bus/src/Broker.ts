@@ -8,14 +8,17 @@ import type {
   UntilRtn,
   InvokerInterceptorArgs,
   InvokerFn,
+  EventGeneratorsT,
+  EventGeneratorArgs,
 } from './types'
 
 export default class Broker<
-  Events extends EventsT,
-  Invokables extends InvokablesT
+  Events extends EventsT = any,
+  EventGens extends EventGeneratorsT = any,
+  Invokables extends InvokablesT = any
 > {
   constructor(
-    private readonly messageBus: MessageBus<Events, Invokables>,
+    private readonly messageBus: MessageBus<Events, EventGens, Invokables>,
     public readonly id: string
   ) {}
 
@@ -23,6 +26,7 @@ export default class Broker<
     eventName: EventName,
     ...args: Events[EventName]
   ): void | Promise<void> {
+    // @ts-ignore
     return this.messageBus.emit(this, eventName, args)
   }
 
@@ -30,21 +34,21 @@ export default class Broker<
     eventName: EventName,
     ...args: EventInterceptorArgs<Events[EventName]>
   ): () => void {
-    return this.messageBus.interceptEvent(this, eventName, args)
+    return this.messageBus.interceptEvent(this as any, eventName, args)
   }
 
   on<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
   ): () => void {
-    return this.messageBus.on(this, eventName, args)
+    return this.messageBus.on(this as any, eventName, args)
   }
 
   once<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
   ): () => void {
-    return this.messageBus.once(this, eventName, args)
+    return this.messageBus.once(this as any, eventName, args)
   }
 
   hasSubscriber(eventName: keyof Events) {
@@ -58,7 +62,24 @@ export default class Broker<
     eventName: EventName,
     ...args: Args
   ): Promise<UntilRtn<Events[EventName], Args>> {
-    return this.messageBus.until(this, eventName, args)
+    return this.messageBus.until(this as any, eventName, args)
+  }
+
+  generator<EventName extends keyof EventGens>(
+    eventName: EventName,
+    ...args: EventGeneratorArgs<
+      EventGens[EventName]['args'],
+      EventGens[EventName]['yield']
+    >
+  ): () => void {
+    return this.messageBus.generator(this, eventName, args)
+  }
+
+  iterate<EventName extends keyof EventGens>(
+    eventName: EventName,
+    ...args: EventGens[EventName]['args']
+  ): AsyncIterable<EventGens[EventName]['yield']> {
+    return this.messageBus.iterate(this, eventName, args)
   }
 
   register<InvokableName extends keyof Invokables>(

@@ -5,8 +5,8 @@ import { timeout } from '@johngw/async'
 
 describe('events', () => {
   type Events = { foo: []; bar: [string] }
-  let messageBus: MessageBus<Events, {}>
-  let broker: Broker<Events, {}>
+  let messageBus: MessageBus<Events, {}, {}>
+  let broker: Broker<Events, {}, {}>
   let foo: jest.Mock<void, []>
   let bar: jest.Mock<void, [string]>
 
@@ -94,14 +94,68 @@ describe('events', () => {
   })
 })
 
+describe('iterators', () => {
+  type Iterables = {
+    foo: { args: []; yield: string }
+    bar: { args: [string]; yield: string }
+  }
+  let messageBus: MessageBus<{}, Iterables, {}>
+  let broker: Broker<{}, Iterables, {}>
+
+  beforeEach(() => {
+    messageBus = new MessageBus()
+    broker = messageBus.broker('test')
+  })
+
+  test('yielding', async () => {
+    const results = []
+
+    broker.generator('foo', async function* () {
+      yield 'hello'
+      yield 'world'
+    })
+
+    broker.generator('foo', async function* () {
+      yield 'moo'
+      yield 'car'
+    })
+
+    messageBus.start()
+    for await (const result of broker.iterate('foo')) {
+      results.push(result)
+    }
+
+    expect(results).toEqual(['hello', 'world', 'moo', 'car'])
+  })
+
+  test('partial subscribers', async () => {
+    const results = []
+
+    broker.generator('bar', async function* (str) {
+      yield str
+    })
+
+    broker.generator('bar', 'mung', async function* () {
+      yield 'face'
+    })
+
+    messageBus.start()
+    for await (const result of broker.iterate('bar', 'mung')) {
+      results.push(result)
+    }
+
+    expect(results).toEqual(['mung', 'face'])
+  })
+})
+
 describe('invokables', () => {
   type Invokables = {
     foo: { args: []; return: string }
     bar: { args: [string]; return: string }
     afoo: { args: [string]; return: Promise<string> }
   }
-  let messageBus: MessageBus<{}, Invokables>
-  let broker: Broker<{}, Invokables>
+  let messageBus: MessageBus<{}, {}, Invokables>
+  let broker: Broker<{}, {}, Invokables>
   let foo: jest.Mock<string>
   let bar: jest.Mock<string, [string]>
   let afoo: jest.Mock<Promise<string>>

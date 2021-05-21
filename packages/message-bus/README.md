@@ -12,6 +12,7 @@ const messageBus = new MessageBus<
     foo: [string]
     bar: [number, number]
   },
+  {},
   {}
 >()
 
@@ -36,7 +37,7 @@ broker.emit('bar', 1, 2)
 Events are queued until, you call `messageBus.start()`.
 
 ```typescript
-const messageBus = new MessageBus<{ foo: [string] }, {}>()
+const messageBus = new MessageBus<{ foo: [string] }, {}, {}>()
 const broker = messageBus.broker('my broker')
 
 broker.on('foo', () =>
@@ -52,7 +53,7 @@ messageBus.start()
 You can narrow down you subsciption by the arguments emitted.
 
 ```typescript
-const messageBus = new MessageBus<{ foo: [string, string] }, {}>()
+const messageBus = new MessageBus<{ foo: [string, string] }, {}, {}>()
 const broker = messageBus.broker('my broker')
 
 messageBus.start()
@@ -70,7 +71,7 @@ broker.emit('foo', 'bar', 'bazzle')
 You can intercept messages to modify their arguments.
 
 ```typescript
-const messageBus = new MessageBus<{ foo: [string] }, {}>()
+const messageBus = new MessageBus<{ foo: [string] }, {}, {}>()
 const broker = messageBus.broker('my broker')
 
 messageBus.start()
@@ -90,4 +91,32 @@ import { CancelEvent } from '@plugpola/message-bus'
 broker.intercept('foo', () => CancelEvent)
 
 broker.emit('foo') // no subscriptions will get called
+```
+
+### Event Generators
+
+You can register any number of "generators" to an event.
+
+```typescript
+const messageBus = new MessageBus<
+  {},
+  { foo: { args: [string]; yield: [string] } },
+  {}
+>()
+
+const broker = messageBus.broker('my broker')
+
+messageBus.start()
+
+broker.generator('foo', async function* (thing) {
+  yield `${thing} is a thing`
+})
+
+broker.generator('foo', 'bar', async function* (thing) {
+  yield 'Bars are great'
+})
+
+for await (const item of broker.iterate('foo', 'bar')) {
+  // item = "bar is a thing" | "Bars are great"
+}
 ```

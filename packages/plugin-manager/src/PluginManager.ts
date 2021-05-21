@@ -1,24 +1,48 @@
 import {
-  createInitContext,
-  createRunContext,
+  Context,
+  InitContext,
   isStatefulContext,
+  StatefulContext,
 } from './Context'
-import { Plugin, StatefulPlugin } from './Plugin'
-import type { ActionI } from '@plugola/store'
+import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
+import Store, { ActionI } from '@plugola/store'
+import type { Broker, MessageBus } from '@plugola/message-bus'
+import {
+  EventGeneratorsT,
+  EventsT,
+  InvokablesT,
+} from '@plugola/message-bus/dist/types'
+import createLogger from './createLogger'
 
-export default class PluginManager {
-  private plugins: Record<string, Plugin | StatefulPlugin<any, any>> = {}
+export default class PluginManager<
+  Events extends EventsT,
+  EventGenerators extends EventGeneratorsT,
+  Invokables extends InvokablesT,
+  MB extends MessageBus = MessageBus<Events, EventGenerators, Invokables>,
+  B extends Broker = Broker<Events, EventGenerators, Invokables>,
+  C extends Context<Broker> = Context<B>,
+  IC extends InitContext<Broker> = InitContext<B>
+> {
+  private plugins: Record<
+    string,
+    Plugin<IC, C> | StatefulPlugin<any, any, IC, StatefulContext<B, any, any>>
+  > = {}
   private initialized: Record<string, Promise<void>> = {}
   private ran: Record<string, Promise<void>> = {}
+  private messageBus: MB
+
+  constructor(messageBus: MB) {
+    this.messageBus = messageBus
+  }
 
   registerStatefulPlugin<Action extends ActionI, State>(
     name: string,
-    plugin: StatefulPlugin<Action, State>
+    plugin: StatefulPlugin<Action, State, IC, StatefulContext<B, Action, State>>
   ) {
     this.plugins[name] = plugin
   }
 
-  registerPlugin(name: string, plugin: Plugin) {
+  registerPlugin(name: string, plugin: Plugin<IC, C>) {
     this.plugins[name] = plugin
   }
 
@@ -49,7 +73,7 @@ export default class PluginManager {
       }
 
       if (plugin.init) {
-        return plugin.init(createInitContext(pluginName))
+        return plugin.init(this.createInitContext(pluginName, this.messageBus))
       }
     })()
 
@@ -73,7 +97,11 @@ export default class PluginManager {
       }
 
       if (plugin.run) {
-        const context = createRunContext(pluginName, plugin)
+        const context = this.createRunContext(
+          pluginName,
+          this.messageBus,
+          plugin as any
+        )
         if (isStatefulContext(context)) {
           context.store.init()
         }
@@ -103,5 +131,64 @@ export default class PluginManager {
         })
         .map(map)
     )
+  }
+
+  private createInitContext(pluginName: string, messageBus: MB): IC {
+    return {
+      ...this.createContext(pluginName, messageBus),
+      addPlugins: () => {},
+      removePlugins: () => {},
+    } as any
+  }
+
+  private createRunContext<Action extends ActionI, State>(
+    pluginName: string,
+    messageBus: MB,
+    plugin: StatefulPlugin<Action, State, IC, StatefulContext<B, Action, State>>
+  ): StatefulContext<B, Action, State>
+
+  private createRunContext(
+    pluginName: string,
+    messageBus: MB,
+    plugin: Plugin<IC, C>
+  ): Context<B>
+
+  private createRunContext(
+    pluginName: string,
+    messageBus: MB,
+    plugin: Plugin<IC, C> | StatefulPlugin<any, any, any, any>
+  ): any {
+    return isStatefulPlugin(plugin)
+      ? this.createStatefulContext(pluginName, messageBus, plugin)
+      : this.createContext(pluginName, messageBus)
+  }
+
+  private createContext(pluginName: string, messageBus: MB): C {
+    return {
+      broker: messageBus.broker(pluginName),
+      doc: document,
+      getConfig: () => {},
+      setConfig: () => {},
+      log: createLogger(pluginName),
+      ownName: pluginName,
+      queryParams: {},
+      win: window,
+    } as any
+  }
+
+  private createStatefulContext<Action extends ActionI, State>(
+    pluginName: string,
+    messageBus: MB,
+    plugin: StatefulPlugin<Action, State, IC, StatefulContext<B, Action, State>>
+  ) {
+    const context = this.createContext(pluginName, messageBus)
+    return {
+      ...context,
+      store: new Store<Action, State>(
+        plugin.state.reduce,
+        plugin.state.initial,
+        context.log.extend('store')
+      ),
+    }
   }
 }

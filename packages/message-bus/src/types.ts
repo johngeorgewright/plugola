@@ -1,4 +1,5 @@
 import type Broker from './Broker'
+import type MessageBus from './MessageBus'
 import type { CancelEvent } from './symbols'
 import { L, N } from 'ts-toolbelt'
 
@@ -7,6 +8,11 @@ export type EventsT<T = unknown> = Record<string, T[]>
 export type InvokablesT<A = unknown, R = unknown> = Record<
   string,
   { args: A[]; return: R }
+>
+
+export type EventGeneratorsT<A = unknown, R = unknown> = Record<
+  string,
+  { args: A[]; yield: R }
 >
 
 export type SubscriberFn<Args extends unknown[]> = (
@@ -33,11 +39,15 @@ export type UntilRtn<T extends unknown[], Args extends unknown[]> = N.Greater<
 
 export type Subscribers<Events extends EventsT> = Partial<
   {
-    [EventName in keyof Events]: Subscriber<Broker<EventsT, InvokablesT>>[]
+    [EventName in keyof Events]: Subscriber<
+      Broker<EventsT, EventGeneratorsT, InvokablesT>
+    >[]
   }
 >
 
-export interface Subscriber<B extends Broker<EventsT, InvokablesT>> {
+export interface Subscriber<
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
+> {
   broker: B
   args: unknown[]
   fn: SubscriberFn<unknown[]>
@@ -67,12 +77,14 @@ export type EventInterceptorArgs<
 export type EventInterceptors<Events extends EventsT> = Partial<
   {
     [EventName in keyof Events]: EventInterceptor<
-      Broker<EventsT, InvokablesT>
+      Broker<EventsT, EventGeneratorsT, InvokablesT>
     >[]
   }
 >
 
-export interface EventInterceptor<B extends Broker<EventsT, InvokablesT>> {
+export interface EventInterceptor<
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
+> {
   broker: B
   args: unknown[]
   fn: EventInterceptorFn<unknown[], unknown[]>
@@ -82,14 +94,18 @@ export type InvokerFn<Args extends unknown[], Result> = (
   ...args: Args
 ) => Result
 
-export interface Invoker<B extends Broker<EventsT, InvokablesT>> {
+export interface Invoker<
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
+> {
   broker: B
   fn: InvokerFn<unknown[], unknown>
 }
 
 export type Invokers<Invokables extends InvokablesT> = Partial<
   {
-    [InvokableName in keyof Invokables]: Invoker<Broker<EventsT, Invokables>>
+    [InvokableName in keyof Invokables]: Invoker<
+      Broker<EventsT, EventGeneratorsT, Invokables>
+    >
   }
 >
 
@@ -117,16 +133,69 @@ export type InvokerInterceptorArgs<
 export type InvokerInterceptors<Invokables extends InvokablesT> = Partial<
   {
     [InvokableName in keyof Invokables]: InvokerInterceptor<
-      Broker<EventsT, Invokables>
+      Broker<EventsT, EventGeneratorsT, Invokables>
     >[]
   }
 >
 
-export interface InvokerInterceptor<B extends Broker<EventsT, InvokablesT>> {
+export interface InvokerInterceptor<
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
+> {
   broker: B
   args: unknown[]
   fn: InvokerInterceptorFn<unknown[], unknown, unknown[]>
 }
+
+export type EventGeneratorFn<Args extends unknown[], R> = (
+  ...args: Args
+) => AsyncIterable<R>
+
+export interface EventGenerator<
+  B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
+> {
+  broker: B
+  args: unknown[]
+  fn: EventGeneratorFn<unknown[], unknown>
+}
+
+export type EventGeneratorArgs<
+  A extends unknown[],
+  R,
+  B extends unknown[] = []
+> = L.Length<A> extends 0
+  ? [EventGeneratorFn<B, R>]
+  :
+      | [...A, EventGeneratorFn<B, R>]
+      | EventGeneratorArgs<L.Pop<A>, R, [L.Last<A>, ...B]>
+
+export type EventGenerators<EventGens extends EventGeneratorsT> = Partial<
+  {
+    [EventName in keyof EventGens]: EventGenerator<
+      Broker<EventsT, EventGeneratorsT, InvokablesT>
+    >[]
+  }
+>
+
+export type MessageBusEvents<MB extends MessageBus> = MB extends MessageBus<
+  infer Events,
+  any,
+  any
+>
+  ? Events
+  : never
+
+export type MessageBusEventGenerators<MB extends MessageBus> =
+  MB extends MessageBus<any, infer EventGenerators, any>
+    ? EventGenerators
+    : never
+
+export type MessageBusInvokers<MB extends MessageBus> = MB extends MessageBus<
+  any,
+  any,
+  infer Invokers
+>
+  ? Invokers
+  : never
 
 export type UnpackResolvableValue<T> = T extends Promise<infer R>
   ? UnpackResolvableValue<R>
