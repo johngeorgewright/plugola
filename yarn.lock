@@ -797,10 +797,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/async@npm:^2.4.0":
-  version: 2.4.0
-  resolution: "@johngw/async@npm:2.4.0"
-  checksum: a40f9299c1f83116fb731a072518dc31abf709806fa6a34a46917a87902a80012182520a301182288646a1d266c3e0093f7e5d1bfd5fe210df43d441d6b2feac
+"@johngw/async@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "@johngw/async@npm:2.5.0"
+  checksum: 006fbf87733f98af3537da6e7b8e9bee9022ca8319b9b0be0e821f42726f24c3fc37aee11e4da1714e2feb0fbf1a9e6c541622e8511349785920da12b0a8e011
   languageName: node
   linkType: hard
 
@@ -1162,7 +1162,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/message-bus@workspace:packages/message-bus"
   dependencies:
-    "@johngw/async": ^2.4.0
+    "@johngw/async": ^2.5.0
     "@semantic-release/commit-analyzer": ^8.0.1
     "@semantic-release/github": ^7.2.3
     "@semantic-release/npm": ^7.1.3
