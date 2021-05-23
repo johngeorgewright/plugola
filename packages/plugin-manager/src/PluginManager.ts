@@ -11,14 +11,17 @@ import {
   EventGeneratorsT,
   EventsT,
   InvokablesT,
+  MessageBusEventGenerators,
+  MessageBusEvents,
+  MessageBusInvokers,
 } from '@plugola/message-bus/dist/types'
 import createLogger from './createLogger'
 
 export default class PluginManager<
-  Events extends EventsT,
-  EventGenerators extends EventGeneratorsT,
-  Invokables extends InvokablesT,
-  MB extends MessageBus = MessageBus<Events, EventGenerators, Invokables>,
+  MB extends MessageBus<EventsT, EventGeneratorsT, InvokablesT>,
+  Events extends EventsT = MessageBusEvents<MB>,
+  EventGenerators extends EventGeneratorsT = MessageBusEventGenerators<MB>,
+  Invokables extends InvokablesT = MessageBusInvokers<MB>,
   B extends Broker = Broker<Events, EventGenerators, Invokables>,
   C extends Context<Broker> = Context<B>,
   IC extends InitContext<Broker> = InitContext<B>

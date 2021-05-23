@@ -24,9 +24,9 @@ import type {
 } from './types'
 
 export default class MessageBus<
-  Events extends EventsT = any,
-  EventGens extends EventGeneratorsT = any,
-  Invokables extends InvokablesT = any
+  Events extends EventsT = EventsT,
+  EventGens extends EventGeneratorsT = EventGeneratorsT,
+  Invokables extends InvokablesT = InvokablesT
 > {
   private eventInterceptors: EventInterceptors<Events> = {}
   private eventGenerators: EventGenerators<EventGens> = {}

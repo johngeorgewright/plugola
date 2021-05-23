@@ -1,10 +1,13 @@
 import { MessageBus } from '@plugola/message-bus'
 import PluginManager from './PluginManager'
 
-let pluginManager: PluginManager<{ foo: [string] }, {}, {}>
+type Events = { foo: [string] }
+
+let messageBus: MessageBus<Events>
+let pluginManager: PluginManager<typeof messageBus>
 
 beforeEach(() => {
-  const messageBus = new MessageBus()
+  messageBus = new MessageBus()
   messageBus.start()
   pluginManager = new PluginManager(messageBus)
 })
