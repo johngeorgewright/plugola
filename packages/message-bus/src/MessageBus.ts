@@ -30,7 +30,7 @@ export default class MessageBus<
   Invokables extends InvokablesT = any
 > {
   private eventInterceptors: EventInterceptors<Events> = {}
-  private eventIterators: EventGenerators<EventGens> = {}
+  private eventGenerators: EventGenerators<EventGens> = {}
   private invokers: Invokers<Invokables> = {}
   private invokerInterceptors: InvokerInterceptors<Invokables> = {}
   private queued: Array<() => unknown> = []
@@ -193,16 +193,16 @@ export default class MessageBus<
     }
 
     // @ts-ignore
-    this.eventIterators = amend(
-      this.eventIterators,
+    this.eventGenerators = amend(
+      this.eventGenerators,
       eventName,
       (iterators = []) => [...iterators!, iterator]
     )
 
     return () => {
-      this.eventIterators[eventName] = removeItem(
+      this.eventGenerators[eventName] = removeItem(
         iterator,
-        this.eventIterators[eventName] as any
+        this.eventGenerators[eventName] as any
       )
     }
   }
@@ -217,7 +217,7 @@ export default class MessageBus<
     }
 
     yield* combineIterators(
-      ...(this.eventIterators[eventName] || [])!
+      ...(this.eventGenerators[eventName] || [])!
         .filter((iterator) => this.argumentIndex(iterator.args, args) !== -1)
         .map((iterator) =>
           iterator.fn(...args.slice(this.argumentIndex(iterator.args, args)))
