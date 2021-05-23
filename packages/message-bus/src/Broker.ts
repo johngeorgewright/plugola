@@ -13,9 +13,9 @@ import type {
 } from './types'
 
 export default class Broker<
-  Events extends EventsT = any,
-  EventGens extends EventGeneratorsT = any,
-  Invokables extends InvokablesT = any
+  Events extends EventsT = EventsT,
+  EventGens extends EventGeneratorsT = EventGeneratorsT,
+  Invokables extends InvokablesT = InvokablesT
 > {
   constructor(
     private readonly messageBus: MessageBus<Events, EventGens, Invokables>,
