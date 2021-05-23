@@ -145,12 +145,12 @@ test('using the message bus to communicate between plugins', async (done) => {
 
 test('extra context', async () => {
   const pluginManager = new PluginManager(messageBus, {
-    createContext(pluginName) {
+    addContext(pluginName) {
       return {
         foo: pluginName,
       }
     },
-    createInitContext(pluginName) {
+    addInitContext(pluginName) {
       return {
         foo: pluginName,
       }

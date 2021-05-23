@@ -31,8 +31,9 @@
   ],
   "settings": {
     "search.exclude": {
-      "**/.yarn": true,
-      "**/.pnp.*": true
+      "**/dist": true,
+      "**/.pnp.*": true,
+      "**/.yarn": true
     },
     "jest.jestCommandLine": "yarn test",
     "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
