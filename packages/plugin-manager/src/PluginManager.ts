@@ -14,8 +14,8 @@ interface Options<
   ExtraContext extends Record<string, unknown>,
   ExtraInitContext extends Record<string, unknown>
 > {
-  createContext?(pluginName: string): ExtraContext
-  createInitContext?(pluginName: string): ExtraInitContext
+  addContext?(pluginName: string): ExtraContext
+  addInitContext?(pluginName: string): ExtraInitContext
 }
 
 export default class PluginManager<
@@ -37,8 +37,8 @@ export default class PluginManager<
   constructor(
     messageBus: MB,
     {
-      createContext: createExtraContext,
-      createInitContext: createExtraInitContext,
+      addContext: createExtraContext,
+      addInitContext: createExtraInitContext,
     }: Options<ExtraContext, ExtraInitContext> = {}
   ) {
     this.messageBus = messageBus
