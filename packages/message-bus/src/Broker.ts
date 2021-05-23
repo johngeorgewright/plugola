@@ -7,9 +7,9 @@ import type {
   UntilArgs,
   UntilRtn,
   InvokerInterceptorArgs,
-  InvokerFn,
   EventGeneratorsT,
   EventGeneratorArgs,
+  InvokerRegistrationArgs,
 } from './types'
 
 export default class Broker<
@@ -84,27 +84,24 @@ export default class Broker<
 
   register<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
-    invoker: InvokerFn<
+    ...args: InvokerRegistrationArgs<
       Invokables[InvokableName]['args'],
       Invokables[InvokableName]['return']
     >
   ): () => void {
-    return this.messageBus.register(this, invokableName, invoker)
+    return this.messageBus.register(this, invokableName, args)
   }
 
   invoke<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     ...args: Invokables[InvokableName]['args']
-  ): Invokables[InvokableName]['return'] {
+  ): Promise<Invokables[InvokableName]['return']> {
     return this.messageBus.invoke(this, invokableName, args) as any
   }
 
   interceptInvoker<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
-    ...args: InvokerInterceptorArgs<
-      Invokables[InvokableName]['args'],
-      Invokables[InvokableName]['return']
-    >
+    ...args: InvokerInterceptorArgs<Invokables[InvokableName]['args']>
   ): () => void {
     return this.messageBus.interceptInvoker(this, invokableName, args)
   }

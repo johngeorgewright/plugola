@@ -9,7 +9,6 @@ import type {
   EventInterceptorFn,
   EventInterceptors,
   InvokablesT,
-  InvokerInterceptor,
   Invokers,
   SubscriberArgs,
   Subscribers,
@@ -18,10 +17,10 @@ import type {
   SubscriberFn,
   UntilRtn,
   UntilArgs,
-  InvokerFn,
   EventGeneratorsT,
   EventGenerators,
   EventGeneratorArgs,
+  InvokerRegistrationArgs,
 } from './types'
 
 export default class MessageBus<
@@ -228,45 +227,51 @@ export default class MessageBus<
   register<InvokableName extends keyof Invokables>(
     broker: Broker<Events, EventGens, Invokables>,
     invokableName: InvokableName,
-    fn: InvokerFn<
+    allArgs: InvokerRegistrationArgs<
       Invokables[InvokableName]['args'],
       Invokables[InvokableName]['return']
     >
   ) {
-    if (this.invokers[invokableName]) {
+    const args = init(allArgs)
+    const fn = last(allArgs) as any
+    const invokers = this.invokers[invokableName]
+    const registeredInvoker =
+      invokers &&
+      invokers.find((invoker) => this.argumentIndex(invoker.args, args) !== -1)
+
+    if (registeredInvoker) {
       throw new Error(
-        `Cannot register previously registered invoker ${invokableName}`
+        `An invoker has already been registered that matches ${invokableName} with args: ${args.join(
+          ', '
+        )}.`
       )
     }
 
-    this.invokers[invokableName] = {
-      broker,
-      fn,
-    }
+    this.invokers[invokableName] = [
+      ...(invokers || [])!,
+      {
+        broker,
+        args,
+        fn,
+      },
+    ]
 
     return () => {
       delete this.invokers[invokableName]
     }
   }
 
-  invoke<InvokableName extends keyof Invokables>(
+  async invoke<InvokableName extends keyof Invokables>(
     _broker: Broker<Events, EventGens, Invokables>,
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
-  ): Invokables[InvokableName]['return'] {
-    if (!this.started) {
-      throw new Error(
-        `Trying to invoke ${invokableName} before the message bus has been started`
+  ): Promise<Invokables[InvokableName]['return']> {
+    const handle = async () =>
+      this.callInvoker(
+        invokableName,
+        await this.callInvokerInterceptors(invokableName, args)
       )
-    }
-
-    const interception = this.callInvokerInterceptors(invokableName, args)
-
-    return interception instanceof Promise
-      ? interception.then((moddedArgs) =>
-          this.callInvoker(invokableName, moddedArgs)
-        )
-      : this.callInvoker(invokableName, interception as any)
+    return this.started ? handle() : this.queue(handle)
   }
 
   private callEventInterceptors<EventName extends keyof Events>(
@@ -305,41 +310,21 @@ export default class MessageBus<
     })()
   }
 
-  private callInvokerInterceptors<InvokableName extends keyof Invokables>(
+  private async callInvokerInterceptors<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
-  ): Invokables[InvokableName]['return'] extends Promise<unknown>
-    ?
-        | Invokables[InvokableName]['args']
-        | Promise<Invokables[InvokableName]['args']>
-    : Invokables[InvokableName]['args'] {
+  ) {
     const invokerInterceptors = (this.invokerInterceptors[invokableName] || [])!
 
     if (!invokerInterceptors.length) {
-      return args as any
+      return args
     }
 
-    // @ts-ignore
     return invokerInterceptors.reduce<
-      | Invokables[InvokableName]['args']
-      | Promise<Invokables[InvokableName]['args']>
-    >(
-      (acc, interceptor) =>
-        acc instanceof Promise
-          ? addToPromiseChain(this, acc, interceptor)
-          : addToArgs(this, acc, interceptor),
-      args
-    )
-
-    async function addToPromiseChain(
-      messageBus: MessageBus<Events, EventGeneratorsT, Invokables>,
-      promiseChain: Promise<Invokables[InvokableName]['args']>,
-      interceptor: InvokerInterceptor<
-        Broker<EventsT, EventGeneratorsT, Invokables>
-      >
-    ) {
-      const args = await promiseChain
-      const index = messageBus.argumentIndex(interceptor.args, args)
+      Promise<Invokables[InvokableName]['args']>
+    >(async (acc, interceptor) => {
+      const args = await acc
+      const index = this.argumentIndex(interceptor.args, args)
 
       if (index === -1) {
         return args
@@ -353,38 +338,7 @@ export default class MessageBus<
             ...newArgs,
           ] as Invokables[InvokableName]['args'])
         : args
-    }
-
-    function addToArgs(
-      messageBus: MessageBus<Events, EventGeneratorsT, Invokables>,
-      args: Invokables[InvokableName]['args'],
-      interceptor: InvokerInterceptor<
-        Broker<EventsT, EventGeneratorsT, Invokables>
-      >
-    ) {
-      const index = messageBus.argumentIndex(interceptor.args, args)
-
-      if (index === -1) {
-        return args
-      }
-
-      const newArgs = interceptor.fn(args.slice(index))
-
-      return newArgs instanceof Promise
-        ? newArgs.then(
-            (newArgs) =>
-              [
-                ...args.slice(0, index),
-                ...newArgs,
-              ] as Invokables[InvokableName]['args']
-          )
-        : newArgs
-        ? ([
-            ...args.slice(0, index),
-            ...newArgs,
-          ] as Invokables[InvokableName]['args'])
-        : args
-    }
+    }, Promise.resolve(args))
   }
 
   private callSubscribers<EventName extends keyof Events>(
@@ -409,15 +363,20 @@ export default class MessageBus<
     }
   }
 
-  private callInvoker<InvokableName extends keyof Invokables>(
+  private async callInvoker<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
-  ): Invokables[InvokableName]['return'] {
-    const invoker = this.invokers[invokableName]
+  ): Promise<Invokables[InvokableName]['return']> {
+    const invokers = this.invokers[invokableName]
+    const invoker =
+      invokers &&
+      invokers.find((invoker) => this.argumentIndex(invoker.args, args) !== -1)
+
     if (!invoker) {
-      throw new Error(`Invoker ${invokableName} has not been registered`)
+      throw new Error(`Cannot find matching invoker for ${invokableName}.`)
     }
-    return invoker.fn(args)
+
+    return invoker.fn(args.slice(this.argumentIndex(invoker.args, args)))
   }
 
   private argumentIndex(args1: ArrayLike<unknown>, args2: ArrayLike<unknown>) {

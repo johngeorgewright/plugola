@@ -22,7 +22,9 @@ export type SubscriberFn<Args extends unknown[]> = (
 export type SubscriberArgs<A extends unknown[], B extends unknown[] = []> =
   L.Length<A> extends 0
     ? [SubscriberFn<B>]
-    : [...A, SubscriberFn<B>] | SubscriberArgs<L.Pop<A>, [L.Last<A>, ...B]>
+    :
+        | L.Append<A, SubscriberFn<B>>
+        | SubscriberArgs<L.Pop<A>, L.Append<B, L.Last<A>>>
 
 export type UntilArgs<A extends unknown[]> = L.Length<A> extends 0
   ? never[]
@@ -92,43 +94,48 @@ export interface EventInterceptor<
 
 export type InvokerFn<Args extends unknown[], Result> = (
   ...args: Args
-) => Result
+) => Result | Promise<UnpackResolvableValue<Result>>
+
+export type InvokerRegistrationArgs<
+  A extends unknown[],
+  Return,
+  B extends unknown[] = []
+> = L.Length<A> extends 0
+  ? [InvokerFn<B, Return>]
+  :
+      | L.Append<A, InvokerFn<B, Return>>
+      | InvokerRegistrationArgs<L.Pop<A>, Return, L.Append<B, L.Last<A>>>
 
 export interface Invoker<
   B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
 > {
   broker: B
+  args: unknown[]
   fn: InvokerFn<unknown[], unknown>
 }
 
 export type Invokers<Invokables extends InvokablesT> = Partial<
   {
     [InvokableName in keyof Invokables]: Invoker<
-      Broker<EventsT, EventGeneratorsT, Invokables>
-    >
+      Broker<EventsT, EventGeneratorsT, InvokablesT>
+    >[]
   }
 >
 
 export type InvokerInterceptorFn<
   Args extends unknown[],
-  Return,
   NewArgs extends unknown[]
-> = (
-  ...args: Args
-) => Return extends Promise<unknown>
-  ? void | NewArgs | Promise<void | NewArgs>
-  : void | NewArgs
+> = (...args: Args) => void | NewArgs
 
 export type InvokerInterceptorArgs<
   A extends unknown[],
-  R,
   B extends unknown[] = [],
   C extends unknown[] = A
 > = L.Length<A> extends 0
-  ? [InvokerInterceptorFn<B, R, C>]
+  ? [InvokerInterceptorFn<B, C>]
   :
-      | [...A, InvokerInterceptorFn<B, R, C>]
-      | InvokerInterceptorArgs<L.Pop<A>, R, [L.Last<A>, ...B], C>
+      | L.Append<A, InvokerInterceptorFn<B, C>>
+      | InvokerInterceptorArgs<L.Pop<A>, L.Append<B, L.Last<A>>, C>
 
 export type InvokerInterceptors<Invokables extends InvokablesT> = Partial<
   {
@@ -143,7 +150,7 @@ export interface InvokerInterceptor<
 > {
   broker: B
   args: unknown[]
-  fn: InvokerInterceptorFn<unknown[], unknown, unknown[]>
+  fn: InvokerInterceptorFn<unknown[], unknown[]>
 }
 
 export type EventGeneratorFn<Args extends unknown[], R> = (
@@ -165,8 +172,8 @@ export type EventGeneratorArgs<
 > = L.Length<A> extends 0
   ? [EventGeneratorFn<B, R>]
   :
-      | [...A, EventGeneratorFn<B, R>]
-      | EventGeneratorArgs<L.Pop<A>, R, [L.Last<A>, ...B]>
+      | L.Append<A, EventGeneratorFn<B, R>>
+      | EventGeneratorArgs<L.Pop<A>, R, L.Append<B, L.Last<A>>>
 
 export type EventGenerators<EventGens extends EventGeneratorsT> = Partial<
   {
