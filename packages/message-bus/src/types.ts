@@ -204,6 +204,14 @@ export type MessageBusInvokers<MB extends MessageBus> = MB extends MessageBus<
   ? Invokers
   : never
 
+export type MessageBusBroker<MB extends MessageBus> = MB extends MessageBus<
+  infer Events,
+  infer EventGenerators,
+  infer Invokables
+>
+  ? Broker<Events, EventGenerators, Invokables>
+  : never
+
 export type UnpackResolvableValue<T> = T extends Promise<infer R>
   ? UnpackResolvableValue<R>
   : T

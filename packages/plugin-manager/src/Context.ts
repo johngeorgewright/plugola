@@ -1,32 +1,27 @@
-import type { Broker } from '@plugola/message-bus'
+import type { MessageBus } from '@plugola/message-bus'
+import { MessageBusBroker } from '@plugola/message-bus/dist/types'
 import Store, { ActionI } from '@plugola/store'
 
 export function isStatefulContext(
   context: any
-): context is StatefulContext<Broker, any, any> {
+): context is StatefulContext<MessageBus, any, any> {
   return !!context.store
 }
 
-export interface Context<B extends Broker> {
-  broker: B
-  doc: Document
-  getConfig(name: string, dflt?: any): unknown
-  setConfig(name: string, value: unknown): void
+export interface Context<MB extends MessageBus> {
+  broker: MessageBusBroker<MB>
   log: any
-  ownName: string
-  queryParams: Record<string, any>
-  win: Window
 }
 
-export interface InitContext<B extends Broker> extends Context<B> {
+export interface InitContext<MB extends MessageBus> extends Context<MB> {
   addPlugins(pluginNames: string[]): void
   removePlugins(pluginNames: string[]): void
 }
 
 export interface StatefulContext<
-  B extends Broker,
+  MB extends MessageBus,
   Action extends ActionI,
   State
-> extends Context<B> {
+> extends Context<MB> {
   store: Store<Action, State>
 }

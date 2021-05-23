@@ -6,46 +6,65 @@ import {
 } from './Context'
 import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
 import Store, { ActionI } from '@plugola/store'
-import type { Broker, MessageBus } from '@plugola/message-bus'
-import {
-  EventGeneratorsT,
-  EventsT,
-  InvokablesT,
-  MessageBusEventGenerators,
-  MessageBusEvents,
-  MessageBusInvokers,
-} from '@plugola/message-bus/dist/types'
+import type { MessageBus } from '@plugola/message-bus'
 import createLogger from './createLogger'
+import { MessageBusBroker } from '@plugola/message-bus/dist/types'
+
+interface Options<
+  ExtraContext extends Record<string, unknown>,
+  ExtraInitContext extends Record<string, unknown>
+> {
+  createContext?(pluginName: string): ExtraContext
+  createInitContext?(pluginName: string): ExtraInitContext
+}
 
 export default class PluginManager<
-  MB extends MessageBus<EventsT, EventGeneratorsT, InvokablesT>,
-  Events extends EventsT = MessageBusEvents<MB>,
-  EventGenerators extends EventGeneratorsT = MessageBusEventGenerators<MB>,
-  Invokables extends InvokablesT = MessageBusInvokers<MB>,
-  B extends Broker = Broker<Events, EventGenerators, Invokables>,
-  C extends Context<Broker> = Context<B>,
-  IC extends InitContext<Broker> = InitContext<B>
+  MB extends MessageBus,
+  ExtraContext extends Record<string, unknown> = {},
+  ExtraInitContext extends Record<string, unknown> = {}
 > {
   private plugins: Record<
     string,
-    Plugin<IC, C> | StatefulPlugin<any, any, IC, StatefulContext<B, any, any>>
+    | Plugin<InitContext<MB>, Context<MB>>
+    | StatefulPlugin<any, any, InitContext<MB>, StatefulContext<MB, any, any>>
   > = {}
   private initialized: Record<string, Promise<void>> = {}
   private ran: Record<string, Promise<void>> = {}
   private messageBus: MB
+  private createExtraContext?: (pluginName: string) => ExtraContext
+  private createExtraInitContext?: (pluginName: string) => ExtraInitContext
 
-  constructor(messageBus: MB) {
+  constructor(
+    messageBus: MB,
+    {
+      createContext: createExtraContext,
+      createInitContext: createExtraInitContext,
+    }: Options<ExtraContext, ExtraInitContext> = {}
+  ) {
     this.messageBus = messageBus
+    this.createExtraContext = createExtraContext
+    this.createExtraInitContext = createExtraInitContext
   }
 
   registerStatefulPlugin<Action extends ActionI, State>(
     name: string,
-    plugin: StatefulPlugin<Action, State, IC, StatefulContext<B, Action, State>>
+    plugin: StatefulPlugin<
+      Action,
+      State,
+      InitContext<MB> & ExtraContext,
+      StatefulContext<MB, Action, State> & ExtraContext
+    >
   ) {
     this.plugins[name] = plugin
   }
 
-  registerPlugin(name: string, plugin: Plugin<IC, C>) {
+  registerPlugin(
+    name: string,
+    plugin: Plugin<
+      InitContext<MB> & ExtraInitContext,
+      Context<MB> & ExtraContext
+    >
+  ) {
     this.plugins[name] = plugin
   }
 
@@ -76,7 +95,7 @@ export default class PluginManager<
       }
 
       if (plugin.init) {
-        return plugin.init(this.createInitContext(pluginName, this.messageBus))
+        return plugin.init(this.createInitContext(pluginName))
       }
     })()
 
@@ -100,11 +119,7 @@ export default class PluginManager<
       }
 
       if (plugin.run) {
-        const context = this.createRunContext(
-          pluginName,
-          this.messageBus,
-          plugin as any
-        )
+        const context = this.createRunContext(pluginName, plugin)
         if (isStatefulContext(context)) {
           context.store.init()
         }
@@ -136,55 +151,62 @@ export default class PluginManager<
     )
   }
 
-  private createInitContext(pluginName: string, messageBus: MB): IC {
+  protected createInitContext(pluginName: string) {
     return {
-      ...this.createContext(pluginName, messageBus),
+      ...this.createContext(pluginName),
       addPlugins: () => {},
       removePlugins: () => {},
-    } as any
+      ...((this.createExtraInitContext &&
+        this.createExtraInitContext(pluginName)) ||
+        {}),
+    }
   }
 
-  private createRunContext<Action extends ActionI, State>(
+  protected createRunContext<Action extends ActionI, State>(
     pluginName: string,
-    messageBus: MB,
-    plugin: StatefulPlugin<Action, State, IC, StatefulContext<B, Action, State>>
-  ): StatefulContext<B, Action, State>
+    plugin: StatefulPlugin<
+      Action,
+      State,
+      InitContext<MB>,
+      StatefulContext<MB, Action, State>
+    >
+  ): StatefulContext<MB, Action, State>
 
-  private createRunContext(
+  protected createRunContext(
     pluginName: string,
-    messageBus: MB,
-    plugin: Plugin<IC, C>
-  ): Context<B>
+    plugin: Plugin<InitContext<MB>, Context<MB>>
+  ): Context<MB>
 
-  private createRunContext(
+  protected createRunContext(
     pluginName: string,
-    messageBus: MB,
-    plugin: Plugin<IC, C> | StatefulPlugin<any, any, any, any>
+    plugin:
+      | Plugin<InitContext<MB>, Context<MB>>
+      | StatefulPlugin<any, any, any, any>
   ): any {
     return isStatefulPlugin(plugin)
-      ? this.createStatefulContext(pluginName, messageBus, plugin)
-      : this.createContext(pluginName, messageBus)
+      ? this.createStatefulContext(pluginName, plugin)
+      : this.createContext(pluginName)
   }
 
-  private createContext(pluginName: string, messageBus: MB): C {
+  protected createContext(pluginName: string) {
     return {
-      broker: messageBus.broker(pluginName),
-      doc: document,
-      getConfig: () => {},
-      setConfig: () => {},
+      broker: this.messageBus.broker(pluginName) as MessageBusBroker<MB>,
       log: createLogger(pluginName),
-      ownName: pluginName,
-      queryParams: {},
-      win: window,
-    } as any
+      ...((this.createExtraContext && this.createExtraContext(pluginName)) ||
+        {}),
+    }
   }
 
-  private createStatefulContext<Action extends ActionI, State>(
+  protected createStatefulContext<Action extends ActionI, State>(
     pluginName: string,
-    messageBus: MB,
-    plugin: StatefulPlugin<Action, State, IC, StatefulContext<B, Action, State>>
+    plugin: StatefulPlugin<
+      Action,
+      State,
+      InitContext<MB>,
+      StatefulContext<MB, Action, State>
+    >
   ) {
-    const context = this.createContext(pluginName, messageBus)
+    const context = this.createContext(pluginName)
     return {
       ...context,
       store: new Store<Action, State>(

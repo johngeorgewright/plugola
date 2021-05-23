@@ -142,3 +142,31 @@ test('using the message bus to communicate between plugins', async (done) => {
 
   pluginManager.run()
 })
+
+test('extra context', async () => {
+  const pluginManager = new PluginManager(messageBus, {
+    createContext(pluginName) {
+      return {
+        foo: pluginName,
+      }
+    },
+    createInitContext(pluginName) {
+      return {
+        foo: pluginName,
+      }
+    },
+  })
+
+  pluginManager.registerPlugin('my-plugin', {
+    init({ foo }) {
+      expect(foo).toBe('my-plugin')
+    },
+
+    run({ foo }) {
+      expect(foo).toBe('my-plugin')
+    },
+  })
+
+  await pluginManager.init()
+  await pluginManager.run()
+})
