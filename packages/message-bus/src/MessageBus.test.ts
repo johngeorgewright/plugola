@@ -152,59 +152,56 @@ describe('invokables', () => {
   type Invokables = {
     foo: { args: []; return: string }
     bar: { args: [string]; return: string }
-    afoo: { args: [string]; return: Promise<string> }
+    afoo: { args: [string]; return: string }
   }
   let messageBus: MessageBus<{}, {}, Invokables>
   let broker: Broker<{}, {}, Invokables>
   let foo: jest.Mock<string>
   let bar: jest.Mock<string, [string]>
-  let afoo: jest.Mock<Promise<string>>
 
   beforeEach(() => {
     messageBus = new MessageBus()
     broker = messageBus.broker('test')
     foo = jest.fn(() => 'foo')
     bar = jest.fn((x: string) => x + '1')
-    afoo = jest.fn(async (x: string) => bar(x))
     broker.register('foo', foo)
     broker.register('bar', bar)
-    broker.register('afoo', afoo)
   })
 
-  test('returning values', () => {
+  test('returning values', async () => {
     messageBus.start()
-    expect(broker.invoke('foo')).toEqual('foo')
-    expect(broker.invoke('bar', 'hello')).toEqual('hello1')
+    expect(await broker.invoke('foo')).toEqual('foo')
+    expect(await broker.invoke('bar', 'hello')).toEqual('hello1')
   })
 
-  test('queued messages', () => {
-    expect(() => {
-      broker.invoke('foo')
-    }).toThrowError()
+  test('queued messages', async () => {
+    const promise = broker.invoke('foo')
+    messageBus.start()
+    expect(await promise).toBe('foo')
   })
 
-  test('invoking unregistered', () => {
-    expect(() => {
-      // @ts-ignore
-      broker.invoke('not register')
-    }).toThrowError()
+  test('invoking unregistered', async (done) => {
+    messageBus.start()
+    // @ts-ignore
+    await broker.invoke('not register').catch(() => done())
   })
 
   test('registering more than once', () => {
     expect(() => {
       broker.register('foo', () => 'foo')
     }).toThrowError()
+
+    broker.register('afoo', 'foo', () => 'foo')
+    broker.register('afoo', 'mung', () => 'face')
+
+    expect(() => {
+      broker.register('afoo', 'foo', () => 'foo')
+    }).toThrowError()
   })
 
-  test('intercept invokers', () => {
+  test('intercept invokers', async () => {
     messageBus.start()
     broker.interceptInvoker('bar', (x) => [x + '1'])
-    expect(broker.invoke('bar', 'hello')).toEqual('hello11')
-  })
-
-  test('intercept asynchonous invokers', async () => {
-    messageBus.start()
-    broker.interceptInvoker('afoo', async (x) => [x + 1])
-    expect(await broker.invoke('afoo', 'hello')).toEqual('hello11')
+    expect(await broker.invoke('bar', 'hello')).toEqual('hello11')
   })
 })
