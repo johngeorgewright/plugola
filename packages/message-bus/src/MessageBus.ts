@@ -294,7 +294,7 @@ export default class MessageBus<
           continue
         }
 
-        const newArgs = await interceptor.fn(moddedArgs.slice(index))
+        const newArgs = await interceptor.fn(...moddedArgs.slice(index))
 
         if (newArgs === CancelEvent) {
           return CancelEvent
@@ -330,7 +330,9 @@ export default class MessageBus<
         return args
       }
 
-      const newArgs = await Promise.resolve(interceptor.fn(args.slice(index)))
+      const newArgs = await Promise.resolve(
+        interceptor.fn(...args.slice(index))
+      )
 
       return newArgs
         ? ([
@@ -376,7 +378,7 @@ export default class MessageBus<
       throw new Error(`Cannot find matching invoker for ${invokableName}.`)
     }
 
-    return invoker.fn(args.slice(this.argumentIndex(invoker.args, args)))
+    return invoker.fn(...args.slice(this.argumentIndex(invoker.args, args)))
   }
 
   private argumentIndex(args1: ArrayLike<unknown>, args2: ArrayLike<unknown>) {
