@@ -21,6 +21,7 @@ test('initializing plugins', async () => {
     },
   })
 
+  pluginManager.enableAllPlugins()
   await pluginManager.init()
   expect(result!).toBe('running mung')
 })
@@ -48,6 +49,7 @@ test('initialize dependency tree', async () => {
     },
   })
 
+  pluginManager.enablePlugins(['mung'])
   await pluginManager.init()
   expect(result!).toBe('foobarmung')
 })
@@ -61,6 +63,7 @@ test('running normal plugins', async () => {
     },
   })
 
+  pluginManager.enableAllPlugins()
   await pluginManager.run()
   expect(result!).toBe('running mung')
 })
@@ -93,6 +96,7 @@ test('running stateful plugins', async () => {
     },
   })
 
+  pluginManager.enableAllPlugins()
   await pluginManager.run()
   expect(result!).toBe('foo')
 })
@@ -120,6 +124,7 @@ test('running with a dependency tree', async () => {
     },
   })
 
+  pluginManager.enablePlugins(['mung'])
   await pluginManager.run()
   expect(result!).toBe('foobarmung')
 })
@@ -140,7 +145,8 @@ test('using the message bus to communicate between plugins', async (done) => {
     },
   })
 
-  pluginManager.run()
+  pluginManager.enableAllPlugins()
+  await pluginManager.run()
 })
 
 test('extra context', async () => {
@@ -176,6 +182,75 @@ test('extra context', async () => {
     },
   })
 
+  pluginManager.enableAllPlugins()
   await pluginManager.init()
   await pluginManager.run()
+})
+
+test('only run enabled plugins', async () => {
+  const foo = jest.fn()
+  const bar = jest.fn()
+
+  pluginManager.registerPlugin('foo', {
+    run: foo,
+  })
+
+  pluginManager.registerPlugin('bar', {
+    run: bar,
+  })
+
+  pluginManager.enablePlugins(['foo'])
+
+  await pluginManager.run()
+
+  expect(foo).toHaveBeenCalled()
+  expect(bar).not.toHaveBeenCalled()
+})
+
+test('enabling plugins within the init phase', async () => {
+  const foo = jest.fn()
+  const bar = jest.fn()
+
+  pluginManager.registerPlugin('foo', {
+    init({ enablePlugins }) {
+      enablePlugins(['bar'])
+    },
+    run: foo,
+  })
+
+  pluginManager.registerPlugin('bar', {
+    run: bar,
+  })
+
+  pluginManager.enablePlugins(['foo'])
+
+  await pluginManager.init()
+  await pluginManager.run()
+
+  expect(foo).toHaveBeenCalled()
+  expect(bar).toHaveBeenCalled()
+})
+
+test('disabling plugins within the init phase', async () => {
+  const foo = jest.fn()
+  const bar = jest.fn()
+
+  pluginManager.registerPlugin('foo', {
+    init({ disablePlugins }) {
+      disablePlugins(['bar'])
+    },
+    run: foo,
+  })
+
+  pluginManager.registerPlugin('bar', {
+    run: bar,
+  })
+
+  pluginManager.enablePlugins(['foo', 'bar'])
+
+  await pluginManager.init()
+  await pluginManager.run()
+
+  expect(foo).toHaveBeenCalled()
+  expect(bar).not.toHaveBeenCalled()
 })

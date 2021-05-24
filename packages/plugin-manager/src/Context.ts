@@ -14,8 +14,8 @@ export interface Context<MB extends MessageBus> {
 }
 
 export interface InitContext<MB extends MessageBus> extends Context<MB> {
-  addPlugins(pluginNames: string[]): void
-  removePlugins(pluginNames: string[]): void
+  enablePlugins(pluginNames: string[]): void
+  disablePlugins(pluginNames: string[]): void
 }
 
 export interface StatefulContext<
