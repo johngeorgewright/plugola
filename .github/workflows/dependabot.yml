@@ -5,19 +5,6 @@ on:
     types: [opened]
 
 jobs:
-  auto-merge:
-    name: Auto Merge
-    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check project
-        uses: actions/checkout@v2
-      - name: Auto appove
-        uses: ahmadnassri/action-dependabot-auto-merge@v2
-        with:
-          target: minor
-          github-token: ${{ secrets.PUSH_TOKEN }}
-
   check-cache:
     name: Check Yarn Cache
     runs-on: ubuntu-latest
@@ -37,3 +24,16 @@ jobs:
         with:
           add: .yarn .pnp.js yarn.lock
           message: 'chore(package): update dependencies'
+
+  auto-merge:
+    name: Auto Merge
+    needs: [check-cache]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check project
+        uses: actions/checkout@v2
+      - name: Auto appove
+        uses: ahmadnassri/action-dependabot-auto-merge@v2
+        with:
+          target: minor
+          github-token: ${{ secrets.PUSH_TOKEN }}
