@@ -150,20 +150,29 @@ test('extra context', async () => {
         foo: pluginName,
       }
     },
-    addInitContext(pluginName) {
+
+    addInitContext() {
       return {
-        foo: pluginName,
+        bar: 'bar',
+      }
+    },
+
+    addRunContext() {
+      return {
+        mung: 'face',
       }
     },
   })
 
   pluginManager.registerPlugin('my-plugin', {
-    init({ foo }) {
+    init({ foo, bar }) {
       expect(foo).toBe('my-plugin')
+      expect(bar).toBe('bar')
     },
 
-    run({ foo }) {
+    run({ foo, mung }) {
       expect(foo).toBe('my-plugin')
+      expect(mung).toBe('face')
     },
   })
 

@@ -12,16 +12,19 @@ import { MessageBusBroker } from '@plugola/message-bus/dist/types'
 
 interface Options<
   ExtraContext extends Record<string, unknown>,
-  ExtraInitContext extends Record<string, unknown>
+  ExtraInitContext extends Record<string, unknown>,
+  ExtraRunContext extends Record<string, unknown>
 > {
   addContext?(pluginName: string): ExtraContext
   addInitContext?(pluginName: string): ExtraInitContext
+  addRunContext?(pluginName: string): ExtraRunContext
 }
 
 export default class PluginManager<
   MB extends MessageBus,
   ExtraContext extends Record<string, unknown> = {},
-  ExtraInitContext extends Record<string, unknown> = {}
+  ExtraInitContext extends Record<string, unknown> = {},
+  ExtraRunContext extends Record<string, unknown> = {}
 > {
   private plugins: Record<
     string,
@@ -33,17 +36,20 @@ export default class PluginManager<
   private messageBus: MB
   private createExtraContext?: (pluginName: string) => ExtraContext
   private createExtraInitContext?: (pluginName: string) => ExtraInitContext
+  private createExtraRunContext?: (pluginName: string) => ExtraRunContext
 
   constructor(
     messageBus: MB,
     {
       addContext: createExtraContext,
       addInitContext: createExtraInitContext,
-    }: Options<ExtraContext, ExtraInitContext> = {}
+      addRunContext: createExtraRunContext,
+    }: Options<ExtraContext, ExtraInitContext, ExtraRunContext> = {}
   ) {
     this.messageBus = messageBus
     this.createExtraContext = createExtraContext
     this.createExtraInitContext = createExtraInitContext
+    this.createExtraRunContext = createExtraRunContext
   }
 
   registerStatefulPlugin<Action extends ActionI, State>(
@@ -51,8 +57,8 @@ export default class PluginManager<
     plugin: StatefulPlugin<
       Action,
       State,
-      InitContext<MB> & ExtraContext,
-      StatefulContext<MB, Action, State> & ExtraContext
+      InitContext<MB> & ExtraContext & ExtraInitContext,
+      StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
     >
   ) {
     this.plugins[name] = plugin
@@ -61,8 +67,8 @@ export default class PluginManager<
   registerPlugin(
     name: string,
     plugin: Plugin<
-      InitContext<MB> & ExtraInitContext,
-      Context<MB> & ExtraContext
+      InitContext<MB> & ExtraContext & ExtraInitContext,
+      Context<MB> & ExtraContext & ExtraRunContext
     >
   ) {
     this.plugins[name] = plugin
@@ -151,14 +157,16 @@ export default class PluginManager<
     )
   }
 
-  protected createInitContext(pluginName: string) {
+  protected createInitContext(
+    pluginName: string
+  ): InitContext<MB> & ExtraContext & ExtraInitContext {
     return {
       ...this.createContext(pluginName),
       addPlugins: () => {},
       removePlugins: () => {},
-      ...((this.createExtraInitContext &&
+      ...(((this.createExtraInitContext &&
         this.createExtraInitContext(pluginName)) ||
-        {}),
+        {}) as ExtraInitContext),
     }
   }
 
@@ -170,12 +178,12 @@ export default class PluginManager<
       InitContext<MB>,
       StatefulContext<MB, Action, State>
     >
-  ): StatefulContext<MB, Action, State>
+  ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
 
   protected createRunContext(
     pluginName: string,
     plugin: Plugin<InitContext<MB>, Context<MB>>
-  ): Context<MB>
+  ): Context<MB> & ExtraContext & ExtraRunContext
 
   protected createRunContext(
     pluginName: string,
@@ -183,17 +191,22 @@ export default class PluginManager<
       | Plugin<InitContext<MB>, Context<MB>>
       | StatefulPlugin<any, any, any, any>
   ): any {
-    return isStatefulPlugin(plugin)
-      ? this.createStatefulContext(pluginName, plugin)
-      : this.createContext(pluginName)
+    return {
+      ...(isStatefulPlugin(plugin)
+        ? this.createStatefulContext(pluginName, plugin)
+        : this.createContext(pluginName)),
+      ...((this.createExtraRunContext &&
+        this.createExtraRunContext(pluginName)) ||
+        {}),
+    }
   }
 
-  protected createContext(pluginName: string) {
+  protected createContext(pluginName: string): Context<MB> & ExtraContext {
     return {
       broker: this.messageBus.broker(pluginName) as MessageBusBroker<MB>,
       log: createLogger(pluginName),
-      ...((this.createExtraContext && this.createExtraContext(pluginName)) ||
-        {}),
+      ...(((this.createExtraContext && this.createExtraContext(pluginName)) ||
+        {}) as ExtraContext),
     }
   }
 
