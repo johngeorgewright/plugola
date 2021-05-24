@@ -21,6 +21,7 @@ jobs:
   check-cache:
     name: Check Yarn Cache
     runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
