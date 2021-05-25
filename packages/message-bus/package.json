@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@johngw/async": "^2.8.1",
-    "ts-toolbelt": "^9.6.0"
+    "ts-toolbelt": "^9.6.0",
+    "tslib": "^2.2.0"
   }
 }

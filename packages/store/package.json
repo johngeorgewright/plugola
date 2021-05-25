@@ -30,6 +30,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@plugola/logger": "workspace:packages/logger"
+    "@plugola/logger": "workspace:packages/logger",
+    "tslib": "^2.2.0"
   }
 }

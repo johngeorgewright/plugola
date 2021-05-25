@@ -31,6 +31,7 @@
     "@plugola/logger": "workspace:packages/logger",
     "@plugola/message-bus": "workspace:packages/message-bus",
     "@plugola/query-params": "workspace:packages/query-params",
-    "@plugola/store": "workspace:packages/store"
+    "@plugola/store": "workspace:packages/store",
+    "tslib": "^2.2.0"
   }
 }

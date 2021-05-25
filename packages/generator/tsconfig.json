@@ -3,6 +3,7 @@
     "target": "ES2018",
     "module": "CommonJS",
     "lib": ["es2018"],
+    "importHelpers": true,
     "sourceMap": true,
     "outDir": "./generators",
     "downlevelIteration": true,
