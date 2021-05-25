@@ -1,4 +1,4 @@
-import { combineIterators } from '@johngw/async'
+import { combineIterators, iteratorRace } from '@johngw/async'
 import { init, last, removeItem, replaceLastItem } from './array'
 import Broker from './Broker'
 import { amend } from './object'
@@ -222,6 +222,15 @@ export default class MessageBus<
           iterator.fn(...args.slice(this.argumentIndex(iterator.args, args)))
         )
     )
+  }
+
+  iterateWithin<EventName extends keyof EventGens>(
+    broker: Broker<EventsT, EventGens, Invokables>,
+    within: number,
+    eventName: EventName,
+    args: EventGens[EventName]['args']
+  ) {
+    return iteratorRace(this.iterate(broker, eventName, args), within)
   }
 
   register<InvokableName extends keyof Invokables>(

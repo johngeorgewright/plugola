@@ -82,6 +82,14 @@ export default class Broker<
     return this.messageBus.iterate(this, eventName, args)
   }
 
+  iterateWithin<EventName extends keyof EventGens>(
+    within: number,
+    eventName: EventName,
+    ...args: EventGens[EventName]['args']
+  ): AsyncIterable<EventGens[EventName]['yield']> {
+    return this.messageBus.iterateWithin(this, within, eventName, args)
+  }
+
   register<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     ...args: InvokerRegistrationArgs<
