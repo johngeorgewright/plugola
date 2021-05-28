@@ -5,22 +5,30 @@ on:
     branches: [master]
 
 jobs:
-  publish-npm:
-    name: Publish to NPM
+  github:
+    name: Create GitHub Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project
-        uses: actions/checkout@master
-      - name: Install Node.js
-        uses: actions/setup-node@v1
+        uses: actions/checkout@v2
         with:
-          node-version: 12
+          token: ${{ secrets.PUSH_TOKEN }}
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Setup
+        run: yarn
+
       - name: Build
         run: yarn build
+
       - name: Test
         run: yarn test
+
       - name: Release
         run: yarn release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PUSH_TOKEN }}
