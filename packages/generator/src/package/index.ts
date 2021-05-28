@@ -88,6 +88,7 @@ export = class PluginGenerator extends Generator {
   async install() {
     await this.addDevDependencies([
       '@semantic-release/commit-analyzer',
+      '@semantic-release/git',
       '@semantic-release/github',
       '@semantic-release/npm',
       '@semantic-release/release-notes-generator',
