@@ -797,19 +797,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/async@npm:^2.8.1":
-  version: 2.8.1
-  resolution: "@johngw/async@npm:2.8.1"
+"@johngw/async@npm:^2.10.4":
+  version: 2.10.4
+  resolution: "@johngw/async@npm:2.10.4"
   dependencies:
-    "@johngw/object": "*"
-  checksum: 2affdfba27b51283c063b6a0b3d21e67a5ad4636af656338b6a23499e558a740390355aa96e4b16915087b503cc22003827a0ddeba34317a9db81a97ac332ae0
+    "@johngw/object": 1.1.4
+    tslib: ^2.2.0
+  checksum: 3f3636b8ce607deb38f39810ca7bc8c7e3324b6cb2f056b1b2961868bc13bf5986cb85fcbfc13164603d6d8d7d19dc140205da948d7294cfc332b21960f4f991
   languageName: node
   linkType: hard
 
-"@johngw/object@npm:*":
-  version: 1.0.0
-  resolution: "@johngw/object@npm:1.0.0"
-  checksum: d68fc9a6e91a13f393187184bdc329f31339b783a55b19f998fa5b3b3e17c57d73d320ca4d93cda2087e69aaaa85d9f7465daede90fe2afcf3e5e338285cd92e
+"@johngw/object@npm:1.1.4":
+  version: 1.1.4
+  resolution: "@johngw/object@npm:1.1.4"
+  dependencies:
+    tslib: ^2.2.0
+  checksum: 736343eb911dba4c9a0900496cc1704fd737fab6dd2c0327ebce9ebb3687a32b5bd70133da5ff8217c8a36756ab6da223a222bca27a40a85a629b2a8a5ccd8e2
   languageName: node
   linkType: hard
 
@@ -1138,7 +1141,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/generator@workspace:packages/generator"
   dependencies:
-    "@semantic-release/git": ^9.0.0
     "@types/jest": ^26.0.23
     "@types/yeoman-generator": 5.0.0
     change-case: ^4.1.2
@@ -1175,7 +1177,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/message-bus@workspace:packages/message-bus"
   dependencies:
-    "@johngw/async": ^2.8.1
+    "@johngw/async": ^2.10.4
     "@semantic-release/commit-analyzer": ^8.0.1
     "@semantic-release/git": ^9.0.0
     "@semantic-release/github": ^7.2.3

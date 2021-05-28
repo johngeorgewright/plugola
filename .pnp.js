@@ -1093,20 +1093,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@johngw/async", [
-        ["npm:2.8.1", {
-          "packageLocation": "./.yarn/cache/@johngw-async-npm-2.8.1-127c5dbe6c-2affdfba27.zip/node_modules/@johngw/async/",
+        ["npm:2.10.4", {
+          "packageLocation": "./.yarn/cache/@johngw-async-npm-2.10.4-841d3471e1-3f3636b8ce.zip/node_modules/@johngw/async/",
           "packageDependencies": [
-            ["@johngw/async", "npm:2.8.1"],
-            ["@johngw/object", "npm:1.0.0"]
+            ["@johngw/async", "npm:2.10.4"],
+            ["@johngw/object", "npm:1.1.4"],
+            ["tslib", "npm:2.2.0"]
           ],
           "linkType": "HARD",
         }]
       ]],
       ["@johngw/object", [
-        ["npm:1.0.0", {
-          "packageLocation": "./.yarn/cache/@johngw-object-npm-1.0.0-fe4e5e0746-d68fc9a6e9.zip/node_modules/@johngw/object/",
+        ["npm:1.1.4", {
+          "packageLocation": "./.yarn/cache/@johngw-object-npm-1.1.4-d5c9d259dd-736343eb91.zip/node_modules/@johngw/object/",
           "packageDependencies": [
-            ["@johngw/object", "npm:1.0.0"]
+            ["@johngw/object", "npm:1.1.4"],
+            ["tslib", "npm:2.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -1500,7 +1502,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/generator/",
           "packageDependencies": [
             ["@plugola/generator", "workspace:packages/generator"],
-            ["@semantic-release/git", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:9.0.0"],
             ["@types/jest", "npm:26.0.23"],
             ["@types/yeoman-generator", "npm:5.0.0"],
             ["change-case", "npm:4.1.2"],
@@ -1541,7 +1542,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/message-bus/",
           "packageDependencies": [
             ["@plugola/message-bus", "workspace:packages/message-bus"],
-            ["@johngw/async", "npm:2.8.1"],
+            ["@johngw/async", "npm:2.10.4"],
             ["@semantic-release/commit-analyzer", "virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:8.0.1"],
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.0"],
             ["@semantic-release/github", "virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:7.2.3"],
@@ -1704,27 +1705,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "npm:9.0.0"]
           ],
           "linkType": "SOFT",
-        }],
-        ["virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:9.0.0", {
-          "packageLocation": "./.yarn/$$virtual/@semantic-release-git-virtual-d93de7c36f/0/cache/@semantic-release-git-npm-9.0.0-28528be7a6-8a96bc9e44.zip/node_modules/@semantic-release/git/",
-          "packageDependencies": [
-            ["@semantic-release/git", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:9.0.0"],
-            ["@semantic-release/error", "npm:2.2.0"],
-            ["@types/semantic-release", null],
-            ["aggregate-error", "npm:3.1.0"],
-            ["debug", "virtual:4b0eea214d83e6e05cbe9674d69cb7f553c930fbd95cf27b023ecb1d9ff23bce32ab3afc880c65a5b91bd3abeccea112435944b80702879b8337532cf8f5b466#npm:4.3.2"],
-            ["dir-glob", "npm:3.0.1"],
-            ["execa", "npm:4.1.0"],
-            ["lodash", "npm:4.17.21"],
-            ["micromatch", "npm:4.0.4"],
-            ["p-reduce", "npm:2.1.0"],
-            ["semantic-release", null]
-          ],
-          "packagePeers": [
-            "@types/semantic-release",
-            "semantic-release"
-          ],
-          "linkType": "HARD",
         }],
         ["virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.0", {
           "packageLocation": "./.yarn/$$virtual/@semantic-release-git-virtual-66f6c148dc/0/cache/@semantic-release-git-npm-9.0.0-28528be7a6-8a96bc9e44.zip/node_modules/@semantic-release/git/",
