@@ -24,7 +24,7 @@ export type SubscriberArgs<A extends unknown[], B extends unknown[] = []> =
     ? [SubscriberFn<B>]
     :
         | L.Append<A, SubscriberFn<B>>
-        | SubscriberArgs<L.Pop<A>, L.Append<B, L.Last<A>>>
+        | SubscriberArgs<L.Pop<A>, L.Prepend<B, L.Last<A>>>
 
 export type UntilArgs<A extends unknown[]> = L.Length<A> extends 0
   ? never[]
@@ -74,7 +74,7 @@ export type EventInterceptorArgs<
   ? [EventInterceptorFn<B, C>]
   :
       | [...A, EventInterceptorFn<B, C>]
-      | EventInterceptorArgs<L.Pop<A>, [L.Last<A>, ...B], C>
+      | EventInterceptorArgs<L.Pop<A>, L.Prepend<B, L.Last<A>>, C>
 
 export type EventInterceptors<Events extends EventsT> = Partial<
   {
@@ -104,7 +104,7 @@ export type InvokerRegistrationArgs<
   ? [InvokerFn<B, Return>]
   :
       | L.Append<A, InvokerFn<B, Return>>
-      | InvokerRegistrationArgs<L.Pop<A>, Return, L.Append<B, L.Last<A>>>
+      | InvokerRegistrationArgs<L.Pop<A>, Return, L.Prepend<B, L.Last<A>>>
 
 export interface Invoker<
   B extends Broker<EventsT, EventGeneratorsT, InvokablesT>
@@ -135,7 +135,7 @@ export type InvokerInterceptorArgs<
   ? [InvokerInterceptorFn<B, C>]
   :
       | L.Append<A, InvokerInterceptorFn<B, C>>
-      | InvokerInterceptorArgs<L.Pop<A>, L.Append<B, L.Last<A>>, C>
+      | InvokerInterceptorArgs<L.Pop<A>, L.Prepend<B, L.Last<A>>, C>
 
 export type InvokerInterceptors<Invokables extends InvokablesT> = Partial<
   {
@@ -173,7 +173,7 @@ export type EventGeneratorArgs<
   ? [EventGeneratorFn<B, R>]
   :
       | L.Append<A, EventGeneratorFn<B, R>>
-      | EventGeneratorArgs<L.Pop<A>, R, L.Append<B, L.Last<A>>>
+      | EventGeneratorArgs<L.Pop<A>, R, L.Prepend<B, L.Last<A>>>
 
 export type EventGenerators<EventGens extends EventGeneratorsT> = Partial<
   {
