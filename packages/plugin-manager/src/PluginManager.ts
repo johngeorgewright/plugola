@@ -5,7 +5,7 @@ import {
   StatefulContext,
 } from './Context'
 import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
-import Store, { ActionI } from '@plugola/store'
+import Store, { ActionI, Reducer } from '@plugola/store'
 import type { MessageBus } from '@plugola/message-bus'
 import createLogger from './createLogger'
 import { MessageBusBroker } from '@plugola/message-bus/dist/types'
@@ -215,10 +215,14 @@ export default class PluginManager<
     plugin:
       | Plugin<InitContext<MB>, Context<MB>>
       | StatefulPlugin<any, any, any, any>
-  ): any {
+  ) {
     return {
       ...(isStatefulPlugin(plugin)
-        ? this.createStatefulContext(pluginName, plugin)
+        ? this.createStatefulContext(
+            pluginName,
+            plugin.state.reduce,
+            plugin.state.initial
+          )
         : this.createContext(pluginName)),
       ...((this.createExtraRunContext &&
         this.createExtraRunContext(pluginName)) ||
@@ -226,7 +230,7 @@ export default class PluginManager<
     }
   }
 
-  private createContext(pluginName: string) {
+  private createContext(pluginName: string): Context<MB> & ExtraContext {
     return {
       broker: this.messageBus.broker(pluginName) as MessageBusBroker<MB>,
       log: createLogger(pluginName),
@@ -237,19 +241,15 @@ export default class PluginManager<
 
   private createStatefulContext<Action extends ActionI, State>(
     pluginName: string,
-    plugin: StatefulPlugin<
-      Action,
-      State,
-      InitContext<MB>,
-      StatefulContext<MB, Action, State>
-    >
-  ) {
+    reduce: Reducer<Action, State>,
+    initial: State
+  ): StatefulContext<MB, Action, State> {
     const context = this.createContext(pluginName)
     return {
       ...context,
       store: new Store<Action, State>(
-        plugin.state.reduce,
-        plugin.state.initial,
+        reduce,
+        initial,
         context.log.extend('store')
       ),
     }
