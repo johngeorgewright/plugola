@@ -69,12 +69,12 @@ export = class PluginGenerator extends Generator {
     this.packageJson.set('license', 'MIT')
 
     this.packageJson.set('bugs', {
-      url: 'https://github.com/johngeorgewright/ts-mono-repo/issues',
+      url: 'https://github.com/johngeorgewright/plugola/issues',
     })
 
     this.packageJson.set(
       'homepage',
-      'https://github.com/johngeorgewright/ts-mono-repo#readme'
+      'https://github.com/johngeorgewright/plugola#readme'
     )
 
     const devDependencies = [
