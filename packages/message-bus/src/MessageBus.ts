@@ -1,4 +1,4 @@
-import { combineIterators, iteratorRace } from '@johngw/async'
+import { combineIterators, iteratorRace } from '@johngw/async-iterator'
 import { init, last, removeItem, replaceLastItem } from './array'
 import Broker from './Broker'
 import { amend } from './object'
