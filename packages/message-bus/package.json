@@ -33,7 +33,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@johngw/async": "^2.8.1",
+    "@johngw/async": "^2.10.4",
     "ts-toolbelt": "^9.6.0",
     "tslib": "^2.2.0"
   }
