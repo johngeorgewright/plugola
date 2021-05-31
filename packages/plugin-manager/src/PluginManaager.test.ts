@@ -129,7 +129,7 @@ test('running with a dependency tree', async () => {
   expect(result!).toBe('foobarmung')
 })
 
-test('using the message bus to communicate between plugins', async (done) => {
+test('using the message bus to communicate between plugins', (done) => {
   pluginManager.registerPlugin('foo', {
     run({ broker }) {
       broker.on('foo', (str) => {
@@ -146,7 +146,7 @@ test('using the message bus to communicate between plugins', async (done) => {
   })
 
   pluginManager.enableAllPlugins()
-  await pluginManager.run()
+  pluginManager.run()
 })
 
 test('extra context', async () => {

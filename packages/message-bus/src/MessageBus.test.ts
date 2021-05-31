@@ -180,10 +180,13 @@ describe('invokables', () => {
     expect(await promise).toBe('foo')
   })
 
-  test('invoking unregistered', async (done) => {
+  test('invoking unregistered', (done) => {
     messageBus.start()
-    // @ts-ignore
-    await broker.invoke('not register').catch(() => done())
+    broker
+      // @ts-ignore
+      .invoke('not register')
+      .then(() => done('It should have errored.'))
+      .catch(() => done())
   })
 
   test('registering more than once', () => {

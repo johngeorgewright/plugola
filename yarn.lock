@@ -1293,6 +1293,7 @@ __metadata:
     prettier: ^2.3.0
     semantic-release: ^17.4.3
     semantic-release-monorepo: ^7.0.5
+    slash: 3
     tslib: ^2.2.0
     typescript: ^4.2.4
     yo: ^4.2.0
@@ -6334,6 +6335,7 @@ fsevents@^2.3.2:
     chalk: ^4.0.0
     graceful-fs: ^4.2.4
     is-ci: ^3.0.0
+    jest-runner: ^27.0.1
     picomatch: ^2.2.3
   checksum: a395978f7f0599508ff4d7738ddb62cdcb24350e8ddded59727300a3892318f984f035534ecfc5c7c4af85f26eea4754796aa41903a552b433d876ff08c9c9f3
   languageName: node
@@ -9717,7 +9719,7 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"slash@npm:^3.0.0":
+"slash@npm:3, slash@npm:^3.0.0":
   version: 3.0.0
   resolution: "slash@npm:3.0.0"
   checksum: fc3e8597d822ee3ba6cd76e9b001cd5be315f9b81c3a03a29bb611c003d1484e3b29a9e7bc020298fa669b585ff7c9268f44513f60c186216eb6af3111a3e838
