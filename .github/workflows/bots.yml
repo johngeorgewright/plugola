@@ -1,0 +1,20 @@
+name: Bots
+
+on:
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  auto-merge:
+    name: Auto Merge
+    needs: [check-cache]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check project
+        uses: actions/checkout@v2
+      - name: Auto appove
+        if: github.actor == 'renovate[bot]'
+        uses: ahmadnassri/action-dependabot-auto-merge@v2
+        with:
+          target: minor
+          github-token: ${{ secrets.PUSH_TOKEN }}
