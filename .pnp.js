@@ -78,7 +78,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cz-conventional-changelog", "npm:3.3.0"],
             ["husky", "npm:6.0.0"],
             ["lint-staged", "npm:11.0.0"],
-            ["prettier", "npm:2.3.0"],
+            ["prettier", "npm:2.3.1"],
             ["semantic-release", "npm:17.4.3"],
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],
             ["slash", "npm:3.0.0"],
@@ -1975,7 +1975,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cz-conventional-changelog", "npm:3.3.0"],
             ["husky", "npm:6.0.0"],
             ["lint-staged", "npm:11.0.0"],
-            ["prettier", "npm:2.3.0"],
+            ["prettier", "npm:2.3.1"],
             ["semantic-release", "npm:17.4.3"],
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],
             ["slash", "npm:3.0.0"],
@@ -10805,10 +10805,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["prettier", [
-        ["npm:2.3.0", {
-          "packageLocation": "./.yarn/cache/prettier-npm-2.3.0-29ef37e8b6-652640cc8b.zip/node_modules/prettier/",
+        ["npm:2.3.1", {
+          "packageLocation": "./.yarn/cache/prettier-npm-2.3.1-f8593fac45-9b4a695b87.zip/node_modules/prettier/",
           "packageDependencies": [
-            ["prettier", "npm:2.3.0"]
+            ["prettier", "npm:2.3.1"]
           ],
           "linkType": "HARD",
         }]
