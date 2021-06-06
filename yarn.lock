@@ -1334,7 +1334,7 @@ __metadata:
     change-case: 4.1.2
     jest: 27.0.4
     rimraf: 3.0.2
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: 2.2.0
     typescript: 4.2.4
     yeoman-generator: 5.3.0
@@ -1355,7 +1355,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: ^2.2.0
     typescript: 4.2.4
   languageName: unknown
@@ -1378,7 +1378,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     ts-node: 10.0.0
     ts-toolbelt: ^9.6.0
     tslib: ^2.2.0
@@ -1429,7 +1429,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: ^2.2.0
     typescript: 4.2.4
   languageName: unknown
@@ -1449,7 +1449,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: ^2.2.0
     typescript: 4.2.4
   languageName: unknown
@@ -1470,7 +1470,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: ^2.2.0
     typescript: 4.2.4
   languageName: unknown
@@ -11079,9 +11079,9 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:27.0.1":
-  version: 27.0.1
-  resolution: "ts-jest@npm:27.0.1"
+"ts-jest@npm:27.0.3":
+  version: 27.0.3
+  resolution: "ts-jest@npm:27.0.3"
   dependencies:
     bs-logger: 0.x
     buffer-from: 1.x
@@ -11098,7 +11098,7 @@ fsevents@^2.3.2:
     typescript: ">=3.8 <5.0"
   bin:
     ts-jest: cli.js
-  checksum: 12ae908f941298725d9f6aca39f36a374cb1146c97cb1efb7aa9c15968e4be343d476811167d86804061231ff7cd7164f036ed413da21340e1c5758712a75173
+  checksum: a63f3a8620a16335d745f22377a9cc118129d28a5b122c609a7c6aabbb8048c85733c771a0dd39b136e8a75401473409452bdd3c5b9e3b85317c2e3f3ac03267
   languageName: node
   linkType: hard
 
