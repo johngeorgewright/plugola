@@ -9,7 +9,7 @@ let pluginManager: PluginManager<typeof messageBus>
 beforeEach(() => {
   messageBus = new MessageBus()
   messageBus.start()
-  pluginManager = new PluginManager(messageBus)
+  pluginManager = new PluginManager(messageBus) as any
 })
 
 test('initializing plugins', async () => {

@@ -9,6 +9,7 @@ import Store, { ActionI, Reducer } from '@plugola/store'
 import type { MessageBus } from '@plugola/message-bus'
 import createLogger from './createLogger'
 import { MessageBusBroker } from '@plugola/message-bus/dist/types'
+import Logger from '@plugola/logger'
 
 export interface PluginManagerOptions<
   ExtraContext extends Record<string, unknown> = {},
@@ -24,37 +25,39 @@ export default class PluginManager<
   MB extends MessageBus,
   ExtraContext extends Record<string, unknown> = {},
   ExtraInitContext extends Record<string, unknown> = {},
-  ExtraRunContext extends Record<string, unknown> = {}
+  ExtraRunContext extends Record<string, unknown> = {},
+  IC extends Record<string, unknown> = InitContext<MB> &
+    ExtraContext &
+    ExtraInitContext,
+  RC extends Record<string, unknown> = Context<MB> &
+    ExtraContext &
+    ExtraRunContext
 > {
-  private plugins: Record<
+  #plugins: Record<
     string,
-    | Plugin<InitContext<MB>, Context<MB>>
-    | StatefulPlugin<any, any, InitContext<MB>, StatefulContext<MB, any, any>>
+    | Plugin<IC, RC>
+    | StatefulPlugin<any, any, IC, StatefulContext<any, any> & RC>
   > = {}
-  private initialized: Record<string, Promise<void>> = {}
-  private ran: Record<string, Promise<void>> = {}
-  private messageBus: MB
-  private enabledPlugins: Set<string> = new Set()
-  private createExtraContext?: (pluginName: string) => ExtraContext
-  private createExtraInitContext?: (pluginName: string) => ExtraInitContext
-  private createExtraRunContext?: (pluginName: string) => ExtraRunContext
+  #initialized: Record<string, Promise<void>> = {}
+  #ran: Record<string, Promise<void>> = {}
+  #messageBus: MB
+  #enabledPlugins: Set<string> = new Set()
+  #createExtraContext?: (pluginName: string) => ExtraContext
+  #createExtraInitContext?: (pluginName: string) => ExtraInitContext
+  #createExtraRunContext?: (pluginName: string) => ExtraRunContext
 
   constructor(
     messageBus: MB,
-    {
-      addContext: createExtraContext,
-      addInitContext: createExtraInitContext,
-      addRunContext: createExtraRunContext,
-    }: PluginManagerOptions<
+    options: PluginManagerOptions<
       ExtraContext,
       ExtraInitContext,
       ExtraRunContext
     > = {}
   ) {
-    this.messageBus = messageBus
-    this.createExtraContext = createExtraContext
-    this.createExtraInitContext = createExtraInitContext
-    this.createExtraRunContext = createExtraRunContext
+    this.#messageBus = messageBus
+    this.#createExtraContext = options.addContext
+    this.#createExtraInitContext = options.addInitContext
+    this.#createExtraRunContext = options.addRunContext
   }
 
   registerStatefulPlugin<Action extends ActionI, State>(
@@ -62,93 +65,87 @@ export default class PluginManager<
     plugin: StatefulPlugin<
       Action,
       State,
-      InitContext<MB> & ExtraContext & ExtraInitContext,
-      StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
+      IC,
+      StatefulContext<Action, State> & RC
     >
   ) {
-    this.plugins[name] = plugin
+    this.#plugins[name] = plugin
   }
 
-  registerPlugin(
-    name: string,
-    plugin: Plugin<
-      InitContext<MB> & ExtraContext & ExtraInitContext,
-      Context<MB> & ExtraContext & ExtraRunContext
-    >
-  ) {
-    this.plugins[name] = plugin
+  registerPlugin(name: string, plugin: Plugin<IC, RC>) {
+    this.#plugins[name] = plugin
   }
 
   async init() {
-    this.initialized = {}
-    await this.mapPlugins(this.initPlugin)
+    this.#initialized = {}
+    await this.#mapPlugins(this.#initPlugin)
   }
 
   async run() {
-    this.ran = {}
-    await this.mapPlugins(this.runPlugin)
+    this.#ran = {}
+    await this.#mapPlugins(this.#runPlugin)
   }
 
   enableAllPlugins() {
-    for (const pluginName in this.plugins) {
-      this.enabledPlugins.add(pluginName)
+    for (const pluginName in this.#plugins) {
+      this.#enabledPlugins.add(pluginName)
     }
   }
 
   readonly enablePlugins = (pluginNames: string[]) => {
     for (const pluginName of pluginNames) {
-      this.enabledPlugins.add(pluginName)
+      this.#enabledPlugins.add(pluginName)
     }
   }
 
   readonly disablePlugins = (pluginNames: string[]) => {
     for (const pluginName of pluginNames) {
-      this.enabledPlugins.delete(pluginName)
+      this.#enabledPlugins.delete(pluginName)
     }
   }
 
-  private initPlugin = async (pluginName: string) => {
-    const plugin = this.plugins[pluginName]
+  #initPlugin = async (pluginName: string) => {
+    const plugin = this.#plugins[pluginName]
 
-    if (this.initialized[pluginName]) {
+    if (this.#initialized[pluginName]) {
       return
     }
 
-    this.initialized[pluginName] = (async () => {
+    this.#initialized[pluginName] = (async () => {
       if (plugin.dependencies) {
-        await this.mapDependencies(
+        await this.#mapDependencies(
           plugin.dependencies,
-          (dep) => !this.initialized[dep],
-          this.initPlugin
+          (dep) => !this.#initialized[dep],
+          this.#initPlugin
         )
       }
 
       if (plugin.init) {
-        return plugin.init(this.createInitContext(pluginName))
+        return plugin.init(this.#createInitContext(pluginName))
       }
     })()
 
-    return this.initialized[pluginName]
+    return this.#initialized[pluginName]
   }
 
-  private runPlugin = async (pluginName: string) => {
-    const plugin = this.plugins[pluginName]
+  #runPlugin = async (pluginName: string) => {
+    const plugin = this.#plugins[pluginName]
 
-    if (this.ran[pluginName]) {
+    if (this.#ran[pluginName]) {
       return
     }
 
-    this.ran[pluginName] = (async () => {
+    this.#ran[pluginName] = (async () => {
       if (plugin.dependencies) {
-        await this.mapDependencies(
+        await this.#mapDependencies(
           plugin.dependencies,
-          (dep) => !this.ran[dep],
-          this.runPlugin
+          (dep) => !this.#ran[dep],
+          this.#runPlugin
         )
       }
 
       if (plugin.run) {
-        const context = this.createRunContext(pluginName, plugin)
+        const context = this.#createRunContext(pluginName, plugin)
         if (isStatefulContext(context)) {
           context.store.init()
         }
@@ -156,18 +153,18 @@ export default class PluginManager<
       }
     })()
 
-    return this.ran[pluginName]
+    return this.#ran[pluginName]
   }
 
-  private async mapPlugins(map: (pluginName: string) => Promise<any>) {
+  async #mapPlugins(map: (pluginName: string) => Promise<any>) {
     await Promise.all(
-      Object.keys(this.plugins)
-        .filter((pluginName) => this.enabledPlugins.has(pluginName))
+      Object.keys(this.#plugins)
+        .filter((pluginName) => this.#enabledPlugins.has(pluginName))
         .map(map)
     )
   }
 
-  private async mapDependencies(
+  async #mapDependencies(
     dependencyNames: string[],
     filter: (pluginName: string) => boolean,
     map: (pluginName: string) => Promise<any>
@@ -175,7 +172,7 @@ export default class PluginManager<
     await Promise.all(
       dependencyNames
         .filter((dependency) => {
-          if (!this.plugins[dependency]) {
+          if (!this.#plugins[dependency]) {
             throw new Error(`Cannot find dependency ${dependency}`)
           }
           return filter(dependency)
@@ -184,74 +181,66 @@ export default class PluginManager<
     )
   }
 
-  private createInitContext(pluginName: string) {
+  #createInitContext(pluginName: string) {
     return {
-      ...this.createContext(pluginName),
+      ...this.#createContext(pluginName),
       enablePlugins: this.enablePlugins,
       disablePlugins: this.disablePlugins,
-      ...(((this.createExtraInitContext &&
-        this.createExtraInitContext(pluginName)) ||
-        {}) as ExtraInitContext),
-    }
+      ...((this.#createExtraInitContext &&
+        this.#createExtraInitContext(pluginName)) ||
+        {}),
+    } as IC
   }
 
-  private createRunContext<Action extends ActionI, State>(
+  #createRunContext<Action extends ActionI, State>(
     pluginName: string,
     plugin: StatefulPlugin<
       Action,
       State,
-      InitContext<MB>,
-      StatefulContext<MB, Action, State>
+      IC,
+      StatefulContext<Action, State> & RC
     >
-  ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
+  ): StatefulContext<Action, State> & RC
 
-  private createRunContext(
-    pluginName: string,
-    plugin: Plugin<InitContext<MB>, Context<MB>>
-  ): Context<MB> & ExtraContext & ExtraRunContext
+  #createRunContext(pluginName: string, plugin: Plugin<IC, RC>): RC
 
-  private createRunContext(
+  #createRunContext(
     pluginName: string,
-    plugin:
-      | Plugin<InitContext<MB>, Context<MB>>
-      | StatefulPlugin<any, any, any, any>
+    plugin: Plugin<IC, RC> | StatefulPlugin<any, any, any, any>
   ) {
     return {
       ...(isStatefulPlugin(plugin)
-        ? this.createStatefulContext(
+        ? this.#createStatefulContext(
             pluginName,
             plugin.state.reduce,
             plugin.state.initial
           )
-        : this.createContext(pluginName)),
-      ...((this.createExtraRunContext &&
-        this.createExtraRunContext(pluginName)) ||
+        : this.#createContext(pluginName)),
+      ...((this.#createExtraRunContext &&
+        this.#createExtraRunContext(pluginName)) ||
         {}),
     }
   }
 
-  private createContext(pluginName: string): Context<MB> & ExtraContext {
+  #createContext(pluginName: string): RC {
     return {
-      broker: this.messageBus.broker(pluginName) as MessageBusBroker<MB>,
+      broker: this.#messageBus.broker(pluginName) as MessageBusBroker<MB>,
       log: createLogger(pluginName),
-      ...(((this.createExtraContext && this.createExtraContext(pluginName)) ||
+      ...(((this.#createExtraContext && this.#createExtraContext(pluginName)) ||
         {}) as ExtraContext),
-    }
+    } as RC
   }
 
-  private createStatefulContext<Action extends ActionI, State>(
+  #createStatefulContext<Action extends ActionI, State>(
     pluginName: string,
     reduce: Reducer<Action, State>,
     initial: State
-  ): StatefulContext<MB, Action, State> {
-    const context = this.createContext(pluginName)
+  ): StatefulContext<Action, State> & RC {
+    const context = this.#createContext(pluginName)
+    const log = context.log instanceof Logger ? context.log : undefined
     return {
       ...context,
-      store: new Store<Action, State>(
-        reduce,
-        initial,
-        context.log.extend('store')
-      ),
+      store: new Store<Action, State>(reduce, initial, log),
     }
   }
 }

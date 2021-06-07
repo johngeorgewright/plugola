@@ -1,4 +1,3 @@
-import type { Context, InitContext, StatefulContext } from './Context'
 import type { ActionI, Reducer } from '@plugola/store'
 
 export function isStatefulPlugin(
@@ -7,7 +6,10 @@ export function isStatefulPlugin(
   return !!plugin.state
 }
 
-export interface Plugin<IC extends InitContext<any>, C extends Context<any>> {
+export interface Plugin<
+  IC extends Record<string, unknown>,
+  C extends Record<string, unknown>
+> {
   dependencies?: string[]
   init?(context: IC): any
   run?(context: C): any
@@ -16,9 +18,11 @@ export interface Plugin<IC extends InitContext<any>, C extends Context<any>> {
 export interface StatefulPlugin<
   Action extends ActionI,
   State,
-  IC extends InitContext<any>,
-  C extends StatefulContext<any, any, any>
-> extends Plugin<IC, C> {
+  IC extends Record<string, unknown>,
+  C extends Record<string, unknown>
+> {
+  dependencies?: string[]
+  init?(context: IC): any
   run?(context: C): any
   state: PluginState<Action, State, C>
 }
@@ -26,7 +30,7 @@ export interface StatefulPlugin<
 export interface PluginState<
   Action extends ActionI,
   State,
-  Context extends StatefulContext<any, any, any>
+  Context extends Record<string, unknown>
 > {
   initial: State
   reduce: Reducer<Action, State>

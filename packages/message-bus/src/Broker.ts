@@ -62,7 +62,8 @@ export default class Broker<
     eventName: EventName,
     ...args: Args
   ): Promise<UntilRtn<Events[EventName], Args>> {
-    return this.messageBus.until(this as any, eventName, args)
+    // @ts-ignore
+    return this.messageBus.until(this, eventName, args)
   }
 
   generator<EventName extends keyof EventGens>(

@@ -4,7 +4,7 @@ import Store, { ActionI } from '@plugola/store'
 
 export function isStatefulContext(
   context: any
-): context is StatefulContext<MessageBus, any, any> {
+): context is StatefulContext<any, any> {
   return !!context.store
 }
 
@@ -18,10 +18,6 @@ export interface InitContext<MB extends MessageBus> extends Context<MB> {
   disablePlugins(pluginNames: string[]): void
 }
 
-export interface StatefulContext<
-  MB extends MessageBus,
-  Action extends ActionI,
-  State
-> extends Context<MB> {
+export interface StatefulContext<Action extends ActionI, State> {
   store: Store<Action, State>
 }

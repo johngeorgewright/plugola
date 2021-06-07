@@ -1334,9 +1334,9 @@ __metadata:
     change-case: 4.1.2
     jest: 27.0.4
     rimraf: 3.0.2
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: 2.2.0
-    typescript: 4.2.4
+    typescript: 4.3.2
     yeoman-generator: 5.3.0
   languageName: unknown
   linkType: soft
@@ -1355,9 +1355,9 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: ^2.2.0
-    typescript: 4.2.4
+    typescript: 4.3.2
   languageName: unknown
   linkType: soft
 
@@ -1373,16 +1373,16 @@ __metadata:
     "@semantic-release/npm": 7.1.3
     "@semantic-release/release-notes-generator": 9.0.2
     "@types/jest": 26.0.23
-    "@types/node": 15.6.1
+    "@types/node": 15.12.1
     jest: 27.0.4
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     ts-node: 10.0.0
     ts-toolbelt: ^9.6.0
     tslib: ^2.2.0
-    typescript: 4.2.4
+    typescript: 4.3.2
   languageName: unknown
   linkType: soft
 
@@ -1401,12 +1401,11 @@ __metadata:
     cz-conventional-changelog: 3.3.0
     husky: 6.0.0
     lint-staged: 11.0.0
-    prettier: 2.3.0
+    prettier: 2.3.1
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    slash: 3.0.0
     tslib: 2.2.0
-    typescript: 4.2.4
+    typescript: 4.3.2
     yo: 4.2.0
   languageName: unknown
   linkType: soft
@@ -1429,9 +1428,9 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: ^2.2.0
-    typescript: 4.2.4
+    typescript: 4.3.2
   languageName: unknown
   linkType: soft
 
@@ -1449,9 +1448,9 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: ^2.2.0
-    typescript: 4.2.4
+    typescript: 4.3.2
   languageName: unknown
   linkType: soft
 
@@ -1470,9 +1469,9 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 27.0.1
+    ts-jest: 27.0.3
     tslib: ^2.2.0
-    typescript: 4.2.4
+    typescript: 4.3.2
   languageName: unknown
   linkType: soft
 
@@ -1841,10 +1840,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:15.6.1":
-  version: 15.6.1
-  resolution: "@types/node@npm:15.6.1"
-  checksum: 07b3855bc0a1ba2215455a3ef4ed5e88711321b3cdc0ba1ea0286f6facbdf61530970b9fa7eec79eb1d46231f986c21ef3b7c1f1e0c365cf1b887d76b0addb86
+"@types/node@npm:15.12.1":
+  version: 15.12.1
+  resolution: "@types/node@npm:15.12.1"
+  checksum: 8a111dc99281e07b1a6408437a09eafb081760aa8bd73d481793345b302a565772c45f2be7fdd7386a8a7ce589a999ccfb513dba15a0b3320dba03c94308253f
   languageName: node
   linkType: hard
 
@@ -9281,12 +9280,12 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.3.0":
-  version: 2.3.0
-  resolution: "prettier@npm:2.3.0"
+"prettier@npm:2.3.1":
+  version: 2.3.1
+  resolution: "prettier@npm:2.3.1"
   bin:
     prettier: bin-prettier.js
-  checksum: 652640cc8b71bc5277cfb8bf6f161783ca588efcf683c3d630837b39da8d57fef35c9e00ae5855a8e3c75136c42274046c913cc2b2d2968558315f31c6a26981
+  checksum: 9b4a695b87ce5f510fc20feec01cce7371f0fa0b92ffe79d543f6be52e2004c532861629de4d7ab1c577e1f649dce3cfccd62cb2ca6526b1da8d9c63eb84bf36
   languageName: node
   linkType: hard
 
@@ -10240,7 +10239,7 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"slash@npm:3.0.0, slash@npm:^3.0.0":
+"slash@npm:^3.0.0":
   version: 3.0.0
   resolution: "slash@npm:3.0.0"
   checksum: fc3e8597d822ee3ba6cd76e9b001cd5be315f9b81c3a03a29bb611c003d1484e3b29a9e7bc020298fa669b585ff7c9268f44513f60c186216eb6af3111a3e838
@@ -11079,9 +11078,9 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:27.0.1":
-  version: 27.0.1
-  resolution: "ts-jest@npm:27.0.1"
+"ts-jest@npm:27.0.3":
+  version: 27.0.3
+  resolution: "ts-jest@npm:27.0.3"
   dependencies:
     bs-logger: 0.x
     buffer-from: 1.x
@@ -11098,7 +11097,7 @@ fsevents@^2.3.2:
     typescript: ">=3.8 <5.0"
   bin:
     ts-jest: cli.js
-  checksum: 12ae908f941298725d9f6aca39f36a374cb1146c97cb1efb7aa9c15968e4be343d476811167d86804061231ff7cd7164f036ed413da21340e1c5758712a75173
+  checksum: a63f3a8620a16335d745f22377a9cc118129d28a5b122c609a7c6aabbb8048c85733c771a0dd39b136e8a75401473409452bdd3c5b9e3b85317c2e3f3ac03267
   languageName: node
   linkType: hard
 
@@ -11275,23 +11274,23 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-typescript@4.2.4:
-  version: 4.2.4
-  resolution: "typescript@npm:4.2.4"
+typescript@4.3.2:
+  version: 4.3.2
+  resolution: "typescript@npm:4.3.2"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: edaede2fa77f56b7fba80ee624a2368ab1216e75b0434d968ccb47ab0a5e2f6d94f848b3b111c1237dd71e988cd376af26370dcdad3b94355c76e759f0dd0a1e
+  checksum: 21e1285402e32fd240f6ad3f97b6fea81b90d2591f412677d01b570a8bd93151d1e08460d58f43689fc758671a5baaebb16fa93d3c8260181612c8e619bd24f7
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.2.4#builtin<compat/typescript>":
-  version: 4.2.4
-  resolution: "typescript@patch:typescript@npm%3A4.2.4#builtin<compat/typescript>::version=4.2.4&hash=a45b0e"
+"typescript@patch:typescript@4.3.2#builtin<compat/typescript>":
+  version: 4.3.2
+  resolution: "typescript@patch:typescript@npm%3A4.3.2#builtin<compat/typescript>::version=4.3.2&hash=ddfc1b"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 3be44317593182e8ce494c114e7ad9b0bb2553a22f3085cc6da4f0a36912c20850daa9be4c898af2ab6fc8b12f430c1c9e46ac715721867cd38643f2350d3ef9
+  checksum: 68d48dc86dacfeab59a22414ff061c976c46b679a9717a3a710051ea7bab779fd23f4edb856434da8155e8e8646c90b3912e342cc0010dfd15ed321a42cb0578
   languageName: node
   linkType: hard
 
