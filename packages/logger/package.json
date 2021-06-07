@@ -1,6 +1,6 @@
 {
   "name": "@plugola/logger",
-  "version": "0.0.0",
+  "version": "2.2.0",
   "description": "Logging mechanism",
   "main": "dist/index.js",
   "scripts": {
