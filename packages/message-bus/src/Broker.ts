@@ -98,6 +98,14 @@ export default class Broker<
     return this.messageBus.accumulate(this, eventName, args)
   }
 
+  accumulateWithin<EventName extends keyof EventGens>(
+    within: number,
+    eventName: EventName,
+    ...args: EventGens[EventName]['args']
+  ): Promise<EventGens[EventName]['yield'][]> {
+    return this.messageBus.accumulateWithin(this, within, eventName, args)
+  }
+
   register<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     ...args: InvokerRegistrationArgs<

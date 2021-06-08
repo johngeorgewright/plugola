@@ -1,5 +1,6 @@
 import {
   accumulate,
+  accumulateRace,
   combineIterators,
   iteratorRace,
 } from '@johngw/async-iterator'
@@ -243,6 +244,15 @@ export default class MessageBus<
     args: EventGens[EventName]['args']
   ) {
     return accumulate(this.iterate(broker, eventName, args))
+  }
+
+  async accumulateWithin<EventName extends keyof EventGens>(
+    broker: Broker<EventsT, EventGens, Invokables>,
+    within: number,
+    eventName: EventName,
+    args: EventGens[EventName]['args']
+  ) {
+    return accumulateRace(this.iterate(broker, eventName, args), within)
   }
 
   register<InvokableName extends keyof Invokables>(
