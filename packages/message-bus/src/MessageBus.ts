@@ -1,6 +1,5 @@
 import {
   accumulate,
-  accumulateRace,
   combineIterators,
   iteratorRace,
 } from '@johngw/async-iterator'
