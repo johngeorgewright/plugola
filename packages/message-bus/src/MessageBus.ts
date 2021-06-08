@@ -252,7 +252,7 @@ export default class MessageBus<
     eventName: EventName,
     args: EventGens[EventName]['args']
   ) {
-    return accumulateRace(this.iterate(broker, eventName, args), within)
+    return accumulate(this.iterateWithin(broker, within, eventName, args))
   }
 
   register<InvokableName extends keyof Invokables>(
