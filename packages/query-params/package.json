@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Parses location query parameters",
   "main": "dist/index.js",
+  "sideEffects": false,
   "scripts": {
     "build": "yarn clean && yarn tsc && yarn rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
     "clean": "yarn rimraf dist",
