@@ -1,10 +1,9 @@
-import type { MessageBus } from '@plugola/message-bus'
-import { MessageBusBroker } from '@plugola/message-bus/dist/types'
+import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
 import Store, { ActionI } from '@plugola/store'
 
 export function isStatefulContext(
   context: any
-): context is StatefulContext<any, any> {
+): context is StatefulContext<any, any, any> {
   return !!context.store
 }
 
@@ -18,6 +17,10 @@ export interface InitContext<MB extends MessageBus> extends Context<MB> {
   disablePlugins(pluginNames: string[]): void
 }
 
-export interface StatefulContext<Action extends ActionI, State> {
+export interface StatefulContext<
+  MB extends MessageBus,
+  Action extends ActionI,
+  State
+> extends Context<MB> {
   store: Store<Action, State>
 }

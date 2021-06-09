@@ -6,9 +6,8 @@ import {
 } from './Context'
 import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
 import Store, { ActionI, Reducer } from '@plugola/store'
-import type { MessageBus } from '@plugola/message-bus'
+import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
 import createLogger from './createLogger'
-import { MessageBusBroker } from '@plugola/message-bus/dist/types'
 import Logger from '@plugola/logger'
 
 export interface PluginManagerOptions<
@@ -37,7 +36,7 @@ export default class PluginManager<
         any,
         any,
         InitContext<MB> & ExtraContext & ExtraInitContext,
-        StatefulContext<any, any> & Context<MB> & ExtraContext & ExtraRunContext
+        StatefulContext<MB, any, any> & ExtraContext & ExtraRunContext
       >
   > = {}
   #initialized: Record<string, Promise<void>> = {}
@@ -68,10 +67,7 @@ export default class PluginManager<
       Action,
       State,
       InitContext<MB> & ExtraContext & ExtraInitContext,
-      StatefulContext<Action, State> &
-        Context<MB> &
-        ExtraContext &
-        ExtraRunContext
+      StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
     >
   ) {
     this.#plugins[name] = plugin
@@ -211,15 +207,9 @@ export default class PluginManager<
       Action,
       State,
       InitContext<MB> & ExtraContext & ExtraInitContext,
-      StatefulContext<Action, State> &
-        Context<MB> &
-        ExtraContext &
-        ExtraRunContext
+      StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
     >
-  ): StatefulContext<Action, State> &
-    Context<MB> &
-    ExtraContext &
-    ExtraRunContext
+  ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
 
   #createRunContext(
     pluginName: string,
@@ -259,10 +249,7 @@ export default class PluginManager<
     pluginName: string,
     reduce: Reducer<Action, State>,
     initial: State
-  ): StatefulContext<Action, State> &
-    Context<MB> &
-    ExtraContext &
-    ExtraRunContext {
+  ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext {
     const context = this.#createContext(pluginName)
     const log = context.log instanceof Logger ? context.log : undefined
     return {
