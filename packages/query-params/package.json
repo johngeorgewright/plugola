@@ -1,6 +1,6 @@
 {
   "name": "@plugola/query-params",
-  "version": "0.0.0",
+  "version": "1.2.1",
   "description": "Parses location query parameters",
   "main": "dist/index.js",
   "sideEffects": false,
