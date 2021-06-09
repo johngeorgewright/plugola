@@ -11,9 +11,9 @@ import createLogger from './createLogger'
 import Logger from '@plugola/logger'
 
 export interface PluginManagerOptions<
-  ExtraContext extends Record<string, unknown> = {},
-  ExtraInitContext extends Record<string, unknown> = {},
-  ExtraRunContext extends Record<string, unknown> = {}
+  ExtraContext extends Record<string, unknown>,
+  ExtraInitContext extends Record<string, unknown>,
+  ExtraRunContext extends Record<string, unknown>
 > {
   addContext?(pluginName: string): ExtraContext
   addInitContext?(pluginName: string): ExtraInitContext
@@ -95,9 +95,7 @@ export default class PluginManager<
   }
 
   enableAllPlugins() {
-    for (const pluginName in this.#plugins) {
-      this.#enabledPlugins.add(pluginName)
-    }
+    this.enablePlugins(Object.keys(this.#plugins))
   }
 
   readonly enablePlugins = (pluginNames: string[]) => {
@@ -192,9 +190,9 @@ export default class PluginManager<
 
   #createInitContext(pluginName: string) {
     return {
-      ...this.#createContext(pluginName),
       enablePlugins: this.enablePlugins,
       disablePlugins: this.disablePlugins,
+      ...this.#createContext(pluginName),
       ...((this.#createExtraInitContext &&
         this.#createExtraInitContext(pluginName)) ||
         {}),
@@ -240,8 +238,8 @@ export default class PluginManager<
     return {
       broker: this.#messageBus.broker(pluginName) as MessageBusBroker<MB>,
       log: createLogger(pluginName),
-      ...(((this.#createExtraContext && this.#createExtraContext(pluginName)) ||
-        {}) as ExtraContext),
+      ...((this.#createExtraContext && this.#createExtraContext(pluginName)) ||
+        {}),
     } as Context<MB> & ExtraContext & ExtraRunContext
   }
 
