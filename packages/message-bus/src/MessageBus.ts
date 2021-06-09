@@ -7,25 +7,30 @@ import { init, last, removeItem, replaceLastItem } from './array'
 import Broker from './Broker'
 import { amend } from './object'
 import { CancelEvent } from './symbols'
-import type {
-  EventsT,
+import {
   EventInterceptorArgs,
   EventInterceptorFn,
   EventInterceptors,
-  InvokablesT,
-  Invokers,
+  EventsT,
   SubscriberArgs,
-  Subscribers,
-  InvokerInterceptors,
-  UnpackResolvableValue,
   SubscriberFn,
-  UntilRtn,
+  Subscribers,
   UntilArgs,
-  EventGeneratorsT,
-  EventGenerators,
+  UntilRtn,
+} from './types/events'
+import {
   EventGeneratorArgs,
+  EventGenerators,
+  EventGeneratorsT,
+} from './types/generators'
+import {
+  InvokablesT,
+  InvokerFn,
+  InvokerInterceptors,
   InvokerRegistrationArgs,
-} from './types'
+  Invokers,
+} from './types/invokables'
+import { UnpackResolvableValue } from './types/util'
 
 export default class MessageBus<
   Events extends EventsT = EventsT,
@@ -261,10 +266,13 @@ export default class MessageBus<
       Invokables[InvokableName]['args'],
       Invokables[InvokableName]['return']
     >
-  ) {
+  ): () => void {
     const args = init(allArgs)
-    const fn = last(allArgs) as any
-    const invokers = this.#invokers[invokableName]
+    const fn = last(allArgs) as InvokerFn<
+      Invokables[InvokableName]['args'],
+      Invokables[InvokableName]['return']
+    >
+    const invokers = this.#invokers[invokableName] || []
     const registeredInvoker =
       invokers &&
       invokers.find((invoker) => this.#argumentIndex(invoker.args, args) !== -1)

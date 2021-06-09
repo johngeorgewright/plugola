@@ -4,9 +4,7 @@ export function init<T>(array: T[]) {
   return array.slice(0, -1)
 }
 
-export function last<T>(array: never[]): undefined
-export function last<T, R extends T>(array: [...T[], R]): R
-export function last<T>(array: T[]): T | undefined {
+export function last<T extends unknown[]>(array: T): L.Last<T> {
   return array[array.length - 1]
 }
 
