@@ -1471,33 +1471,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@johngw/async", [
-        ["npm:2.10.4", {
-          "packageLocation": "./.yarn/cache/@johngw-async-npm-2.10.4-841d3471e1-3f3636b8ce.zip/node_modules/@johngw/async/",
+        ["npm:2.10.5", {
+          "packageLocation": "./.yarn/cache/@johngw-async-npm-2.10.5-46b283a933-4ffc6643a6.zip/node_modules/@johngw/async/",
           "packageDependencies": [
-            ["@johngw/async", "npm:2.10.4"],
-            ["@johngw/object", "npm:1.1.4"],
+            ["@johngw/async", "npm:2.10.5"],
+            ["@johngw/object", "npm:1.1.5"],
             ["tslib", "npm:2.2.0"]
           ],
           "linkType": "HARD",
         }]
       ]],
       ["@johngw/async-iterator", [
-        ["npm:1.0.4", {
-          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-1.0.4-0191dc8332-20b2e6f695.zip/node_modules/@johngw/async-iterator/",
+        ["npm:1.1.2", {
+          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-1.1.2-df5f8bd55c-65300649b8.zip/node_modules/@johngw/async-iterator/",
           "packageDependencies": [
-            ["@johngw/async-iterator", "npm:1.0.4"],
-            ["@johngw/async", "npm:2.10.4"],
-            ["@johngw/object", "npm:1.1.4"],
+            ["@johngw/async-iterator", "npm:1.1.2"],
+            ["@johngw/async", "npm:2.10.5"],
+            ["@johngw/object", "npm:1.1.5"],
             ["tslib", "npm:2.2.0"]
           ],
           "linkType": "HARD",
         }]
       ]],
       ["@johngw/object", [
-        ["npm:1.1.4", {
-          "packageLocation": "./.yarn/cache/@johngw-object-npm-1.1.4-d5c9d259dd-736343eb91.zip/node_modules/@johngw/object/",
+        ["npm:1.1.5", {
+          "packageLocation": "./.yarn/cache/@johngw-object-npm-1.1.5-58c443d9bd-da0d005db1.zip/node_modules/@johngw/object/",
           "packageDependencies": [
-            ["@johngw/object", "npm:1.1.4"],
+            ["@johngw/object", "npm:1.1.5"],
             ["tslib", "npm:2.2.0"]
           ],
           "linkType": "HARD",
@@ -1937,8 +1937,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/message-bus/",
           "packageDependencies": [
             ["@plugola/message-bus", "workspace:packages/message-bus"],
-            ["@johngw/async", "npm:2.10.4"],
-            ["@johngw/async-iterator", "npm:1.0.4"],
+            ["@johngw/async", "npm:2.10.5"],
+            ["@johngw/async-iterator", "npm:1.1.2"],
             ["@semantic-release/commit-analyzer", "virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:8.0.1"],
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.0"],
             ["@semantic-release/github", "virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:7.2.3"],
@@ -4379,7 +4379,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],
       ["core-js", [
         ["npm:3.12.1", {
-          "packageLocation": "./.yarn/cache/core-js-npm-3.12.1-6d1063bc86-8b1d05579e.zip/node_modules/core-js/",
+          "packageLocation": "./.yarn/unplugged/core-js-npm-3.12.1-6d1063bc86/node_modules/core-js/",
           "packageDependencies": [
             ["core-js", "npm:3.12.1"]
           ],
@@ -12013,7 +12013,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],
       ["spawn-sync", [
         ["npm:1.0.15", {
-          "packageLocation": "./.yarn/cache/spawn-sync-npm-1.0.15-ae144228c0-c31c84dd8b.zip/node_modules/spawn-sync/",
+          "packageLocation": "./.yarn/unplugged/spawn-sync-npm-1.0.15-ae144228c0/node_modules/spawn-sync/",
           "packageDependencies": [
             ["spawn-sync", "npm:1.0.15"],
             ["concat-stream", "npm:1.6.2"],
@@ -13805,7 +13805,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],
       ["yo", [
         ["npm:4.2.0", {
-          "packageLocation": "./.yarn/cache/yo-npm-4.2.0-fd8fdd1e1a-134d56a0f7.zip/node_modules/yo/",
+          "packageLocation": "./.yarn/unplugged/yo-npm-4.2.0-fd8fdd1e1a/node_modules/yo/",
           "packageDependencies": [
             ["yo", "npm:4.2.0"],
             ["async", "npm:2.6.3"],

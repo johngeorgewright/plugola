@@ -34,8 +34,8 @@
     "typescript": "4.3.2"
   },
   "dependencies": {
-    "@johngw/async": "^2.10.4",
-    "@johngw/async-iterator": "^1.0.4",
+    "@johngw/async": "^2.10.5",
+    "@johngw/async-iterator": "^1.1.2",
     "ts-toolbelt": "^9.6.0",
     "tslib": "^2.2.0"
   }
