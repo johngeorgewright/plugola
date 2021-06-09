@@ -1,9 +1,9 @@
 import type Broker from '../Broker'
 import { L } from 'ts-toolbelt'
 
-export type EventGeneratorsT<A = unknown, R = unknown> = Record<
+export type EventGeneratorsT = Record<
   string,
-  { args: A[]; yield: R }
+  { args: unknown[]; yield: unknown }
 >
 
 export type EventGeneratorFn<Args extends unknown[], R> = (

@@ -2,7 +2,7 @@ import type Broker from '../Broker'
 import type { CancelEvent } from '../symbols'
 import { L, N } from 'ts-toolbelt'
 
-export type EventsT<T = unknown> = Record<string, T[]>
+export type EventsT = Record<string, unknown[]>
 
 export type SubscriberFn<Args extends unknown[]> = (
   ...args: Args

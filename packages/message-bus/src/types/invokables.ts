@@ -2,10 +2,7 @@ import type Broker from '../Broker'
 import { L } from 'ts-toolbelt'
 import { UnpackResolvableValue } from './util'
 
-export type InvokablesT<A = unknown, R = unknown> = Record<
-  string,
-  { args: A[]; return: R }
->
+export type InvokablesT = Record<string, { args: unknown[]; return: unknown }>
 
 export type InvokerFn<Args extends unknown[], Result> = (
   ...args: Args
