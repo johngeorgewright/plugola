@@ -970,24 +970,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/async-iterator@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "@johngw/async-iterator@npm:1.1.2"
+"@johngw/async-iterator@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@johngw/async-iterator@npm:2.0.0"
   dependencies:
-    "@johngw/async": 2.10.5
+    "@johngw/async": 3.0.0
     "@johngw/object": 1.1.5
     tslib: ^2.2.0
-  checksum: 65300649b865bed7207209c1cfd66eba19185bbd2290f727fe87671aefa3fea5438c2c5c073ca64a0d95cc8620a4dbad4331a99acf82270d568bdd8ad3519eb0
+  checksum: e96895bf9a1b6eb2e67d5f91a599ca8536b8e7afbf788b2cf698dc969a451b49ad730dfe72037823978713e17a8e8d7e7a3b033fbe1101357e084c31192fdacb
   languageName: node
   linkType: hard
 
-"@johngw/async@npm:2.10.5, @johngw/async@npm:^2.10.5":
-  version: 2.10.5
-  resolution: "@johngw/async@npm:2.10.5"
+"@johngw/async@npm:3.0.0, @johngw/async@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@johngw/async@npm:3.0.0"
   dependencies:
     "@johngw/object": 1.1.5
     tslib: ^2.2.0
-  checksum: 4ffc6643a6a1b3b4e3b0b746dd495870c94bdb0afa98f1396dcf606a955ee14a6e3239e3073a734f77518d137857422d2b1578a15627569dd3a5177aa8ca61fa
+  checksum: 8c6f16d589990225320679d46bdd4edc83ccaae6a1ae549a59ddb871bfcf1507f3d477c89f56771fa76ae21ea9502dd8b4868d15db4d710272d9bf1494ae6a9d
   languageName: node
   linkType: hard
 
@@ -1341,6 +1341,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@plugola/graph@workspace:packages/graph":
+  version: 0.0.0-use.local
+  resolution: "@plugola/graph@workspace:packages/graph"
+  dependencies:
+    "@semantic-release/commit-analyzer": 8.0.1
+    "@semantic-release/git": 9.0.0
+    "@semantic-release/github": 7.2.3
+    "@semantic-release/npm": 7.1.3
+    "@semantic-release/release-notes-generator": 9.0.3
+    "@types/jest": 26.0.23
+    jest: 27.0.4
+    rimraf: 3.0.2
+    semantic-release: 17.4.3
+    semantic-release-monorepo: 7.0.5
+    ts-jest: 27.0.3
+    tslib: ^2.2.0
+    typescript: 4.3.2
+  languageName: unknown
+  linkType: soft
+
 "@plugola/logger@workspace:packages/logger":
   version: 0.0.0-use.local
   resolution: "@plugola/logger@workspace:packages/logger"
@@ -1366,8 +1386,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/message-bus@workspace:packages/message-bus"
   dependencies:
-    "@johngw/async": ^2.10.5
-    "@johngw/async-iterator": ^1.1.2
+    "@johngw/async": ^3.0.0
+    "@johngw/async-iterator": ^2.0.0
     "@semantic-release/commit-analyzer": 8.0.1
     "@semantic-release/git": 9.0.0
     "@semantic-release/github": 7.2.3
@@ -1415,6 +1435,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/plugin-manager@workspace:packages/plugin-manager"
   dependencies:
+    "@johngw/async": ^3.0.0
     "@plugola/logger": "workspace:packages/logger"
     "@plugola/message-bus": "workspace:packages/message-bus"
     "@plugola/query-params": "workspace:packages/query-params"
@@ -1426,6 +1447,7 @@ __metadata:
     "@semantic-release/release-notes-generator": 9.0.2
     "@types/jest": 26.0.23
     jest: 27.0.4
+    node-abort-controller: ^2.0.0
     rimraf: 3.0.2
     semantic-release: 17.4.3
     semantic-release-monorepo: 7.0.5
@@ -1460,6 +1482,26 @@ __metadata:
   resolution: "@plugola/store@workspace:packages/store"
   dependencies:
     "@plugola/logger": "workspace:packages/logger"
+    "@semantic-release/commit-analyzer": 8.0.1
+    "@semantic-release/git": 9.0.0
+    "@semantic-release/github": 7.2.3
+    "@semantic-release/npm": 7.1.3
+    "@semantic-release/release-notes-generator": 9.0.2
+    "@types/jest": 26.0.23
+    jest: 27.0.4
+    rimraf: 3.0.2
+    semantic-release: 17.4.3
+    semantic-release-monorepo: 7.0.5
+    ts-jest: 27.0.3
+    tslib: ^2.2.0
+    typescript: 4.3.2
+  languageName: unknown
+  linkType: soft
+
+"@plugola/tree@workspace:packages/tree":
+  version: 0.0.0-use.local
+  resolution: "@plugola/tree@workspace:packages/tree"
+  dependencies:
     "@semantic-release/commit-analyzer": 8.0.1
     "@semantic-release/git": 9.0.0
     "@semantic-release/github": 7.2.3
@@ -1584,6 +1626,26 @@ __metadata:
   peerDependencies:
     semantic-release: ">=15.8.0 <18.0.0"
   checksum: 05562d2df6d3b2bf1c2db220bca9ca39975e5c1df2458d4bf28380b572e37535005857cfbf12277ca7a6180eab4f68e49e219212d0e45b9ac79fc17e06d26258
+  languageName: node
+  linkType: hard
+
+"@semantic-release/release-notes-generator@npm:9.0.3":
+  version: 9.0.3
+  resolution: "@semantic-release/release-notes-generator@npm:9.0.3"
+  dependencies:
+    conventional-changelog-angular: ^5.0.0
+    conventional-changelog-writer: ^4.0.0
+    conventional-commits-filter: ^2.0.0
+    conventional-commits-parser: ^3.0.0
+    debug: ^4.0.0
+    get-stream: ^6.0.0
+    import-from: ^3.0.0
+    into-stream: ^6.0.0
+    lodash: ^4.17.4
+    read-pkg-up: ^7.0.0
+  peerDependencies:
+    semantic-release: ">=15.8.0 <18.0.0"
+  checksum: 5ff5d6c83f4f0c4998d62370728337e103bf527980ae1e68fc9933df31454f50da28da128756f1afefdf7ff912baf0f57fa3326cf5ebda7f67f4e3ceb3187c47
   languageName: node
   linkType: hard
 
@@ -8140,6 +8202,13 @@ fsevents@^2.3.2:
     lower-case: ^2.0.2
     tslib: ^2.0.3
   checksum: 84db4909caec37504c6655f995a004067f8733be8cd8d849f1578661b60a1685e086325fa4e1a5e8ce94e7416c1d0f037e2a00f635a14457183de80ab4fc7612
+  languageName: node
+  linkType: hard
+
+"node-abort-controller@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "node-abort-controller@npm:2.0.0"
+  checksum: d8bf75f45f62d9961f758daa9924001f3a74899fd850d2fc13c279f510ef35c098bf53553a1b920d6f6721944a83250f19fb798f3832c2e540c883f1844a0404
   languageName: node
   linkType: hard
 

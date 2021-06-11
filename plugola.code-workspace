@@ -5,8 +5,12 @@
       "path": "."
     },
     {
-      "name": "🏗 @plugola/generator",
+      "name": "📦 @plugola/generator",
       "path": "packages/generator"
+    },
+    {
+      "name": "📦 @plugola/graph",
+      "path": "packages/graph"
     },
     {
       "name": "📦 @plugola/logger",
