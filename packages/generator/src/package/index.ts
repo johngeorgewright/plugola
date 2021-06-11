@@ -98,6 +98,7 @@ export = class PluginGenerator extends Generator {
     }
 
     await this.addDevDependencies(devDependencies)
+    await this.addDependencies(['tslib'])
 
     this.fs.copy(
       this.templatePath('tsconfig.json'),
