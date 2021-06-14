@@ -1479,14 +1479,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.2.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/@johngw-async-npm-3.0.0-cee4e1ab71-8c6f16d589.zip/node_modules/@johngw/async/",
+          "packageDependencies": [
+            ["@johngw/async", "npm:3.0.0"],
+            ["@johngw/object", "npm:1.1.5"],
+            ["tslib", "npm:2.2.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@johngw/async-iterator", [
-        ["npm:1.1.2", {
-          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-1.1.2-df5f8bd55c-65300649b8.zip/node_modules/@johngw/async-iterator/",
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-2.0.0-0090d67723-e96895bf9a.zip/node_modules/@johngw/async-iterator/",
           "packageDependencies": [
-            ["@johngw/async-iterator", "npm:1.1.2"],
-            ["@johngw/async", "npm:2.10.5"],
+            ["@johngw/async-iterator", "npm:2.0.0"],
+            ["@johngw/async", "npm:3.0.0"],
             ["@johngw/object", "npm:1.1.5"],
             ["tslib", "npm:2.2.0"]
           ],
@@ -1938,7 +1947,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@plugola/message-bus", "workspace:packages/message-bus"],
             ["@johngw/async", "npm:2.10.5"],
-            ["@johngw/async-iterator", "npm:1.1.2"],
+            ["@johngw/async-iterator", "npm:2.0.0"],
             ["@semantic-release/commit-analyzer", "virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:8.0.1"],
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.0"],
             ["@semantic-release/github", "virtual:75667890c0dfc35db1e7386b2f0243952aafcc6dcb4748b7608ca46f1f07abdd71745611943549b3195f204a61e00d858e0b6a69c286c3cc9c88cac22d733417#npm:7.2.3"],

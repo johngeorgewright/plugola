@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@johngw/async": "^2.10.5",
-    "@johngw/async-iterator": "^1.1.2",
+    "@johngw/async-iterator": "^2.0.0",
     "ts-toolbelt": "^9.6.0",
     "tslib": "^2.2.0"
   }
