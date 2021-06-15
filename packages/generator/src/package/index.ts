@@ -142,9 +142,13 @@ export = class PluginGenerator extends Generator {
     const vsCodeWS = JSON.parse(this.fs.read(file))
 
     vsCodeWS.folders.push({
-      name: `📦 @plugols/${this.answers.name}`,
+      name: `📦 @plugola/${this.answers.name}`,
       path: this.#relativeDestinationRoot,
     })
+
+    vsCodeWS.folders.sort((a: any, b: any) =>
+      a.name === b.name ? 0 : a.name < b.name ? -1 : 0
+    )
 
     const prettierOptions = (await prettier.resolveConfig(file)) || {}
     prettierOptions.parser = 'json'
