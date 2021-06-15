@@ -1332,11 +1332,11 @@ __metadata:
   resolution: "@plugola/generator@workspace:packages/generator"
   dependencies:
     "@types/jest": 26.0.23
-    "@types/prettier": ^2.3.0
+    "@types/prettier": 2.3.0
     "@types/yeoman-generator": 5.0.0
     change-case: 4.1.2
     jest: 27.0.4
-    prettier: ^2.3.1
+    prettier: 2.3.1
     rimraf: 3.0.2
     ts-jest: 27.0.3
     tslib: 2.3.0
@@ -1909,17 +1909,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/prettier@npm:2.3.0":
+  version: 2.3.0
+  resolution: "@types/prettier@npm:2.3.0"
+  checksum: 7c1ef16234220519d52b8a154723caf5c5dc9d5eaa85bfe06e367ba57472dab7f7fdac1ca7c29d9010d58f74f3b5235a9f8bad0111d9bad74018eb8141371e7e
+  languageName: node
+  linkType: hard
+
 "@types/prettier@npm:^2.1.5":
   version: 2.2.3
   resolution: "@types/prettier@npm:2.2.3"
   checksum: b7e80288f9f776caca84391a7a217b8baac6b4fce00bb9701af69299d465cb8faf17466f0af0803970c74d2c191767ca729a6d21a2f7e2ce552d1ef6cc0d653a
-  languageName: node
-  linkType: hard
-
-"@types/prettier@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@types/prettier@npm:2.3.0"
-  checksum: 7c1ef16234220519d52b8a154723caf5c5dc9d5eaa85bfe06e367ba57472dab7f7fdac1ca7c29d9010d58f74f3b5235a9f8bad0111d9bad74018eb8141371e7e
   languageName: node
   linkType: hard
 
@@ -9342,7 +9342,7 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.3.1, prettier@npm:^2.3.1":
+"prettier@npm:2.3.1":
   version: 2.3.1
   resolution: "prettier@npm:2.3.1"
   bin:
