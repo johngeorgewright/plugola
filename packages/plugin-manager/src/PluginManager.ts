@@ -107,11 +107,11 @@ export default class PluginManager<
 
   readonly disablePlugins = (pluginNames: string[]) => {
     for (const pluginName of pluginNames) {
-      for (const dep of this.#dependencyGraph.dependencies(
-        this.#getPlugin(pluginName)
-      )) {
+      const plugin = this.#getPlugin(pluginName)
+      for (const dep of this.#dependencyGraph.dependencies(plugin)) {
         this.#disablePlugin(dep)
       }
+      this.#disablePlugin(plugin)
     }
   }
 
@@ -150,6 +150,7 @@ export default class PluginManager<
       abortController.signal.addEventListener('abort', () => {
         this.#initialized.delete(plugin)
         this.#ran.delete(plugin)
+        this.#abortControllers.delete(plugin)
       })
       this.#abortControllers.set(plugin, abortController)
     }
@@ -166,7 +167,7 @@ export default class PluginManager<
 
     this.#initialized.add(plugin)
 
-    await this.#pluginRace(abortController, async () => {
+    await this.#pluginRace(plugin, async () => {
       await this.#mapDependencies(
         plugin,
         (dep) => !this.#initialized.has(dep),
@@ -187,7 +188,7 @@ export default class PluginManager<
 
     this.#ran.add(plugin)
 
-    await this.#pluginRace(abortController, async () => {
+    await this.#pluginRace(plugin, async () => {
       await this.#mapDependencies(
         plugin,
         (dep) => !this.#ran.has(dep),
@@ -203,7 +204,8 @@ export default class PluginManager<
     })
   }
 
-  #pluginRace(abortController: AbortController, fn: () => Promise<any>) {
+  #pluginRace(plugin: Plugin, fn: () => Promise<any>) {
+    const abortController = this.#abortController(plugin)
     return this.#pluginTimeout
       ? detonateRace(fn(), this.#pluginTimeout).catch((error) => {
           abortController.abort()

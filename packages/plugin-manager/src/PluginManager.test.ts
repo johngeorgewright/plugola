@@ -247,6 +247,11 @@ test('disabling plugins within the init phase', async () => {
   const bar = jest.fn()
 
   pluginManager.registerPlugin({
+    name: 'bar',
+    run: bar,
+  })
+
+  pluginManager.registerPlugin({
     name: 'foo',
     init({ disablePlugins }) {
       disablePlugins(['bar'])
@@ -254,13 +259,7 @@ test('disabling plugins within the init phase', async () => {
     run: foo,
   })
 
-  pluginManager.registerPlugin({
-    name: 'bar',
-    run: bar,
-  })
-
-  await pluginManager.enablePlugins(['foo', 'bar'])
-
+  await pluginManager.enablePlugins(['bar', 'foo'])
   await pluginManager.run()
 
   expect(foo).toHaveBeenCalled()
@@ -274,8 +273,8 @@ test('cleaning up plugins when disabled in the init phase', async () => {
 
   pluginManager.registerPlugin({
     name: 'foo',
-    async init({ disablePlugins }) {
-      await timeout(10)
+    async init({ disablePlugins, signal }) {
+      await timeout(10, signal)
       disablePlugins(['bar'])
     },
     run: foo,
@@ -298,20 +297,18 @@ test('cleaning up plugins when disabled in the init phase', async () => {
 })
 
 test('plugins that time out', async () => {
-  const abort = jest.fn()
+  const abort = jest.fn<void, [string]>()
 
   pluginManager = new PluginManager(messageBus, { pluginTimeout: 100 }) as any
 
   pluginManager.registerPlugin({
     name: 'foo',
     async init({ signal }) {
-      signal.addEventListener('abort', abort)
-      console.info('init')
+      signal.addEventListener('abort', () => abort('init'))
     },
     async run({ signal }) {
-      signal.addEventListener('abort', abort)
-      console.info('running')
-      await timeout(500)
+      signal.addEventListener('abort', () => abort('run'))
+      await timeout(500, signal)
     },
   })
 
@@ -319,4 +316,6 @@ test('plugins that time out', async () => {
   await pluginManager.run()
 
   expect(abort).toHaveBeenCalledTimes(2)
+  expect(abort).toHaveBeenCalledWith('init')
+  expect(abort).toHaveBeenCalledWith('run')
 })
