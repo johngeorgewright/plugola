@@ -17,10 +17,10 @@ export default class DependencyGraph<T extends Plugin<any, any>> extends Graph<
   }
 
   dependencies(node: T) {
-    return this.bfs(node, 'dependency')
+    return this.bfs(node, 'dependency', false)
   }
 
   whichDependOn(node: T) {
-    return this.bfs(node, 'dependencyTo')
+    return this.bfs(node, 'dependencyTo', false)
   }
 }

@@ -25,12 +25,32 @@ Array [
   "A",
 ]
 `)
+
+  expect([...graph.dfs('A', 'like', false)]).toMatchInlineSnapshot(`
+Array [
+  "F",
+  "C",
+  "B",
+  "E",
+  "D",
+]
+`)
 })
 
 test('bfs', () => {
   expect([...graph.bfs('A', 'like')]).toMatchInlineSnapshot(`
 Array [
   "A",
+  "B",
+  "D",
+  "E",
+  "C",
+  "F",
+]
+`)
+
+  expect([...graph.bfs('A', 'like', false)]).toMatchInlineSnapshot(`
+Array [
   "B",
   "D",
   "E",

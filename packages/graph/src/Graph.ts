@@ -15,10 +15,10 @@ export default class Graph<T, Edge extends string> {
     return this.#adjList.keys()
   }
 
-  edges(vertex: T, type: Edge) {
+  edges(vertex: T, type: Edge): Set<T> {
     const edges = this.vertex(vertex)
     if (!edges[type]) edges[type] = new Set()
-    return edges[type]
+    return edges[type]!
   }
 
   addEdge(name: Edge, source: T, destination: T) {
@@ -36,28 +36,38 @@ export default class Graph<T, Edge extends string> {
     throw new Error('Node not found')
   }
 
-  *bfs(node: T, edgeName: Edge) {
-    const queue = [node]
-    const visited = new Set<T>()
+  *bfs(node: T, edgeName: Edge, includeStartingNode = true) {
+    const queue = includeStartingNode ? [node] : [...this.edges(node, edgeName)]
+    const visited: Set<T> = includeStartingNode ? new Set() : new Set([node])
 
     while (queue.length) {
       const node = queue.shift()!
       if (visited.has(node)) continue
       visited.add(node)
       yield node
-      queue.push(...this.edges(node, edgeName)!)
+      queue.push(...this.edges(node, edgeName))
     }
   }
 
-  *dfs(node: T, edgeName: Edge, visited = new Set<T>()): Generator<T, Set<T>> {
+  *dfs(node: T, edgeName: Edge, includeStartingNode = true) {
+    yield* this.#dfs(node, edgeName, new Set(), includeStartingNode)
+  }
+
+  *#dfs(
+    node: T,
+    edgeName: Edge,
+    visited: Set<T>,
+    yieldNode: boolean
+  ): Generator<T, Set<T>> {
     if (visited.has(node)) return visited
     visited = new Set(visited).add(node)
 
-    for (const edge of this.edges(node, edgeName)!) {
-      visited = yield* this.dfs(edge, edgeName, visited)
+    for (const edge of this.edges(node, edgeName)) {
+      visited = yield* this.#dfs(edge, edgeName, visited, true)
     }
 
-    yield node
+    if (yieldNode) yield node
+
     return visited
   }
 }

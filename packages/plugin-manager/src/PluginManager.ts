@@ -29,13 +29,14 @@ export default class PluginManager<
   ExtraInitContext extends Record<string, unknown> = {},
   ExtraRunContext extends Record<string, unknown> = {}
 > {
-  #plugins = new DependencyGraph<Plugin>()
+  #plugins: Record<string, Plugin> = {}
+  #dependencyGraph = new DependencyGraph<Plugin>()
   #initialized = new Set<Plugin>()
   #ran = new Set<Plugin>()
   #abortControllers = new WeakMap<Plugin, AbortController>()
+  #enabledPlugins = new Set<string>()
 
   #messageBus: MB
-  #enabledPlugins: Set<string> = new Set()
   #createExtraContext?: (pluginName: string) => ExtraContext
   #createExtraInitContext?: (pluginName: string) => ExtraInitContext
   #createExtraRunContext?: (pluginName: string) => ExtraRunContext
@@ -77,10 +78,11 @@ export default class PluginManager<
   }
 
   #addPlugin(plugin: Plugin) {
-    this.#plugins.vertex(plugin)
+    this.#plugins[plugin.name] = plugin
+    this.#dependencyGraph.vertex(plugin)
     const dependencies = plugin.dependencies || []
     for (const dependency of dependencies) {
-      this.#plugins.addDependency(plugin, this.#getPlugin(dependency))
+      this.#dependencyGraph.addDependency(plugin, this.#getPlugin(dependency))
     }
   }
 
@@ -89,7 +91,7 @@ export default class PluginManager<
   }
 
   async enableAllPlugins() {
-    await this.enablePlugins([...this.#plugins.names()])
+    await this.enablePlugins(Object.keys(this.#plugins))
   }
 
   readonly enablePlugins = async (pluginNames: string[]) => {
@@ -105,7 +107,7 @@ export default class PluginManager<
 
   readonly disablePlugins = (pluginNames: string[]) => {
     for (const pluginName of pluginNames) {
-      for (const dep of this.#plugins.dependencies(
+      for (const dep of this.#dependencyGraph.dependencies(
         this.#getPlugin(pluginName)
       )) {
         this.#disablePlugin(dep)
@@ -129,22 +131,17 @@ export default class PluginManager<
   }
 
   #isDependencyOfEnabledPlugin(dependency: Plugin) {
-    for (const plugin of this.#plugins.whichDependOn(dependency)) {
-      if (
-        plugin.name !== dependency.name &&
-        this.#enabledPlugins.has(plugin.name)
-      )
-        return true
+    for (const plugin of this.#dependencyGraph.whichDependOn(dependency)) {
+      if (this.#enabledPlugins.has(plugin.name)) return true
     }
     return false
   }
 
   #getPlugin(pluginName: string) {
-    try {
-      return this.#plugins.find(({ name }) => name === pluginName)
-    } catch (error) {
+    if (!this.#plugins[pluginName]) {
       throw new Error(`The plugin "${pluginName}" isn't registered.`)
     }
+    return this.#plugins[pluginName]
   }
 
   #abortController(plugin: Plugin) {
@@ -219,7 +216,7 @@ export default class PluginManager<
 
   async #mapEnabledPlugins(
     map: (plugin: Plugin, index: number) => Promise<any>,
-    pluginNames: string[] = [...this.#enabledPlugins]
+    pluginNames = [...this.#enabledPlugins]
   ) {
     await Promise.all(
       pluginNames
@@ -235,7 +232,7 @@ export default class PluginManager<
   ) {
     const promises = []
 
-    for (const dep of this.#plugins.dependencies(plugin)) {
+    for (const dep of this.#dependencyGraph.dependencies(plugin)) {
       if (filter(dep)) {
         promises.push(map(dep))
       }
@@ -295,10 +292,7 @@ export default class PluginManager<
     }
   }
 
-  #createContext(
-    { name }: Plugin,
-    abortController: AbortController
-  ): Context<MB> & ExtraContext & ExtraRunContext {
+  #createContext({ name }: Plugin, abortController: AbortController) {
     return {
       broker: this.#messageBus.broker(name) as MessageBusBroker<MB>,
       log: createLogger(name),
