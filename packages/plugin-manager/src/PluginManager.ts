@@ -106,28 +106,23 @@ export default class PluginManager<
   }
 
   readonly disablePlugins = (pluginNames: string[]) => {
+    let disabled = 0
     for (const pluginName of pluginNames) {
       const plugin = this.#getPlugin(pluginName)
+      if (this.#disablePlugin(plugin)) disabled++
       for (const dep of this.#dependencyGraph.dependencies(plugin)) {
-        this.#disablePlugin(dep)
+        if (this.#disablePlugin(dep)) disabled++
       }
-      this.#disablePlugin(plugin)
     }
+    return disabled
   }
 
   #disablePlugin(plugin: Plugin) {
-    if (!this.#enabledPlugins.has(plugin.name)) {
-      return
-    }
-
-    if (this.#isDependencyOfEnabledPlugin(plugin))
-      throw new Error(
-        'Cannot disable a plugin that is a dependency of an enabled plugin.'
-      )
-
+    if (!this.#enabledPlugins.has(plugin.name)) return false
+    if (this.#isDependencyOfEnabledPlugin(plugin)) return false
     this.#enabledPlugins.delete(plugin.name)
     this.#abortControllers.get(plugin)?.abort()
-    this.#abortControllers.delete(plugin)
+    return true
   }
 
   #isDependencyOfEnabledPlugin(dependency: Plugin) {
