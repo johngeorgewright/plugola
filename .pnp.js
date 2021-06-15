@@ -39,10 +39,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/message-bus"
       },
       {
-        "name": "@plugola/mung",
-        "reference": "workspace:packages/mung"
-      },
-      {
         "name": "@plugola/plugin-manager",
         "reference": "workspace:packages/plugin-manager"
       },
@@ -63,7 +59,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@plugola/logger", ["workspace:packages/logger"]],
       ["@plugola/message-bus", ["workspace:packages/message-bus"]],
       ["@plugola/mono-repo", ["workspace:."]],
-      ["@plugola/mung", ["workspace:packages/mung"]],
       ["@plugola/plugin-manager", ["workspace:packages/plugin-manager"]],
       ["@plugola/query-params", ["workspace:packages/query-params"]],
       ["@plugola/store", ["workspace:packages/store"]]
@@ -2017,21 +2012,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.3.0"],
             ["typescript", "patch:typescript@npm%3A4.3.2#builtin<compat/typescript>::version=4.3.2&hash=ddfc1b"],
             ["yo", "npm:4.2.0"]
-          ],
-          "linkType": "SOFT",
-        }]
-      ]],
-      ["@plugola/mung", [
-        ["workspace:packages/mung", {
-          "packageLocation": "./packages/mung/",
-          "packageDependencies": [
-            ["@plugola/mung", "workspace:packages/mung"],
-            ["@types/jest", "npm:26.0.23"],
-            ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.4"],
-            ["rimraf", "npm:3.0.2"],
-            ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.3"],
-            ["tslib", "npm:2.3.0"],
-            ["typescript", "patch:typescript@npm%3A4.3.2#builtin<compat/typescript>::version=4.3.2&hash=ddfc1b"]
           ],
           "linkType": "SOFT",
         }]
