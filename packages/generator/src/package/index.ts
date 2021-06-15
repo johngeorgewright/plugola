@@ -2,6 +2,7 @@ import Generator from 'yeoman-generator'
 import { paramCase } from 'change-case'
 import { validateGenerationFromRoot } from '../validation'
 import * as path from 'path'
+import prettier from 'prettier'
 
 export = class PluginGenerator extends Generator {
   private answers: { description?: string; name?: string; public?: boolean }
@@ -36,8 +37,12 @@ export = class PluginGenerator extends Generator {
     ])
   }
 
+  get #relativeDestinationRoot() {
+    return `packages/${paramCase(this.answers.name!)}`
+  }
+
   configuring() {
-    this.destinationRoot(`packages/${paramCase(this.answers.name!)}`)
+    this.destinationRoot(this.#relativeDestinationRoot)
     this.sourceRoot(path.resolve(__dirname, '..', '..', 'templates'))
   }
 
@@ -128,6 +133,25 @@ export = class PluginGenerator extends Generator {
       this.templatePath('package-src/index.test.ts.template'),
       this.destinationPath('src/index.test.ts'),
       context
+    )
+
+    await this.#updateVSCodeWS('plugola.code-workspace')
+  }
+
+  async #updateVSCodeWS(file: string) {
+    const vsCodeWS = JSON.parse(this.fs.read(file))
+
+    vsCodeWS.folders.push({
+      name: `📦 @plugols/${this.answers.name}`,
+      path: this.#relativeDestinationRoot,
+    })
+
+    const prettierOptions = (await prettier.resolveConfig(file)) || {}
+    prettierOptions.parser = 'json'
+
+    this.fs.write(
+      file,
+      prettier.format(JSON.stringify(vsCodeWS), prettierOptions)
     )
   }
 
