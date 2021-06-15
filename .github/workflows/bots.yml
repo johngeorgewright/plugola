@@ -7,13 +7,10 @@ on:
 jobs:
   auto-merge:
     name: Auto Merge
-    if: github.actor == 'renovate[bot]'
     runs-on: ubuntu-latest
+    if: github.actor == 'renovate[bot]'
     steps:
-      - name: Check project
-        uses: actions/checkout@v2
-      - name: Auto appove
-        uses: ahmadnassri/action-dependabot-auto-merge@v2
+      - uses: actions/checkout@v2
+      - uses: hmarr/auto-approve-action@v2
         with:
-          target: minor
-          github-token: ${{ secrets.PUSH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
