@@ -1,21 +1,42 @@
-export default class Graph<T> {
-  #adjList: Map<T, T[]>
+export type Traverse<T, Edge extends string> = (
+  graph: Graph<T, Edge>,
+  node: T
+) => Generator<T>
 
-  constructor() {
-    this.#adjList = new Map()
+export default class Graph<T, Edge extends string> {
+  #adjList = new Map<T, Partial<Record<Edge, Set<T>>>>()
+
+  vertex(vertex: T) {
+    if (!this.#adjList.has(vertex)) this.#adjList.set(vertex, {})
+    return this.#adjList.get(vertex)!
   }
 
-  addVertex(vertex: T) {
-    this.#adjList.set(vertex, [])
+  verticies() {
+    return this.#adjList.keys()
   }
 
-  addEdge(a: T, b: T) {
-    const vertex = this.#adjList.get(a)
-    if (!vertex) throw new RangeError('Non existent vertex')
-    vertex.push(b)
+  edges(vertex: T, type: Edge) {
+    const edges = this.vertex(vertex)
+    if (!edges[type]) edges[type] = new Set()
+    return edges[type]
   }
 
-  *bfs(node: T) {
+  addEdge(name: Edge, source: T, destination: T) {
+    this.vertex(destination)
+    this.edges(source, name)!.add(destination)
+  }
+
+  find(fn: (node: T) => boolean) {
+    for (const node of this.#adjList.keys()) {
+      if (fn(node)) {
+        return node
+      }
+    }
+
+    throw new Error('Node not found')
+  }
+
+  *bfs(node: T, edgeName: Edge) {
     const queue = [node]
     const visited = new Set<T>()
 
@@ -24,20 +45,16 @@ export default class Graph<T> {
       if (visited.has(node)) continue
       visited.add(node)
       yield node
-      const edges = this.#adjList.get(node)
-      if (!edges) throw new RangeError('Non existent vertex')
-      queue.push(...edges)
+      queue.push(...this.edges(node, edgeName)!)
     }
   }
 
-  *dfs(node: T, visited = new Set<T>()): Generator<T, Set<T>> {
+  *dfs(node: T, edgeName: Edge, visited = new Set<T>()): Generator<T, Set<T>> {
     if (visited.has(node)) return visited
-    const edges = this.#adjList.get(node)
-    if (!edges) throw new RangeError('Non existent vertex')
     visited = new Set(visited).add(node)
 
-    for (const edge of edges) {
-      visited = yield* this.dfs(edge, visited)
+    for (const edge of this.edges(node, edgeName)!) {
+      visited = yield* this.dfs(edge, edgeName, visited)
     }
 
     yield node

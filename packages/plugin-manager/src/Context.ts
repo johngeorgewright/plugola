@@ -8,12 +8,13 @@ export function isStatefulContext(
 }
 
 export interface Context<MB extends MessageBus> {
+  signal: AbortSignal
   broker: MessageBusBroker<MB>
   log: any
 }
 
 export interface InitContext<MB extends MessageBus> extends Context<MB> {
-  enablePlugins(pluginNames: string[]): void
+  enablePlugins(pluginNames: string[]): Promise<void>
   disablePlugins(pluginNames: string[]): void
 }
 

@@ -20,7 +20,7 @@
     "@semantic-release/git": "9.0.0",
     "@semantic-release/github": "7.2.3",
     "@semantic-release/npm": "7.1.3",
-    "@semantic-release/release-notes-generator": "9.0.2",
+    "@semantic-release/release-notes-generator": "9.0.3",
     "@types/jest": "26.0.23",
     "jest": "27.0.4",
     "rimraf": "3.0.2",
@@ -30,10 +30,13 @@
     "typescript": "4.3.2"
   },
   "dependencies": {
+    "@johngw/async": "^3.2.0",
+    "@plugola/graph": "workspace:packages/graph",
     "@plugola/logger": "workspace:packages/logger",
     "@plugola/message-bus": "workspace:packages/message-bus",
     "@plugola/query-params": "workspace:packages/query-params",
     "@plugola/store": "workspace:packages/store",
-    "tslib": "^2.2.0"
+    "node-abort-controller": "^2.0.0",
+    "tslib": "^2.3.0"
   }
 }

@@ -7,9 +7,10 @@ export function isStatefulPlugin(
 }
 
 export interface Plugin<
-  IC extends Record<string, unknown>,
-  C extends Record<string, unknown>
+  IC extends Record<string, unknown> = any,
+  C extends Record<string, unknown> = any
 > {
+  name: string
   dependencies?: string[]
   init?(context: IC): any
   run?(context: C): any
@@ -20,10 +21,7 @@ export interface StatefulPlugin<
   State,
   IC extends Record<string, unknown>,
   C extends Record<string, unknown>
-> {
-  dependencies?: string[]
-  init?(context: IC): any
-  run?(context: C): any
+> extends Plugin<IC, C> {
   state: PluginState<Action, State, C>
 }
 

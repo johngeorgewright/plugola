@@ -1,28 +1,21 @@
 import Graph from './Graph'
 
-let graph: Graph<string>
+let graph: Graph<string, 'like'>
 
 beforeEach(() => {
   graph = new Graph()
-
-  const vertices = ['A', 'B', 'C', 'D', 'E', 'F']
-
-  for (let i = 0; i < vertices.length; i++) {
-    graph.addVertex(vertices[i])
-  }
-
-  graph.addEdge('A', 'B')
-  graph.addEdge('A', 'D')
-  graph.addEdge('A', 'E')
-  graph.addEdge('B', 'C')
-  graph.addEdge('D', 'E')
-  graph.addEdge('E', 'F')
-  graph.addEdge('E', 'C')
-  graph.addEdge('C', 'F')
+  graph.addEdge('like', 'A', 'B')
+  graph.addEdge('like', 'A', 'D')
+  graph.addEdge('like', 'A', 'E')
+  graph.addEdge('like', 'B', 'C')
+  graph.addEdge('like', 'D', 'E')
+  graph.addEdge('like', 'E', 'F')
+  graph.addEdge('like', 'E', 'C')
+  graph.addEdge('like', 'C', 'F')
 })
 
 test('dfs', () => {
-  expect([...graph.dfs('A')]).toMatchInlineSnapshot(`
+  expect([...graph.dfs('A', 'like')]).toMatchInlineSnapshot(`
 Array [
   "F",
   "C",
@@ -35,7 +28,7 @@ Array [
 })
 
 test('bfs', () => {
-  expect([...graph.bfs('A')]).toMatchInlineSnapshot(`
+  expect([...graph.bfs('A', 'like')]).toMatchInlineSnapshot(`
 Array [
   "A",
   "B",
