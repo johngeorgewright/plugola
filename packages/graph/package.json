@@ -1,6 +1,6 @@
 {
   "name": "@plugola/graph",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Graph style data",
   "main": "dist/index.js",
   "sideEffects": false,
