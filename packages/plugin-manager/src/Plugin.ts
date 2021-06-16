@@ -12,6 +12,7 @@ export interface Plugin<
 > {
   name: string
   dependencies?: string[]
+  initTimeout?: number
   init?(context: IC): any
   run?(context: C): any
 }

@@ -7,9 +7,8 @@ import {
 import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
 import Store, { ActionI, Reducer } from '@plugola/store'
 import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
-import createLogger from './createLogger'
 import Logger from '@plugola/logger'
-import { detonateRace } from '@johngw/async'
+import { race, timeout } from '@johngw/async'
 import DependencyGraph from './DependencyGraph'
 
 export interface PluginManagerOptions<
@@ -158,19 +157,23 @@ export default class PluginManager<
     }
 
     const abortController = this.#abortController(plugin)
-    const context = this.#createInitContext(plugin, abortController)
+    const context = this.#createInitContext(plugin, abortController.signal)
 
     this.#initialized.add(plugin)
 
-    await this.#pluginRace(plugin, async () => {
-      await this.#mapDependencies(
-        plugin,
-        (dep) => !this.#initialized.has(dep),
-        (dep) => this.#initPlugin(dep)
-      )
+    await this.#pluginRace(
+      async () => {
+        await this.#mapDependencies(
+          plugin,
+          (dep) => !this.#initialized.has(dep),
+          (dep) => this.#initPlugin(dep)
+        )
 
-      await plugin.init!(context)
-    })
+        await plugin.init!(context)
+      },
+      abortController.signal,
+      plugin.initTimeout || this.#pluginTimeout
+    )
   }
 
   async #runPlugin(plugin: Plugin) {
@@ -179,36 +182,41 @@ export default class PluginManager<
     }
 
     const abortController = this.#abortController(plugin)
-    const context = this.#createRunContext(plugin, abortController)
+    const context = this.#createRunContext(plugin, abortController.signal)
 
     this.#ran.add(plugin)
 
-    await this.#pluginRace(plugin, async () => {
-      await this.#mapDependencies(
-        plugin,
-        (dep) => !this.#ran.has(dep),
-        (dep) => this.#runPlugin(dep)
-      )
+    await this.#pluginRace(
+      async () => {
+        await this.#mapDependencies(
+          plugin,
+          (dep) => !this.#ran.has(dep),
+          (dep) => this.#runPlugin(dep)
+        )
 
-      if (isStatefulContext(context)) {
-        // @ts-ignore
-        context.store.init()
-      }
+        if (isStatefulContext(context)) {
+          // @ts-ignore
+          context.store.init()
+        }
 
-      await plugin.run!(context as any)
-    })
+        await plugin.run!(context as any)
+      },
+      abortController.signal,
+      this.#pluginTimeout
+    )
   }
 
-  #pluginRace(plugin: Plugin, fn: () => Promise<any>) {
-    const abortController = this.#abortController(plugin)
-    return this.#pluginTimeout
-      ? detonateRace(fn(), this.#pluginTimeout).catch((error) => {
-          abortController.abort()
-          if (!error.isTimeoutError) {
-            throw error
-          }
-        })
-      : fn()
+  #pluginRace(
+    fn: (raceSignal: AbortSignal) => Promise<any>,
+    pluginSignal: AbortSignal,
+    ms?: number
+  ) {
+    return ms
+      ? race(
+          (raceSignal) => [fn(raceSignal), timeout(ms, raceSignal)],
+          pluginSignal
+        )
+      : fn(pluginSignal)
   }
 
   async #mapEnabledPlugins(
@@ -238,11 +246,11 @@ export default class PluginManager<
     await Promise.all(promises)
   }
 
-  #createInitContext(plugin: Plugin, abortController: AbortController) {
+  #createInitContext(plugin: Plugin, signal: AbortSignal) {
     return {
       enablePlugins: this.enablePlugins,
       disablePlugins: this.disablePlugins,
-      ...this.#createContext(plugin, abortController),
+      ...this.#createContext(plugin, signal),
       ...((this.#createExtraInitContext &&
         this.#createExtraInitContext(plugin.name)) ||
         {}),
@@ -251,24 +259,24 @@ export default class PluginManager<
 
   #createRunContext<Action extends ActionI, State>(
     plugin: StatefulPlugin<Action, State, any, any>,
-    abortController: AbortController
+    signal: AbortSignal
   ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
 
   #createRunContext(
     plugin: Plugin,
-    abortController: AbortController
+    signal: AbortSignal
   ): Context<MB> & ExtraContext & ExtraRunContext
 
-  #createRunContext(plugin: any, abortController: AbortController) {
+  #createRunContext(plugin: any, signal: AbortSignal) {
     return {
       ...(isStatefulPlugin(plugin)
         ? this.#createStatefulContext(
             plugin,
             plugin.state.reduce,
             plugin.state.initial,
-            abortController
+            signal
           )
-        : this.#createContext(plugin, abortController)),
+        : this.#createContext(plugin, signal)),
       ...((this.#createExtraRunContext &&
         this.#createExtraRunContext(plugin)) ||
         {}),
@@ -279,9 +287,9 @@ export default class PluginManager<
     plugin: Plugin,
     reduce: Reducer<Action, State>,
     initial: State,
-    abortController: AbortController
+    signal: AbortSignal
   ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext {
-    const context = this.#createContext(plugin, abortController)
+    const context = this.#createContext(plugin, signal)
     const log = context.log instanceof Logger ? context.log : undefined
     return {
       ...context,
@@ -289,11 +297,10 @@ export default class PluginManager<
     }
   }
 
-  #createContext({ name }: Plugin, abortController: AbortController) {
+  #createContext({ name }: Plugin, signal: AbortSignal) {
     return {
       broker: this.#messageBus.broker(name) as MessageBusBroker<MB>,
-      log: createLogger(name),
-      signal: abortController.signal,
+      signal,
       ...((this.#createExtraContext && this.#createExtraContext(name)) || {}),
     } as Context<MB> & ExtraContext & ExtraRunContext
   }
