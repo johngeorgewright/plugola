@@ -982,7 +982,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/async@npm:3.2.0, @johngw/async@npm:^3.2.0":
+"@johngw/async@npm:3.2.0":
   version: 3.2.0
   resolution: "@johngw/async@npm:3.2.0"
   dependencies:
@@ -990,6 +990,17 @@ __metadata:
     node-abort-controller: ^2.0.0
     tslib: ^2.2.0
   checksum: 44cf8b50c7d2a9edd11eb4fa77b59adfd014fbf9e549772fd5d02321b62277cadd59a3f7e904d911d2912247443e699418eed98c41c2351e717aca33195d86bf
+  languageName: node
+  linkType: hard
+
+"@johngw/async@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@johngw/async@npm:4.0.0"
+  dependencies:
+    "@johngw/object": 1.1.5
+    node-abort-controller: ^2.0.0
+    tslib: ^2.2.0
+  checksum: f4b743a8dc2d4103679b3aa1b76d2afc681f10a58878900dc619a214952d40d96bd4804c28868f0a431883f5d8efc59e0c42095f3f39fc7ddb27661150b8159c
   languageName: node
   linkType: hard
 
@@ -1390,7 +1401,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/message-bus@workspace:packages/message-bus"
   dependencies:
-    "@johngw/async": ^3.2.0
+    "@johngw/async": ^4.0.0
     "@johngw/async-iterator": ^2.1.1
     "@semantic-release/commit-analyzer": 8.0.1
     "@semantic-release/git": 9.0.0
@@ -1439,7 +1450,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/plugin-manager@workspace:packages/plugin-manager"
   dependencies:
-    "@johngw/async": ^3.2.0
+    "@johngw/async": ^4.0.0
     "@plugola/graph": "workspace:packages/graph"
     "@plugola/logger": "workspace:packages/logger"
     "@plugola/message-bus": "workspace:packages/message-bus"

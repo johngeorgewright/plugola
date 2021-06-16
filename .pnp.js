@@ -1485,6 +1485,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.2.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.0.0", {
+          "packageLocation": "./.yarn/cache/@johngw-async-npm-4.0.0-6d6fe8addf-f4b743a8dc.zip/node_modules/@johngw/async/",
+          "packageDependencies": [
+            ["@johngw/async", "npm:4.0.0"],
+            ["@johngw/object", "npm:1.1.5"],
+            ["node-abort-controller", "npm:2.0.0"],
+            ["tslib", "npm:2.2.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@johngw/async-iterator", [
@@ -1968,7 +1978,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/message-bus/",
           "packageDependencies": [
             ["@plugola/message-bus", "workspace:packages/message-bus"],
-            ["@johngw/async", "npm:3.2.0"],
+            ["@johngw/async", "npm:4.0.0"],
             ["@johngw/async-iterator", "npm:2.1.1"],
             ["@semantic-release/commit-analyzer", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:8.0.1"],
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.0"],
@@ -2021,7 +2031,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/plugin-manager/",
           "packageDependencies": [
             ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],
-            ["@johngw/async", "npm:3.2.0"],
+            ["@johngw/async", "npm:4.0.0"],
             ["@plugola/graph", "workspace:packages/graph"],
             ["@plugola/logger", "workspace:packages/logger"],
             ["@plugola/message-bus", "workspace:packages/message-bus"],
