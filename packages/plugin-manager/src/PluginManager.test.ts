@@ -259,7 +259,7 @@ test('disabling plugins within the init phase', async () => {
     run: foo,
   })
 
-  await pluginManager.enablePlugins(['bar', 'foo'])
+  await pluginManager.enablePlugins(['foo', 'bar'])
   await pluginManager.run()
 
   expect(foo).toHaveBeenCalled()
