@@ -95,6 +95,8 @@ export default class PluginManager<
   }
 
   readonly enablePlugins = async (pluginNames: string[]) => {
+    // TODO: enable plugins in order of dependency graph
+
     for (const pluginName of pluginNames) {
       this.#enabledPlugins.add(pluginName)
     }
