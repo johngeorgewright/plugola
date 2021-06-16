@@ -1,6 +1,4 @@
-import PluginManager from './PluginManager'
-
-export default PluginManager
+export { default as PluginManager } from './PluginManager'
 
 export {
   Context,
