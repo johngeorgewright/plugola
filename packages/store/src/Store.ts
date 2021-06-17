@@ -1,4 +1,4 @@
-import Logger, { DisabledLoggerBehavior } from '@plugola/logger'
+import { Logger, DisabledLoggerBehavior } from '@plugola/logger'
 
 export default class Store<Action extends ActionI, State> {
   #dispatching = false

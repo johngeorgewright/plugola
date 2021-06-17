@@ -7,7 +7,7 @@ import {
 import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
 import Store, { ActionI, Reducer } from '@plugola/store'
 import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
-import Logger from '@plugola/logger'
+import { Logger } from '@plugola/logger'
 import { race, timeout } from '@johngw/async'
 import DependencyGraph from './DependencyGraph'
 
