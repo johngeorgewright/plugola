@@ -151,24 +151,25 @@ export default class PluginManager<
     return this.#abortControllers.get(plugin)!
   }
 
-  async #initPlugin(plugin: Plugin) {
-    if (this.#initialized.has(plugin) || !plugin.init) {
+  async #initPlugin(plugin: Plugin, signal?: AbortSignal) {
+    if (this.#initialized.has(plugin) || !plugin.init || signal?.aborted) {
       return
     }
 
     const abortController = this.#abortController(plugin)
-    const context = this.#createInitContext(plugin, abortController.signal)
+    signal?.addEventListener('abort', () => abortController.abort())
 
     this.#initialized.add(plugin)
 
     await this.#pluginRace(
-      async () => {
+      async (signal) => {
         await this.#mapDependencies(
           plugin,
           (dep) => !this.#initialized.has(dep),
-          (dep) => this.#initPlugin(dep)
+          (dep) => this.#initPlugin(dep, signal)
         )
 
+        const context = this.#createInitContext(plugin, signal)
         await plugin.init!(context)
       },
       abortController.signal,
@@ -176,23 +177,25 @@ export default class PluginManager<
     )
   }
 
-  async #runPlugin(plugin: Plugin) {
-    if (this.#ran.has(plugin) || !plugin.run) {
+  async #runPlugin(plugin: Plugin, signal?: AbortSignal) {
+    if (this.#ran.has(plugin) || !plugin.run || signal?.aborted) {
       return
     }
 
     const abortController = this.#abortController(plugin)
-    const context = this.#createRunContext(plugin, abortController.signal)
+    signal?.addEventListener('abort', () => abortController.abort())
 
     this.#ran.add(plugin)
 
     await this.#pluginRace(
-      async () => {
+      async (signal) => {
         await this.#mapDependencies(
           plugin,
           (dep) => !this.#ran.has(dep),
-          (dep) => this.#runPlugin(dep)
+          (dep) => this.#runPlugin(dep, signal)
         )
+
+        const context = this.#createRunContext(plugin, signal)
 
         if (isStatefulContext(context)) {
           // @ts-ignore
