@@ -1905,7 +1905,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@plugola/generator", "workspace:packages/generator"],
             ["@types/jest", "npm:26.0.23"],
             ["@types/prettier", "npm:2.3.0"],
-            ["@types/yeoman-generator", "npm:5.0.0"],
+            ["@types/yeoman-generator", "npm:5.2.0"],
             ["change-case", "npm:4.1.2"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.5"],
             ["prettier", "npm:2.3.1"],
@@ -2749,10 +2749,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:5.0.0", {
-          "packageLocation": "./.yarn/cache/@types-yeoman-generator-npm-5.0.0-cbd14a55dc-4e41f9a59d.zip/node_modules/@types/yeoman-generator/",
+        ["npm:5.2.0", {
+          "packageLocation": "./.yarn/cache/@types-yeoman-generator-npm-5.2.0-5684fb0928-be9589d818.zip/node_modules/@types/yeoman-generator/",
           "packageDependencies": [
-            ["@types/yeoman-generator", "npm:5.0.0"],
+            ["@types/yeoman-generator", "npm:5.2.0"],
             ["@types/debug", "npm:4.1.5"],
             ["@types/ejs", "npm:3.0.6"],
             ["@types/inquirer", "npm:7.3.1"],
@@ -4451,7 +4451,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],
       ["core-js", [
         ["npm:3.12.1", {
-          "packageLocation": "./.yarn/unplugged/core-js-npm-3.12.1-6d1063bc86/node_modules/core-js/",
+          "packageLocation": "./.yarn/cache/core-js-npm-3.12.1-6d1063bc86-8b1d05579e.zip/node_modules/core-js/",
           "packageDependencies": [
             ["core-js", "npm:3.12.1"]
           ],
@@ -12094,7 +12094,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],
       ["spawn-sync", [
         ["npm:1.0.15", {
-          "packageLocation": "./.yarn/unplugged/spawn-sync-npm-1.0.15-ae144228c0/node_modules/spawn-sync/",
+          "packageLocation": "./.yarn/cache/spawn-sync-npm-1.0.15-ae144228c0-c31c84dd8b.zip/node_modules/spawn-sync/",
           "packageDependencies": [
             ["spawn-sync", "npm:1.0.15"],
             ["concat-stream", "npm:1.6.2"],
@@ -13893,7 +13893,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],
       ["yo", [
         ["npm:4.2.0", {
-          "packageLocation": "./.yarn/unplugged/yo-npm-4.2.0-fd8fdd1e1a/node_modules/yo/",
+          "packageLocation": "./.yarn/cache/yo-npm-4.2.0-fd8fdd1e1a-134d56a0f7.zip/node_modules/yo/",
           "packageDependencies": [
             ["yo", "npm:4.2.0"],
             ["async", "npm:2.6.3"],
