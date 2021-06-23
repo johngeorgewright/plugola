@@ -14,12 +14,13 @@ import DependencyGraph from './DependencyGraph'
 export interface PluginManagerOptions<
   ExtraContext extends Record<string, unknown>,
   ExtraInitContext extends Record<string, unknown>,
-  ExtraRunContext extends Record<string, unknown>
+  ExtraRunContext extends Record<string, unknown>,
+  StatefulContext extends Record<string, unknown>
 > {
   addContext?(pluginName: string): ExtraContext
   addInitContext?(pluginName: string): ExtraInitContext
   addRunContext?(pluginName: string): ExtraRunContext
-  onCreateStore?(pluginName: string, store: Store<any, any>): any
+  onCreateStore?(pluginName: string, context: StatefulContext): any
   pluginTimeout?: number
 }
 
@@ -40,7 +41,10 @@ export default class PluginManager<
   #createExtraContext?: (pluginName: string) => ExtraContext
   #createExtraInitContext?: (pluginName: string) => ExtraInitContext
   #createExtraRunContext?: (pluginName: string) => ExtraRunContext
-  #onCreateStore?: (pluginName: string, store: Store<any, any>) => any
+  #onCreateStore?: (
+    pluginName: string,
+    context: StatefulContext<MB, any, any> & ExtraContext & ExtraRunContext
+  ) => any
   #pluginTimeout?: number
 
   constructor(
@@ -48,7 +52,8 @@ export default class PluginManager<
     options: PluginManagerOptions<
       ExtraContext,
       ExtraInitContext,
-      ExtraRunContext
+      ExtraRunContext,
+      StatefulContext<MB, any, any> & ExtraContext & ExtraRunContext
     > = {}
   ) {
     this.#messageBus = messageBus
@@ -299,9 +304,9 @@ export default class PluginManager<
     initial: State,
     signal: AbortSignal
   ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext {
-    const context = this.#createContext(plugin, signal)
     const store = new Store<Action, State>(reduce, initial)
-    this.#onCreateStore?.(plugin.name, store)
+    const context = { ...this.#createContext(plugin, signal), store }
+    this.#onCreateStore?.(plugin.name, context)
     return {
       ...context,
       store,

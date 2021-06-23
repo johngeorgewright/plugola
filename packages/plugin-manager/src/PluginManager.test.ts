@@ -1,7 +1,7 @@
 import { Broker, MessageBus } from '@plugola/message-bus'
 import PluginManager from './PluginManager'
 import { timeout } from '@johngw/async'
-import { Store } from '@plugola/store'
+import { InitAction, Store } from '@plugola/store'
 
 type Events = { foo: [string] }
 
@@ -111,6 +111,34 @@ test('running stateful plugins', async () => {
       broker: expect.any(Broker),
       store: expect.any(Store),
     })
+  )
+})
+
+test('modifying stores', async () => {
+  const onCreateStore = jest.fn()
+
+  pluginManager = new PluginManager(messageBus, {
+    onCreateStore,
+  }) as any
+
+  pluginManager.registerStatefulPlugin<InitAction, number>({
+    name: 'foo',
+    state: {
+      initial: 0,
+      reduce(_, state) {
+        return state
+      },
+      onUpdate() {},
+    },
+    run() {},
+  })
+
+  await pluginManager.enableAllPlugins()
+  await pluginManager.run()
+
+  expect(onCreateStore).toHaveBeenCalledWith(
+    'foo',
+    expect.objectContaining({ store: expect.any(Store) })
   )
 })
 
