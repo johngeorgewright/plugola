@@ -1,3 +1,5 @@
+import AbortController from 'node-abort-controller'
+import { AbortError } from '@johngw/async'
 import {
   accumulate,
   combineIterators,
@@ -5,6 +7,7 @@ import {
 } from '@johngw/async-iterator'
 import { init, last, removeItem, replaceLastItem } from './array'
 import Broker from './Broker'
+import MessageBusError from './MessageBusError'
 import { amend } from './object'
 import { CancelEvent } from './symbols'
 import {
@@ -35,11 +38,16 @@ import {
 } from './types/invokables'
 import { UnpackResolvableValue } from './types/util'
 
+interface ErrorHandler {
+  (error: MessageBusError): any
+}
+
 export default class MessageBus<
   Events extends EventsT = EventsT,
   EventGens extends EventGeneratorsT = EventGeneratorsT,
   Invokables extends InvokablesT = InvokablesT
 > {
+  #errorHandlers: ErrorHandler[] = []
   #eventInterceptors: EventInterceptors<Events> = {}
   #eventGenerators: EventGenerators<EventGens> = {}
   #invokers: Invokers<Invokables> = {}
@@ -48,8 +56,21 @@ export default class MessageBus<
   #started: boolean = false
   #subscribers: Subscribers<Events> = {}
 
-  broker(id: string) {
-    return new Broker<Events, EventGens, Invokables>(this, id)
+  onError(errorHandler: ErrorHandler) {
+    this.#errorHandlers.push(errorHandler)
+    return () => {
+      this.#errorHandlers = removeItem(errorHandler, this.#errorHandlers)
+    }
+  }
+
+  #reportError(brokerId: string, error: Error) {
+    for (const errorHandler of this.#errorHandlers) {
+      errorHandler(new MessageBusError(brokerId, error))
+    }
+  }
+
+  broker(id: string, abortController = new AbortController()) {
+    return new Broker<Events, EventGens, Invokables>(this, id, abortController)
   }
 
   async start() {
@@ -58,21 +79,38 @@ export default class MessageBus<
   }
 
   emit<EventName extends keyof Events>(
-    _broker: Broker<Events, EventGeneratorsT, InvokablesT>,
+    broker: Broker<Events, EventGeneratorsT, InvokablesT>,
     eventName: EventName,
     args: Events[EventName]
-  ) {
+  ): void | Promise<void> {
     const handle = () => {
-      const interception = this.#callEventInterceptors(eventName, args)
-      return interception
-        ? interception.then((moddedArgs) => {
-            if (moddedArgs !== CancelEvent) {
-              this.#callSubscribers(eventName, moddedArgs)
-            }
-          })
-        : this.#callSubscribers(eventName, args)
+      let result: void | Promise<void>
+
+      try {
+        const interception = this.#callEventInterceptors(eventName, args)
+        result = interception
+          ? interception.then((moddedArgs) => {
+              if (moddedArgs !== CancelEvent) {
+                this.#callSubscribers(eventName, moddedArgs)
+              }
+            })
+          : this.#callSubscribers(eventName, args)
+      } catch (error) {
+        this.#reportError(broker.id, error)
+      }
+
+      if (result instanceof Promise) {
+        return result.catch((error) => this.#reportError(broker.id, error))
+      } else {
+        return result
+      }
     }
-    return this.#started ? handle() : this.#queue(handle)
+
+    return this.#started
+      ? handle()
+      : this.#queue(broker, handle).catch((error) =>
+          this.#reportError(broker.id, error)
+        )
   }
 
   interceptEvent<EventName extends keyof Events>(
@@ -130,6 +168,8 @@ export default class MessageBus<
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
   ) {
+    if (broker.aborted) return () => {}
+
     const subscriber = {
       broker,
       args: init(args),
@@ -142,12 +182,16 @@ export default class MessageBus<
       (subscribers = []) => [...subscribers!, subscriber]
     )
 
-    return () => {
+    const off = () => {
       this.#subscribers[eventName] = removeItem(
         subscriber,
         this.#subscribers[eventName] as any
       )
     }
+
+    broker.onAbort(off)
+
+    return off
   }
 
   once<EventName extends keyof Events>(
@@ -176,12 +220,19 @@ export default class MessageBus<
     eventName: EventName,
     args: Args
   ) {
-    return new Promise<UntilRtn<Events[EventName], Args>>((resolve) => {
+    return new Promise<UntilRtn<Events[EventName], Args>>((resolve, reject) => {
+      if (broker.aborted) return reject(new AbortError())
+
       const subscriberArgs = [
         ...args,
         (...args: any) => resolve(args),
       ] as SubscriberArgs<Events[EventName]>
+
       this.once(broker, eventName, subscriberArgs)
+
+      broker.onAbort(() => {
+        reject(new AbortError())
+      })
     })
   }
 
@@ -197,6 +248,8 @@ export default class MessageBus<
       EventGens[EventName]['yield']
     >
   ) {
+    if (broker.aborted) return () => {}
+
     const iterator = {
       broker,
       args: init(args),
@@ -209,21 +262,25 @@ export default class MessageBus<
       (iterators = []) => [...iterators!, iterator]
     )
 
-    return () => {
+    const off = () => {
       this.#eventGenerators[eventName] = removeItem(
         iterator,
         this.#eventGenerators[eventName] as any
       )
     }
+
+    broker.onAbort(off)
+
+    return off
   }
 
   async *iterate<EventName extends keyof EventGens>(
-    _broker: Broker<EventsT, EventGens, Invokables>,
+    broker: Broker<EventsT, EventGens, Invokables>,
     eventName: EventName,
     args: EventGens[EventName]['args']
   ): AsyncIterable<EventGens[EventName]['yield']> {
     if (!this.#started) {
-      await this.#queue(() => {})
+      await this.#queue(broker, () => {})
     }
 
     yield* combineIterators(
@@ -241,7 +298,11 @@ export default class MessageBus<
     eventName: EventName,
     args: EventGens[EventName]['args']
   ) {
-    return iteratorRace(this.iterate(broker, eventName, args), within)
+    return iteratorRace(
+      this.iterate(broker, eventName, args),
+      within,
+      broker.abortSignal
+    )
   }
 
   async accumulate<EventName extends keyof EventGens>(
@@ -249,7 +310,7 @@ export default class MessageBus<
     eventName: EventName,
     args: EventGens[EventName]['args']
   ) {
-    return accumulate(this.iterate(broker, eventName, args))
+    return accumulate(this.iterate(broker, eventName, args), broker.abortSignal)
   }
 
   async accumulateWithin<EventName extends keyof EventGens>(
@@ -269,6 +330,8 @@ export default class MessageBus<
       Invokables[InvokableName]['return']
     >
   ): () => void {
+    if (broker.aborted) return () => {}
+
     const args = init(allArgs)
     const fn = last(allArgs) as InvokerFn<
       Invokables[InvokableName]['args'],
@@ -296,22 +359,34 @@ export default class MessageBus<
       },
     ]
 
-    return () => {
+    const off = () => {
       delete this.#invokers[invokableName]
     }
+
+    broker.onAbort(() => setTimeout(off, 0))
+
+    return off
   }
 
   async invoke<InvokableName extends keyof Invokables>(
-    _broker: Broker<Events, EventGens, Invokables>,
+    broker: Broker<Events, EventGens, Invokables>,
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
   ): Promise<Invokables[InvokableName]['return']> {
-    const handle = async () =>
-      this.#callInvoker(
-        invokableName,
-        await this.#callInvokerInterceptors(invokableName, args)
-      )
-    return this.#started ? handle() : this.#queue(handle)
+    const handle = () =>
+      new Promise(async (resolve, reject) => {
+        if (broker.aborted) return reject(new AbortError())
+        broker.onAbort(() => reject(new AbortError()))
+
+        resolve(
+          this.#callInvoker(
+            invokableName,
+            await this.#callInvokerInterceptors(invokableName, args)
+          )
+        )
+      })
+
+    return this.#started ? handle() : this.#queue(broker, handle)
   }
 
   #callEventInterceptors<EventName extends keyof Events>(
@@ -440,9 +515,17 @@ export default class MessageBus<
     return i + 1
   }
 
-  async #queue<T>(handler: () => T) {
-    return new Promise<T>((resolve) => {
-      this.#queued.push(() => resolve(handler()))
-    }) as Promise<UnpackResolvableValue<T>>
+  async #queue<T>(broker: Broker, handler: () => T) {
+    return new Promise<UnpackResolvableValue<T>>((resolve, reject) => {
+      if (broker.aborted) return reject(new AbortError())
+
+      const fn = () => resolve(handler() as UnpackResolvableValue<T>)
+      this.#queued.push(fn)
+
+      broker.onAbort(() => {
+        this.#queued = removeItem(fn, this.#queued)
+        reject(new AbortError())
+      })
+    })
   }
 }

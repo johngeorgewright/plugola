@@ -36,6 +36,7 @@
   "dependencies": {
     "@johngw/async": "^4.0.0",
     "@johngw/async-iterator": "^2.2.0",
+    "node-abort-controller": "^2.0.0",
     "ts-toolbelt": "^9.6.0",
     "tslib": "^2.3.0"
   }

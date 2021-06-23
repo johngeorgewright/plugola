@@ -2,6 +2,7 @@ import Broker from './Broker'
 import MessageBus from './MessageBus'
 import { CancelEvent } from './symbols'
 import { timeout } from '@johngw/async'
+import MessageBusError from './MessageBusError'
 
 describe('events', () => {
   type Events = { foo: []; bar: [string] }
@@ -92,6 +93,26 @@ describe('events', () => {
     expect(fn).toHaveBeenCalledTimes(1)
     expect(fn).toHaveBeenCalledWith()
   })
+
+  test('aborting removes subscribers', () => {
+    messageBus.start()
+    broker.abort()
+    broker.emit('foo')
+    expect(foo).not.toHaveBeenCalled()
+  })
+
+  test('aborting cancels queued emits', async () => {
+    const onAbort = jest.fn()
+    broker.emit('foo')
+    broker.abort()
+    messageBus.onError(onAbort)
+    await messageBus.start()
+    expect(foo).not.toHaveBeenCalled()
+    expect(onAbort).toHaveBeenCalled()
+    expect(onAbort.mock.calls[0][0].message).toBe(
+      'test: Async operation was aborted'
+    )
+  })
 })
 
 describe('iterators', () => {
@@ -153,6 +174,7 @@ describe('invokables', () => {
     foo: { args: []; return: string }
     bar: { args: [string]; return: string }
     afoo: { args: [string]; return: string }
+    never: { args: []; return: Promise<never> }
   }
   let messageBus: MessageBus<{}, {}, Invokables>
   let broker: Broker<{}, {}, Invokables>
@@ -166,6 +188,7 @@ describe('invokables', () => {
     bar = jest.fn((x: string) => x + '1')
     broker.register('foo', foo)
     broker.register('bar', bar)
+    broker.register('never', () => new Promise(() => {}))
   })
 
   test('returning values', async () => {
@@ -206,5 +229,49 @@ describe('invokables', () => {
     messageBus.start()
     broker.interceptInvoker('bar', (x) => [x + '1'])
     expect(await broker.invoke('bar', 'hello')).toEqual('hello11')
+  })
+
+  test('aborting will throw AbortError', async () => {
+    messageBus.start()
+    const result = broker.invoke('never')
+    broker.abort()
+    await expect(result).rejects.toThrow('Async operation was aborted')
+  })
+})
+
+describe('error handling', () => {
+  type Events = { foo: []; bar: [string] }
+  let messageBus: MessageBus<Events, {}, {}>
+  let broker: Broker<Events, {}, {}>
+
+  beforeEach(() => {
+    messageBus = new MessageBus()
+    broker = messageBus.broker('test')
+  })
+
+  test('immediately throing errors inside subscribers', (done) => {
+    messageBus.start()
+    messageBus.onError((error) => {
+      expect(error).toBeInstanceOf(MessageBusError)
+      expect(error.message).toBe('test: Foo errored')
+      done()
+    })
+    broker.on('foo', () => {
+      throw new Error('Foo errored')
+    })
+    broker.emit('foo')
+  })
+
+  test('queuing errors inside subscribers', (done) => {
+    messageBus.onError((error) => {
+      expect(error).toBeInstanceOf(MessageBusError)
+      expect(error.message).toBe('test: Foo errored')
+      done()
+    })
+    broker.on('foo', () => {
+      throw new Error('Foo errored')
+    })
+    broker.emit('foo')
+    messageBus.start()
   })
 })
