@@ -1476,10 +1476,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@johngw/async", [
-        ["npm:4.0.0", {
-          "packageLocation": "./.yarn/cache/@johngw-async-npm-4.0.0-6d6fe8addf-f4b743a8dc.zip/node_modules/@johngw/async/",
+        ["npm:4.0.1", {
+          "packageLocation": "./.yarn/cache/@johngw-async-npm-4.0.1-d565e4902c-fab87e75c8.zip/node_modules/@johngw/async/",
           "packageDependencies": [
-            ["@johngw/async", "npm:4.0.0"],
+            ["@johngw/async", "npm:4.0.1"],
             ["@johngw/object", "npm:1.1.5"],
             ["node-abort-controller", "npm:2.0.0"],
             ["tslib", "npm:2.2.0"]
@@ -1488,11 +1488,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@johngw/async-iterator", [
-        ["npm:2.2.0", {
-          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-2.2.0-bc58417131-34b24fee24.zip/node_modules/@johngw/async-iterator/",
+        ["npm:2.2.1", {
+          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-2.2.1-0693fd37af-10e69c7014.zip/node_modules/@johngw/async-iterator/",
           "packageDependencies": [
-            ["@johngw/async-iterator", "npm:2.2.0"],
-            ["@johngw/async", "npm:4.0.0"],
+            ["@johngw/async-iterator", "npm:2.2.1"],
+            ["@johngw/async", "npm:4.0.1"],
             ["@johngw/object", "npm:1.1.5"],
             ["node-abort-controller", "npm:2.0.0"],
             ["tslib", "npm:2.2.0"]
@@ -1951,7 +1951,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:7.1.3"],
             ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.3"],
             ["@types/jest", "npm:26.0.23"],
-            ["@types/node", "npm:15.12.2"],
+            ["@types/node", "npm:15.12.4"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.5"],
             ["rimraf", "npm:3.0.2"],
             ["semantic-release", "npm:17.4.4"],
@@ -1968,15 +1968,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/message-bus/",
           "packageDependencies": [
             ["@plugola/message-bus", "workspace:packages/message-bus"],
-            ["@johngw/async", "npm:4.0.0"],
-            ["@johngw/async-iterator", "npm:2.2.0"],
+            ["@johngw/async", "npm:4.0.1"],
+            ["@johngw/async-iterator", "npm:2.2.1"],
             ["@semantic-release/commit-analyzer", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:8.0.1"],
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.0"],
             ["@semantic-release/github", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:7.2.3"],
             ["@semantic-release/npm", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:7.1.3"],
             ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.3"],
             ["@types/jest", "npm:26.0.23"],
-            ["@types/node", "npm:15.12.2"],
+            ["@types/node", "npm:15.12.4"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.5"],
             ["node-abort-controller", "npm:2.0.0"],
             ["rimraf", "npm:3.0.2"],
@@ -2022,7 +2022,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/plugin-manager/",
           "packageDependencies": [
             ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],
-            ["@johngw/async", "npm:4.0.0"],
+            ["@johngw/async", "npm:4.0.1"],
             ["@plugola/graph", "workspace:packages/graph"],
             ["@plugola/logger", "workspace:packages/logger"],
             ["@plugola/message-bus", "workspace:packages/message-bus"],
@@ -2585,10 +2585,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/node", [
-        ["npm:15.12.2", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-15.12.2-0d3ff66ec0-26b9170eb8.zip/node_modules/@types/node/",
+        ["npm:15.12.4", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-15.12.4-9b6a9838ed-64b121a7e8.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:15.12.2"]
+            ["@types/node", "npm:15.12.4"]
           ],
           "linkType": "HARD",
         }],
@@ -4451,7 +4451,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],
       ["core-js", [
         ["npm:3.12.1", {
-          "packageLocation": "./.yarn/cache/core-js-npm-3.12.1-6d1063bc86-8b1d05579e.zip/node_modules/core-js/",
+          "packageLocation": "./.yarn/unplugged/core-js-npm-3.12.1-6d1063bc86/node_modules/core-js/",
           "packageDependencies": [
             ["core-js", "npm:3.12.1"]
           ],
@@ -12094,7 +12094,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],
       ["spawn-sync", [
         ["npm:1.0.15", {
-          "packageLocation": "./.yarn/cache/spawn-sync-npm-1.0.15-ae144228c0-c31c84dd8b.zip/node_modules/spawn-sync/",
+          "packageLocation": "./.yarn/unplugged/spawn-sync-npm-1.0.15-ae144228c0/node_modules/spawn-sync/",
           "packageDependencies": [
             ["spawn-sync", "npm:1.0.15"],
             ["concat-stream", "npm:1.6.2"],
@@ -12920,7 +12920,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.7"],
             ["@tsconfig/node14", "npm:1.0.0"],
             ["@tsconfig/node16", "npm:1.0.1"],
-            ["@types/node", "npm:15.12.2"],
+            ["@types/node", "npm:15.12.4"],
             ["@types/swc__core", null],
             ["@types/swc__wasm", null],
             ["@types/types__node", null],
@@ -13893,7 +13893,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ]],
       ["yo", [
         ["npm:4.2.0", {
-          "packageLocation": "./.yarn/cache/yo-npm-4.2.0-fd8fdd1e1a-134d56a0f7.zip/node_modules/yo/",
+          "packageLocation": "./.yarn/unplugged/yo-npm-4.2.0-fd8fdd1e1a/node_modules/yo/",
           "packageDependencies": [
             ["yo", "npm:4.2.0"],
             ["async", "npm:2.6.3"],

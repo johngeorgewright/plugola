@@ -30,7 +30,7 @@
     "typescript": "4.3.4"
   },
   "dependencies": {
-    "@johngw/async": "4.0.0",
+    "@johngw/async": "4.0.1",
     "@plugola/graph": "workspace:packages/graph",
     "@plugola/logger": "workspace:packages/logger",
     "@plugola/message-bus": "workspace:packages/message-bus",
