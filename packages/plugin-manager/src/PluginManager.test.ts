@@ -1,7 +1,7 @@
 import { Broker, MessageBus } from '@plugola/message-bus'
 import PluginManager from './PluginManager'
 import { timeout } from '@johngw/async'
-import Store from '@plugola/store'
+import { Store } from '@plugola/store'
 
 type Events = { foo: [string] }
 
