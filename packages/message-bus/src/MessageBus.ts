@@ -8,10 +8,11 @@ import Broker from './Broker'
 import { amend } from './object'
 import { CancelEvent } from './symbols'
 import {
+  EventInterceptor,
   EventInterceptorArgs,
-  EventInterceptorFn,
   EventInterceptors,
   EventsT,
+  Subscriber,
   SubscriberArgs,
   SubscriberFn,
   Subscribers,
@@ -19,6 +20,7 @@ import {
   UntilRtn,
 } from './types/events'
 import {
+  EventGenerator,
   EventGeneratorArgs,
   EventGenerators,
   EventGeneratorsT,
@@ -26,6 +28,7 @@ import {
 import {
   InvokablesT,
   InvokerFn,
+  InvokerInterceptor,
   InvokerInterceptors,
   InvokerRegistrationArgs,
   Invokers,
@@ -80,8 +83,8 @@ export default class MessageBus<
     const interceptor = {
       broker,
       args: init(args),
-      fn: last(args) as EventInterceptorFn<unknown[], unknown[]>,
-    }
+      fn: last(args),
+    } as EventInterceptor<Broker>
 
     this.#eventInterceptors = amend(
       this.#eventInterceptors,
@@ -105,8 +108,8 @@ export default class MessageBus<
     const interceptor = {
       broker,
       args: init(args),
-      fn: last(args as any) as any,
-    }
+      fn: last(args),
+    } as InvokerInterceptor<Broker>
 
     this.#invokerInterceptors = amend(
       this.#invokerInterceptors,
@@ -130,8 +133,8 @@ export default class MessageBus<
     const subscriber = {
       broker,
       args: init(args),
-      fn: last(args) as (...args: unknown[]) => any,
-    }
+      fn: last(args),
+    } as Subscriber<Broker>
 
     this.#subscribers = amend(
       this.#subscribers,
@@ -152,7 +155,7 @@ export default class MessageBus<
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
   ): () => void {
-    const fn = last(args) as unknown as SubscriberFn<Events[EventName]>
+    const fn = last(args) as SubscriberFn<Events[EventName]>
     const onceFn = ((...args: Events[EventName]) => {
       off()
       return fn(...args)
@@ -177,7 +180,7 @@ export default class MessageBus<
       const subscriberArgs = [
         ...args,
         (...args: any) => resolve(args),
-      ] as unknown as SubscriberArgs<Events[EventName]>
+      ] as SubscriberArgs<Events[EventName]>
       this.once(broker, eventName, subscriberArgs)
     })
   }
@@ -197,10 +200,9 @@ export default class MessageBus<
     const iterator = {
       broker,
       args: init(args),
-      fn: last(args) as any,
-    }
+      fn: last(args),
+    } as EventGenerator<Broker>
 
-    // @ts-ignore
     this.#eventGenerators = amend(
       this.#eventGenerators,
       eventName,

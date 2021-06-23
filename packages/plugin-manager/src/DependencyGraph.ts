@@ -1,7 +1,7 @@
 import { Graph } from '@plugola/graph'
 import { Plugin } from './Plugin'
 
-export default class DependencyGraph<T extends Plugin<any, any>> extends Graph<
+export default class DependencyGraph<T extends Plugin> extends Graph<
   T,
   'dependency' | 'dependencyTo'
 > {
