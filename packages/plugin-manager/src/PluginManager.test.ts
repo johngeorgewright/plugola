@@ -89,9 +89,7 @@ test('running stateful plugins', async () => {
         }
       },
 
-      onUpdate(state) {
-        console.info(state)
-      },
+      onUpdate() {},
     },
 
     run({ store }) {
