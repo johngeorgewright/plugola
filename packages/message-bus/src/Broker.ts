@@ -1,4 +1,4 @@
-import type AbortController from 'node-abort-controller'
+import AbortController, { AbortSignal } from 'node-abort-controller'
 import type MessageBus from './MessageBus'
 import type {
   EventInterceptorArgs,
@@ -49,6 +49,14 @@ export default class Broker<
     return this.messageBus.emit(this, eventName, args)
   }
 
+  emitSignal<EventName extends keyof Events>(
+    eventName: EventName,
+    signal: AbortSignal,
+    ...args: Events[EventName]
+  ): void | Promise<void> {
+    return this.messageBus.emit(this, eventName, args, signal)
+  }
+
   interceptEvent<EventName extends keyof Events>(
     eventName: EventName,
     ...args: EventInterceptorArgs<Events[EventName]>
@@ -81,8 +89,18 @@ export default class Broker<
     eventName: EventName,
     ...args: Args
   ): Promise<UntilRtn<Events[EventName], Args>> {
-    // @ts-ignore
-    return this.messageBus.until(this, eventName, args)
+    return this.messageBus.until(this, eventName, args) as any
+  }
+
+  async untilSignal<
+    EventName extends keyof Events,
+    Args extends UntilArgs<Events[EventName]>
+  >(
+    eventName: EventName,
+    abortSignal: AbortSignal,
+    ...args: Args
+  ): Promise<UntilRtn<Events[EventName], Args>> {
+    return this.messageBus.until(this, eventName, args, abortSignal) as any
   }
 
   generator<EventName extends keyof EventGens>(
@@ -100,6 +118,14 @@ export default class Broker<
     ...args: EventGens[EventName]['args']
   ): AsyncIterable<EventGens[EventName]['yield']> {
     return this.messageBus.iterate(this, eventName, args)
+  }
+
+  iterateSignal<EventName extends keyof EventGens>(
+    eventName: EventName,
+    abortSignal: AbortSignal,
+    ...args: EventGens[EventName]['args']
+  ): AsyncIterable<EventGens[EventName]['yield']> {
+    return this.messageBus.iterate(this, eventName, args, abortSignal)
   }
 
   iterateWithin<EventName extends keyof EventGens>(

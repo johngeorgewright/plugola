@@ -1,5 +1,6 @@
 import type Broker from '../Broker'
 import { L } from 'ts-toolbelt'
+import { AddAbortSignal } from './MessageBus'
 
 export type EventGeneratorsT = Record<
   string,
@@ -7,7 +8,7 @@ export type EventGeneratorsT = Record<
 >
 
 export type EventGeneratorFn<Args extends unknown[], R> = (
-  ...args: Args
+  ...args: AddAbortSignal<Args>
 ) => AsyncIterable<R>
 
 export interface EventGenerator<B extends Broker> {

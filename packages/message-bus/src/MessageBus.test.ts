@@ -3,6 +3,7 @@ import MessageBus from './MessageBus'
 import { CancelEvent } from './symbols'
 import { AbortError, timeout } from '@johngw/async'
 import MessageBusError from './MessageBusError'
+import { AbortSignalComposite } from './AbortController'
 
 describe('events', () => {
   type Events = { foo: []; bar: [string] }
@@ -25,7 +26,10 @@ describe('events', () => {
     broker.emit('foo')
     broker.emit('bar', 'hello world')
     expect(foo).toHaveBeenCalled()
-    expect(bar).toHaveBeenCalledWith('hello world')
+    expect(bar).toHaveBeenCalledWith(
+      'hello world',
+      expect.any(AbortSignalComposite)
+    )
   })
 
   test('queued events', () => {
@@ -37,7 +41,10 @@ describe('events', () => {
 
     messageBus.start()
     expect(foo).toHaveBeenCalled()
-    expect(bar).toHaveBeenCalledWith('hello world')
+    expect(bar).toHaveBeenCalledWith(
+      'hello world',
+      expect.any(AbortSignalComposite)
+    )
   })
 
   test('can wait for all asynchronous listeners', async () => {
@@ -64,14 +71,14 @@ describe('events', () => {
     messageBus.start()
     const result = broker.until('bar')
     broker.emit('bar', 'hello')
-    expect(await result).toEqual(['hello'])
+    expect(await result).toEqual(['hello', expect.any(AbortSignalComposite)])
   })
 
   test('intercepting events', async () => {
     messageBus.start()
     broker.interceptEvent('bar', (x) => [x + '1'])
     await broker.emit('bar', 'hello')
-    expect(bar).toHaveBeenCalledWith('hello1')
+    expect(bar).toHaveBeenCalledWith('hello1', expect.any(AbortSignalComposite))
   })
 
   test('cancelling events with interception', async () => {
@@ -91,7 +98,7 @@ describe('events', () => {
     broker.emit('bar', 'mung')
     broker.emit('bar', 'face')
     expect(fn).toHaveBeenCalledTimes(1)
-    expect(fn).toHaveBeenCalledWith()
+    expect(fn).toHaveBeenCalledWith(expect.any(AbortSignalComposite))
   })
 
   test('aborting removes subscribers', () => {
@@ -188,11 +195,11 @@ describe('invokables', () => {
     bar = jest.fn((x: string) => x + '1')
     broker.register('foo', foo)
     broker.register('bar', bar)
-    const { onAbort } = broker.register(
+    broker.register(
       'never',
-      () =>
+      (abortSignal) =>
         new Promise((_, reject) => {
-          onAbort(() => reject(new AbortError()))
+          abortSignal.onabort = () => reject(new AbortError())
         })
     )
   })

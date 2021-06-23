@@ -1,11 +1,12 @@
 import type Broker from '../Broker'
 import { L } from 'ts-toolbelt'
 import { UnpackResolvableValue } from './util'
+import { AddAbortSignal } from './MessageBus'
 
 export type InvokablesT = Record<string, { args: unknown[]; return: unknown }>
 
 export type InvokerFn<Args extends unknown[], Result> = (
-  ...args: Args
+  ...args: AddAbortSignal<Args>
 ) => Result | Promise<UnpackResolvableValue<Result>>
 
 export type InvokerRegistrationArgs<

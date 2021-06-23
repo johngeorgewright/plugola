@@ -1,11 +1,12 @@
 import type Broker from '../Broker'
 import type { CancelEvent } from '../symbols'
-import { L, N } from 'ts-toolbelt'
+import type { L, N } from 'ts-toolbelt'
+import type { AddAbortSignal } from './MessageBus'
 
 export type EventsT = Record<string, unknown[]>
 
 export type SubscriberFn<Args extends unknown[]> = (
-  ...args: Args
+  ...args: AddAbortSignal<Args>
 ) => void | Promise<void>
 
 export type SubscriberArgs<
