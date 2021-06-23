@@ -1,7 +1,7 @@
 import Broker from './Broker'
 import MessageBus from './MessageBus'
 import { CancelEvent } from './symbols'
-import { timeout } from '@johngw/async'
+import { AbortError, timeout } from '@johngw/async'
 import MessageBusError from './MessageBusError'
 
 describe('events', () => {
@@ -188,7 +188,13 @@ describe('invokables', () => {
     bar = jest.fn((x: string) => x + '1')
     broker.register('foo', foo)
     broker.register('bar', bar)
-    broker.register('never', () => new Promise(() => {}))
+    const { onAbort } = broker.register(
+      'never',
+      () =>
+        new Promise((_, reject) => {
+          onAbort(() => reject(new AbortError()))
+        })
+    )
   })
 
   test('returning values', async () => {

@@ -1,5 +1,11 @@
+import type { AbortSignal } from 'node-abort-controller'
 import type Broker from '../Broker'
 import type MessageBus from '../MessageBus'
+
+export interface Subscription {
+  cancel(): void
+  onAbort(fn: () => any): any
+}
 
 export type MessageBusEvents<MB extends MessageBus> = MB extends MessageBus<
   infer Events,
