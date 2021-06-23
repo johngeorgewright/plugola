@@ -1,13 +1,14 @@
+import type AbortController from 'node-abort-controller'
 import type MessageBus from './MessageBus'
-import {
+import type {
   EventInterceptorArgs,
   EventsT,
   SubscriberArgs,
   UntilArgs,
   UntilRtn,
 } from './types/events'
-import { EventGeneratorArgs, EventGeneratorsT } from './types/generators'
-import {
+import type { EventGeneratorArgs, EventGeneratorsT } from './types/generators'
+import type {
   InvokablesT,
   InvokerInterceptorArgs,
   InvokerRegistrationArgs,
@@ -20,14 +21,30 @@ export default class Broker<
 > {
   constructor(
     private readonly messageBus: MessageBus<Events, EventGens, Invokables>,
-    public readonly id: string
+    public readonly id: string,
+    public readonly abortController: AbortController
   ) {}
+
+  get aborted() {
+    return this.abortSignal.aborted
+  }
+
+  get abortSignal() {
+    return this.abortController.signal
+  }
+
+  onAbort(fn: () => any) {
+    this.abortController.signal.addEventListener('abort', fn)
+  }
+
+  abort() {
+    this.abortController.abort()
+  }
 
   emit<EventName extends keyof Events>(
     eventName: EventName,
     ...args: Events[EventName]
   ): void | Promise<void> {
-    // @ts-ignore
     return this.messageBus.emit(this, eventName, args)
   }
 
@@ -42,14 +59,14 @@ export default class Broker<
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
   ): () => void {
-    return this.messageBus.on(this as any, eventName, args)
+    return this.messageBus.on(this, eventName, args)
   }
 
   once<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
   ): () => void {
-    return this.messageBus.once(this as any, eventName, args)
+    return this.messageBus.once(this, eventName, args)
   }
 
   hasSubscriber(eventName: keyof Events) {
