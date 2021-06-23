@@ -266,9 +266,7 @@ export default class PluginManager<
       enablePlugins: this.enablePlugins,
       disablePlugins: this.disablePlugins,
       ...this.#createContext(plugin, signal),
-      ...((this.#createExtraInitContext &&
-        this.#createExtraInitContext(plugin.name)) ||
-        {}),
+      ...(this.#createExtraInitContext?.(plugin.name) || {}),
     } as InitContext<MB> & ExtraContext & ExtraInitContext
   }
 
@@ -292,9 +290,7 @@ export default class PluginManager<
             signal
           )
         : this.#createContext(plugin, signal)),
-      ...((this.#createExtraRunContext &&
-        this.#createExtraRunContext(plugin)) ||
-        {}),
+      ...(this.#createExtraRunContext?.(plugin) || {}),
     }
   }
 
@@ -304,20 +300,19 @@ export default class PluginManager<
     initial: State,
     signal: AbortSignal
   ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext {
-    const store = new Store<Action, State>(reduce, initial)
-    const context = { ...this.#createContext(plugin, signal), store }
-    this.#onCreateStore?.(plugin.name, context)
-    return {
-      ...context,
-      store,
+    const context = {
+      ...this.#createContext(plugin, signal),
+      store: new Store<Action, State>(reduce, initial),
     }
+    this.#onCreateStore?.(plugin.name, context)
+    return context
   }
 
   #createContext({ name }: Plugin, signal: AbortSignal) {
     return {
       broker: this.#messageBus.broker(name, signal) as MessageBusBroker<MB>,
       signal,
-      ...((this.#createExtraContext && this.#createExtraContext(name)) || {}),
+      ...(this.#createExtraContext?.(name) || {}),
     } as Context<MB> & ExtraContext & ExtraRunContext
   }
 }
