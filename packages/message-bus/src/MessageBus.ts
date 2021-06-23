@@ -37,6 +37,7 @@ import {
   Invokers,
 } from './types/invokables'
 import { UnpackResolvableValue } from './types/util'
+import { Subscription } from './types/MessageBus'
 
 interface ErrorHandler {
   (error: MessageBusError): any
@@ -117,7 +118,7 @@ export default class MessageBus<
     broker: Broker<Events, EventGeneratorsT, InvokablesT>,
     eventName: EventName,
     args: EventInterceptorArgs<Events[EventName]>
-  ) {
+  ): Subscription {
     const interceptor = {
       broker,
       args: init(args),
@@ -130,11 +131,14 @@ export default class MessageBus<
       (interceptors = []) => [...interceptors!, interceptor]
     )
 
-    return () => {
-      this.#eventInterceptors[eventName] = removeItem(
-        interceptor,
-        this.#eventInterceptors[eventName]!
-      )
+    return {
+      cancel: () => {
+        this.#eventInterceptors[eventName] = removeItem(
+          interceptor,
+          this.#eventInterceptors[eventName]!
+        )
+      },
+      onAbort: broker.onAbort,
     }
   }
 
@@ -142,7 +146,7 @@ export default class MessageBus<
     broker: Broker<EventsT, EventGeneratorsT, Invokables>,
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
-  ) {
+  ): Subscription {
     const interceptor = {
       broker,
       args: init(args),
@@ -155,11 +159,14 @@ export default class MessageBus<
       (interceptors = []) => [...interceptors!, interceptor]
     )
 
-    return () => {
-      this.#invokerInterceptors[invokableName] = removeItem(
-        interceptor,
-        this.#invokerInterceptors[invokableName] as any
-      )
+    return {
+      cancel: () => {
+        this.#invokerInterceptors[invokableName] = removeItem(
+          interceptor,
+          this.#invokerInterceptors[invokableName] as any
+        )
+      },
+      onAbort: broker.onAbort,
     }
   }
 
@@ -167,8 +174,8 @@ export default class MessageBus<
     broker: Broker<Events, EventGeneratorsT, InvokablesT>,
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
-  ) {
-    if (broker.aborted) return () => {}
+  ): Subscription {
+    if (broker.aborted) return { cancel: () => {}, onAbort: broker.onAbort }
 
     const subscriber = {
       broker,
@@ -182,34 +189,34 @@ export default class MessageBus<
       (subscribers = []) => [...subscribers!, subscriber]
     )
 
-    const off = () => {
+    const cancel = () => {
       this.#subscribers[eventName] = removeItem(
         subscriber,
         this.#subscribers[eventName] as any
       )
     }
 
-    broker.onAbort(off)
+    broker.onAbort(cancel)
 
-    return off
+    return { cancel, onAbort: broker.onAbort }
   }
 
   once<EventName extends keyof Events>(
     broker: Broker<Events, EventGeneratorsT, InvokablesT>,
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
-  ): () => void {
+  ): Subscription {
     const fn = last(args) as SubscriberFn<Events[EventName]>
     const onceFn = ((...args: Events[EventName]) => {
-      off()
+      cancel()
       return fn(...args)
     }) as SubscriberFn<Events[EventName]>
-    const off = this.on(
+    const { cancel, onAbort } = this.on(
       broker,
       eventName,
       replaceLastItem(args, onceFn) as SubscriberArgs<Events[EventName]>
     )
-    return off
+    return { cancel, onAbort }
   }
 
   async until<
@@ -247,8 +254,8 @@ export default class MessageBus<
       EventGens[EventName]['args'],
       EventGens[EventName]['yield']
     >
-  ) {
-    if (broker.aborted) return () => {}
+  ): Subscription {
+    if (broker.aborted) return { cancel: () => {}, onAbort: broker.onAbort }
 
     const iterator = {
       broker,
@@ -262,16 +269,16 @@ export default class MessageBus<
       (iterators = []) => [...iterators!, iterator]
     )
 
-    const off = () => {
+    const cancel = () => {
       this.#eventGenerators[eventName] = removeItem(
         iterator,
         this.#eventGenerators[eventName] as any
       )
     }
 
-    broker.onAbort(off)
+    broker.onAbort(cancel)
 
-    return off
+    return { cancel, onAbort: broker.onAbort }
   }
 
   async *iterate<EventName extends keyof EventGens>(
@@ -329,8 +336,8 @@ export default class MessageBus<
       Invokables[InvokableName]['args'],
       Invokables[InvokableName]['return']
     >
-  ): () => void {
-    if (broker.aborted) return () => {}
+  ): Subscription {
+    if (broker.aborted) return { cancel: () => {}, onAbort: broker.onAbort }
 
     const args = init(allArgs)
     const fn = last(allArgs) as InvokerFn<
@@ -359,13 +366,13 @@ export default class MessageBus<
       },
     ]
 
-    const off = () => {
+    const cancel = () => {
       delete this.#invokers[invokableName]
     }
 
-    broker.onAbort(() => setTimeout(off, 0))
+    broker.onAbort(() => setTimeout(cancel, 0))
 
-    return off
+    return { cancel, onAbort: broker.onAbort }
   }
 
   async invoke<InvokableName extends keyof Invokables>(
