@@ -1,5 +1,6 @@
 import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
 import Store, { ActionI } from '@plugola/store'
+import type { AbortSignal } from 'node-abort-controller'
 
 export function isStatefulContext(
   context: any
