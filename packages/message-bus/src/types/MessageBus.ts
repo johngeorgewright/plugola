@@ -1,4 +1,3 @@
-import type { AbortSignal } from 'node-abort-controller'
 import type Broker from '../Broker'
 import type MessageBus from '../MessageBus'
 
