@@ -1,4 +1,4 @@
-import AbortController from 'node-abort-controller'
+import AbortController, { AbortSignal } from 'node-abort-controller'
 import { AbortError } from '@johngw/async'
 import {
   accumulate,
@@ -70,7 +70,22 @@ export default class MessageBus<
     }
   }
 
-  broker(id: string, abortController = new AbortController()) {
+  broker(id: string, abort?: AbortSignal | AbortController) {
+    let abortController: AbortController
+
+    if (!abort) {
+      abortController = new AbortController()
+    } else if (abort instanceof AbortController) {
+      abortController = abort
+    } else {
+      abortController = new AbortController()
+      if (abort.aborted) {
+        abortController.abort()
+      } else {
+        abort.addEventListener('abort', () => abortController.abort())
+      }
+    }
+
     return new Broker<Events, EventGens, Invokables>(this, id, abortController)
   }
 
