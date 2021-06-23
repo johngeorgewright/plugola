@@ -302,7 +302,7 @@ export default class PluginManager<
 
   #createContext({ name }: Plugin, signal: AbortSignal) {
     return {
-      broker: this.#messageBus.broker(name) as MessageBusBroker<MB>,
+      broker: this.#messageBus.broker(name, signal) as MessageBusBroker<MB>,
       signal,
       ...((this.#createExtraContext && this.#createExtraContext(name)) || {}),
     } as Context<MB> & ExtraContext & ExtraRunContext
