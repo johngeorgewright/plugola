@@ -1502,6 +1502,7 @@ __metadata:
     tslib: 2.3.0
     typescript: 4.3.4
   peerDependencies:
+    "@plugola/logger": "*"
     "@plugola/store": "*"
   languageName: unknown
   linkType: soft
