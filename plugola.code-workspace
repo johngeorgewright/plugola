@@ -41,7 +41,7 @@
     },
     "jest.jestCommandLine": "yarn test",
     "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-    "typescript.tsdk": ".yarn/sdks/typescript/lib",
+    "typescript.tsdk": "✨ @plugola/mono-repo/.yarn/sdks/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true
   },
   "extensions": {
