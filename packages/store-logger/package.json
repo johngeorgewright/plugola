@@ -1,9 +1,8 @@
 {
-  "name": "@plugola/store",
-  "version": "2.3.1",
-  "description": "State managemenet",
-  "main": "dist/index.js",
-  "sideEffects": false,
+  "name": "@plugola/store-logger",
+  "version": "0.0.0",
+  "description": "Logger/debugger for the store",
+  "main": "dist/main.js",
   "scripts": {
     "build": "yarn clean && yarn tsc && yarn rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
     "clean": "yarn rimraf dist",
@@ -11,13 +10,14 @@
     "release": "yarn semantic-release -e semantic-release-monorepo",
     "test": "yarn jest"
   },
-  "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/johngeorgewright/ts-mono-repo/issues"
+    "url": "https://github.com/johngeorgewright/plugola/issues"
   },
-  "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
+  "homepage": "https://github.com/johngeorgewright/plugola#readme",
   "devDependencies": {
+    "@plugola/logger": "workspace:packages/logger",
+    "@plugola/store": "workspace:packages/store",
     "@semantic-release/commit-analyzer": "8.0.1",
     "@semantic-release/git": "9.0.0",
     "@semantic-release/github": "7.2.3",
@@ -32,6 +32,10 @@
     "typescript": "4.3.4"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "2.3.0"
+  },
+  "peerDependencies": {
+    "@plugola/logger": "*",
+    "@plugola/store": "*"
   }
 }

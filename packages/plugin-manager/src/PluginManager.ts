@@ -5,9 +5,8 @@ import {
   StatefulContext,
 } from './Context'
 import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
-import Store, { ActionI, Reducer } from '@plugola/store'
+import { Store, ActionI, Reducer } from '@plugola/store'
 import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
-import { Logger } from '@plugola/logger'
 import { race, timeout } from '@johngw/async'
 import AbortController, { AbortSignal } from 'node-abort-controller'
 import DependencyGraph from './DependencyGraph'
@@ -20,6 +19,7 @@ export interface PluginManagerOptions<
   addContext?(pluginName: string): ExtraContext
   addInitContext?(pluginName: string): ExtraInitContext
   addRunContext?(pluginName: string): ExtraRunContext
+  onCreateStore?(pluginName: string, store: Store<any, any>): any
   pluginTimeout?: number
 }
 
@@ -40,6 +40,7 @@ export default class PluginManager<
   #createExtraContext?: (pluginName: string) => ExtraContext
   #createExtraInitContext?: (pluginName: string) => ExtraInitContext
   #createExtraRunContext?: (pluginName: string) => ExtraRunContext
+  #onCreateStore?: (pluginName: string, store: Store<any, any>) => any
   #pluginTimeout?: number
 
   constructor(
@@ -54,6 +55,7 @@ export default class PluginManager<
     this.#createExtraContext = options.addContext
     this.#createExtraInitContext = options.addInitContext
     this.#createExtraRunContext = options.addRunContext
+    this.#onCreateStore = options.onCreateStore
     this.#pluginTimeout = options.pluginTimeout
   }
 
@@ -298,10 +300,11 @@ export default class PluginManager<
     signal: AbortSignal
   ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext {
     const context = this.#createContext(plugin, signal)
-    const log = context.log instanceof Logger ? context.log : undefined
+    const store = new Store<Action, State>(reduce, initial)
+    this.#onCreateStore?.(plugin.name, store)
     return {
       ...context,
-      store: new Store<Action, State>(reduce, initial, log),
+      store,
     }
   }
 

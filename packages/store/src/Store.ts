@@ -1,19 +1,12 @@
-import { Logger, DisabledLoggerBehavior } from '@plugola/logger'
-
 export default class Store<Action extends ActionI, State> {
   #dispatching = false
   #listeners: Listener<Action, State>[] = []
-  #log: Logger
+  #staleListeners: Listener<Action, State>[] = []
   #reducer: Reducer<Action, State>
   #running = false
   #state: State
 
-  constructor(
-    reducer: Reducer<Action, State>,
-    initialState: State,
-    log: Logger = new Logger('store', new DisabledLoggerBehavior())
-  ) {
-    this.#log = log
+  constructor(reducer: Reducer<Action, State>, initialState: State) {
     this.#reducer = reducer
     this.#state = Object.freeze(initialState)
   }
@@ -41,10 +34,9 @@ export default class Store<Action extends ActionI, State> {
     this.#dispatching = false
 
     if (state === this.#state) {
-      this.#log.info(action, 'NO_CHANGE')
+      this.#updateStaleSubscribers(action)
     } else {
       this.#state = Object.freeze(state)
-      this.#log.info(action, this.#state)
       this.#updateSubscribers(action)
     }
   }
@@ -62,8 +54,26 @@ export default class Store<Action extends ActionI, State> {
     }
   }
 
+  subscribeToStaleEvents(listener: Listener<Action, State>) {
+    this.#staleListeners.push(listener)
+
+    return () => {
+      const index = this.#staleListeners.indexOf(listener)
+      this.#staleListeners = [
+        ...this.#staleListeners.slice(0, index),
+        ...this.#staleListeners.slice(index + 1),
+      ]
+    }
+  }
+
   #updateSubscribers(action: Action | InitAction) {
     for (const listener of this.#listeners) {
+      listener(action, this.#state)
+    }
+  }
+
+  #updateStaleSubscribers(action: Action | InitAction) {
+    for (const listener of this.#staleListeners) {
       listener(action, this.#state)
     }
   }

@@ -49,6 +49,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@plugola/store",
         "reference": "workspace:packages/store"
+      },
+      {
+        "name": "@plugola/store-logger",
+        "reference": "workspace:packages/store-logger"
       }
     ],
     "enableTopLevelFallback": true,
@@ -61,7 +65,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@plugola/mono-repo", ["workspace:."]],
       ["@plugola/plugin-manager", ["workspace:packages/plugin-manager"]],
       ["@plugola/query-params", ["workspace:packages/query-params"]],
-      ["@plugola/store", ["workspace:packages/store"]]
+      ["@plugola/store", ["workspace:packages/store"]],
+      ["@plugola/store-logger", ["workspace:packages/store-logger"]]
     ],
     "fallbackPool": [
     ],
@@ -2024,7 +2029,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],
             ["@johngw/async", "npm:4.0.1"],
             ["@plugola/graph", "workspace:packages/graph"],
-            ["@plugola/logger", "workspace:packages/logger"],
             ["@plugola/message-bus", "workspace:packages/message-bus"],
             ["@plugola/query-params", "workspace:packages/query-params"],
             ["@plugola/store", "workspace:packages/store"],
@@ -2073,7 +2077,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/store/",
           "packageDependencies": [
             ["@plugola/store", "workspace:packages/store"],
+            ["@semantic-release/commit-analyzer", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:8.0.1"],
+            ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.0"],
+            ["@semantic-release/github", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:7.2.3"],
+            ["@semantic-release/npm", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:7.1.3"],
+            ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.3"],
+            ["@types/jest", "npm:26.0.23"],
+            ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.5"],
+            ["rimraf", "npm:3.0.2"],
+            ["semantic-release", "npm:17.4.4"],
+            ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],
+            ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.3"],
+            ["tslib", "npm:2.3.0"],
+            ["typescript", "patch:typescript@npm%3A4.3.4#builtin<compat/typescript>::version=4.3.4&hash=ddfc1b"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@plugola/store-logger", [
+        ["workspace:packages/store-logger", {
+          "packageLocation": "./packages/store-logger/",
+          "packageDependencies": [
+            ["@plugola/store-logger", "workspace:packages/store-logger"],
             ["@plugola/logger", "workspace:packages/logger"],
+            ["@plugola/store", "workspace:packages/store"],
             ["@semantic-release/commit-analyzer", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:8.0.1"],
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.0"],
             ["@semantic-release/github", "virtual:8924e8d59805337e7a19e634bdfbbc384686bca15ae190e067207ef959355830a53ae266fea7b44391079976d8b695c352861bddce9f82f95903dbf02b963483#npm:7.2.3"],

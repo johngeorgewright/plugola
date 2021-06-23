@@ -33,7 +33,6 @@
   "dependencies": {
     "@johngw/async": "4.0.1",
     "@plugola/graph": "workspace:packages/graph",
-    "@plugola/logger": "workspace:packages/logger",
     "@plugola/message-bus": "workspace:packages/message-bus",
     "@plugola/query-params": "workspace:packages/query-params",
     "@plugola/store": "workspace:packages/store",

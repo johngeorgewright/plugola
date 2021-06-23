@@ -26,7 +26,7 @@ beforeEach(() => {
         case 'foo':
           return { ...state, foo: action.foo }
         case 'bar':
-          return { ...state, foo: 'bar' }
+          return state.foo === 'bar' ? state : { ...state, foo: 'bar' }
         default:
           return state
       }
@@ -52,4 +52,13 @@ test('subscribing to state changes', () => {
   expect(onUpdate).toHaveBeenCalledWith({ type: '__INIT__' }, { foo: '' })
   store.dispatch({ type: 'bar' })
   expect(onUpdate).toHaveBeenCalledWith({ type: 'bar' }, { foo: 'bar' })
+})
+
+test('stale subscribers', () => {
+  const subscriber = jest.fn()
+  store.subscribeToStaleEvents(subscriber)
+  store.dispatch({ type: 'bar' })
+  expect(subscriber).not.toHaveBeenCalled()
+  store.dispatch({ type: 'bar' })
+  expect(subscriber).toHaveBeenCalledWith({ type: 'bar' }, { foo: 'bar' })
 })
