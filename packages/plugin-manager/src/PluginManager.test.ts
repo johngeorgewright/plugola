@@ -1,6 +1,7 @@
-import { MessageBus } from '@plugola/message-bus'
+import { Broker, MessageBus } from '@plugola/message-bus'
 import PluginManager from './PluginManager'
 import { timeout } from '@johngw/async'
+import Store from '@plugola/store'
 
 type Events = { foo: [string] }
 
@@ -74,6 +75,7 @@ test('running normal plugins', async () => {
 
 test('running stateful plugins', async () => {
   let result: string
+  const onUpdate = jest.fn()
 
   pluginManager.registerStatefulPlugin<{ type: 'foo' }, 'foo' | 'bar'>({
     name: 'foo',
@@ -89,7 +91,7 @@ test('running stateful plugins', async () => {
         }
       },
 
-      onUpdate() {},
+      onUpdate,
     },
 
     run({ store }) {
@@ -102,6 +104,14 @@ test('running stateful plugins', async () => {
   await pluginManager.enableAllPlugins()
   await pluginManager.run()
   expect(result!).toBe('foo')
+  expect(onUpdate).toHaveBeenCalledWith(
+    { type: 'foo' },
+    'foo',
+    expect.objectContaining({
+      broker: expect.any(Broker),
+      store: expect.any(Store),
+    })
+  )
 })
 
 test('running with a dependency tree', async () => {

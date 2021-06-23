@@ -1,4 +1,4 @@
-import type { ActionI, Reducer } from '@plugola/store'
+import type { ActionI, InitAction, Reducer } from '@plugola/store'
 
 export function isStatefulPlugin(
   plugin: any
@@ -18,10 +18,10 @@ export interface Plugin<
 }
 
 export interface StatefulPlugin<
-  Action extends ActionI,
-  State,
-  IC extends Record<string, unknown>,
-  C extends Record<string, unknown>
+  Action extends ActionI = InitAction,
+  State = unknown,
+  IC extends Record<string, unknown> = any,
+  C extends Record<string, unknown> = any
 > extends Plugin<IC, C> {
   state: PluginState<Action, State, C>
 }

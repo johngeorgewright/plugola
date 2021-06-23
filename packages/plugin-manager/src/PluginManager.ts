@@ -198,7 +198,11 @@ export default class PluginManager<
 
         const context = this.#createRunContext(plugin, signal)
 
-        if (isStatefulContext(context)) {
+        if (isStatefulContext(context) && isStatefulPlugin(plugin)) {
+          // @ts-ignore
+          context.store.subscribe((action, state) =>
+            plugin.state.onUpdate(action, state, context)
+          )
           // @ts-ignore
           context.store.init()
         }
