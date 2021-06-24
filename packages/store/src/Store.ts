@@ -43,7 +43,8 @@ export default class Store<Action extends ActionI, State> {
 
   subscribe(listener: Listener<Action, State>) {
     this.#listeners.push(listener)
-    listener({ type: '__INIT__' }, this.#state)
+
+    if (this.#running) listener({ type: '__INIT__' }, this.#state)
 
     return () => {
       const index = this.#listeners.indexOf(listener)
