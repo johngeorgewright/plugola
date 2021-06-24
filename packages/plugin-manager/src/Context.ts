@@ -20,8 +20,8 @@ export interface InitContext<MB extends MessageBus> extends Context<MB> {
 
 export interface StatefulContext<
   MB extends MessageBus,
-  Action extends ActionI,
-  State
+  Action extends ActionI = any,
+  State = any
 > extends Context<MB> {
   store: Store<Action, State>
 }

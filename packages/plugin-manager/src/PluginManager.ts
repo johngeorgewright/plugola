@@ -1,11 +1,6 @@
-import {
-  Context,
-  InitContext,
-  isStatefulContext,
-  StatefulContext,
-} from './Context'
+import { Context, InitContext, StatefulContext } from './Context'
 import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
-import { Store, ActionI, Reducer } from '@plugola/store'
+import { Store, ActionI } from '@plugola/store'
 import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
 import { race, timeout } from '@johngw/async'
 import AbortController, { AbortSignal } from 'node-abort-controller'
@@ -25,7 +20,7 @@ export interface PluginManagerOptions<
 }
 
 export default class PluginManager<
-  MB extends MessageBus,
+  MB extends MessageBus = MessageBus,
   ExtraContext extends Record<string, unknown> = {},
   ExtraInitContext extends Record<string, unknown> = {},
   ExtraRunContext extends Record<string, unknown> = {}
@@ -41,7 +36,7 @@ export default class PluginManager<
     ExtraContext,
     ExtraInitContext,
     ExtraRunContext,
-    StatefulContext<MB, any, any> & ExtraContext & ExtraRunContext
+    StatefulContext<MB> & ExtraContext & ExtraRunContext
   >
 
   constructor(
@@ -50,7 +45,7 @@ export default class PluginManager<
       ExtraContext,
       ExtraInitContext,
       ExtraRunContext,
-      StatefulContext<MB, any, any> & ExtraContext & ExtraRunContext
+      StatefulContext<MB> & ExtraContext & ExtraRunContext
     > = {}
   ) {
     this.#messageBus = messageBus
@@ -196,14 +191,9 @@ export default class PluginManager<
           (dep) => this.#runPlugin(dep, signal)
         )
 
-        const context = this.#createRunContext(plugin, signal)
-
-        if (isStatefulContext(context) && isStatefulPlugin(plugin)) {
-          context.store.subscribe((action, state) =>
-            plugin.state.onUpdate(action, state, context)
-          )
-          context.store.init()
-        }
+        const context = isStatefulPlugin(plugin)
+          ? this.#createStatefulRunContext(plugin, signal)
+          : this.#createRunContext(plugin, signal)
 
         await plugin.run!(context)
       },
@@ -259,34 +249,34 @@ export default class PluginManager<
     }
   }
 
-  #createRunContext(plugin: any, signal: AbortSignal): Record<string, unknown> {
+  #createRunContext(
+    plugin: Plugin,
+    signal: AbortSignal
+  ): Record<string, unknown> {
     return {
-      ...(isStatefulPlugin(plugin)
-        ? this.#createStatefulContext(
-            plugin,
-            plugin.state.reduce,
-            plugin.state.initial,
-            signal
-          )
-        : this.#createContext(plugin, signal)),
-      ...(this.#options.addRunContext?.(plugin) || {}),
+      ...this.#createContext(plugin, signal),
+      ...(this.#options.addRunContext?.(plugin.name) || {}),
     }
   }
 
-  #createStatefulContext(
-    plugin: Plugin,
-    reduce: Reducer<any, any>,
-    initial: any,
-    signal: AbortSignal
-  ) {
+  #createStatefulRunContext(plugin: StatefulPlugin, signal: AbortSignal) {
     const context = {
       ...this.#createContext(plugin, signal),
-      store: new Store<any, any>(reduce, initial),
+      store: new Store(plugin.state.reduce, plugin.state.initial),
+      ...(this.#options.addRunContext?.(plugin.name) || {}),
     }
+
     this.#options.onCreateStore?.(
       plugin.name,
-      context as StatefulContext<MB, any, any> & ExtraContext & ExtraRunContext
+      context as StatefulContext<MB> & ExtraContext & ExtraRunContext
     )
+
+    context.store.subscribe((action, state) =>
+      plugin.state.onUpdate(action, state, context)
+    )
+
+    context.store.init()
+
     return context
   }
 

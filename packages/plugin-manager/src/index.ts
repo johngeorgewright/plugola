@@ -8,3 +8,5 @@ export {
 } from './Context'
 
 export { isStatefulPlugin, Plugin, PluginState, StatefulPlugin } from './Plugin'
+
+export * from './PluginManagerUtils'
