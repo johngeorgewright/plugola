@@ -37,7 +37,7 @@ import {
   Invokers,
 } from './types/invokables'
 import { UnpackResolvableValue } from './types/util'
-import { Subscription } from './types/MessageBus'
+import { Unsubscriber } from './types/MessageBus'
 import { AbortSignalComposite, fromSignal } from './AbortController'
 
 interface ErrorHandler {
@@ -124,7 +124,7 @@ export default class MessageBus<
     broker: Broker<Events, EventGeneratorsT, InvokablesT>,
     eventName: EventName,
     args: EventInterceptorArgs<Events[EventName]>
-  ): Subscription {
+  ): Unsubscriber {
     const interceptor = {
       broker,
       args: init(args),
@@ -149,7 +149,7 @@ export default class MessageBus<
     broker: Broker<EventsT, EventGeneratorsT, Invokables>,
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args']
-  ): Subscription {
+  ): Unsubscriber {
     const interceptor = {
       broker,
       args: init(args),
@@ -174,7 +174,7 @@ export default class MessageBus<
     broker: Broker<Events, EventGeneratorsT, InvokablesT>,
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
-  ): Subscription {
+  ): Unsubscriber {
     if (broker.aborted) return () => {}
 
     const subscriber = {
@@ -205,7 +205,7 @@ export default class MessageBus<
     broker: Broker<Events, EventGeneratorsT, InvokablesT>,
     eventName: EventName,
     args: SubscriberArgs<Events[EventName]>
-  ): Subscription {
+  ): Unsubscriber {
     const fn = last(args) as SubscriberFn<Events[EventName]>
     const onceFn: SubscriberFn<Events[EventName]> = (...args) => {
       cancel()
@@ -260,7 +260,7 @@ export default class MessageBus<
       EventGens[EventName]['args'],
       EventGens[EventName]['yield']
     >
-  ): Subscription {
+  ): Unsubscriber {
     if (broker.aborted) return () => {}
 
     const iterator = {
@@ -356,7 +356,7 @@ export default class MessageBus<
       Invokables[InvokableName]['args'],
       Invokables[InvokableName]['return']
     >
-  ): Subscription {
+  ): Unsubscriber {
     if (broker.aborted) return () => {}
 
     const args = init(allArgs)
@@ -365,9 +365,9 @@ export default class MessageBus<
       Invokables[InvokableName]['return']
     >
     const invokers = this.#invokers[invokableName] || []
-    const registeredInvoker =
-      invokers &&
-      invokers.find((invoker) => this.#argumentIndex(invoker.args, args) !== -1)
+    const registeredInvoker = invokers!.find(
+      (invoker) => this.#argumentIndex(invoker.args, args) !== -1
+    )
 
     if (registeredInvoker) {
       throw new Error(
@@ -378,7 +378,7 @@ export default class MessageBus<
     }
 
     this.#invokers[invokableName] = [
-      ...(invokers || [])!,
+      ...invokers!,
       {
         broker,
         args,

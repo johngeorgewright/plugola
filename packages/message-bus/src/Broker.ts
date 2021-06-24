@@ -13,7 +13,7 @@ import type {
   InvokerInterceptorArgs,
   InvokerRegistrationArgs,
 } from './types/invokables'
-import { Subscription } from './types/MessageBus'
+import { Unsubscriber } from './types/MessageBus'
 
 export default class Broker<
   Events extends EventsT = EventsT,
@@ -60,21 +60,21 @@ export default class Broker<
   interceptEvent<EventName extends keyof Events>(
     eventName: EventName,
     ...args: EventInterceptorArgs<Events[EventName]>
-  ): Subscription {
+  ): Unsubscriber {
     return this.messageBus.interceptEvent(this as any, eventName, args)
   }
 
   on<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
-  ): Subscription {
+  ): Unsubscriber {
     return this.messageBus.on(this, eventName, args)
   }
 
   once<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
-  ): Subscription {
+  ): Unsubscriber {
     return this.messageBus.once(this, eventName, args)
   }
 
@@ -109,7 +109,7 @@ export default class Broker<
       EventGens[EventName]['args'],
       EventGens[EventName]['yield']
     >
-  ): Subscription {
+  ): Unsubscriber {
     return this.messageBus.generator(this, eventName, args)
   }
 
@@ -157,7 +157,7 @@ export default class Broker<
       Invokables[InvokableName]['args'],
       Invokables[InvokableName]['return']
     >
-  ): Subscription {
+  ): Unsubscriber {
     return this.messageBus.register(this, invokableName, args)
   }
 
@@ -171,7 +171,7 @@ export default class Broker<
   interceptInvoker<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     ...args: InvokerInterceptorArgs<Invokables[InvokableName]['args']>
-  ): Subscription {
+  ): Unsubscriber {
     return this.messageBus.interceptInvoker(this, invokableName, args)
   }
 }

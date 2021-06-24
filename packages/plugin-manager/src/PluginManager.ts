@@ -36,16 +36,13 @@ export default class PluginManager<
   #ran = new Set<Plugin>()
   #abortControllers = new WeakMap<Plugin, AbortController>()
   #enabledPlugins = new Set<string>()
-
   #messageBus: MB
-  #createExtraContext?: (pluginName: string) => ExtraContext
-  #createExtraInitContext?: (pluginName: string) => ExtraInitContext
-  #createExtraRunContext?: (pluginName: string) => ExtraRunContext
-  #onCreateStore?: (
-    pluginName: string,
-    context: StatefulContext<MB, any, any> & ExtraContext & ExtraRunContext
-  ) => any
-  #pluginTimeout?: number
+  #options: PluginManagerOptions<
+    ExtraContext,
+    ExtraInitContext,
+    ExtraRunContext,
+    StatefulContext<MB, any, any> & ExtraContext & ExtraRunContext
+  >
 
   constructor(
     messageBus: MB,
@@ -57,11 +54,7 @@ export default class PluginManager<
     > = {}
   ) {
     this.#messageBus = messageBus
-    this.#createExtraContext = options.addContext
-    this.#createExtraInitContext = options.addInitContext
-    this.#createExtraRunContext = options.addRunContext
-    this.#onCreateStore = options.onCreateStore
-    this.#pluginTimeout = options.pluginTimeout
+    this.#options = options
   }
 
   registerStatefulPlugin<Action extends ActionI, State>(
@@ -181,7 +174,7 @@ export default class PluginManager<
         await plugin.init!(context)
       },
       abortController.signal,
-      plugin.initTimeout || this.#pluginTimeout
+      plugin.initTimeout || this.#options.pluginTimeout
     )
   }
 
@@ -217,7 +210,7 @@ export default class PluginManager<
         await plugin.run!(context as any)
       },
       abortController.signal,
-      this.#pluginTimeout
+      this.#options.pluginTimeout
     )
   }
 
@@ -253,9 +246,7 @@ export default class PluginManager<
     const promises = []
 
     for (const dep of this.#dependencyGraph.dependencies(plugin)) {
-      if (filter(dep)) {
-        promises.push(map(dep))
-      }
+      if (filter(dep)) promises.push(map(dep))
     }
 
     await Promise.all(promises)
@@ -266,7 +257,7 @@ export default class PluginManager<
       enablePlugins: this.enablePlugins,
       disablePlugins: this.disablePlugins,
       ...this.#createContext(plugin, signal),
-      ...(this.#createExtraInitContext?.(plugin.name) || {}),
+      ...(this.#options.addInitContext?.(plugin.name) || {}),
     } as InitContext<MB> & ExtraContext & ExtraInitContext
   }
 
@@ -290,7 +281,7 @@ export default class PluginManager<
             signal
           )
         : this.#createContext(plugin, signal)),
-      ...(this.#createExtraRunContext?.(plugin) || {}),
+      ...(this.#options.addRunContext?.(plugin) || {}),
     }
   }
 
@@ -304,7 +295,7 @@ export default class PluginManager<
       ...this.#createContext(plugin, signal),
       store: new Store<Action, State>(reduce, initial),
     }
-    this.#onCreateStore?.(plugin.name, context)
+    this.#options.onCreateStore?.(plugin.name, context)
     return context
   }
 
@@ -312,7 +303,7 @@ export default class PluginManager<
     return {
       broker: this.#messageBus.broker(name, signal) as MessageBusBroker<MB>,
       signal,
-      ...(this.#createExtraContext?.(name) || {}),
+      ...(this.#options.addContext?.(name) || {}),
     } as Context<MB> & ExtraContext & ExtraRunContext
   }
 }

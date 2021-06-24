@@ -41,7 +41,7 @@ export class AbortSignalComposite {
   }
 
   dispatchEvent: AbortSignal['dispatchEvent'] = (...args) => {
-    let result = false
+    let result = true
     for (const abortSignal of this.#abortSignals) {
       result = abortSignal.dispatchEvent(...args) && result
     }

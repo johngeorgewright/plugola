@@ -3,7 +3,7 @@ import { L } from 'ts-toolbelt'
 import type Broker from '../Broker'
 import type MessageBus from '../MessageBus'
 
-export interface Subscription {
+export interface Unsubscriber {
   (): void
 }
 

@@ -28,9 +28,7 @@ export default class Graph<T, Edge extends string> {
 
   find(fn: (node: T) => boolean) {
     for (const node of this.#adjList.keys()) {
-      if (fn(node)) {
-        return node
-      }
+      if (fn(node)) return node
     }
 
     throw new Error('Node not found')
