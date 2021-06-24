@@ -8,14 +8,14 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --topological-dev --exclude @plugola/generator run build",
+    "build": "yarn workspaces foreach --interlaced --topological-dev --exclude @plugola/generator run build",
     "build:generator": "yarn workspace @plugola/generator run build",
     "clean": "yarn workspaces foreach run clean",
     "commit": "yarn git-cz",
     "generate:package": "yarn yo ./packages/generator/generators/package",
-    "release": "yarn workspaces foreach --no-private --topological-dev run release",
-    "start": "yarn build && yarn workspaces foreach --exclude @plugola/generator --parallel --interlaced run start",
-    "test": "yarn workspaces foreach run test"
+    "release": "yarn workspaces foreach --interlaced --no-private --topological-dev run release",
+    "start": "yarn build && yarn workspaces foreach --interlaced --exclude @plugola/generator --parallel --interlaced run start",
+    "test": "yarn workspaces foreach --interlaced run test"
   },
   "author": "",
   "license": "UNLICENSED",
