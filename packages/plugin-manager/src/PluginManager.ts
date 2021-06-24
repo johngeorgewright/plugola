@@ -199,15 +199,13 @@ export default class PluginManager<
         const context = this.#createRunContext(plugin, signal)
 
         if (isStatefulContext(context) && isStatefulPlugin(plugin)) {
-          // @ts-ignore
           context.store.subscribe((action, state) =>
             plugin.state.onUpdate(action, state, context)
           )
-          // @ts-ignore
           context.store.init()
         }
 
-        await plugin.run!(context as any)
+        await plugin.run!(context)
       },
       abortController.signal,
       this.#options.pluginTimeout
@@ -258,20 +256,10 @@ export default class PluginManager<
       disablePlugins: this.disablePlugins,
       ...this.#createContext(plugin, signal),
       ...(this.#options.addInitContext?.(plugin.name) || {}),
-    } as InitContext<MB> & ExtraContext & ExtraInitContext
+    }
   }
 
-  #createRunContext<Action extends ActionI, State>(
-    plugin: StatefulPlugin<Action, State, any, any>,
-    signal: AbortSignal
-  ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
-
-  #createRunContext(
-    plugin: Plugin,
-    signal: AbortSignal
-  ): Context<MB> & ExtraContext & ExtraRunContext
-
-  #createRunContext(plugin: any, signal: AbortSignal) {
+  #createRunContext(plugin: any, signal: AbortSignal): Record<string, unknown> {
     return {
       ...(isStatefulPlugin(plugin)
         ? this.#createStatefulContext(
@@ -285,17 +273,20 @@ export default class PluginManager<
     }
   }
 
-  #createStatefulContext<Action extends ActionI, State>(
+  #createStatefulContext(
     plugin: Plugin,
-    reduce: Reducer<Action, State>,
-    initial: State,
+    reduce: Reducer<any, any>,
+    initial: any,
     signal: AbortSignal
-  ): StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext {
+  ) {
     const context = {
       ...this.#createContext(plugin, signal),
-      store: new Store<Action, State>(reduce, initial),
+      store: new Store<any, any>(reduce, initial),
     }
-    this.#options.onCreateStore?.(plugin.name, context)
+    this.#options.onCreateStore?.(
+      plugin.name,
+      context as StatefulContext<MB, any, any> & ExtraContext & ExtraRunContext
+    )
     return context
   }
 
@@ -304,6 +295,6 @@ export default class PluginManager<
       broker: this.#messageBus.broker(name, signal) as MessageBusBroker<MB>,
       signal,
       ...(this.#options.addContext?.(name) || {}),
-    } as Context<MB> & ExtraContext & ExtraRunContext
+    }
   }
 }
