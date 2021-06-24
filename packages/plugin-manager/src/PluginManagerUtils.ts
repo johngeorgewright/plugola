@@ -1,5 +1,5 @@
 import type { ActionI } from '@plugola/store'
-import type { Context, InitContext, StatefulContext } from './Context'
+import type { RunContext, InitContext, StatefulContext } from './Context'
 import type { StatefulPlugin } from './Plugin'
 import type PluginManager from './PluginManager'
 
@@ -13,7 +13,7 @@ export type PluginManagerInitContext<PM extends PluginManager> =
 
 export type PluginManagerRunContext<PM extends PluginManager> =
   PM extends PluginManager<infer MB, infer C, any, infer RC>
-    ? Context<MB> & C & RC
+    ? RunContext<MB> & C & RC
     : never
 
 export type PluginManagerStatefulContext<
@@ -28,6 +28,11 @@ export type PluginManagerStatefulPlugin<
   PM extends PluginManager,
   Action extends ActionI,
   State
-> = PM extends PluginManager<infer MB, infer C, any, infer RC>
-  ? StatefulPlugin<Action, State, StatefulContext<MB, Action, State> & C & RC>
+> = PM extends PluginManager<infer MB, infer C, infer IC, infer RC>
+  ? StatefulPlugin<
+      Action,
+      State,
+      InitContext<MB> & C & IC,
+      StatefulContext<MB, Action, State> & C & RC
+    >
   : never

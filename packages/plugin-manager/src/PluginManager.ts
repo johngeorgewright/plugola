@@ -1,4 +1,4 @@
-import { Context, InitContext, StatefulContext } from './Context'
+import { RunContext, InitContext, StatefulContext } from './Context'
 import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
 import { Store, ActionI } from '@plugola/store'
 import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
@@ -9,13 +9,11 @@ import DependencyGraph from './DependencyGraph'
 export interface PluginManagerOptions<
   ExtraContext extends Record<string, unknown>,
   ExtraInitContext extends Record<string, unknown>,
-  ExtraRunContext extends Record<string, unknown>,
-  StatefulContext extends Record<string, unknown>
+  ExtraRunContext extends Record<string, unknown>
 > {
   addContext?(pluginName: string): ExtraContext
   addInitContext?(pluginName: string): ExtraInitContext
   addRunContext?(pluginName: string): ExtraRunContext
-  onCreateStore?(pluginName: string, context: StatefulContext): any
   pluginTimeout?: number
 }
 
@@ -29,14 +27,19 @@ export default class PluginManager<
   #dependencyGraph = new DependencyGraph<Plugin>()
   #initialized = new Set<Plugin>()
   #ran = new Set<Plugin>()
+  #createStoreHandlers: Array<
+    (
+      pluginName: string,
+      context: StatefulContext<MB> & ExtraContext & ExtraRunContext
+    ) => any
+  > = []
   #abortControllers = new WeakMap<Plugin, AbortController>()
   #enabledPlugins = new Set<string>()
   #messageBus: MB
   #options: PluginManagerOptions<
     ExtraContext,
     ExtraInitContext,
-    ExtraRunContext,
-    StatefulContext<MB> & ExtraContext & ExtraRunContext
+    ExtraRunContext
   >
 
   constructor(
@@ -44,8 +47,7 @@ export default class PluginManager<
     options: PluginManagerOptions<
       ExtraContext,
       ExtraInitContext,
-      ExtraRunContext,
-      StatefulContext<MB> & ExtraContext & ExtraRunContext
+      ExtraRunContext
     > = {}
   ) {
     this.#messageBus = messageBus
@@ -66,10 +68,19 @@ export default class PluginManager<
   registerPlugin(
     plugin: Plugin<
       InitContext<MB> & ExtraContext & ExtraInitContext,
-      Context<MB> & ExtraContext & ExtraRunContext
+      RunContext<MB> & ExtraContext & ExtraRunContext
     >
   ) {
     this.#addPlugin(plugin)
+  }
+
+  onCreateStore(
+    handler: (
+      pluginName: string,
+      context: StatefulContext<MB> & ExtraContext & ExtraRunContext
+    ) => any
+  ) {
+    this.#createStoreHandlers.push(handler)
   }
 
   #addPlugin(plugin: Plugin) {
@@ -266,7 +277,7 @@ export default class PluginManager<
       ...(this.#options.addRunContext?.(plugin.name) || {}),
     }
 
-    this.#options.onCreateStore?.(
+    this.#notifyCreateStoreHandlers(
       plugin.name,
       context as StatefulContext<MB> & ExtraContext & ExtraRunContext
     )
@@ -278,6 +289,15 @@ export default class PluginManager<
     context.store.init()
 
     return context
+  }
+
+  #notifyCreateStoreHandlers(
+    pluginName: string,
+    context: StatefulContext<MB> & ExtraContext & ExtraRunContext
+  ) {
+    for (const handler of this.#createStoreHandlers) {
+      handler(pluginName, context)
+    }
   }
 
   #createContext({ name }: Plugin, signal: AbortSignal) {

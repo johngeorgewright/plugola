@@ -8,12 +8,14 @@ export function isStatefulContext(
   return !!context.store
 }
 
-export interface Context<MB extends MessageBus> {
-  signal: AbortSignal
+export interface RunContext<MB extends MessageBus> {
   broker: MessageBusBroker<MB>
+  signal: AbortSignal
 }
 
-export interface InitContext<MB extends MessageBus> extends Context<MB> {
+export interface InitContext<MB extends MessageBus> {
+  broker: MessageBusBroker<MB>
+  signal: AbortSignal
   enablePlugins(pluginNames: string[]): Promise<void>
   disablePlugins(pluginNames: string[]): void
 }
@@ -22,6 +24,8 @@ export interface StatefulContext<
   MB extends MessageBus,
   Action extends ActionI = any,
   State = any
-> extends Context<MB> {
+> {
+  broker: MessageBusBroker<MB>
+  signal: AbortSignal
   store: Store<Action, State>
 }

@@ -117,9 +117,7 @@ test('running stateful plugins', async () => {
 test('modifying stores', async () => {
   const onCreateStore = jest.fn()
 
-  pluginManager = new PluginManager(messageBus, {
-    onCreateStore,
-  }) as any
+  pluginManager.onCreateStore(onCreateStore)
 
   pluginManager.registerStatefulPlugin<InitAction, number>({
     name: 'foo',

@@ -1,7 +1,7 @@
-export { default as PluginManager } from './PluginManager'
+export { default as PluginManager, PluginManagerOptions } from './PluginManager'
 
 export {
-  Context,
+  RunContext as Context,
   InitContext,
   isStatefulContext,
   StatefulContext,
