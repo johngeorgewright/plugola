@@ -1,6 +1,6 @@
 {
   "name": "@plugola/store",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "State managemenet",
   "main": "dist/index.js",
   "sideEffects": false,
