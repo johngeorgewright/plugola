@@ -1,11 +1,13 @@
 import LoggerBehavior from './LoggerBehavior'
 import { createWriteStream, WriteStream } from 'fs'
+import { TabularData } from './types'
+import consoleDump from './console'
 
 export default class FileLoggerBehavior implements LoggerBehavior {
   readonly #writeSteam: WriteStream
 
   constructor(fileName: string) {
-    this.#writeSteam = createWriteStream(fileName)
+    this.#writeSteam = createWriteStream(fileName, { flags: 'a' })
   }
 
   debug(label: string, ...args: any[]) {
@@ -21,14 +23,12 @@ export default class FileLoggerBehavior implements LoggerBehavior {
   }
 
   log(label: string, ...args: any[]) {
-    this.#log('info', label, args)
+    this.info(label, ...args)
   }
 
-  table(label: string, ...args: any[]) {
-    const date = new Date()
-    this.#writeSteam.write(
-      `${date.toISOString()} ${label} ${args.map((x) => JSON.stringify(x))}\n`
-    )
+  table(label: string, data: TabularData) {
+    this.#log('table', label, [])
+    this.#writeSteam.write(consoleDump.table(data) + '\n')
   }
 
   warn(label: string, ...args: any[]) {
