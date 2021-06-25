@@ -1,6 +1,7 @@
 import LoggerBehavior from './LoggerBehavior'
+import { TabularData } from './types'
 
-export default class Logger implements LoggerBehavior {
+export default class Logger {
   readonly #behaviors: LoggerBehavior[]
   readonly #label: string
   readonly #name: string
@@ -39,8 +40,8 @@ export default class Logger implements LoggerBehavior {
     this.#behaviors.forEach((b) => b.log(this.#label, ...args))
   }
 
-  table(...args: any[]) {
-    this.#behaviors.forEach((b) => b.table(this.#label, ...args))
+  table(table: TabularData) {
+    this.#behaviors.forEach((b) => b.table(this.#label, table))
   }
 
   warn(...args: any[]) {
