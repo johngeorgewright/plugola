@@ -43,7 +43,7 @@ export default class Broker<
   }
 
   onError(errorHandler: ErrorHandler) {
-    this.messageBus.onError((error) => {
+    return this.messageBus.onError((error) => {
       if (error.brokerId === this.id) {
         errorHandler(error)
       }
