@@ -117,7 +117,7 @@ describe('events', () => {
     expect(foo).not.toHaveBeenCalled()
     expect(onAbort).toHaveBeenCalled()
     expect(onAbort.mock.calls[0][0].message).toBe(
-      'test: Async operation was aborted'
+      'test[foo]: Async operation was aborted'
     )
   })
 })
@@ -266,7 +266,7 @@ describe('error handling', () => {
     messageBus.start()
     messageBus.onError((error) => {
       expect(error).toBeInstanceOf(MessageBusError)
-      expect(error.message).toBe('test: Foo errored')
+      expect(error.message).toBe('test[foo]: Foo errored')
       done()
     })
     broker.on('foo', () => {
@@ -278,7 +278,7 @@ describe('error handling', () => {
   test('queuing errors inside subscribers', (done) => {
     messageBus.onError((error) => {
       expect(error).toBeInstanceOf(MessageBusError)
-      expect(error.message).toBe('test: Foo errored')
+      expect(error.message).toBe('test[foo]: Foo errored')
       done()
     })
     broker.on('foo', () => {

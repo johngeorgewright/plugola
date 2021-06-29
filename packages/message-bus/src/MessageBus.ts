@@ -36,7 +36,7 @@ import {
   InvokerRegistrationArgs,
   Invokers,
 } from './types/invokables'
-import { UnpackResolvableValue } from './types/util'
+import { Stringable, UnpackResolvableValue } from './types/util'
 import { Unsubscriber } from './types/MessageBus'
 import { AbortSignalComposite, fromSignal } from './AbortController'
 
@@ -65,9 +65,9 @@ export default class MessageBus<
     }
   }
 
-  #reportError(brokerId: string, error: Error) {
+  #reportError(brokerId: string, eventName: Stringable, error: Error) {
     for (const errorHandler of this.#errorHandlers) {
-      errorHandler(new MessageBusError(brokerId, error))
+      errorHandler(new MessageBusError(brokerId, eventName, error))
     }
   }
 
@@ -105,18 +105,20 @@ export default class MessageBus<
             })
           : this.#callSubscribers(eventName, args, abortSignal)
       } catch (error) {
-        this.#reportError(broker.id, error)
+        this.#reportError(broker.id, eventName, error)
       }
 
       return result instanceof Promise
-        ? result.catch((error) => this.#reportError(broker.id, error))
+        ? result.catch((error) =>
+            this.#reportError(broker.id, eventName, error)
+          )
         : result
     }
 
     return this.#started
       ? handle()
       : this.#queue(broker, handle).catch((error) =>
-          this.#reportError(broker.id, error)
+          this.#reportError(broker.id, eventName, error)
         )
   }
 
