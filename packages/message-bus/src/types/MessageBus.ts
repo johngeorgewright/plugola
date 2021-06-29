@@ -2,6 +2,7 @@ import type { AbortSignal } from 'node-abort-controller'
 import { L } from 'ts-toolbelt'
 import type Broker from '../Broker'
 import type MessageBus from '../MessageBus'
+import MessageBusError from '../MessageBusError'
 
 export interface Unsubscriber {
   (): void
@@ -37,3 +38,7 @@ export type MessageBusBroker<MB extends MessageBus> = MB extends MessageBus<
 >
   ? Broker<Events, EventGenerators, Invokables>
   : never
+
+export interface ErrorHandler {
+  (error: MessageBusError): any
+}

@@ -13,7 +13,7 @@ import type {
   InvokerInterceptorArgs,
   InvokerRegistrationArgs,
 } from './types/invokables'
-import { Unsubscriber } from './types/MessageBus'
+import { ErrorHandler, Unsubscriber } from './types/MessageBus'
 
 export default class Broker<
   Events extends EventsT = EventsT,
@@ -21,7 +21,7 @@ export default class Broker<
   Invokables extends InvokablesT = InvokablesT
 > {
   constructor(
-    private readonly messageBus: MessageBus<Events, EventGens, Invokables>,
+    public readonly messageBus: MessageBus<Events, EventGens, Invokables>,
     public readonly id: string,
     public readonly abortController: AbortController
   ) {}
@@ -40,6 +40,14 @@ export default class Broker<
 
   abort() {
     this.abortController.abort()
+  }
+
+  onError(errorHandler: ErrorHandler) {
+    this.messageBus.onError((error) => {
+      if (error.brokerId === this.id) {
+        errorHandler(error)
+      }
+    })
   }
 
   emit<EventName extends keyof Events>(

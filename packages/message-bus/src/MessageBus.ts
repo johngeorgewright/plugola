@@ -37,12 +37,8 @@ import {
   Invokers,
 } from './types/invokables'
 import { Stringable, UnpackResolvableValue } from './types/util'
-import { Unsubscriber } from './types/MessageBus'
+import { ErrorHandler, Unsubscriber } from './types/MessageBus'
 import { AbortSignalComposite, fromSignal } from './AbortController'
-
-interface ErrorHandler {
-  (error: MessageBusError): any
-}
 
 export default class MessageBus<
   Events extends EventsT = EventsT,
