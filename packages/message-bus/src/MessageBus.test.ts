@@ -6,7 +6,7 @@ import MessageBusError from './MessageBusError'
 import { AbortSignalComposite } from './AbortController'
 
 describe('events', () => {
-  type Events = { foo: []; bar: [string] }
+  type Events = { foo: []; bar: [string]; mung: [string, number] }
   let messageBus: MessageBus<Events, {}, {}>
   let broker: Broker<Events, {}, {}>
   let foo: jest.Mock<void, []>
@@ -94,11 +94,11 @@ describe('events', () => {
   test('partial subscribers', () => {
     const fn = jest.fn()
     messageBus.start()
-    broker.on('bar', 'mung', fn)
-    broker.emit('bar', 'mung')
-    broker.emit('bar', 'face')
+    broker.on('mung', 'face', fn)
+    broker.emit('mung', 'mung', 1)
+    broker.emit('mung', 'face', 2)
     expect(fn).toHaveBeenCalledTimes(1)
-    expect(fn).toHaveBeenCalledWith(expect.any(AbortSignalComposite))
+    expect(fn).toHaveBeenCalledWith(2, expect.any(AbortSignalComposite))
   })
 
   test('aborting removes subscribers', () => {

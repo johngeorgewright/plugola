@@ -559,7 +559,7 @@ export default class MessageBus<
       }
     }
 
-    return i + 1
+    return i
   }
 
   async #queue<T>(broker: Broker, handler: () => T) {
