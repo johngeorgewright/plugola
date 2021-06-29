@@ -165,7 +165,15 @@ export default class Broker<
     invokableName: InvokableName,
     ...args: Invokables[InvokableName]['args']
   ): Promise<Invokables[InvokableName]['return']> {
-    return this.messageBus.invoke(this, invokableName, args) as any
+    return this.messageBus.invoke(this, invokableName, args)
+  }
+
+  invokeSignal<InvokableName extends keyof Invokables>(
+    invokableName: InvokableName,
+    abortSignal: AbortSignal,
+    ...args: Invokables[InvokableName]['args']
+  ): Promise<Invokables[InvokableName]['return']> {
+    return this.messageBus.invoke(this, invokableName, args, abortSignal)
   }
 
   interceptInvoker<InvokableName extends keyof Invokables>(
