@@ -375,17 +375,19 @@ export default class MessageBus<
       )
     }
 
-    this.#invokers[invokableName] = [
-      ...invokers!,
-      {
-        broker,
-        args,
-        fn,
-      },
-    ]
+    const subscriber = {
+      broker,
+      args,
+      fn,
+    }
+
+    this.#invokers[invokableName] = [...invokers!, subscriber]
 
     const cancel = () => {
-      delete this.#invokers[invokableName]
+      this.#invokers[invokableName] = removeItem(
+        subscriber,
+        this.#invokers[invokableName] as any
+      )
     }
 
     broker.onAbort(() => setTimeout(cancel, 0))
