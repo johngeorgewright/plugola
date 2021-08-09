@@ -3,7 +3,7 @@ import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
 import { Store, ActionI } from '@plugola/store'
 import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
 import { race, timeout } from '@johngw/async'
-import AbortController, { AbortSignal } from 'node-abort-controller'
+import { AbortController, AbortSignal } from 'node-abort-controller'
 import DependencyGraph from './DependencyGraph'
 
 export interface PluginManagerOptions<

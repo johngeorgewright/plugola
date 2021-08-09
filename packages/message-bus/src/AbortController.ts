@@ -1,4 +1,4 @@
-import AbortController, { AbortSignal } from 'node-abort-controller'
+import { AbortController, AbortSignal } from 'node-abort-controller'
 
 /**
  * Creates a new AbortController and pipes an abort
