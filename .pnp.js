@@ -1560,6 +1560,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.2.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.0.2", {
+          "packageLocation": "./.yarn/cache/@johngw-async-npm-4.0.2-a9ac17020f-f1f33ba34e.zip/node_modules/@johngw/async/",
+          "packageDependencies": [
+            ["@johngw/async", "npm:4.0.2"],
+            ["@johngw/object", "npm:1.1.5"],
+            ["node-abort-controller", "npm:3.0.0"],
+            ["tslib", "npm:2.2.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@johngw/async-iterator", [
@@ -2098,7 +2108,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/plugin-manager/",
           "packageDependencies": [
             ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],
-            ["@johngw/async", "npm:4.0.1"],
+            ["@johngw/async", "npm:4.0.2"],
             ["@plugola/graph", "workspace:packages/graph"],
             ["@plugola/message-bus", "workspace:packages/message-bus"],
             ["@plugola/query-params", "workspace:packages/query-params"],
