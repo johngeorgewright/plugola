@@ -37,7 +37,7 @@
     "@plugola/message-bus": "workspace:packages/message-bus",
     "@plugola/query-params": "workspace:packages/query-params",
     "@plugola/store": "workspace:packages/store",
-    "node-abort-controller": "^2.0.0",
+    "node-abort-controller": "^3.0.0",
     "tslib": "^2.3.0"
   }
 }
