@@ -2013,7 +2013,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:14.17.9"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.6"],
-            ["node-abort-controller", "npm:2.0.0"],
+            ["node-abort-controller", "npm:3.0.0"],
             ["rimraf", "npm:3.0.2"],
             ["semantic-release", "npm:17.4.4"],
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],
@@ -2069,7 +2069,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.3"],
             ["@types/jest", "npm:26.0.24"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.6"],
-            ["node-abort-controller", "npm:2.0.0"],
+            ["node-abort-controller", "npm:3.0.0"],
             ["rimraf", "npm:3.0.2"],
             ["semantic-release", "npm:17.4.4"],
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],
@@ -9760,6 +9760,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/node-abort-controller-npm-2.0.0-2635eee468-d8bf75f45f.zip/node_modules/node-abort-controller/",
           "packageDependencies": [
             ["node-abort-controller", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/node-abort-controller-npm-3.0.0-f671c372ef-d2766c5b77.zip/node_modules/node-abort-controller/",
+          "packageDependencies": [
+            ["node-abort-controller", "npm:3.0.0"]
           ],
           "linkType": "HARD",
         }]
