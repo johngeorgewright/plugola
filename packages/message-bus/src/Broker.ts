@@ -1,4 +1,4 @@
-import AbortController, { AbortSignal } from 'node-abort-controller'
+import { AbortController, AbortSignal } from 'node-abort-controller'
 import type MessageBus from './MessageBus'
 import type {
   EventInterceptorArgs,
