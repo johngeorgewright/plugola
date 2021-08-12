@@ -1999,7 +1999,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.4"],
             ["tslib", "npm:2.3.1"],
             ["typescript", "patch:typescript@npm%3A4.3.5#builtin<compat/typescript>::version=4.3.5&hash=ddfc1b"],
-            ["yeoman-generator", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.4.0"]
+            ["yeoman-generator", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.4.1"]
           ],
           "linkType": "SOFT",
         }]
@@ -14028,17 +14028,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["yeoman-generator", [
-        ["npm:5.4.0", {
-          "packageLocation": "./.yarn/cache/yeoman-generator-npm-5.4.0-ded2bd0136-a8d1f82bb8.zip/node_modules/yeoman-generator/",
+        ["npm:5.4.1", {
+          "packageLocation": "./.yarn/cache/yeoman-generator-npm-5.4.1-e0e89af977-9ab8030d22.zip/node_modules/yeoman-generator/",
           "packageDependencies": [
-            ["yeoman-generator", "npm:5.4.0"]
+            ["yeoman-generator", "npm:5.4.1"]
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.4.0", {
-          "packageLocation": "./.yarn/$$virtual/yeoman-generator-virtual-9aa5816551/0/cache/yeoman-generator-npm-5.4.0-ded2bd0136-a8d1f82bb8.zip/node_modules/yeoman-generator/",
+        ["virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.4.1", {
+          "packageLocation": "./.yarn/$$virtual/yeoman-generator-virtual-f188440dc5/0/cache/yeoman-generator-npm-5.4.1-e0e89af977-9ab8030d22.zip/node_modules/yeoman-generator/",
           "packageDependencies": [
-            ["yeoman-generator", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.4.0"],
+            ["yeoman-generator", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.4.1"],
             ["@types/yeoman-environment", null],
             ["chalk", "npm:4.1.1"],
             ["dargs", "npm:7.0.0"],
