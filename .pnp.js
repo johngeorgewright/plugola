@@ -1977,7 +1977,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@plugola/generator", "workspace:packages/generator"],
             ["@types/jest", "npm:27.0.1"],
-            ["@types/node", "npm:14.17.10"],
+            ["@types/node", "npm:14.17.11"],
             ["@types/prettier", "npm:2.3.2"],
             ["@types/yeoman-generator", "npm:5.2.2"],
             ["change-case", "npm:4.1.2"],
@@ -2025,7 +2025,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:6d1767245120040fdabcdc9810988a97ad82e4d1fee83a0f0346d35ca8e20bb50013f9cd36c8cfade6f6a6bbaeeb597ea5d1bf8d488c381f3dd6505f0f7b3763#npm:7.1.3"],
             ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.3"],
             ["@types/jest", "npm:27.0.1"],
-            ["@types/node", "npm:14.17.10"],
+            ["@types/node", "npm:14.17.11"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.6"],
             ["rimraf", "npm:3.0.2"],
             ["semantic-release", "npm:17.4.5"],
@@ -2050,7 +2050,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:6d1767245120040fdabcdc9810988a97ad82e4d1fee83a0f0346d35ca8e20bb50013f9cd36c8cfade6f6a6bbaeeb597ea5d1bf8d488c381f3dd6505f0f7b3763#npm:7.1.3"],
             ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.3"],
             ["@types/jest", "npm:27.0.1"],
-            ["@types/node", "npm:14.17.10"],
+            ["@types/node", "npm:14.17.11"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.6"],
             ["node-abort-controller", "npm:3.0.0"],
             ["rimraf", "npm:3.0.2"],
@@ -2681,10 +2681,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/node", [
-        ["npm:14.17.10", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-14.17.10-f479af541c-3a0487d8c0.zip/node_modules/@types/node/",
+        ["npm:14.17.11", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-14.17.11-1749a5f307-c52c533d83.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:14.17.10"]
+            ["@types/node", "npm:14.17.11"]
           ],
           "linkType": "HARD",
         }],
@@ -13021,7 +13021,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.7"],
             ["@tsconfig/node14", "npm:1.0.0"],
             ["@tsconfig/node16", "npm:1.0.2"],
-            ["@types/node", "npm:14.17.10"],
+            ["@types/node", "npm:14.17.11"],
             ["@types/swc__core", null],
             ["@types/swc__wasm", null],
             ["@types/types__node", null],
