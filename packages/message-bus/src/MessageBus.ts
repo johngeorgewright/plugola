@@ -100,7 +100,7 @@ export default class MessageBus<
               }
             })
           : this.#callSubscribers(eventName, args, abortSignal)
-      } catch (error) {
+      } catch (error: any) {
         this.#reportError(broker.id, eventName, error)
       }
 
