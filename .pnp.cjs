@@ -1808,7 +1808,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.0.1"],
             ["@types/node", "npm:14.17.15"],
             ["@types/prettier", "npm:2.3.2"],
-            ["@types/yeoman-generator", "npm:5.2.5"],
+            ["@types/yeoman-generator", "npm:5.2.6"],
             ["change-case", "npm:4.1.2"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.2.0"],
             ["prettier", "npm:2.4.0"],
@@ -2637,6 +2637,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-yeoman-generator-npm-5.2.5-c959e8b8a8-2625312599.zip/node_modules/@types/yeoman-generator/",
           "packageDependencies": [
             ["@types/yeoman-generator", "npm:5.2.5"],
+            ["@types/debug", "npm:4.1.7"],
+            ["@types/ejs", "npm:3.1.0"],
+            ["@types/inquirer", "npm:8.1.0"],
+            ["@types/mem-fs-editor", "npm:7.0.1"],
+            ["@types/yeoman-environment", "npm:2.10.5"],
+            ["rxjs", "npm:6.6.7"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:5.2.6", {
+          "packageLocation": "./.yarn/cache/@types-yeoman-generator-npm-5.2.6-2f51c25dae-275c3172ae.zip/node_modules/@types/yeoman-generator/",
+          "packageDependencies": [
+            ["@types/yeoman-generator", "npm:5.2.6"],
             ["@types/debug", "npm:4.1.7"],
             ["@types/ejs", "npm:3.1.0"],
             ["@types/inquirer", "npm:8.1.0"],
