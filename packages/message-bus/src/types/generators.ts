@@ -1,6 +1,6 @@
 import type Broker from '../Broker'
-import { L } from 'ts-toolbelt'
-import { AddAbortSignal } from './MessageBus'
+import type { L } from 'ts-toolbelt'
+import type { AddAbortSignal } from './MessageBus'
 
 export type EventGeneratorsT = Record<
   string,
@@ -27,8 +27,6 @@ export type EventGeneratorArgs<
       | L.Append<A, EventGeneratorFn<B, R>>
       | EventGeneratorArgs<L.Pop<A>, R, L.Prepend<B, L.Last<A>>>
 
-export type EventGenerators<EventGens extends EventGeneratorsT> = Partial<
-  {
-    [EventName in keyof EventGens]: EventGenerator<Broker>[]
-  }
->
+export type EventGenerators<EventGens extends EventGeneratorsT> = Partial<{
+  [EventName in keyof EventGens]: EventGenerator<Broker>[]
+}>

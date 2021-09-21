@@ -1,7 +1,7 @@
 import type Broker from '../Broker'
-import { L } from 'ts-toolbelt'
-import { UnpackResolvableValue } from './util'
-import { AddAbortSignal } from './MessageBus'
+import type { L } from 'ts-toolbelt'
+import type { UnpackResolvableValue } from './util'
+import type { AddAbortSignal } from './MessageBus'
 
 export type InvokablesT = Record<string, { args: unknown[]; return: unknown }>
 
@@ -25,11 +25,9 @@ export interface Invoker<B extends Broker> {
   fn: InvokerFn<unknown[], unknown>
 }
 
-export type Invokers<Invokables extends InvokablesT> = Partial<
-  {
-    [InvokableName in keyof Invokables]: Invoker<Broker>[]
-  }
->
+export type Invokers<Invokables extends InvokablesT> = Partial<{
+  [InvokableName in keyof Invokables]: Invoker<Broker>[]
+}>
 
 export type InvokerInterceptorFn<
   Args extends unknown[],
@@ -46,11 +44,9 @@ export type InvokerInterceptorArgs<
       | L.Append<A, InvokerInterceptorFn<B, C>>
       | InvokerInterceptorArgs<L.Pop<A>, L.Prepend<B, L.Last<A>>, C>
 
-export type InvokerInterceptors<Invokables extends InvokablesT> = Partial<
-  {
-    [InvokableName in keyof Invokables]: InvokerInterceptor<Broker>[]
-  }
->
+export type InvokerInterceptors<Invokables extends InvokablesT> = Partial<{
+  [InvokableName in keyof Invokables]: InvokerInterceptor<Broker>[]
+}>
 
 export interface InvokerInterceptor<B extends Broker> {
   broker: B
