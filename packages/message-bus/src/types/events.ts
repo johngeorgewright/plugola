@@ -22,20 +22,20 @@ export type UntilArgs<A extends unknown[]> = L.Length<A> extends 0
   ? never[]
   : UntilArgs<L.Pop<A>> | A
 
-export type UntilRtn<T extends unknown[], Args extends unknown[]> = N.Greater<
-  L.Length<Args>,
-  0
-> extends 1
-  ? L.Head<T> extends L.Head<Args>
-    ? UntilRtn<L.Tail<T>, L.Tail<Args>>
-    : never
-  : T
-
-export type Subscribers<Events extends EventsT> = Partial<
-  {
-    [EventName in keyof Events]: Subscriber<Broker>[]
-  }
+export type UntilRtn<
+  T extends unknown[],
+  Args extends unknown[]
+> = AddAbortSignal<
+  N.Greater<L.Length<Args>, 0> extends 1
+    ? L.Head<T> extends L.Head<Args>
+      ? UntilRtn<L.Tail<T>, L.Tail<Args>>
+      : never
+    : T
 >
+
+export type Subscribers<Events extends EventsT> = Partial<{
+  [EventName in keyof Events]: Subscriber<Broker>[]
+}>
 
 export interface Subscriber<B extends Broker> {
   broker: B
@@ -64,11 +64,9 @@ export type EventInterceptorArgs<
       | [...A, EventInterceptorFn<B, C>]
       | EventInterceptorArgs<L.Pop<A>, L.Prepend<B, L.Last<A>>, C>
 
-export type EventInterceptors<Events extends EventsT> = Partial<
-  {
-    [EventName in keyof Events]: EventInterceptor<Broker>[]
-  }
->
+export type EventInterceptors<Events extends EventsT> = Partial<{
+  [EventName in keyof Events]: EventInterceptor<Broker>[]
+}>
 
 export interface EventInterceptor<B extends Broker> {
   broker: B
