@@ -30,7 +30,7 @@ parseQueryParams('foo[]=foo,bar')
 ```javascript
 parseQueryParams('foo{x}=mung,!face')
 /* { 
-  foo: { mung: true, false: false }
+  foo: { mung: true, face: false }
 } */
 ```
 
