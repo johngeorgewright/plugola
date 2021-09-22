@@ -1229,7 +1229,7 @@ __metadata:
   resolution: "@plugola/generator@workspace:packages/generator"
   dependencies:
     "@types/jest": 27.0.2
-    "@types/node": 14.17.17
+    "@types/node": 14.17.18
     "@types/prettier": 2.3.2
     "@types/yeoman-generator": 5.2.7
     change-case: 4.1.2
@@ -1273,7 +1273,7 @@ __metadata:
     "@semantic-release/npm": 8.0.0
     "@semantic-release/release-notes-generator": 10.0.2
     "@types/jest": 27.0.2
-    "@types/node": 14.17.17
+    "@types/node": 14.17.18
     jest: 27.2.1
     rimraf: 3.0.2
     semantic-release: 18.0.0
@@ -1296,7 +1296,7 @@ __metadata:
     "@semantic-release/npm": 8.0.0
     "@semantic-release/release-notes-generator": 10.0.2
     "@types/jest": 27.0.2
-    "@types/node": 14.17.17
+    "@types/node": 14.17.18
     jest: 27.2.1
     node-abort-controller: ^3.0.0
     rimraf: 3.0.2
@@ -1807,10 +1807,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.17.17":
-  version: 14.17.17
-  resolution: "@types/node@npm:14.17.17"
-  checksum: ec17a5662e8e4dafbf5c7b577b390811f521ea984525c8fae3b90b14222a61832161c74c9a335abe8ef01a59adba578498298a9ccee0d84d71285680f5bc135a
+"@types/node@npm:14.17.18":
+  version: 14.17.18
+  resolution: "@types/node@npm:14.17.18"
+  checksum: 386f1ce851f5efb9c51ab7b4f6c7110a7c85f7a06ea5456ddf262bae0f0132a9b8b7d9e7b78228989bb50c44f1c55b7b5afc56915f0bdce25925d10fa18d2d90
   languageName: node
   linkType: hard
 
