@@ -1936,6 +1936,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:26bef7164f48d044764cd43116294384229ad2f2c35b46556537f1ef43382b779f272bad9f935bedb8d5f0cd3bb5d71fbb788a0376f8f210aee6a1927e0d4392#npm:8.0.0"],
             ["@semantic-release/release-notes-generator", "virtual:26bef7164f48d044764cd43116294384229ad2f2c35b46556537f1ef43382b779f272bad9f935bedb8d5f0cd3bb5d71fbb788a0376f8f210aee6a1927e0d4392#npm:10.0.2"],
             ["@types/jest", "npm:27.0.2"],
+            ["@types/node", "npm:16.9.6"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.2.1"],
             ["node-abort-controller", "npm:3.0.0"],
             ["rimraf", "npm:3.0.2"],
@@ -2515,6 +2516,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-16.7.13-08a1515fa1-15dc28aa44.zip/node_modules/@types/node/",
           "packageDependencies": [
             ["@types/node", "npm:16.7.13"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:16.9.6", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-16.9.6-c95978d15b-1c11ff4b58.zip/node_modules/@types/node/",
+          "packageDependencies": [
+            ["@types/node", "npm:16.9.6"]
           ],
           "linkType": "HARD",
         }]

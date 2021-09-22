@@ -1349,6 +1349,7 @@ __metadata:
     "@semantic-release/npm": 8.0.0
     "@semantic-release/release-notes-generator": 10.0.2
     "@types/jest": 27.0.2
+    "@types/node": ^16.9.6
     jest: 27.2.1
     node-abort-controller: ^3.0.0
     rimraf: 3.0.2
@@ -1817,6 +1818,13 @@ __metadata:
   version: 15.14.9
   resolution: "@types/node@npm:15.14.9"
   checksum: 49f7f0522a3af4b8389aee660e88426490cd54b86356672a1fedb49919a8797c00d090ec2dcc4a5df34edc2099d57fc2203d796c4e7fbd382f2022ccd789eee7
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.9.6":
+  version: 16.9.6
+  resolution: "@types/node@npm:16.9.6"
+  checksum: 1c11ff4b58af87ddade05784e90bb5a2fe01f461ce489fdb1428d89e709695a26b0dcbac0520305911f5e4017561416747e544f1b9ec36649ccbfad6ffff4a0a
   languageName: node
   linkType: hard
 

@@ -17,8 +17,7 @@ beforeEach(() => {
 test('initializing plugins', async () => {
   let result: string
 
-  pluginManager.registerPlugin({
-    name: 'mung',
+  pluginManager.registerPlugin('mung', {
     init() {
       result = 'initializing mung'
     },
@@ -31,23 +30,20 @@ test('initializing plugins', async () => {
 test('initialize dependency tree', async () => {
   let result: string = ''
 
-  pluginManager.registerPlugin({
-    name: 'foo',
+  pluginManager.registerPlugin('foo', {
     init() {
       result += 'foo'
     },
   })
 
-  pluginManager.registerPlugin({
-    name: 'bar',
+  pluginManager.registerPlugin('bar', {
     dependencies: ['foo'],
     init() {
       result += 'bar'
     },
   })
 
-  pluginManager.registerPlugin({
-    name: 'mung',
+  pluginManager.registerPlugin('mung', {
     dependencies: ['bar', 'foo'],
     init() {
       result += 'mung'
@@ -61,8 +57,7 @@ test('initialize dependency tree', async () => {
 test('running normal plugins', async () => {
   let result: string
 
-  pluginManager.registerPlugin({
-    name: 'mung',
+  pluginManager.registerPlugin('mung', {
     run() {
       result = 'running mung'
     },
@@ -77,8 +72,10 @@ test('running stateful plugins', async () => {
   let result: string
   const onUpdate = jest.fn()
 
-  pluginManager.registerStatefulPlugin<{ type: 'foo' }, 'foo' | 'bar'>({
-    name: 'foo',
+  type Action = { type: 'foo' }
+  type State = 'foo' | 'bar'
+
+  pluginManager.registerStatefulPlugin<Action, State>('foo', {
     state: {
       initial: 'bar',
 
@@ -119,8 +116,7 @@ test('modifying stores', async () => {
 
   pluginManager.onCreateStore(onCreateStore)
 
-  pluginManager.registerStatefulPlugin<InitAction, number>({
-    name: 'foo',
+  pluginManager.registerStatefulPlugin<InitAction, number>('foo', {
     state: {
       initial: 0,
       reduce(_, state) {
@@ -143,23 +139,20 @@ test('modifying stores', async () => {
 test('running with a dependency tree', async () => {
   let result: string = ''
 
-  pluginManager.registerPlugin({
-    name: 'foo',
+  pluginManager.registerPlugin('foo', {
     run() {
       result += 'foo'
     },
   })
 
-  pluginManager.registerPlugin({
-    name: 'bar',
+  pluginManager.registerPlugin('bar', {
     dependencies: ['foo'],
     run() {
       result += 'bar'
     },
   })
 
-  pluginManager.registerPlugin({
-    name: 'mung',
+  pluginManager.registerPlugin('mung', {
     dependencies: ['bar', 'foo'],
     run() {
       result += 'mung'
@@ -172,8 +165,7 @@ test('running with a dependency tree', async () => {
 })
 
 test('using the message bus to communicate between plugins', (done) => {
-  pluginManager.registerPlugin({
-    name: 'foo',
+  pluginManager.registerPlugin('foo', {
     run({ broker }) {
       broker.on('foo', (str) => {
         expect(str).toBe('bar')
@@ -182,8 +174,7 @@ test('using the message bus to communicate between plugins', (done) => {
     },
   })
 
-  pluginManager.registerPlugin({
-    name: 'bar',
+  pluginManager.registerPlugin('bar', {
     run({ broker }) {
       broker.emit('foo', 'bar')
     },
@@ -213,8 +204,7 @@ test('extra context', async () => {
     },
   })
 
-  pluginManager.registerPlugin({
-    name: 'my-plugin',
+  pluginManager.registerPlugin('my-plugin', {
     init({ foo, bar }) {
       expect(foo).toBe('my-plugin')
       expect(bar).toBe('bar')
@@ -234,13 +224,11 @@ test('only run enabled plugins', async () => {
   const foo = jest.fn()
   const bar = jest.fn()
 
-  pluginManager.registerPlugin({
-    name: 'foo',
+  pluginManager.registerPlugin('foo', {
     run: foo,
   })
 
-  pluginManager.registerPlugin({
-    name: 'bar',
+  pluginManager.registerPlugin('bar', {
     run: bar,
   })
 
@@ -255,16 +243,14 @@ test('enabling plugins within the init phase', async () => {
   const foo = jest.fn()
   const bar = jest.fn()
 
-  pluginManager.registerPlugin({
-    name: 'foo',
+  pluginManager.registerPlugin('foo', {
     init({ enablePlugins }) {
       enablePlugins(['bar'])
     },
     run: foo,
   })
 
-  pluginManager.registerPlugin({
-    name: 'bar',
+  pluginManager.registerPlugin('bar', {
     run: bar,
   })
 
@@ -280,13 +266,11 @@ test('disabling plugins within the init phase', async () => {
   const foo = jest.fn()
   const bar = jest.fn()
 
-  pluginManager.registerPlugin({
-    name: 'bar',
+  pluginManager.registerPlugin('bar', {
     run: bar,
   })
 
-  pluginManager.registerPlugin({
-    name: 'foo',
+  pluginManager.registerPlugin('foo', {
     init({ disablePlugins }) {
       disablePlugins(['bar'])
     },
@@ -305,8 +289,7 @@ test('cleaning up plugins when disabled in the init phase', async () => {
   const bar = jest.fn()
   const abort = jest.fn()
 
-  pluginManager.registerPlugin({
-    name: 'foo',
+  pluginManager.registerPlugin('foo', {
     async init({ disablePlugins, signal }) {
       await timeout(10, signal)
       disablePlugins(['bar'])
@@ -314,8 +297,7 @@ test('cleaning up plugins when disabled in the init phase', async () => {
     run: foo,
   })
 
-  pluginManager.registerPlugin({
-    name: 'bar',
+  pluginManager.registerPlugin('bar', {
     init({ signal }) {
       signal.addEventListener('abort', abort)
     },
@@ -335,8 +317,7 @@ test('plugins that time out', async () => {
 
   pluginManager = new PluginManager(messageBus, { pluginTimeout: 100 }) as any
 
-  pluginManager.registerPlugin({
-    name: 'foo',
+  pluginManager.registerPlugin('foo', {
     async init({ signal }) {
       signal.addEventListener('abort', () => abort('init'))
     },

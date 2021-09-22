@@ -55,23 +55,31 @@ export default class PluginManager<
   }
 
   registerStatefulPlugin<Action extends ActionI, State>(
-    plugin: StatefulPlugin<
-      Action,
-      State,
-      InitContext<MB> & ExtraContext & ExtraInitContext,
-      StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
+    name: string,
+    plugin: Omit<
+      StatefulPlugin<
+        Action,
+        State,
+        InitContext<MB> & ExtraContext & ExtraInitContext,
+        StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
+      >,
+      'name'
     >
   ) {
-    this.#addPlugin(plugin)
+    this.#addPlugin({ name, ...plugin })
   }
 
   registerPlugin(
-    plugin: Plugin<
-      InitContext<MB> & ExtraContext & ExtraInitContext,
-      RunContext<MB> & ExtraContext & ExtraRunContext
+    name: string,
+    plugin: Omit<
+      Plugin<
+        InitContext<MB> & ExtraContext & ExtraInitContext,
+        RunContext<MB> & ExtraContext & ExtraRunContext
+      >,
+      'name'
     >
   ) {
-    this.#addPlugin(plugin)
+    this.#addPlugin({ name, ...plugin })
   }
 
   onCreateStore(
