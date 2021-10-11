@@ -1438,10 +1438,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@johngw/async-iterator", [
-        ["npm:2.2.2", {
-          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-2.2.2-fef2a8daf9-86d26e5a62.zip/node_modules/@johngw/async-iterator/",
+        ["npm:3.1.0", {
+          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-3.1.0-09342ba75e-5f8bf4d97a.zip/node_modules/@johngw/async-iterator/",
           "packageDependencies": [
-            ["@johngw/async-iterator", "npm:2.2.2"],
+            ["@johngw/async-iterator", "npm:3.1.0"],
             ["@johngw/async", "npm:4.0.2"],
             ["@johngw/object", "npm:1.1.5"],
             ["node-abort-controller", "npm:3.0.0"],
@@ -1940,7 +1940,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@plugola/message-bus", "workspace:packages/message-bus"],
             ["@johngw/async", "npm:4.0.2"],
-            ["@johngw/async-iterator", "npm:2.2.2"],
+            ["@johngw/async-iterator", "npm:3.1.0"],
             ["@semantic-release/commit-analyzer", "virtual:26bef7164f48d044764cd43116294384229ad2f2c35b46556537f1ef43382b779f272bad9f935bedb8d5f0cd3bb5d71fbb788a0376f8f210aee6a1927e0d4392#npm:9.0.1"],
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.0"],
             ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.1"],
