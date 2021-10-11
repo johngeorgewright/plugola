@@ -908,15 +908,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/async-iterator@npm:^2.2.1":
-  version: 2.2.2
-  resolution: "@johngw/async-iterator@npm:2.2.2"
+"@johngw/async-iterator@npm:^3.0.0":
+  version: 3.1.0
+  resolution: "@johngw/async-iterator@npm:3.1.0"
   dependencies:
     "@johngw/async": 4.0.2
     "@johngw/object": 1.1.5
     node-abort-controller: ^3.0.0
     tslib: ^2.2.0
-  checksum: 86d26e5a623cf4e4abea6805e7fd8c28ac00923405b390fb82d2bad2ca8cefbb866338388047ed2333fbf39dc2722fe2ea3cb6e02d6c848a5e06e659ff804035
+  checksum: 5f8bf4d97af49f20c134eaf1af01e398d65e3e285a52eef94ca32d59337554a139bd9de9b0fff42d6600b7d669868e124f1afe362b6fed28faeb5455b71c33dc
   languageName: node
   linkType: hard
 
@@ -1348,7 +1348,7 @@ __metadata:
   resolution: "@plugola/message-bus@workspace:packages/message-bus"
   dependencies:
     "@johngw/async": ^4.0.1
-    "@johngw/async-iterator": ^2.2.1
+    "@johngw/async-iterator": ^3.0.0
     "@semantic-release/commit-analyzer": 9.0.1
     "@semantic-release/git": 10.0.0
     "@semantic-release/github": 8.0.1
