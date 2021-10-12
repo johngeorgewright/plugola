@@ -35,6 +35,12 @@ export default function parseQueryParams(
             ...queryParams,
             [amendKey(key.substr(0, key.length - 2))]: toArray(value),
           }
+        } else if (key.endsWith('[^]')) {
+          key = amendKey(key.substr(0, key.length - 3))
+          return {
+            ...queryParams,
+            [key]: prependArray(value, queryParams[key]),
+          }
         } else if (key.endsWith('[+]')) {
           key = amendKey(key.substr(0, key.length - 3))
           return { ...queryParams, [key]: appendArray(value, queryParams[key]) }
@@ -66,6 +72,13 @@ export default function parseQueryParams(
 
 function toArray(value: string) {
   return decodeURIComponent(value).split(',')
+}
+
+function prependArray(value: string, queryParam: unknown) {
+  return [
+    ...(value || '').split(',').map(decodeURIComponent),
+    ...(Array.isArray(queryParam) ? queryParam : []),
+  ]
 }
 
 function appendArray(value: string, queryParam: unknown) {

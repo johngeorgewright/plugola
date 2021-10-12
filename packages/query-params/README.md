@@ -25,6 +25,20 @@ parseQueryParams('foo[]=foo,bar')
 // { foo: ['foo', 'bar'] }
 ```
 
+#### Prepending to arrays
+
+```javascript
+parseQueryParams('foo[^]=bar,face', into:{foo:['mung']})
+// { foo: ['bar', 'face', 'mung'] }
+```
+
+#### Appending to arrays
+
+```javascript
+parseQueryParams('foo[+]=bar,face', into:{foo:['mung']})
+// { foo: ['mung', 'bar', 'face'] }
+```
+
 ### Flags
 
 ```javascript

@@ -27,6 +27,17 @@ test('arrays', () => {
   })
 })
 
+test('prepending arrays', () => {
+  expect(parseQueryParams('foo[^]=bar,mung')).toEqual({
+    foo: ['bar', 'mung'],
+  })
+  expect(
+    parseQueryParams('foo[^]=bar,mung', { into: { foo: ['foo'] } })
+  ).toEqual({
+    foo: ['bar', 'mung', 'foo'],
+  })
+})
+
 test('appending arrays', () => {
   expect(parseQueryParams('foo[]=foo&foo[+]=bar,mung')).toEqual({
     foo: ['foo', 'bar', 'mung'],
