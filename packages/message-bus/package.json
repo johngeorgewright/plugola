@@ -1,6 +1,6 @@
 {
   "name": "@plugola/message-bus",
-  "version": "3.4.2",
+  "version": "3.4.3",
   "description": "Plugola event management",
   "main": "dist/index.js",
   "sideEffects": false,
