@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "yarn rimraf generators && yarn tsc && yarn rimraf 'generators/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
-    "test": "echo 'no tests'"
+    "test": "jest --passWithNoTests"
   },
   "keywords": [
     "yeoman-generator"
