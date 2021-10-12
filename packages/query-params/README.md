@@ -45,13 +45,18 @@ parseQueryParams('foo{}={"bar": [1, 2]}')
 } */
 ```
 
-### Using all the options
+### Merge query params in to an existing object
 
 ```javascript
-parseQueryParams('ignore[]=foo,bar&ac.foo=bar', {
-  into: { version: 1 },
-  filter: (key) => key.startsWith('ac.'),
+const config = { foo: '' }
+
+parseQueryParams('cfg.foo=bar', {
+  // merge in to the `config` property
+  into: config,
+  // ... but only use query params that start with `cfg.`
+  filter: (key) => key.startsWith('cfg.'),
+  // ... and remove `cfg.` from the property name
   amendKey: (key) => key.substr(3),
 })
-// { foo: 'bar', version: 1 }
+// { foo: 'bar' }
 ```
