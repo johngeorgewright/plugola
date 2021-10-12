@@ -1,12 +1,12 @@
-import { O } from 'ts-toolbelt'
+import { Replace } from 'ts-toolbelt/out/Object/Replace'
 
 export function amend<
-  O extends O.Record<string>,
+  O extends Record<string, unknown>,
   K extends keyof O,
   V extends O[K]
 >(obj: O, key: K, fn: (value: O[K]) => V) {
   return {
     ...obj,
     [key]: fn(obj[key]),
-  } as O.Replace<O, K, V>
+  } as Replace<O, K, V>
 }
