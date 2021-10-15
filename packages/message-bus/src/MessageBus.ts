@@ -51,7 +51,7 @@ export default class MessageBus<
   #invokers: Invokers<Invokables> = {}
   #invokerInterceptors: InvokerInterceptors<Invokables> = {}
   #queued: Array<() => unknown> = []
-  #started: boolean = false
+  #started = false
   #subscribers: Subscribers<Events> = {}
 
   onError(errorHandler: ErrorHandler) {

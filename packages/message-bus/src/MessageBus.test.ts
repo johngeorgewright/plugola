@@ -74,6 +74,21 @@ describe('events', () => {
     expect(await result).toEqual(['hello', expect.any(AbortSignalComposite)])
   })
 
+  test('partial until listeners', (done) => {
+    const fn = jest.fn()
+    messageBus.start()
+    broker.until('bar', 'hello').then(fn)
+    broker.emit('bar', 'no')
+    setImmediate(() => {
+      expect(fn).not.toHaveBeenCalled()
+      broker.emit('bar', 'hello')
+      setImmediate(() => {
+        expect(fn).toHaveBeenCalledWith([expect.any(AbortSignalComposite)])
+        done()
+      })
+    })
+  })
+
   test('intercepting events', async () => {
     messageBus.start()
     broker.interceptEvent('bar', (x) => [x + '1'])

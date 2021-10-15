@@ -5,6 +5,7 @@ import type {
   EventsT,
   SubscriberArgs,
   UntilArgs,
+  UntilRtn,
 } from './types/events'
 import type { EventGeneratorArgs, EventGeneratorsT } from './types/generators'
 import type {
@@ -34,7 +35,7 @@ export default class Broker<
   }
 
   readonly onAbort = (fn: () => any) => {
-    this.abortController.signal.addEventListener('abort', fn)
+    this.abortSignal.addEventListener('abort', fn)
   }
 
   abort() {
@@ -92,15 +93,22 @@ export default class Broker<
   async until<
     EventName extends keyof Events,
     Args extends UntilArgs<Events[EventName]>
-  >(eventName: EventName, ...args: Args) {
-    return this.messageBus.until(this, eventName, args)
+  >(
+    eventName: EventName,
+    ...args: Args
+  ): Promise<UntilRtn<Events[EventName], Args>> {
+    return this.messageBus.until(this, eventName, args) as any
   }
 
   async untilSignal<
     EventName extends keyof Events,
     Args extends UntilArgs<Events[EventName]>
-  >(eventName: EventName, abortSignal: AbortSignal, ...args: Args) {
-    return this.messageBus.until(this, eventName, args, abortSignal)
+  >(
+    eventName: EventName,
+    abortSignal: AbortSignal,
+    ...args: Args
+  ): Promise<UntilRtn<Events[EventName], Args>> {
+    return this.messageBus.until(this, eventName, args, abortSignal) as any
   }
 
   generator<EventName extends keyof EventGens>(
