@@ -1392,6 +1392,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.3.1"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:4.1.0", {
+          "packageLocation": "./.yarn/cache/@johngw-async-npm-4.1.0-0378151e7d-a776d20713.zip/node_modules/@johngw/async/",
+          "packageDependencies": [
+            ["@johngw/async", "npm:4.1.0"],
+            ["@johngw/object", "npm:1.2.0"],
+            ["node-abort-controller", "npm:3.0.1"],
+            ["tslib", "npm:2.3.1"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["@johngw/async-iterator", [
@@ -1412,6 +1422,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@johngw-object-npm-1.1.5-58c443d9bd-585093f249.zip/node_modules/@johngw/object/",
           "packageDependencies": [
             ["@johngw/object", "npm:1.1.5"],
+            ["tslib", "npm:2.3.1"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.2.0", {
+          "packageLocation": "./.yarn/cache/@johngw-object-npm-1.2.0-d6d6fd4a5e-7f0c500379.zip/node_modules/@johngw/object/",
+          "packageDependencies": [
+            ["@johngw/object", "npm:1.2.0"],
             ["tslib", "npm:2.3.1"]
           ],
           "linkType": "HARD",
@@ -2012,7 +2030,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/plugin-manager/",
           "packageDependencies": [
             ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],
-            ["@johngw/async", "npm:4.0.2"],
+            ["@johngw/async", "npm:4.1.0"],
             ["@plugola/graph", "workspace:packages/graph"],
             ["@plugola/message-bus", "workspace:packages/message-bus"],
             ["@plugola/query-params", "workspace:packages/query-params"],
