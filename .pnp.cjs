@@ -53,6 +53,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@plugola/store-logger",
         "reference": "workspace:packages/store-logger"
+      },
+      {
+        "name": "@plugola/vendor-plugin-manager",
+        "reference": "workspace:packages/vendor-plugin-manager"
       }
     ],
     "enableTopLevelFallback": true,
@@ -66,7 +70,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@plugola/plugin-manager", ["workspace:packages/plugin-manager"]],
       ["@plugola/query-params", ["workspace:packages/query-params"]],
       ["@plugola/store", ["workspace:packages/store"]],
-      ["@plugola/store-logger", ["workspace:packages/store-logger"]]
+      ["@plugola/store-logger", ["workspace:packages/store-logger"]],
+      ["@plugola/vendor-plugin-manager", ["workspace:packages/vendor-plugin-manager"]]
     ],
     "fallbackPool": [
     ],
@@ -85,7 +90,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["commitizen", "npm:4.2.4"],
             ["cz-conventional-changelog", "npm:3.3.0"],
             ["husky", "npm:7.0.4"],
+            ["isbinaryfile", "npm:4.0.8"],
+            ["json-parse-even-better-errors", "npm:2.3.1"],
             ["lint-staged", "npm:11.2.4"],
+            ["mkdirp-infer-owner", "npm:2.0.0"],
             ["prettier", "npm:2.4.1"],
             ["semantic-release", "npm:18.0.0"],
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],
@@ -2014,7 +2022,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["commitizen", "npm:4.2.4"],
             ["cz-conventional-changelog", "npm:3.3.0"],
             ["husky", "npm:7.0.4"],
+            ["isbinaryfile", "npm:4.0.8"],
+            ["json-parse-even-better-errors", "npm:2.3.1"],
             ["lint-staged", "npm:11.2.4"],
+            ["mkdirp-infer-owner", "npm:2.0.0"],
             ["prettier", "npm:2.4.1"],
             ["semantic-release", "npm:18.0.0"],
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],
@@ -2048,7 +2059,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["semantic-release", "npm:18.0.0"],
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],
             ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.7"],
-            ["ts-node", "virtual:44d00791f9274af59af3ab6c26f039b1d7f5b2ea7cdd636fc56ae974aaf56aad3d676857b15ace77bf450b32bc4d5f49e459691a6ee3140e704b9eeb9d4a169b#npm:10.3.0"],
+            ["ts-node", "virtual:44d00791f9274af59af3ab6c26f039b1d7f5b2ea7cdd636fc56ae974aaf56aad3d676857b15ace77bf450b32bc4d5f49e459691a6ee3140e704b9eeb9d4a169b#npm:10.4.0"],
             ["tslib", "npm:2.3.1"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"]
           ],
@@ -2105,6 +2116,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@plugola/store-logger", "workspace:packages/store-logger"],
             ["@plugola/logger", "workspace:packages/logger"],
+            ["@plugola/store", "workspace:packages/store"],
+            ["@semantic-release/commit-analyzer", "virtual:26bef7164f48d044764cd43116294384229ad2f2c35b46556537f1ef43382b779f272bad9f935bedb8d5f0cd3bb5d71fbb788a0376f8f210aee6a1927e0d4392#npm:9.0.1"],
+            ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.0"],
+            ["@semantic-release/github", "virtual:26bef7164f48d044764cd43116294384229ad2f2c35b46556537f1ef43382b779f272bad9f935bedb8d5f0cd3bb5d71fbb788a0376f8f210aee6a1927e0d4392#npm:8.0.1"],
+            ["@semantic-release/npm", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.2"],
+            ["@semantic-release/release-notes-generator", "virtual:26bef7164f48d044764cd43116294384229ad2f2c35b46556537f1ef43382b779f272bad9f935bedb8d5f0cd3bb5d71fbb788a0376f8f210aee6a1927e0d4392#npm:10.0.2"],
+            ["@types/jest", "npm:27.0.2"],
+            ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.3.1"],
+            ["rimraf", "npm:3.0.2"],
+            ["semantic-release", "npm:18.0.0"],
+            ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],
+            ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.0.7"],
+            ["tslib", "npm:2.3.1"],
+            ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=32657b"]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["@plugola/vendor-plugin-manager", [
+        ["workspace:packages/vendor-plugin-manager", {
+          "packageLocation": "./packages/vendor-plugin-manager/",
+          "packageDependencies": [
+            ["@plugola/vendor-plugin-manager", "workspace:packages/vendor-plugin-manager"],
+            ["@plugola/message-bus", "workspace:packages/message-bus"],
+            ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],
             ["@plugola/store", "workspace:packages/store"],
             ["@semantic-release/commit-analyzer", "virtual:26bef7164f48d044764cd43116294384229ad2f2c35b46556537f1ef43382b779f272bad9f935bedb8d5f0cd3bb5d71fbb788a0376f8f210aee6a1927e0d4392#npm:9.0.1"],
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.0"],
@@ -12784,10 +12820,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:44d00791f9274af59af3ab6c26f039b1d7f5b2ea7cdd636fc56ae974aaf56aad3d676857b15ace77bf450b32bc4d5f49e459691a6ee3140e704b9eeb9d4a169b#npm:10.3.0", {
-          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-68add57218/0/cache/ts-node-npm-10.3.0-f2c1ae3d07-aea1b9eac4.zip/node_modules/ts-node/",
+        ["virtual:44d00791f9274af59af3ab6c26f039b1d7f5b2ea7cdd636fc56ae974aaf56aad3d676857b15ace77bf450b32bc4d5f49e459691a6ee3140e704b9eeb9d4a169b#npm:10.4.0", {
+          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-3ba4bef474/0/cache/ts-node-npm-10.4.0-04cb6e2279-3933ac0a93.zip/node_modules/ts-node/",
           "packageDependencies": [
-            ["ts-node", "virtual:44d00791f9274af59af3ab6c26f039b1d7f5b2ea7cdd636fc56ae974aaf56aad3d676857b15ace77bf450b32bc4d5f49e459691a6ee3140e704b9eeb9d4a169b#npm:10.3.0"],
+            ["ts-node", "virtual:44d00791f9274af59af3ab6c26f039b1d7f5b2ea7cdd636fc56ae974aaf56aad3d676857b15ace77bf450b32bc4d5f49e459691a6ee3140e704b9eeb9d4a169b#npm:10.4.0"],
             ["@cspotcode/source-map-support", "npm:0.7.0"],
             ["@swc/core", null],
             ["@swc/wasm", null],
