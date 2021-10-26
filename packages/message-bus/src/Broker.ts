@@ -1,5 +1,6 @@
 import { AbortController, AbortSignal } from 'node-abort-controller'
 import type MessageBus from './MessageBus'
+import SubscriptionDisposer from './SubscriptionDisposer'
 import type {
   EventInterceptorArgs,
   EventsT,
@@ -21,17 +22,42 @@ export default class Broker<
   Invokables extends InvokablesT = InvokablesT
 > {
   constructor(
-    public readonly messageBus: MessageBus<Events, EventGens, Invokables>,
-    public readonly id: string,
-    public readonly abortController: AbortController
-  ) {}
+    messageBus: MessageBus<Events, EventGens, Invokables>,
+    id: string,
+    abortController: AbortController
+  ) {
+    this.#abortController = abortController
+    this.#id = id
+    this.#messageBus = messageBus
+    this.onAbort(() => this.#disposer.dispose())
+  }
+
+  readonly #abortController: AbortController
+  get abortController() {
+    return this.#abortController
+  }
 
   get aborted() {
     return this.abortSignal.aborted
   }
 
   get abortSignal() {
-    return this.abortController.signal
+    return this.#abortController.signal
+  }
+
+  readonly #disposer = new SubscriptionDisposer()
+  get disposer() {
+    return this.#disposer
+  }
+
+  readonly #id: string
+  get id() {
+    return this.#id
+  }
+
+  readonly #messageBus: MessageBus<Events, EventGens, Invokables>
+  get messageBus() {
+    return this.#messageBus
   }
 
   readonly onAbort = (fn: () => any) => {
@@ -39,11 +65,11 @@ export default class Broker<
   }
 
   abort() {
-    this.abortController.abort()
+    this.#abortController.abort()
   }
 
   onError(errorHandler: ErrorHandler) {
-    return this.messageBus.onError((error) => {
+    return this.#messageBus.onError((error) => {
       if (error.brokerId === this.id) {
         errorHandler(error)
       }
@@ -54,7 +80,7 @@ export default class Broker<
     eventName: EventName,
     ...args: Events[EventName]
   ): void | Promise<void> {
-    return this.messageBus.emit(this, eventName, args)
+    return this.#messageBus.emit(this, eventName, args)
   }
 
   emitSignal<EventName extends keyof Events>(
@@ -62,32 +88,32 @@ export default class Broker<
     signal: AbortSignal,
     ...args: Events[EventName]
   ): void | Promise<void> {
-    return this.messageBus.emit(this, eventName, args, signal)
+    return this.#messageBus.emit(this, eventName, args, signal)
   }
 
   interceptEvent<EventName extends keyof Events>(
     eventName: EventName,
     ...args: EventInterceptorArgs<Events[EventName]>
   ): Unsubscriber {
-    return this.messageBus.interceptEvent(this as any, eventName, args)
+    return this.#messageBus.interceptEvent(this as any, eventName, args)
   }
 
   on<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
   ): Unsubscriber {
-    return this.messageBus.on(this, eventName, args)
+    return this.#messageBus.on(this, eventName, args)
   }
 
   once<EventName extends keyof Events>(
     eventName: EventName,
     ...args: SubscriberArgs<Events[EventName]>
   ): Unsubscriber {
-    return this.messageBus.once(this, eventName, args)
+    return this.#messageBus.once(this, eventName, args)
   }
 
   hasSubscriber(eventName: keyof Events) {
-    return this.messageBus.hasSubscriber(eventName)
+    return this.#messageBus.hasSubscriber(eventName)
   }
 
   async until<
@@ -97,7 +123,7 @@ export default class Broker<
     eventName: EventName,
     ...args: Args
   ): Promise<UntilRtn<Events[EventName], Args>> {
-    return this.messageBus.until(this, eventName, args) as any
+    return this.#messageBus.until(this, eventName, args) as any
   }
 
   async untilSignal<
@@ -108,7 +134,7 @@ export default class Broker<
     abortSignal: AbortSignal,
     ...args: Args
   ): Promise<UntilRtn<Events[EventName], Args>> {
-    return this.messageBus.until(this, eventName, args, abortSignal) as any
+    return this.#messageBus.until(this, eventName, args, abortSignal) as any
   }
 
   generator<EventName extends keyof EventGens>(
@@ -118,14 +144,14 @@ export default class Broker<
       EventGens[EventName]['yield']
     >
   ): Unsubscriber {
-    return this.messageBus.generator(this, eventName, args)
+    return this.#messageBus.generator(this, eventName, args)
   }
 
   iterate<EventName extends keyof EventGens>(
     eventName: EventName,
     ...args: EventGens[EventName]['args']
   ): AsyncIterable<EventGens[EventName]['yield']> {
-    return this.messageBus.iterate(this, eventName, args)
+    return this.#messageBus.iterate(this, eventName, args)
   }
 
   iterateSignal<EventName extends keyof EventGens>(
@@ -133,7 +159,7 @@ export default class Broker<
     abortSignal: AbortSignal,
     ...args: EventGens[EventName]['args']
   ): AsyncIterable<EventGens[EventName]['yield']> {
-    return this.messageBus.iterate(this, eventName, args, abortSignal)
+    return this.#messageBus.iterate(this, eventName, args, abortSignal)
   }
 
   iterateWithin<EventName extends keyof EventGens>(
@@ -141,14 +167,14 @@ export default class Broker<
     eventName: EventName,
     ...args: EventGens[EventName]['args']
   ): AsyncIterable<EventGens[EventName]['yield']> {
-    return this.messageBus.iterateWithin(this, within, eventName, args)
+    return this.#messageBus.iterateWithin(this, within, eventName, args)
   }
 
   accumulate<EventName extends keyof EventGens>(
     eventName: EventName,
     ...args: EventGens[EventName]['args']
   ): Promise<EventGens[EventName]['yield'][]> {
-    return this.messageBus.accumulate(this, eventName, args)
+    return this.#messageBus.accumulate(this, eventName, args)
   }
 
   accumulateWithin<EventName extends keyof EventGens>(
@@ -156,7 +182,7 @@ export default class Broker<
     eventName: EventName,
     ...args: EventGens[EventName]['args']
   ): Promise<EventGens[EventName]['yield'][]> {
-    return this.messageBus.accumulateWithin(this, within, eventName, args)
+    return this.#messageBus.accumulateWithin(this, within, eventName, args)
   }
 
   register<InvokableName extends keyof Invokables>(
@@ -166,14 +192,14 @@ export default class Broker<
       Invokables[InvokableName]['return']
     >
   ): Unsubscriber {
-    return this.messageBus.register(this, invokableName, args)
+    return this.#messageBus.register(this, invokableName, args)
   }
 
   invoke<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     ...args: Invokables[InvokableName]['args']
   ): Promise<Invokables[InvokableName]['return']> {
-    return this.messageBus.invoke(this, invokableName, args)
+    return this.#messageBus.invoke(this, invokableName, args)
   }
 
   invokeSignal<InvokableName extends keyof Invokables>(
@@ -181,13 +207,13 @@ export default class Broker<
     abortSignal: AbortSignal,
     ...args: Invokables[InvokableName]['args']
   ): Promise<Invokables[InvokableName]['return']> {
-    return this.messageBus.invoke(this, invokableName, args, abortSignal)
+    return this.#messageBus.invoke(this, invokableName, args, abortSignal)
   }
 
   interceptInvoker<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     ...args: InvokerInterceptorArgs<Invokables[InvokableName]['args']>
   ): Unsubscriber {
-    return this.messageBus.interceptInvoker(this, invokableName, args)
+    return this.#messageBus.interceptInvoker(this, invokableName, args)
   }
 }
