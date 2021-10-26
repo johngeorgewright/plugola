@@ -6,7 +6,7 @@ import { InitAction, Store } from '@plugola/store'
 type Events = { foo: [string] }
 
 let messageBus: MessageBus<Events>
-let pluginManager: PluginManager<typeof messageBus>
+let pluginManager: PluginManager<typeof messageBus, {}, {}, {}>
 
 beforeEach(() => {
   messageBus = new MessageBus()

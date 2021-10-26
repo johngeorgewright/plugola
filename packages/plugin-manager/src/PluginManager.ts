@@ -18,10 +18,10 @@ export interface PluginManagerOptions<
 }
 
 export default class PluginManager<
-  MB extends MessageBus = MessageBus,
-  ExtraContext extends Record<string, unknown> = {},
-  ExtraInitContext extends Record<string, unknown> = {},
-  ExtraRunContext extends Record<string, unknown> = {}
+  MB extends MessageBus,
+  ExtraContext extends Record<string, unknown>,
+  ExtraInitContext extends Record<string, unknown>,
+  ExtraRunContext extends Record<string, unknown>
 > {
   #plugins: Record<string, Plugin> = {}
   #dependencyGraph = new DependencyGraph<Plugin>()
