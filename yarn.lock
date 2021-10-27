@@ -893,6 +893,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@johngw/map@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@johngw/map@npm:1.1.0"
+  dependencies:
+    tslib: ^2.3.1
+  checksum: 28bb9ca91cee5739b1c8d85d3f31edc4b56d8de29869f70d505c612c551c9ac17ea295786776ccd8e33c32b587d279730ac45b81e43aae334ffb4b9f73cbc4a0
+  languageName: node
+  linkType: hard
+
 "@johngw/object@npm:1.1.5":
   version: 1.1.5
   resolution: "@johngw/object@npm:1.1.5"
@@ -1531,6 +1540,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/vendor-plugin-manager@workspace:packages/vendor-plugin-manager"
   dependencies:
+    "@johngw/map": 1.1.0
     "@plugola/message-bus": "workspace:packages/message-bus"
     "@plugola/plugin-manager": "workspace:packages/plugin-manager"
     "@plugola/store": "workspace:packages/store"
