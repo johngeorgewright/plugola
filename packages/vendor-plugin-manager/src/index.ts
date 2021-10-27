@@ -1,3 +1,4 @@
+import { updateMap } from '@johngw/map'
 import {
   PluginManager,
   InitContext,
@@ -16,7 +17,7 @@ export default class VendorPluginManager<
   ExtraRunContext extends Record<string, unknown>
 > extends PluginManager<MB, ExtraContext, ExtraInitContext, ExtraRunContext> {
   #automaticallyAuthorizedPlugins = new Set<string>()
-  #vendors: Map<number, string> = new Map()
+  #vendors: Map<number, string[]> = new Map()
 
   override registerPlugin(
     name: string,
@@ -60,19 +61,22 @@ export default class VendorPluginManager<
     >
   ) {
     super.registerPlugin(name, plugin)
-    for (const vendorId of vendorIds) this.#vendors.set(vendorId, name)
+    for (const vendorId of vendorIds)
+      this.#vendors = updateMap(this.#vendors, vendorId, (pluginNames) =>
+        pluginNames ? [...pluginNames, name] : pluginNames!
+      )
   }
 
   async enableAuthorizedPlugins(authorizedVendorIds: number[]) {
-    await this.enablePlugins([...this.#automaticallyAuthorizedPlugins])
-    await this.enablePlugins(
-      authorizedVendorIds.reduce<string[]>(
+    await this.enablePlugins([
+      ...this.#automaticallyAuthorizedPlugins,
+      ...authorizedVendorIds.reduce<string[]>(
         (pluginNames, vendorId) =>
           this.#vendors.has(vendorId)
-            ? [...pluginNames, this.#vendors.get(vendorId)!]
+            ? [...pluginNames, ...this.#vendors.get(vendorId)!]
             : pluginNames,
         []
-      )
-    )
+      ),
+    ])
   }
 }
