@@ -4,7 +4,7 @@ export default class Store<Action extends ActionI, State> {
   #staleListeners: Listener<Action, State>[] = []
   #reducer: Reducer<Action, State>
   #running = false
-  #state: State
+  #state: Readonly<State>
 
   constructor(reducer: Reducer<Action, State>, initialState: State) {
     this.#reducer = reducer
@@ -89,11 +89,11 @@ export interface InitAction {
 }
 
 export type Reducer<Action extends ActionI, State> = (
-  action: Action | InitAction,
-  state: State
-) => State
+  action: Readonly<Action | InitAction>,
+  state: Readonly<State>
+) => Readonly<State>
 
 export type Listener<Action extends ActionI, State> = (
-  action: Action | InitAction,
-  state: State
+  action: Readonly<Action | InitAction>,
+  state: Readonly<State>
 ) => any
