@@ -1,6 +1,6 @@
 {
   "name": "@plugola/vendor-plugin-manager",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A drop-in replacement for the plugin manager that handles CMP vendors",
   "main": "dist/main.js",
   "scripts": {
