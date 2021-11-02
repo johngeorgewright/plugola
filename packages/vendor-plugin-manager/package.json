@@ -1,6 +1,6 @@
 {
   "name": "@plugola/vendor-plugin-manager",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A drop-in replacement for the plugin manager that handles CMP vendors",
   "main": "dist/main.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "clean": "yarn rimraf dist",
     "start": "yarn tsc --watch --preserveWatchOutput",
     "release": "yarn semantic-release -e semantic-release-monorepo",
-    "test": "yarn jest"
+    "test": "yarn jest --passWithNoTests"
   },
   "license": "MIT",
   "bugs": {
@@ -17,7 +17,7 @@
   "homepage": "https://github.com/johngeorgewright/plugola#readme",
   "devDependencies": {
     "@semantic-release/commit-analyzer": "9.0.1",
-    "@semantic-release/git": "10.0.0",
+    "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "8.0.1",
     "@semantic-release/npm": "8.0.2",
     "@semantic-release/release-notes-generator": "10.0.2",
