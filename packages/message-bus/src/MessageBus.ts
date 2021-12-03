@@ -11,11 +11,9 @@ import MessageBusError from './MessageBusError'
 import { amend } from './object'
 import { CancelEvent } from './symbols'
 import {
-  EventInterceptor,
   EventInterceptorArgs,
   EventInterceptors,
   EventsT,
-  Subscriber,
   SubscriberArgs,
   SubscriberFn,
   Subscribers,
@@ -23,7 +21,6 @@ import {
   UntilRtn,
 } from './types/events'
 import {
-  EventGenerator,
   EventGeneratorArgs,
   EventGenerators,
   EventGeneratorsT,
@@ -31,7 +28,6 @@ import {
 import {
   InvokablesT,
   InvokerFn,
-  InvokerInterceptor,
   InvokerInterceptors,
   InvokerRegistrationArgs,
   Invokers,
@@ -127,17 +123,17 @@ export default class MessageBus<
       broker,
       args: init(args),
       fn: last(args),
-    } as EventInterceptor<Broker>
+    }
 
     this.#eventInterceptors = amend(
       this.#eventInterceptors,
       eventName,
-      (interceptors = []) => [...interceptors!, interceptor]
+      (interceptors = []) => [...interceptors!, interceptor as any]
     )
 
     return () => {
       this.#eventInterceptors[eventName] = removeItem(
-        interceptor,
+        interceptor as any,
         this.#eventInterceptors[eventName]!
       )
     }
@@ -152,17 +148,17 @@ export default class MessageBus<
       broker,
       args: init(args),
       fn: last(args),
-    } as InvokerInterceptor<Broker>
+    }
 
     this.#invokerInterceptors = amend(
       this.#invokerInterceptors,
       invokableName,
-      (interceptors = []) => [...interceptors!, interceptor]
+      (interceptors = []) => [...interceptors!, interceptor as any]
     )
 
     return () => {
       this.#invokerInterceptors[invokableName] = removeItem(
-        interceptor,
+        interceptor as any,
         this.#invokerInterceptors[invokableName] as any
       )
     }
@@ -179,17 +175,17 @@ export default class MessageBus<
       broker,
       args: init(args),
       fn: last(args),
-    } as Subscriber<Broker>
+    }
 
     this.#subscribers = amend(
       this.#subscribers,
       eventName,
-      (subscribers = []) => [...subscribers!, subscriber]
+      (subscribers = []) => [...subscribers!, subscriber as any]
     )
 
     const cancel = () => {
       this.#subscribers[eventName] = removeItem(
-        subscriber,
+        subscriber as any,
         this.#subscribers[eventName] as any
       )
     }
@@ -265,18 +261,18 @@ export default class MessageBus<
       broker,
       args: init(args),
       fn: last(args),
-    } as EventGenerator<Broker>
+    }
 
     this.#eventGenerators = amend(
       this.#eventGenerators,
       eventName,
-      (iterators = []) => [...iterators!, iterator]
+      (iterators = []) => [...iterators!, iterator as any]
     )
 
     const cancel = () => {
       this.#eventGenerators[eventName] = removeItem(
-        iterator,
-        this.#eventGenerators[eventName] as any
+        iterator as any,
+        this.#eventGenerators[eventName]!
       )
     }
 
