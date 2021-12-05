@@ -31,11 +31,11 @@
     "semantic-release-monorepo": "7.0.5",
     "ts-jest": "27.1.0",
     "ts-node": "10.4.0",
-    "typescript": "4.4.4"
+    "typescript": "4.5.2"
   },
   "dependencies": {
-    "@johngw/async": "^4.0.2",
-    "@johngw/async-iterator": "^3.1.0",
+    "@johngw/async": "^4.1.0",
+    "@johngw/async-iterator": "^3.3.0",
     "node-abort-controller": "^3.0.1",
     "ts-toolbelt": "^9.6.0",
     "tslib": "^2.3.1"
