@@ -16,7 +16,7 @@
   "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@types/jest": "27.0.3",
+    "@types/jest": "27.4.0",
     "@types/node": "16.11.17",
     "@types/prettier": "2.4.2",
     "@types/yeoman-generator": "5.2.8",
