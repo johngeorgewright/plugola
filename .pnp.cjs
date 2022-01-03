@@ -1926,7 +1926,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@plugola/generator", "workspace:packages/generator"],
             ["@types/jest", "npm:27.4.0"],
-            ["@types/node", "npm:16.11.17"],
+            ["@types/node", "npm:16.11.18"],
             ["@types/prettier", "npm:2.4.2"],
             ["@types/yeoman-generator", "npm:5.2.8"],
             ["change-case", "npm:4.1.2"],
@@ -1974,7 +1974,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:8.0.3"],
             ["@semantic-release/release-notes-generator", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:10.0.3"],
             ["@types/jest", "npm:27.4.0"],
-            ["@types/node", "npm:16.11.17"],
+            ["@types/node", "npm:16.11.18"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.4.5"],
             ["rimraf", "npm:3.0.2"],
             ["semantic-release", "npm:18.0.1"],
@@ -1999,7 +1999,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:8.0.3"],
             ["@semantic-release/release-notes-generator", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:10.0.3"],
             ["@types/jest", "npm:27.4.0"],
-            ["@types/node", "npm:16.11.17"],
+            ["@types/node", "npm:16.11.18"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.4.5"],
             ["node-abort-controller", "npm:3.0.1"],
             ["rimraf", "npm:3.0.2"],
@@ -2059,7 +2059,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:8.0.3"],
             ["@semantic-release/release-notes-generator", "virtual:b353d2a3356588af07d3e6fe09d99c1fc6947d7eb1c9e4bc6be259423239815b3d2785448f3fb776b4d5b5d812b5ea46d30eb89fdcf466fca0d1d829c8bf5089#npm:10.0.3"],
             ["@types/jest", "npm:27.4.0"],
-            ["@types/node", "npm:16.11.17"],
+            ["@types/node", "npm:16.11.18"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.4.5"],
             ["node-abort-controller", "npm:3.0.1"],
             ["rimraf", "npm:3.0.2"],
@@ -2669,10 +2669,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:16.11.17", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-16.11.17-096721cf1e-86ed84f794.zip/node_modules/@types/node/",
+        ["npm:16.11.18", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-16.11.18-d50939a1f4-f2e615c5f1.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:16.11.17"]
+            ["@types/node", "npm:16.11.18"]
           ],
           "linkType": "HARD",
         }]
@@ -12958,7 +12958,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.9"],
             ["@tsconfig/node14", "npm:1.0.1"],
             ["@tsconfig/node16", "npm:1.0.2"],
-            ["@types/node", "npm:16.11.17"],
+            ["@types/node", "npm:16.11.18"],
             ["@types/swc__core", null],
             ["@types/swc__wasm", null],
             ["@types/typescript", null],
