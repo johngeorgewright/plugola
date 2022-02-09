@@ -2156,7 +2156,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@plugola/generator", "workspace:packages/generator"],
             ["@types/jest", "npm:27.4.0"],
             ["@types/node", "npm:16.11.22"],
-            ["@types/prettier", "npm:2.4.3"],
+            ["@types/prettier", "npm:2.4.4"],
             ["@types/yeoman-generator", "npm:5.2.9"],
             ["change-case", "npm:4.1.2"],
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.5.1"],
@@ -2932,10 +2932,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["npm:2.4.3", {
-          "packageLocation": "./.yarn/cache/@types-prettier-npm-2.4.3-59302580e6-b240434daa.zip/node_modules/@types/prettier/",
+        ["npm:2.4.4", {
+          "packageLocation": "./.yarn/cache/@types-prettier-npm-2.4.4-bab324963d-2c2cc57efd.zip/node_modules/@types/prettier/",
           "packageDependencies": [
-            ["@types/prettier", "npm:2.4.3"]
+            ["@types/prettier", "npm:2.4.4"]
           ],
           "linkType": "HARD",
         }]
