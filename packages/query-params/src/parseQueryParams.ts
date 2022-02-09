@@ -15,54 +15,51 @@ export default function parseQueryParams(
       .replace(/^\?/, '')
       .split('&')
       .reduce<QueryParams>((queryParams, searchParam) => {
-        let [key, value] = searchParam.split('=') as [
+        let [key, value] = searchParam.split('=', 2) as [
           string,
           string | undefined
         ]
 
         key = decodeURIComponent(key)
 
-        if (!filter(key, value)) {
-          return queryParams
-        }
+        if (!filter(key, value)) return queryParams
 
-        if (key.startsWith('!')) {
+        if (key.startsWith('!'))
           return { ...queryParams, [amendKey(key.substr(1))]: false }
-        } else if (value === undefined) {
+        else if (value === undefined)
           return { ...queryParams, [amendKey(key)]: true }
-        } else if (key.endsWith('[]')) {
+        else if (key.endsWith('[]'))
           return {
             ...queryParams,
-            [amendKey(key.substr(0, key.length - 2))]: toArray(value),
+            [amendKey(withoutEnd(key, 2))]: toArray(value),
           }
-        } else if (key.endsWith('[^]')) {
-          key = amendKey(key.substr(0, key.length - 3))
+        else if (key.endsWith('[^]')) {
+          key = amendKey(withoutEnd(key, 3))
           return {
             ...queryParams,
             [key]: prependArray(value, queryParams[key]),
           }
         } else if (key.endsWith('[+]')) {
-          key = amendKey(key.substr(0, key.length - 3))
+          key = amendKey(withoutEnd(key, 3))
           return { ...queryParams, [key]: appendArray(value, queryParams[key]) }
         } else if (key.endsWith('[-]')) {
-          key = amendKey(key.substr(0, key.length - 3))
+          key = amendKey(withoutEnd(key, 3))
           return {
             ...queryParams,
             [key]: removeFromArray(value, queryParams[key]),
           }
-        } else if (key.endsWith('{x}')) {
+        } else if (key.endsWith('{x}'))
           return {
             ...queryParams,
-            [amendKey(key.substr(0, key.length - 3))]: toFlags(value),
+            [amendKey(withoutEnd(key, 3))]: toFlags(value),
           }
-        } else if (key.endsWith('{}')) {
+        else if (key.endsWith('{}')) {
           return {
             ...queryParams,
-            [amendKey(key.substr(0, key.length - 2))]: fromJSON(value),
+            [amendKey(withoutEnd(key, 2))]: fromJSON(value),
           }
-        } else {
+        } else
           return { ...queryParams, [amendKey(key)]: decodeURIComponent(value) }
-        }
       }, into)
   } catch (error) {
     console.error('ads', error)
@@ -107,11 +104,15 @@ function toFlags(value: string) {
   const strs = toArray(value)
   return strs.reduce<Record<string, boolean>>((kvs, str) => {
     const v = !str.startsWith('!')
-    const k = !v ? str.substr(1) : str
-    return { ...kvs, [k]: v }
+    kvs[v ? str : str.substr(1)] = v
+    return kvs
   }, {})
 }
 
 function fromJSON(value: string) {
   return JSON.parse(decodeURIComponent(value))
+}
+
+function withoutEnd(str: string, charCount: number) {
+  return str.substr(0, str.length - charCount)
 }
