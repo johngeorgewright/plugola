@@ -11,11 +11,9 @@ import MessageBusError from './MessageBusError'
 import { amend } from './object'
 import { CancelEvent } from './symbols'
 import {
-  EventInterceptor,
   EventInterceptorArgs,
   EventInterceptors,
   EventsT,
-  Subscriber,
   SubscriberArgs,
   SubscriberFn,
   Subscribers,
@@ -23,7 +21,6 @@ import {
   UntilRtn,
 } from './types/events'
 import {
-  EventGenerator,
   EventGeneratorArgs,
   EventGenerators,
   EventGeneratorsT,
@@ -31,7 +28,6 @@ import {
 import {
   InvokablesT,
   InvokerFn,
-  InvokerInterceptor,
   InvokerInterceptors,
   InvokerRegistrationArgs,
   Invokers,
@@ -127,7 +123,7 @@ export default class MessageBus<
       broker,
       args: init(args),
       fn: last(args),
-    } as EventInterceptor<Broker>
+    } as any
 
     this.#eventInterceptors = amend(
       this.#eventInterceptors,
@@ -152,7 +148,7 @@ export default class MessageBus<
       broker,
       args: init(args),
       fn: last(args),
-    } as InvokerInterceptor<Broker>
+    } as any
 
     this.#invokerInterceptors = amend(
       this.#invokerInterceptors,
@@ -163,7 +159,7 @@ export default class MessageBus<
     return () => {
       this.#invokerInterceptors[invokableName] = removeItem(
         interceptor,
-        this.#invokerInterceptors[invokableName] as any
+        this.#invokerInterceptors[invokableName]!
       )
     }
   }
@@ -179,7 +175,7 @@ export default class MessageBus<
       broker,
       args: init(args),
       fn: last(args),
-    } as Subscriber<Broker>
+    } as any
 
     this.#subscribers = amend(
       this.#subscribers,
@@ -190,7 +186,7 @@ export default class MessageBus<
     const cancel = () => {
       this.#subscribers[eventName] = removeItem(
         subscriber,
-        this.#subscribers[eventName] as any
+        this.#subscribers[eventName]!
       )
     }
 
@@ -265,7 +261,7 @@ export default class MessageBus<
       broker,
       args: init(args),
       fn: last(args),
-    } as EventGenerator<Broker>
+    } as any
 
     this.#eventGenerators = amend(
       this.#eventGenerators,
@@ -276,7 +272,7 @@ export default class MessageBus<
     const cancel = () => {
       this.#eventGenerators[eventName] = removeItem(
         iterator,
-        this.#eventGenerators[eventName] as any
+        this.#eventGenerators[eventName]!
       )
     }
 

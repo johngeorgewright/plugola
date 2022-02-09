@@ -1,8 +1,17 @@
 import type { QueryParams } from './queryParams'
 
 interface Options {
+  /**
+   * Change the key before it gets added to the resulting object
+   */
   amendKey?(key: string): string
+  /**
+   * Merge result in to an object
+   */
   into?: QueryParams
+  /**
+   * Pick query parameters by key
+   */
   filter?(key: string, value: string | undefined): boolean
 }
 
