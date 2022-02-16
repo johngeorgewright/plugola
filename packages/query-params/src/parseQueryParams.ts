@@ -34,7 +34,7 @@ export default function parseQueryParams(
         if (!filter(key, value)) return queryParams
 
         if (key.startsWith('!'))
-          return { ...queryParams, [amendKey(key.substr(1))]: false }
+          return { ...queryParams, [amendKey(key.slice(1))]: false }
         else if (value === undefined)
           return { ...queryParams, [amendKey(key)]: true }
         else if (key.endsWith('[]'))
@@ -113,7 +113,7 @@ function toFlags(value: string) {
   const strs = toArray(value)
   return strs.reduce<Record<string, boolean>>((kvs, str) => {
     const v = !str.startsWith('!')
-    kvs[v ? str : str.substr(1)] = v
+    kvs[v ? str : str.slice(1)] = v
     return kvs
   }, {})
 }
@@ -123,5 +123,5 @@ function fromJSON(value: string) {
 }
 
 function withoutEnd(str: string, charCount: number) {
-  return str.substr(0, str.length - charCount)
+  return str.slice(0, str.length - charCount)
 }
