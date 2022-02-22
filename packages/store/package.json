@@ -2,7 +2,7 @@
   "name": "@plugola/store",
   "version": "4.0.0",
   "description": "State managemenet",
-  "main": "dist/index.js",
+  "main": "dist/Store.js",
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean && yarn tsc && yarn rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",

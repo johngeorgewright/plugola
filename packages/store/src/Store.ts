@@ -1,13 +1,13 @@
-export default class Store<Action extends ActionI, State> {
+export default class Store<Actions extends BaseActions, State> {
   #dispatching = false
-  #listeners: Listener<Action, State>[] = []
-  #staleListeners: Listener<Action, State>[] = []
-  #reducer: Reducer<Action, State>
+  #listeners: Listener<Actions, State>[] = []
+  #staleListeners: Listener<Actions, State>[] = []
+  #reducers: Reducers<Actions, State>
   #running = false
   #state: Readonly<State>
 
-  constructor(reducer: Reducer<Action, State>, initialState: State) {
-    this.#reducer = reducer
+  constructor(initialState: State, reducers: Reducers<Actions, State>) {
+    this.#reducers = reducers
     this.#state = Object.freeze(initialState)
   }
 
@@ -17,34 +17,33 @@ export default class Store<Action extends ActionI, State> {
 
   init() {
     this.#running = true
-    this.dispatch({ type: '__INIT__' })
+    this.dispatch('__INIT__', null)
   }
 
-  dispatch(action: Action | InitAction) {
-    if (!this.#running) {
-      return
-    }
+  dispatch<Action extends keyof Actions>(
+    action: Action,
+    param: Actions[Action]
+  ) {
+    if (!this.#running) return
 
-    if (this.#dispatching) {
+    if (this.#dispatching)
       throw new Error('You shouldnt dispatch actions from a reducer')
-    }
 
     this.#dispatching = true
-    const state = this.#reducer(action, this.#state)
+    const state = this.#reducers[action](param, this.#state)
     this.#dispatching = false
 
-    if (state === this.#state) {
-      this.#updateStaleSubscribers(action)
-    } else {
+    if (state === this.#state) this.#updateStaleSubscribers(action, param)
+    else {
       this.#state = Object.freeze(state)
-      this.#updateSubscribers(action)
+      this.#updateSubscribers(action, param)
     }
   }
 
-  subscribe(listener: Listener<Action, State>) {
+  subscribe(listener: Listener<Actions, State>) {
     this.#listeners.push(listener)
 
-    if (this.#running) listener({ type: '__INIT__' }, this.#state)
+    if (this.#running) listener('__INIT__', null, this.#state)
 
     return () => {
       const index = this.#listeners.indexOf(listener)
@@ -55,7 +54,7 @@ export default class Store<Action extends ActionI, State> {
     }
   }
 
-  subscribeToStaleEvents(listener: Listener<Action, State>) {
+  subscribeToStaleEvents(listener: Listener<Actions, State>) {
     this.#staleListeners.push(listener)
 
     return () => {
@@ -67,33 +66,39 @@ export default class Store<Action extends ActionI, State> {
     }
   }
 
-  #updateSubscribers(action: Action | InitAction) {
-    for (const listener of this.#listeners) {
-      listener(action, this.#state)
-    }
+  #updateSubscribers<Action extends keyof Actions>(
+    action: Action,
+    param: Actions[Action]
+  ) {
+    for (const listener of this.#listeners) listener(action, param, this.#state)
   }
 
-  #updateStaleSubscribers(action: Action | InitAction) {
-    for (const listener of this.#staleListeners) {
-      listener(action, this.#state)
-    }
+  #updateStaleSubscribers<Action extends keyof Actions>(
+    action: Action,
+    param: Actions[Action]
+  ) {
+    for (const listener of this.#staleListeners)
+      listener(action, param, this.#state)
   }
 }
 
-export interface ActionI {
-  type: string
+export interface BaseActions {
+  __INIT__?: null
+  __DEINIT__?: null
 }
 
-export interface InitAction {
-  type: '__INIT__'
+export interface Reducer<Param, State> {
+  (param: Param, state: Readonly<State>): Readonly<State>
 }
 
-export type Reducer<Action extends ActionI, State> = (
-  action: Readonly<Action | InitAction>,
-  state: Readonly<State>
-) => Readonly<State>
+export type Reducers<Actions extends BaseActions, State> = {
+  [Action in keyof Actions]: Reducer<Actions[Action], State>
+}
 
-export type Listener<Action extends ActionI, State> = (
-  action: Readonly<Action | InitAction>,
-  state: Readonly<State>
-) => any
+export interface Listener<Actions extends BaseActions, State> {
+  <Action extends keyof Actions>(
+    action: Action,
+    param: Actions[Action],
+    state: Readonly<State>
+  ): any
+}
