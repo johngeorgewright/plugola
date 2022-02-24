@@ -1,6 +1,6 @@
 import { RunContext, InitContext, StatefulContext } from './Context'
 import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
-import { Store, ActionI } from '@plugola/store'
+import { Store, BaseActions } from '@plugola/store'
 import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
 import { race, timeout } from '@johngw/async'
 import { AbortController, AbortSignal } from 'node-abort-controller'
@@ -54,14 +54,14 @@ export default class PluginManager<
     this.#options = options
   }
 
-  registerStatefulPlugin<Action extends ActionI, State>(
+  registerStatefulPlugin<Actions extends BaseActions, State>(
     name: string,
     plugin: Omit<
       StatefulPlugin<
-        Action,
+        Actions,
         State,
         InitContext<MB> & ExtraContext & ExtraInitContext,
-        StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
+        StatefulContext<MB, Actions, State> & ExtraContext & ExtraRunContext
       >,
       'name'
     >
@@ -109,9 +109,7 @@ export default class PluginManager<
   }
 
   readonly enablePlugins = async (pluginNames: string[]) => {
-    for (const pluginName of pluginNames) {
-      this.#enabledPlugins.add(pluginName)
-    }
+    for (const pluginName of pluginNames) this.#enabledPlugins.add(pluginName)
 
     await this.#mapEnabledPlugins(
       (plugin) => this.#initPlugin(plugin),
@@ -124,9 +122,8 @@ export default class PluginManager<
     for (const pluginName of pluginNames) {
       const plugin = this.#getPlugin(pluginName)
       if (this.#disablePlugin(plugin)) disabled++
-      for (const dep of this.#dependencyGraph.dependencies(plugin)) {
+      for (const dep of this.#dependencyGraph.dependencies(plugin))
         if (this.#disablePlugin(dep)) disabled++
-      }
     }
     return disabled
   }
@@ -140,16 +137,14 @@ export default class PluginManager<
   }
 
   #isDependencyOfEnabledPlugin(dependency: Plugin) {
-    for (const plugin of this.#dependencyGraph.whichDependOn(dependency)) {
+    for (const plugin of this.#dependencyGraph.whichDependOn(dependency))
       if (this.#enabledPlugins.has(plugin.name)) return true
-    }
     return false
   }
 
   #getPlugin(pluginName: string) {
-    if (!this.#plugins[pluginName]) {
+    if (!this.#plugins[pluginName])
       throw new Error(`The plugin "${pluginName}" isn't registered.`)
-    }
     return this.#plugins[pluginName]
   }
 
@@ -167,9 +162,7 @@ export default class PluginManager<
   }
 
   async #initPlugin(plugin: Plugin, signal?: AbortSignal) {
-    if (this.#initialized.has(plugin) || !plugin.init || signal?.aborted) {
-      return
-    }
+    if (this.#initialized.has(plugin) || !plugin.init || signal?.aborted) return
 
     const abortController = this.#abortController(plugin)
     signal?.addEventListener('abort', () => abortController.abort())
@@ -193,9 +186,7 @@ export default class PluginManager<
   }
 
   async #runPlugin(plugin: Plugin, signal?: AbortSignal) {
-    if (this.#ran.has(plugin) || !plugin.run || signal?.aborted) {
-      return
-    }
+    if (this.#ran.has(plugin) || !plugin.run || signal?.aborted) return
 
     const abortController = this.#abortController(plugin)
     signal?.addEventListener('abort', () => abortController.abort())
@@ -252,9 +243,8 @@ export default class PluginManager<
   ) {
     const promises = []
 
-    for (const dep of this.#dependencyGraph.dependencies(plugin)) {
+    for (const dep of this.#dependencyGraph.dependencies(plugin))
       if (filter(dep)) promises.push(map(dep))
-    }
 
     await Promise.all(promises)
   }
@@ -281,7 +271,7 @@ export default class PluginManager<
   #createStatefulRunContext(plugin: StatefulPlugin, signal: AbortSignal) {
     const context = {
       ...this.#createContext(plugin, signal),
-      store: new Store(plugin.state.reduce, plugin.state.initial),
+      store: new Store(plugin.state.initial, plugin.state.reducers),
       ...(this.#options.addRunContext?.(plugin.name) || {}),
     }
 
@@ -290,8 +280,8 @@ export default class PluginManager<
       context as StatefulContext<MB> & ExtraContext & ExtraRunContext
     )
 
-    context.store.subscribe((action, state) =>
-      plugin.state.onUpdate(action, state, context)
+    context.store.subscribe((action, param, state) =>
+      plugin.state.onUpdate(action, param, state, context)
     )
 
     context.store.init()
@@ -303,9 +293,8 @@ export default class PluginManager<
     pluginName: string,
     context: StatefulContext<MB> & ExtraContext & ExtraRunContext
   ) {
-    for (const handler of this.#createStoreHandlers) {
+    for (const handler of this.#createStoreHandlers)
       handler(pluginName, context)
-    }
   }
 
   #createContext({ name }: Plugin, signal: AbortSignal) {

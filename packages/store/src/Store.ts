@@ -1,4 +1,4 @@
-export default class Store<Actions extends BaseActions, State> {
+export class Store<Actions extends BaseActions, State> {
   #dispatching = false
   #listeners: Listener<Actions, State>[] = []
   #staleListeners: Listener<Actions, State>[] = []

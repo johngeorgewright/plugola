@@ -1,7 +1,7 @@
 import { Broker, MessageBus } from '@plugola/message-bus'
 import PluginManager from './PluginManager'
 import { timeout } from '@johngw/async'
-import { InitAction, Store } from '@plugola/store'
+import { BaseActions, Store } from '@plugola/store'
 
 type Events = { foo: [string] }
 
@@ -72,20 +72,18 @@ test('running stateful plugins', async () => {
   let result: string
   const onUpdate = jest.fn()
 
-  type Action = { type: 'foo' }
+  interface Actions extends BaseActions {
+    foo: null
+  }
+
   type State = 'foo' | 'bar'
 
-  pluginManager.registerStatefulPlugin<Action, State>('foo', {
+  pluginManager.registerStatefulPlugin<Actions, State>('foo', {
     state: {
       initial: 'bar',
 
-      reduce(action, state) {
-        switch (action.type) {
-          case 'foo':
-            return 'foo'
-          default:
-            return state
-        }
+      reducers: {
+        foo: () => 'foo',
       },
 
       onUpdate,
@@ -93,7 +91,7 @@ test('running stateful plugins', async () => {
 
     run({ store }) {
       expect(store.state).toBe('bar')
-      store.dispatch({ type: 'foo' })
+      store.dispatch('foo', null)
       result = store.state
     },
   })
@@ -102,7 +100,8 @@ test('running stateful plugins', async () => {
   await pluginManager.run()
   expect(result!).toBe('foo')
   expect(onUpdate).toHaveBeenCalledWith(
-    { type: 'foo' },
+    'foo',
+    null,
     'foo',
     expect.objectContaining({
       broker: expect.any(Broker),
@@ -116,11 +115,11 @@ test('modifying stores', async () => {
 
   pluginManager.onCreateStore(onCreateStore)
 
-  pluginManager.registerStatefulPlugin<InitAction, number>('foo', {
+  pluginManager.registerStatefulPlugin<BaseActions, number>('foo', {
     state: {
       initial: 0,
-      reduce(_, state) {
-        return state
+      reducers: {
+        __INIT__: (_, state) => state,
       },
       onUpdate() {},
     },
