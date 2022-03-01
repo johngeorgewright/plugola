@@ -18,7 +18,8 @@ beforeEach(() => {
     { foo: '' },
     {
       foo: (foo, state) => ({ ...state, foo }),
-      bar: (_, state) => ({ ...state, foo: 'bar ' }),
+      bar: (_, state) =>
+        state.foo === 'bar' ? state : { ...state, foo: 'bar' },
     }
   )
 
@@ -37,7 +38,6 @@ test('subscribing to state changes', () => {
   const onUpdate = jest.fn()
   store.subscribe(onUpdate)
   jest.runAllTimers()
-  expect(onUpdate).toHaveBeenCalledWith('__INIT__', null, { foo: '' })
   store.dispatch('bar', null)
   expect(onUpdate).toHaveBeenCalledWith('bar', null, { foo: 'bar' })
 })

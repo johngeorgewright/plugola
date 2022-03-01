@@ -30,7 +30,7 @@ export class Store<Actions extends BaseActions, State> {
       throw new Error('You shouldnt dispatch actions from a reducer')
 
     this.#dispatching = true
-    const state = this.#reducers[action](param, this.#state)
+    const state = this.#reduce(action, param)
     this.#dispatching = false
 
     if (state === this.#state) this.#updateStaleSubscribers(action, param)
@@ -64,6 +64,13 @@ export class Store<Actions extends BaseActions, State> {
         ...this.#staleListeners.slice(index + 1),
       ]
     }
+  }
+
+  #reduce<Action extends keyof Actions>(
+    action: Action,
+    param: Actions[Action]
+  ) {
+    return this.#reducers[action]?.(param, this.#state) || this.#state
   }
 
   #updateSubscribers<Action extends keyof Actions>(
