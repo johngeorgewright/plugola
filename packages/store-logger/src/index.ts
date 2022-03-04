@@ -8,11 +8,11 @@ export default function storeLogger(
 ) {
   const storeLogger = logger.extend(label)
 
-  store.subscribe((action, state) => {
-    storeLogger.info(action, state)
+  store.subscribe((action, param, state) => {
+    storeLogger.info(action, param, state)
   })
 
-  store.subscribeToStaleEvents((action) => {
-    storeLogger.info(action, 'NO_CHANGE')
+  store.subscribeToStaleEvents((action, param) => {
+    storeLogger.info(action, param, 'NO_CHANGE')
   })
 }
