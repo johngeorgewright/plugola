@@ -1,6 +1,6 @@
 {
   "name": "@plugola/plugin-manager",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Plugin system",
   "main": "dist/index.js",
   "sideEffects": false,
