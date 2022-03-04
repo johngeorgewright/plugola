@@ -20,6 +20,11 @@ export class Store<Actions extends BaseActions, State> {
     this.dispatch('__INIT__', null)
   }
 
+  deinit() {
+    this.dispatch('__DEINIT__', null)
+    this.#running = false
+  }
+
   dispatch<Action extends keyof Actions>(
     action: Action,
     param: Actions[Action]
