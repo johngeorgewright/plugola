@@ -30,7 +30,7 @@
     "typescript": "4.6.2"
   },
   "dependencies": {
-    "@johngw/map": "1.1.0",
+    "@johngw/map": "1.2.0",
     "@plugola/message-bus": "workspace:packages/message-bus",
     "@plugola/plugin-manager": "workspace:packages/plugin-manager",
     "@plugola/store": "workspace:packages/store",

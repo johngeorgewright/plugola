@@ -151,11 +151,15 @@ export default class PluginManager<
   #abortController(plugin: Plugin) {
     if (!this.#abortControllers.has(plugin)) {
       const abortController = new AbortController()
-      abortController.signal.addEventListener('abort', () => {
-        this.#initialized.delete(plugin)
-        this.#ran.delete(plugin)
-        this.#abortControllers.delete(plugin)
-      })
+      abortController.signal.addEventListener(
+        'abort',
+        () => {
+          this.#initialized.delete(plugin)
+          this.#ran.delete(plugin)
+          this.#abortControllers.delete(plugin)
+        },
+        { once: true }
+      )
       this.#abortControllers.set(plugin, abortController)
     }
     return this.#abortControllers.get(plugin)!
@@ -165,7 +169,9 @@ export default class PluginManager<
     if (this.#initialized.has(plugin) || !plugin.init || signal?.aborted) return
 
     const abortController = this.#abortController(plugin)
-    signal?.addEventListener('abort', () => abortController.abort())
+    signal?.addEventListener('abort', () => abortController.abort(), {
+      once: true,
+    })
 
     this.#initialized.add(plugin)
 
@@ -186,10 +192,16 @@ export default class PluginManager<
   }
 
   async #runPlugin(plugin: Plugin, signal?: AbortSignal) {
-    if (this.#ran.has(plugin) || !plugin.run || signal?.aborted) return
+    const runnable =
+      'run' in plugin ||
+      (isStatefulPlugin(plugin) && 'onUpdate' in plugin.state)
+
+    if (this.#ran.has(plugin) || !runnable || signal?.aborted) return
 
     const abortController = this.#abortController(plugin)
-    signal?.addEventListener('abort', () => abortController.abort())
+    signal?.addEventListener('abort', () => abortController.abort(), {
+      once: true,
+    })
 
     this.#ran.add(plugin)
 
@@ -205,7 +217,7 @@ export default class PluginManager<
           ? this.#createStatefulRunContext(plugin, signal)
           : this.#createRunContext(plugin, signal)
 
-        await plugin.run!(context)
+        await plugin.run?.(context)
       },
       abortController.signal,
       this.#options.pluginTimeout
@@ -281,7 +293,7 @@ export default class PluginManager<
     )
 
     context.store.subscribe((action, param, state) =>
-      plugin.state.onUpdate(action, param, state, context)
+      plugin.state.onUpdate?.(action, param, state, context)
     )
 
     context.store.init()

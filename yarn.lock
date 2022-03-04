@@ -1153,30 +1153,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/async-iterator@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "@johngw/async-iterator@npm:3.3.0"
+"@johngw/async-iterator@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "@johngw/async-iterator@npm:3.3.1"
   dependencies:
-    "@johngw/async": 4.1.0
+    "@johngw/async": 4.1.1
     "@johngw/object": 1.2.1
     node-abort-controller: ^3.0.0
     tslib: ^2.3.1
-  checksum: ea77f8561869d335ed34c275968477367461c7fcdc642cf2d9b1eac06ea375f0aa504e0fbd08012e5e8bfbc7abc8b36263e98809629a46398495bead723c2c16
+  checksum: 2aad3ed6053aee95e732ccb5864f5ac65edc5609807679e78bd0e6b0c4bae67cbd786b0701969592b59f26092d8ba0e0a6cb5ff0778695e49a66e57a972be858
   languageName: node
   linkType: hard
 
-"@johngw/async@npm:4.1.0, @johngw/async@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@johngw/async@npm:4.1.0"
-  dependencies:
-    "@johngw/object": 1.2.0
-    node-abort-controller: ^3.0.0
-    tslib: ^2.3.1
-  checksum: a776d207139133393a3b2fdcb9e009f9e007e893716020d8b89799c1b88f8e42d3d61b6f3df5a4169d70f1a72f711e1799b8da408e8dcd4a24493eecc932fa5c
-  languageName: node
-  linkType: hard
-
-"@johngw/async@npm:4.1.1":
+"@johngw/async@npm:4.1.1, @johngw/async@npm:^4.1.1":
   version: 4.1.1
   resolution: "@johngw/async@npm:4.1.1"
   dependencies:
@@ -1187,21 +1176,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/map@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@johngw/map@npm:1.1.0"
-  dependencies:
-    tslib: ^2.3.1
-  checksum: 28bb9ca91cee5739b1c8d85d3f31edc4b56d8de29869f70d505c612c551c9ac17ea295786776ccd8e33c32b587d279730ac45b81e43aae334ffb4b9f73cbc4a0
-  languageName: node
-  linkType: hard
-
-"@johngw/object@npm:1.2.0":
+"@johngw/map@npm:1.2.0":
   version: 1.2.0
-  resolution: "@johngw/object@npm:1.2.0"
+  resolution: "@johngw/map@npm:1.2.0"
   dependencies:
     tslib: ^2.3.1
-  checksum: 7f0c500379c7ca3d32dd9c5839e7bba8b47b57482c1aab2b8e0ded80dc08552f98f385630b208bb49526aa26ea929ec0716a9d16c6796394ad33da1d555d2b1b
+  checksum: bc0ca33b072cc6dcc0c2172b76e47784d42e194ba0e4cb8814087b6b693230d17a5373cfb24ff7a6573ccc2fbc888cf82c78574f50a6f6b77565c02f52d58f03
   languageName: node
   linkType: hard
 
@@ -1635,8 +1615,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/message-bus@workspace:packages/message-bus"
   dependencies:
-    "@johngw/async": ^4.1.0
-    "@johngw/async-iterator": ^3.3.0
+    "@johngw/async": ^4.1.1
+    "@johngw/async-iterator": ^3.3.1
     "@semantic-release/commit-analyzer": 9.0.2
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.0.2
@@ -1781,7 +1761,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/vendor-plugin-manager@workspace:packages/vendor-plugin-manager"
   dependencies:
-    "@johngw/map": 1.1.0
+    "@johngw/map": 1.2.0
     "@plugola/message-bus": "workspace:packages/message-bus"
     "@plugola/plugin-manager": "workspace:packages/plugin-manager"
     "@plugola/store": "workspace:packages/store"

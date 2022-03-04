@@ -1675,16 +1675,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/async", [\
-        ["npm:4.1.0", {\
-          "packageLocation": "./.yarn/cache/@johngw-async-npm-4.1.0-0378151e7d-a776d20713.zip/node_modules/@johngw/async/",\
-          "packageDependencies": [\
-            ["@johngw/async", "npm:4.1.0"],\
-            ["@johngw/object", "npm:1.2.0"],\
-            ["node-abort-controller", "npm:3.0.1"],\
-            ["tslib", "npm:2.3.1"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:4.1.1", {\
           "packageLocation": "./.yarn/cache/@johngw-async-npm-4.1.1-63a8fb8c8a-2d001a4348.zip/node_modules/@johngw/async/",\
           "packageDependencies": [\
@@ -1697,11 +1687,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/async-iterator", [\
-        ["npm:3.3.0", {\
-          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-3.3.0-408f1724e7-ea77f85618.zip/node_modules/@johngw/async-iterator/",\
+        ["npm:3.3.1", {\
+          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-3.3.1-95d10154e6-2aad3ed605.zip/node_modules/@johngw/async-iterator/",\
           "packageDependencies": [\
-            ["@johngw/async-iterator", "npm:3.3.0"],\
-            ["@johngw/async", "npm:4.1.0"],\
+            ["@johngw/async-iterator", "npm:3.3.1"],\
+            ["@johngw/async", "npm:4.1.1"],\
             ["@johngw/object", "npm:1.2.1"],\
             ["node-abort-controller", "npm:3.0.1"],\
             ["tslib", "npm:2.3.1"]\
@@ -1710,24 +1700,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/map", [\
-        ["npm:1.1.0", {\
-          "packageLocation": "./.yarn/cache/@johngw-map-npm-1.1.0-c45ff9ee38-28bb9ca91c.zip/node_modules/@johngw/map/",\
+        ["npm:1.2.0", {\
+          "packageLocation": "./.yarn/cache/@johngw-map-npm-1.2.0-40c4850992-bc0ca33b07.zip/node_modules/@johngw/map/",\
           "packageDependencies": [\
-            ["@johngw/map", "npm:1.1.0"],\
+            ["@johngw/map", "npm:1.2.0"],\
             ["tslib", "npm:2.3.1"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@johngw/object", [\
-        ["npm:1.2.0", {\
-          "packageLocation": "./.yarn/cache/@johngw-object-npm-1.2.0-d6d6fd4a5e-7f0c500379.zip/node_modules/@johngw/object/",\
-          "packageDependencies": [\
-            ["@johngw/object", "npm:1.2.0"],\
-            ["tslib", "npm:2.3.1"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:1.2.1", {\
           "packageLocation": "./.yarn/cache/@johngw-object-npm-1.2.1-02eb656d5d-b6654a790b.zip/node_modules/@johngw/object/",\
           "packageDependencies": [\
@@ -2229,8 +2211,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/message-bus/",\
           "packageDependencies": [\
             ["@plugola/message-bus", "workspace:packages/message-bus"],\
-            ["@johngw/async", "npm:4.1.0"],\
-            ["@johngw/async-iterator", "npm:3.3.0"],\
+            ["@johngw/async", "npm:4.1.1"],\
+            ["@johngw/async-iterator", "npm:3.3.1"],\
             ["@semantic-release/commit-analyzer", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:9.0.2"],\
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:8.0.2"],\
@@ -2384,7 +2366,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/vendor-plugin-manager/",\
           "packageDependencies": [\
             ["@plugola/vendor-plugin-manager", "workspace:packages/vendor-plugin-manager"],\
-            ["@johngw/map", "npm:1.1.0"],\
+            ["@johngw/map", "npm:1.2.0"],\
             ["@plugola/message-bus", "workspace:packages/message-bus"],\
             ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],\
             ["@plugola/store", "workspace:packages/store"],\

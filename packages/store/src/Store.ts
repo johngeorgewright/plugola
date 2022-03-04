@@ -70,14 +70,15 @@ export class Store<Actions extends BaseActions, State> {
     action: Action,
     param: Actions[Action]
   ) {
-    return this.#reducers[action]?.(param, this.#state) || this.#state
+    return this.#reducers[action]?.(param, this.#state) ?? this.#state
   }
 
   #updateSubscribers<Action extends keyof Actions>(
     action: Action,
     param: Actions[Action]
   ) {
-    for (const listener of this.#listeners) listener(action, param, this.#state)
+    for (const listener of this.#listeners)
+      listener(action, param, this.#state)?.()
   }
 
   #updateStaleSubscribers<Action extends keyof Actions>(
@@ -85,7 +86,7 @@ export class Store<Actions extends BaseActions, State> {
     param: Actions[Action]
   ) {
     for (const listener of this.#staleListeners)
-      listener(action, param, this.#state)
+      listener(action, param, this.#state)?.()
   }
 }
 
@@ -107,5 +108,5 @@ export interface Listener<Actions extends BaseActions, State> {
     action: Action,
     param: Actions[Action],
     state: Readonly<State>
-  ): any
+  ): void | (() => void)
 }

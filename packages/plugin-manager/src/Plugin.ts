@@ -31,7 +31,7 @@ export interface PluginState<
 > {
   initial: State
   reducers: Reducers<Actions, State>
-  onUpdate<Action extends keyof Actions>(
+  onUpdate?<Action extends keyof Actions>(
     action: Action,
     param: Actions[Action],
     state: State,
