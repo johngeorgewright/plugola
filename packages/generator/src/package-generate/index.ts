@@ -3,23 +3,31 @@ import { paramCase } from 'change-case'
 import { validateGenerationFromRoot } from '../validation'
 import * as path from 'path'
 import prettier from 'prettier'
+import { writeFile } from 'fs/promises'
 
-export = class PluginGenerator extends Generator {
-  private answers: { description?: string; name?: string; public?: boolean }
+export = class PackageGenerator extends Generator {
+  #namespace = '@plugola'
+  #vsCodeWS = 'plugola.code-workspace'
+  #answers: { description?: string; name?: string; public?: boolean } = {}
 
   constructor(args: string | string[], opts: Record<string, unknown>) {
     super(args, opts)
-    this.answers = {}
   }
 
   initializing() {
     validateGenerationFromRoot(this)
   }
 
+  get #relativeDestinationRoot() {
+    return `packages/${paramCase(this.#answers.name!)}`
+  }
+
   async prompting() {
-    this.answers = await this.prompt([
+    this.#answers = await this.prompt([
       {
-        message: "What is the packages's name? (Minus the @plugola namespace)",
+        message: `What is the packages's name? (Minus the ${
+          this.#namespace
+        } namespace)`,
         name: 'name',
         type: 'input',
         validate: (x) => !!x || 'You must supply a name',
@@ -37,10 +45,6 @@ export = class PluginGenerator extends Generator {
     ])
   }
 
-  get #relativeDestinationRoot() {
-    return `packages/${paramCase(this.answers.name!)}`
-  }
-
   configuring() {
     this.destinationRoot(this.#relativeDestinationRoot)
     this.sourceRoot(path.resolve(__dirname, '..', '..', 'templates'))
@@ -48,17 +52,18 @@ export = class PluginGenerator extends Generator {
 
   async writing() {
     const context = {
-      description: this.answers.description || '',
-      name: paramCase(this.answers.name!),
-      public: this.answers.public,
+      description: this.#answers.description || '',
+      name: paramCase(this.#answers.name!),
+      public: this.#answers.public,
+      year: new Date().getFullYear(),
     }
 
-    this.packageJson.set('name', `@plugola/${this.answers.name}`)
+    this.packageJson.set('name', `${this.#namespace}/${this.#answers.name}`)
     this.packageJson.set('version', '0.0.0')
-    this.packageJson.set('description', this.answers.description)
-    this.packageJson.set('main', 'dist/main.js')
+    this.packageJson.set('description', this.#answers.description)
+    this.packageJson.set('main', 'dist/index.js')
 
-    if (!this.answers.public) {
+    if (!this.#answers.public) {
       this.packageJson.set('private', true)
     }
 
@@ -68,18 +73,18 @@ export = class PluginGenerator extends Generator {
       clean: 'yarn rimraf dist',
       start: 'yarn tsc --watch --preserveWatchOutput',
       release: 'yarn semantic-release -e semantic-release-monorepo',
-      test: 'yarn jest --passWithNoTests',
+      test: 'yarn jest',
     })
 
     this.packageJson.set('license', 'MIT')
 
     this.packageJson.set('bugs', {
-      url: 'https://github.com/johngeorgewright/plugola/issues',
+      url: 'https://github.com/johngeorgewright/ts-mono-repo/issues',
     })
 
     this.packageJson.set(
       'homepage',
-      'https://github.com/johngeorgewright/plugola#readme'
+      'https://github.com/johngeorgewright/ts-mono-repo#readme'
     )
 
     const devDependencies = [
@@ -90,7 +95,7 @@ export = class PluginGenerator extends Generator {
       'typescript',
     ]
 
-    if (this.answers.public) {
+    if (this.#answers.public) {
       devDependencies.push(
         '@semantic-release/commit-analyzer',
         '@semantic-release/git',
@@ -115,7 +120,11 @@ export = class PluginGenerator extends Generator {
       this.destinationPath('jest.config.json')
     )
 
-    this.fs.copy(this.templatePath('LICENSE'), this.destinationPath('LICENSE'))
+    this.fs.copyTpl(
+      this.templatePath('LICENSE'),
+      this.destinationPath('LICENSE'),
+      context
+    )
 
     this.fs.copyTpl(
       this.templatePath('README.md'),
@@ -135,14 +144,14 @@ export = class PluginGenerator extends Generator {
       context
     )
 
-    await this.#updateVSCodeWS('plugola.code-workspace')
+    await this.#updateVSCodeWS(this.#vsCodeWS)
   }
 
   async #updateVSCodeWS(file: string) {
     const vsCodeWS = JSON.parse(this.fs.read(file))
 
     vsCodeWS.folders.push({
-      name: `📦 @plugola/${this.answers.name}`,
+      name: `📦 ${this.#namespace}/${this.#answers.name}`,
       path: this.#relativeDestinationRoot,
     })
 
@@ -153,19 +162,16 @@ export = class PluginGenerator extends Generator {
     const prettierOptions = (await prettier.resolveConfig(file)) || {}
     prettierOptions.parser = 'json'
 
-    this.fs.write(
-      file,
-      prettier.format(JSON.stringify(vsCodeWS), prettierOptions)
-    )
+    writeFile(file, prettier.format(JSON.stringify(vsCodeWS), prettierOptions))
   }
 
   async install() {
     this.spawnCommandSync('yarn', [])
 
-    if (this.answers.public) {
+    if (this.#answers.public) {
       this.spawnCommandSync('yarn', [
         'workspace',
-        `@plugola/${paramCase(this.answers.name!)}`,
+        `${this.#namespace}/${paramCase(this.#answers.name!)}`,
         'npm',
         'publish',
         '--access',
