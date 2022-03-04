@@ -1176,6 +1176,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@johngw/async@npm:4.1.1":
+  version: 4.1.1
+  resolution: "@johngw/async@npm:4.1.1"
+  dependencies:
+    "@johngw/object": 1.2.1
+    node-abort-controller: ^3.0.0
+    tslib: ^2.3.1
+  checksum: 2d001a4348a9c9d77a99c3b90cba5f3e15209960ff8448df1c13ff934b19dcf4babe3b71f08a867f39631c125bc6dec096aa3966dbe6eeb51baefd0cd95792ae
+  languageName: node
+  linkType: hard
+
 "@johngw/map@npm:1.1.0":
   version: 1.1.0
   resolution: "@johngw/map@npm:1.1.0"
@@ -1677,7 +1688,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/plugin-manager@workspace:packages/plugin-manager"
   dependencies:
-    "@johngw/async": 4.1.0
+    "@johngw/async": 4.1.1
     "@plugola/graph": "workspace:packages/graph"
     "@plugola/message-bus": "workspace:packages/message-bus"
     "@plugola/query-params": "workspace:packages/query-params"
