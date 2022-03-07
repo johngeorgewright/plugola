@@ -1700,10 +1700,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/map", [\
-        ["npm:1.2.0", {\
-          "packageLocation": "./.yarn/cache/@johngw-map-npm-1.2.0-40c4850992-bc0ca33b07.zip/node_modules/@johngw/map/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/@johngw-map-npm-1.3.0-19cb8204ad-e8fee33e26.zip/node_modules/@johngw/map/",\
           "packageDependencies": [\
-            ["@johngw/map", "npm:1.2.0"],\
+            ["@johngw/map", "npm:1.3.0"],\
             ["tslib", "npm:2.3.1"]\
           ],\
           "linkType": "HARD"\
@@ -2367,7 +2367,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/vendor-plugin-manager/",\
           "packageDependencies": [\
             ["@plugola/vendor-plugin-manager", "workspace:packages/vendor-plugin-manager"],\
-            ["@johngw/map", "npm:1.2.0"],\
+            ["@johngw/map", "npm:1.3.0"],\
             ["@plugola/message-bus", "workspace:packages/message-bus"],\
             ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],\
             ["@plugola/store", "workspace:packages/store"],\
