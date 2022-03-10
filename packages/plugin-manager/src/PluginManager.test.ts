@@ -333,3 +333,24 @@ test('plugins that time out', async () => {
   expect(abort).toHaveBeenCalledWith('init')
   expect(abort).toHaveBeenCalledWith('run')
 })
+
+test('replacing context', async () => {
+  const run = jest.fn()
+
+  const pluginManager = new PluginManager(messageBus, {
+    addContext: () => ({ foo: 'bar' }),
+  })
+
+  pluginManager.registerPlugin('fooinizer', {
+    run,
+  })
+
+  const pluginManagerTest = pluginManager.withOptions({
+    addContext: () => ({ foo: 'rab' }),
+  })
+
+  await pluginManagerTest.enableAllPlugins()
+  await pluginManagerTest.run()
+  expect(run).toHaveBeenCalledTimes(1)
+  expect(run.mock.calls[0][0].foo).toBe('rab')
+})

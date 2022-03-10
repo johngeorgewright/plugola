@@ -54,6 +54,41 @@ export default class PluginManager<
     this.#options = options
   }
 
+  /**
+   * Used for testing. This will **replace** parts of the context... not add to it.
+   */
+  withOptions(
+    options: PluginManagerOptions<
+      ExtraContext,
+      ExtraInitContext,
+      ExtraRunContext
+    >
+  ) {
+    const pluginManager = new PluginManager(this.#messageBus, {
+      ...options,
+      addContext: (pluginName) =>
+        ({
+          ...this.#options.addContext?.(pluginName),
+          ...options.addContext?.(pluginName),
+        } as ExtraContext),
+      addInitContext: (pluginName) =>
+        ({
+          ...this.#options.addInitContext?.(pluginName),
+          ...options.addInitContext?.(pluginName),
+        } as ExtraInitContext),
+      addRunContext: (pluginName) =>
+        ({
+          ...this.#options.addRunContext?.(pluginName),
+          ...options.addRunContext?.(pluginName),
+        } as ExtraRunContext),
+    })
+    pluginManager.#plugins = this.#plugins
+    pluginManager.#dependencyGraph = this.#dependencyGraph
+    pluginManager.#createStoreHandlers = this.#createStoreHandlers
+    pluginManager.#abortControllers = this.#abortControllers
+    return pluginManager
+  }
+
   registerStatefulPlugin<Actions extends BaseActions, State>(
     name: string,
     plugin: Omit<
