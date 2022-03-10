@@ -36,5 +36,5 @@ export interface PluginState<
     param: Actions[Action],
     state: State,
     context: Context
-  ): any
+  ): void | (() => void)
 }
