@@ -1,4 +1,4 @@
-import type { Store } from '@plugola/store'
+import type { Listener, Store } from '@plugola/store'
 import type { Logger } from '@plugola/logger'
 
 export default function storeLogger(
@@ -8,11 +8,19 @@ export default function storeLogger(
 ) {
   const storeLogger = logger.extend(label)
 
-  store.subscribe((action, param, state) => {
+  const subscription: Listener<any, any> = (action, param, state) => {
     storeLogger.info(action, param, state)
-  })
+  }
 
-  store.subscribeToStaleEvents((action, param) => {
+  const staleSubscription: Listener<any, any> = (action, param) => {
     storeLogger.info(action, param, 'NO_CHANGE')
-  })
+  }
+
+  const unsubscribe = store.subscribe(subscription)
+  const staleUnsubscribe = store.subscribeToStaleEvents(staleSubscription)
+
+  return () => {
+    unsubscribe()
+    staleUnsubscribe()
+  }
 }
