@@ -1,6 +1,6 @@
 {
   "name": "@plugola/store-logger",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Logger/debugger for the store",
   "main": "dist/index.js",
   "scripts": {
