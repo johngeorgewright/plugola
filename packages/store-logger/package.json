@@ -35,7 +35,7 @@
     "tslib": "2.3.1"
   },
   "peerDependencies": {
-    "@plugola/logger": "*",
-    "@plugola/store": "*"
+    "@plugola/logger": "^3.0.0",
+    "@plugola/store": "^5.0.0"
   }
 }

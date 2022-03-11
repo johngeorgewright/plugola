@@ -65,7 +65,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@plugola/logger", ["workspace:packages/logger"]],\
       ["@plugola/message-bus", ["workspace:packages/message-bus"]],\
       ["@plugola/mono-repo", ["workspace:."]],\
-      ["@plugola/plugin-manager", ["workspace:packages/plugin-manager"]],\
+      ["@plugola/plugin-manager", ["virtual:b2a0aaf13a51905cc066393ee4e5f1bfd99ff537be4af07e7632f1ba5be627a43aaf1134afa2c7d0e7aa4674f47a1afd5f62992733e4cb8fa35b2088d18ce873#workspace:packages/plugin-manager", "workspace:packages/plugin-manager"]],\
       ["@plugola/query-params", ["workspace:packages/query-params"]],\
       ["@plugola/store", ["workspace:packages/store"]],\
       ["@plugola/store-logger", ["workspace:packages/store-logger"]],\
@@ -2265,6 +2265,38 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@plugola/plugin-manager", [\
+        ["virtual:b2a0aaf13a51905cc066393ee4e5f1bfd99ff537be4af07e7632f1ba5be627a43aaf1134afa2c7d0e7aa4674f47a1afd5f62992733e4cb8fa35b2088d18ce873#workspace:packages/plugin-manager", {\
+          "packageLocation": "./.yarn/__virtual__/@plugola-plugin-manager-virtual-a832595866/1/packages/plugin-manager/",\
+          "packageDependencies": [\
+            ["@plugola/plugin-manager", "virtual:b2a0aaf13a51905cc066393ee4e5f1bfd99ff537be4af07e7632f1ba5be627a43aaf1134afa2c7d0e7aa4674f47a1afd5f62992733e4cb8fa35b2088d18ce873#workspace:packages/plugin-manager"],\
+            ["@johngw/async", "npm:4.1.1"],\
+            ["@plugola/graph", "workspace:packages/graph"],\
+            ["@plugola/message-bus", "workspace:packages/message-bus"],\
+            ["@plugola/store", "workspace:packages/store"],\
+            ["@semantic-release/commit-analyzer", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:9.0.2"],\
+            ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
+            ["@semantic-release/github", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:8.0.2"],\
+            ["@semantic-release/npm", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.1"],\
+            ["@semantic-release/release-notes-generator", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:10.0.3"],\
+            ["@types/jest", "npm:27.4.1"],\
+            ["@types/node", "npm:16.11.26"],\
+            ["@types/plugola__message-bus", null],\
+            ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.5.1"],\
+            ["node-abort-controller", "npm:3.0.1"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["semantic-release", "npm:19.0.2"],\
+            ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],\
+            ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.1.3"],\
+            ["ts-node", "virtual:79883a56344c8696241481cdaa94c65e5655a288f7c049753be0d63ac29ad7468d7daae576ad714df42aaa0f978838d4ca66779d3bd79f6138a8b2285af1f85f#npm:10.7.0"],\
+            ["tslib", "npm:2.3.1"],\
+            ["typescript", "patch:typescript@npm%3A4.6.2#~builtin<compat/typescript>::version=4.6.2&hash=bda367"]\
+          ],\
+          "packagePeers": [\
+            "@plugola/message-bus",\
+            "@types/plugola__message-bus"\
+          ],\
+          "linkType": "SOFT"\
+        }],\
         ["workspace:packages/plugin-manager", {\
           "packageLocation": "./packages/plugin-manager/",\
           "packageDependencies": [\
@@ -2272,7 +2304,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@johngw/async", "npm:4.1.1"],\
             ["@plugola/graph", "workspace:packages/graph"],\
             ["@plugola/message-bus", "workspace:packages/message-bus"],\
-            ["@plugola/query-params", "workspace:packages/query-params"],\
             ["@plugola/store", "workspace:packages/store"],\
             ["@semantic-release/commit-analyzer", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:9.0.2"],\
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
@@ -2369,7 +2400,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@plugola/vendor-plugin-manager", "workspace:packages/vendor-plugin-manager"],\
             ["@johngw/map", "npm:1.3.0"],\
             ["@plugola/message-bus", "workspace:packages/message-bus"],\
-            ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],\
+            ["@plugola/plugin-manager", "virtual:b2a0aaf13a51905cc066393ee4e5f1bfd99ff537be4af07e7632f1ba5be627a43aaf1134afa2c7d0e7aa4674f47a1afd5f62992733e4cb8fa35b2088d18ce873#workspace:packages/plugin-manager"],\
             ["@plugola/store", "workspace:packages/store"],\
             ["@semantic-release/commit-analyzer", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:9.0.2"],\
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
