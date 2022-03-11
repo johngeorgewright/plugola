@@ -54,6 +54,10 @@ export default class PluginManager<
     this.#options = options
   }
 
+  get messageBus() {
+    return this.#messageBus
+  }
+
   /**
    * Used for testing. This will **replace** parts of the context... not add to it.
    */
