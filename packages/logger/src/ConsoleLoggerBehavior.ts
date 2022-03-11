@@ -23,6 +23,14 @@ export default class ConsoleLoggerBehavior implements LoggerBehavior {
     console.table(data)
   }
 
+  time(label: string, name: string) {
+    console.time(`${label}[${name}]`)
+  }
+
+  timeEnd(label: string, name: string) {
+    console.timeEnd(`${label}[${name}]`)
+  }
+
   warn(...args: any[]) {
     console.warn(...args)
   }
