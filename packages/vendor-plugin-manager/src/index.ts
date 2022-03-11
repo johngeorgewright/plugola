@@ -63,7 +63,7 @@ export default class VendorPluginManager<
     super.registerPlugin(name, plugin)
     for (const vendorId of vendorIds)
       this.#vendors = updateMap(this.#vendors, vendorId, (pluginNames) =>
-        pluginNames ? [...pluginNames, name] : pluginNames!
+        pluginNames ? [...pluginNames, name] : [name]
       )
   }
 
