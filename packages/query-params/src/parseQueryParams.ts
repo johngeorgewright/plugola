@@ -19,9 +19,11 @@ export default function parseQueryParams(
   searchString: string,
   { amendKey = (k) => k, into = {}, filter = () => true }: Options = {}
 ) {
+  searchString = searchString.replace(/^\?/, '')
+  if (!searchString) return into
+
   try {
     return searchString
-      .replace(/^\?/, '')
       .split('&')
       .reduce<QueryParams>((queryParams, searchParam) => {
         let [key, value] = searchParam.split('=', 2) as [
