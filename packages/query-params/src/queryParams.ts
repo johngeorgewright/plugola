@@ -10,6 +10,4 @@ const queryParams = {
   ...(typeof location !== 'undefined' ? parseQueryParams(location.search) : {}),
 }
 
-console.info(queryParams)
-
 export default queryParams
