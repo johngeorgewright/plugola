@@ -90,6 +90,7 @@ export = class PackageGenerator extends Generator {
     const devDependencies = [
       '@types/jest',
       'jest',
+      'jest-environment-jsdom',
       'rimraf',
       'ts-jest',
       'typescript',
