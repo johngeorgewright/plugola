@@ -26,24 +26,24 @@
   },
   "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
   "devDependencies": {
-    "@commitlint/cli": "16.2.1",
-    "@commitlint/config-conventional": "16.2.1",
+    "@commitlint/cli": "16.2.4",
+    "@commitlint/config-conventional": "16.2.4",
     "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "8.0.2",
+    "@semantic-release/github": "8.0.4",
     "@semantic-release/npm": "9.0.1",
     "@semantic-release/release-notes-generator": "10.0.3",
     "commitizen": "4.2.4",
     "cz-conventional-changelog": "3.3.0",
     "husky": "7.0.4",
-    "isbinaryfile": "4.0.8",
+    "isbinaryfile": "5.0.0",
     "json-parse-even-better-errors": "2.3.1",
-    "lint-staged": "12.3.5",
+    "lint-staged": "12.4.1",
     "mkdirp-infer-owner": "2.0.0",
-    "prettier": "2.5.1",
+    "prettier": "2.6.2",
     "semantic-release": "19.0.2",
     "semantic-release-monorepo": "7.0.5",
-    "typescript": "4.6.2",
+    "typescript": "4.6.4",
     "yo": "4.3.0"
   },
   "config": {
@@ -57,7 +57,7 @@
     ]
   },
   "dependencies": {
-    "tslib": "2.3.1"
+    "tslib": "2.4.0"
   },
   "packageManager": "yarn@3.2.0"
 }
