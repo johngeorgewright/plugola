@@ -51,7 +51,9 @@ export default class FileLoggerBehavior implements LoggerBehavior {
   #log(severity: string, label: string, args: any[]) {
     const date = new Date()
     this.#writeSteam.write(
-      `${date.toISOString()} ${label}[${severity}] ${args.join(' ')}\n`
+      `${date.toISOString()} ${label}[${severity}] ${args
+        .map((arg) => JSON.stringify(arg))
+        .join(' ')}\n`
     )
   }
 }
