@@ -87,7 +87,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/release-notes-generator", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:10.0.3"],\
             ["commitizen", "npm:4.2.4"],\
             ["cz-conventional-changelog", "npm:3.3.0"],\
-            ["husky", "npm:7.0.4"],\
+            ["husky", "npm:8.0.0"],\
             ["isbinaryfile", "npm:5.0.0"],\
             ["json-parse-even-better-errors", "npm:2.3.1"],\
             ["lint-staged", "npm:12.4.1"],\
@@ -2249,7 +2249,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/release-notes-generator", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:10.0.3"],\
             ["commitizen", "npm:4.2.4"],\
             ["cz-conventional-changelog", "npm:3.3.0"],\
-            ["husky", "npm:7.0.4"],\
+            ["husky", "npm:8.0.0"],\
             ["isbinaryfile", "npm:5.0.0"],\
             ["json-parse-even-better-errors", "npm:2.3.1"],\
             ["lint-staged", "npm:12.4.1"],\
@@ -7033,10 +7033,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["husky", [\
-        ["npm:7.0.4", {\
-          "packageLocation": "./.yarn/cache/husky-npm-7.0.4-917ba035c6-c6ec4af63d.zip/node_modules/husky/",\
+        ["npm:8.0.0", {\
+          "packageLocation": "./.yarn/cache/husky-npm-8.0.0-1b3b519c6d-b6b842abdd.zip/node_modules/husky/",\
           "packageDependencies": [\
-            ["husky", "npm:7.0.4"]\
+            ["husky", "npm:8.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
