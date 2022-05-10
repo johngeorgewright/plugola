@@ -17,7 +17,7 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@types/jest": "27.5.0",
-    "@types/node": "16.11.33",
+    "@types/node": "16.11.34",
     "@types/prettier": "2.6.0",
     "@types/rimraf": "3.0.2",
     "@types/yeoman-generator": "5.2.10",
