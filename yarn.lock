@@ -1665,7 +1665,7 @@ __metadata:
     semantic-release: 19.0.2
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
-    ts-node: 10.8.0
+    ts-node: 10.8.1
     ts-toolbelt: ^9.6.0
     tslib: ^2.3.1
     typescript: 4.6.4
@@ -1720,7 +1720,7 @@ __metadata:
     semantic-release: 19.0.2
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
-    ts-node: 10.8.0
+    ts-node: 10.8.1
     tslib: ^2.3.1
     typescript: 4.6.4
   peerDependencies:
@@ -11522,9 +11522,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:10.8.0":
-  version: 10.8.0
-  resolution: "ts-node@npm:10.8.0"
+"ts-node@npm:10.8.1":
+  version: 10.8.1
+  resolution: "ts-node@npm:10.8.1"
   dependencies:
     "@cspotcode/source-map-support": ^0.8.0
     "@tsconfig/node10": ^1.0.7
@@ -11556,7 +11556,7 @@ __metadata:
     ts-node-script: dist/bin-script.js
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
-  checksum: 1c22dc8dd80d0ba4dd4250b82cc032b63f6fbe8c87f8197cef43e7f9e2d43f5b333b445ed712e3006e24119257b4bff2c46605f7da61ab6f5e9514885d296f0c
+  checksum: 7d1aa7aa3ae1c0459c4922ed0dbfbade442cfe0c25aebaf620cdf1774f112c8d7a9b14934cb6719274917f35b2c503ba87bcaf5e16a0d39ba0f68ce3e7728363
   languageName: node
   linkType: hard
 
