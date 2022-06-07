@@ -2184,7 +2184,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@plugola/generator", "workspace:packages/generator"],\
             ["@types/jest", "npm:27.5.2"],\
-            ["@types/node", "npm:16.11.38"],\
+            ["@types/node", "npm:16.11.39"],\
             ["@types/prettier", "npm:2.6.3"],\
             ["@types/rimraf", "npm:3.0.2"],\
             ["@types/yeoman-generator", "npm:5.2.10"],\
@@ -2233,7 +2233,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.1"],\
             ["@semantic-release/release-notes-generator", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:10.0.3"],\
             ["@types/jest", "npm:27.5.2"],\
-            ["@types/node", "npm:16.11.38"],\
+            ["@types/node", "npm:16.11.39"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.5.1"],\
             ["rimraf", "npm:3.0.2"],\
             ["semantic-release", "npm:19.0.2"],\
@@ -2258,7 +2258,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.1"],\
             ["@semantic-release/release-notes-generator", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:10.0.3"],\
             ["@types/jest", "npm:27.5.2"],\
-            ["@types/node", "npm:16.11.38"],\
+            ["@types/node", "npm:16.11.39"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.5.1"],\
             ["node-abort-controller", "npm:3.0.1"],\
             ["rimraf", "npm:3.0.2"],\
@@ -2317,7 +2317,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.1"],\
             ["@semantic-release/release-notes-generator", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:10.0.3"],\
             ["@types/jest", "npm:27.5.2"],\
-            ["@types/node", "npm:16.11.38"],\
+            ["@types/node", "npm:16.11.39"],\
             ["@types/plugola__message-bus", null],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.5.1"],\
             ["node-abort-controller", "npm:3.0.1"],\
@@ -2349,7 +2349,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/npm", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:9.0.1"],\
             ["@semantic-release/release-notes-generator", "virtual:8e700fd456d50f6da37430593bc9d2afe809721c9f048ed4b4c5f47fb84331a2a853c382bf79882f82361ba0770e782b4e1fbd195a65bff8ad3dbec6b0ec0e22#npm:10.0.3"],\
             ["@types/jest", "npm:27.5.2"],\
-            ["@types/node", "npm:16.11.38"],\
+            ["@types/node", "npm:16.11.39"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:27.5.1"],\
             ["node-abort-controller", "npm:3.0.1"],\
             ["rimraf", "npm:3.0.2"],\
@@ -3029,10 +3029,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:16.11.38", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-16.11.38-1c4f053ff5-471df02016.zip/node_modules/@types/node/",\
+        ["npm:16.11.39", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-16.11.39-afb6348701-bc97b9773a.zip/node_modules/@types/node/",\
           "packageDependencies": [\
-            ["@types/node", "npm:16.11.38"]\
+            ["@types/node", "npm:16.11.39"]\
           ],\
           "linkType": "HARD"\
         }],\
@@ -13446,7 +13446,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.9"],\
             ["@tsconfig/node14", "npm:1.0.1"],\
             ["@tsconfig/node16", "npm:1.0.2"],\
-            ["@types/node", "npm:16.11.38"],\
+            ["@types/node", "npm:16.11.39"],\
             ["@types/swc__core", null],\
             ["@types/swc__wasm", null],\
             ["@types/typescript", null],\
