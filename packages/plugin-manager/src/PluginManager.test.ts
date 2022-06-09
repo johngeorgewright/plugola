@@ -164,13 +164,12 @@ test('running with a dependency tree', async () => {
   expect(result!).toBe('foobarmung')
 })
 
-test('using the message bus to communicate between plugins', (done) => {
+test('using the message bus to communicate between plugins', async () => {
+  let str: string
+
   pluginManager.registerPlugin('foo', {
-    run({ broker }) {
-      broker.on('foo', (str) => {
-        expect(str).toBe('bar')
-        done()
-      })
+    async run({ broker }) {
+      ;[str] = await broker.until('foo')
     },
   })
 
@@ -180,7 +179,9 @@ test('using the message bus to communicate between plugins', (done) => {
     },
   })
 
-  pluginManager.enableAllPlugins().then(() => pluginManager.run())
+  await pluginManager.enableAllPlugins()
+  await pluginManager.run()
+  expect(str!).toBe('bar')
 })
 
 test('extra context', async () => {
