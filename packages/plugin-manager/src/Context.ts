@@ -1,5 +1,5 @@
 import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
-import { Store, ActionI } from '@plugola/store'
+import { Store, BaseActions } from '@plugola/store'
 import type { AbortSignal } from 'node-abort-controller'
 
 export function isStatefulContext(
@@ -22,10 +22,10 @@ export interface InitContext<MB extends MessageBus> {
 
 export interface StatefulContext<
   MB extends MessageBus,
-  Action extends ActionI = any,
+  Actions extends BaseActions = BaseActions,
   State = any
 > {
   broker: MessageBusBroker<MB>
   signal: AbortSignal
-  store: Store<Action, State>
+  store: Store<Actions, State>
 }

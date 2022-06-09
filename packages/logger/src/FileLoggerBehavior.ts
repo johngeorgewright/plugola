@@ -5,6 +5,7 @@ import consoleDump from './console'
 
 export default class FileLoggerBehavior implements LoggerBehavior {
   readonly #writeSteam: WriteStream
+  readonly #times = new Map<string, number>()
 
   constructor(fileName: string) {
     this.#writeSteam = createWriteStream(fileName, { flags: 'a' })
@@ -31,6 +32,18 @@ export default class FileLoggerBehavior implements LoggerBehavior {
     this.#writeSteam.write(consoleDump.table(data) + '\n')
   }
 
+  time(label: string, name: string) {
+    this.#times.set(`${label}[${name}]`, Date.now())
+  }
+
+  timeEnd(label: string, name: string) {
+    const key = `${label}[${name}]`
+    if (!this.#times.has(key)) return
+    const time = Date.now() - this.#times.get(key)!
+    this.#times.delete(key)
+    this.#log('info', key, [`${time} ms`])
+  }
+
   warn(label: string, ...args: any[]) {
     this.#log('warn', label, args)
   }
@@ -38,7 +51,9 @@ export default class FileLoggerBehavior implements LoggerBehavior {
   #log(severity: string, label: string, args: any[]) {
     const date = new Date()
     this.#writeSteam.write(
-      `${date.toISOString()} ${label}[${severity}] ${args.join(' ')}\n`
+      `${date.toISOString()} ${label}[${severity}] ${args
+        .map((arg) => JSON.stringify(arg))
+        .join(' ')}\n`
     )
   }
 }

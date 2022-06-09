@@ -12,7 +12,9 @@
     "build:generator": "yarn workspace @plugola/generator run build",
     "clean": "yarn workspaces foreach run clean",
     "commit": "yarn git-cz",
-    "generate:package": "yarn yo ./packages/generator/generators/package",
+    "package:generate": "yarn yo ./packages/generator/generators/package-generate",
+    "package:remove": "yarn yo ./packages/generator/generators/package-remove",
+    "prepare": "husky install",
     "release": "yarn workspaces foreach --interlaced --no-private --topological-dev run release",
     "start": "yarn build && yarn workspaces foreach --interlaced --exclude @plugola/generator --parallel --interlaced run start",
     "test": "yarn workspaces foreach --interlaced run test"
@@ -24,24 +26,24 @@
   },
   "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
   "devDependencies": {
-    "@commitlint/cli": "15.0.0",
-    "@commitlint/config-conventional": "15.0.0",
+    "@commitlint/cli": "17.0.2",
+    "@commitlint/config-conventional": "17.0.2",
     "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "8.0.2",
-    "@semantic-release/npm": "8.0.3",
+    "@semantic-release/github": "8.0.4",
+    "@semantic-release/npm": "9.0.1",
     "@semantic-release/release-notes-generator": "10.0.3",
     "commitizen": "4.2.4",
     "cz-conventional-changelog": "3.3.0",
-    "husky": "7.0.4",
-    "isbinaryfile": "4.0.8",
+    "husky": "8.0.1",
+    "isbinaryfile": "5.0.0",
     "json-parse-even-better-errors": "2.3.1",
-    "lint-staged": "12.1.2",
+    "lint-staged": "12.5.0",
     "mkdirp-infer-owner": "2.0.0",
-    "prettier": "2.5.1",
-    "semantic-release": "18.0.1",
+    "prettier": "2.6.2",
+    "semantic-release": "19.0.3",
     "semantic-release-monorepo": "7.0.5",
-    "typescript": "4.5.2",
+    "typescript": "4.6.4",
     "yo": "4.3.0"
   },
   "config": {
@@ -55,7 +57,7 @@
     ]
   },
   "dependencies": {
-    "tslib": "2.3.1"
+    "tslib": "2.4.0"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.2.1"
 }

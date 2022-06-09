@@ -8,5 +8,7 @@ export default class DisabledLoggerBehavior implements LoggerBehavior {
   info() {}
   log() {}
   table() {}
+  time() {}
+  timeEnd() {}
   warn() {}
 }

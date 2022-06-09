@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "lib": ["dom", "es2018", "esnext.asynciterable"],
+    "lib": ["es2018"],
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,

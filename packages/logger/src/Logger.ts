@@ -44,6 +44,14 @@ export default class Logger {
     this.#behaviors.forEach((b) => b.table(this.#label, table))
   }
 
+  time(name: string) {
+    this.#behaviors.forEach((b) => b.time(this.#label, name))
+  }
+
+  timeEnd(name: string) {
+    this.#behaviors.forEach((b) => b.timeEnd(this.#label, name))
+  }
+
   warn(...args: any[]) {
     this.#behaviors.forEach((b) => b.warn(this.#label, ...args))
   }

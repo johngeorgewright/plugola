@@ -73,7 +73,7 @@ test('json', () => {
 test('filter into', () => {
   expect(
     parseQueryParams('ignore[]=foo,bar&ac.foo=bar', {
-      amendKey: (key) => key.substr(3),
+      amendKey: (key) => key.slice(3),
       into: { version: 1 },
       filter: (key) => key.startsWith('ac.'),
     })

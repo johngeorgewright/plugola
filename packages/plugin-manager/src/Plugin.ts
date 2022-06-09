@@ -1,4 +1,4 @@
-import type { ActionI, InitAction, Reducer } from '@plugola/store'
+import type { BaseActions, Reducers } from '@plugola/store'
 
 export function isStatefulPlugin(plugin: any): plugin is StatefulPlugin<any> {
   return !!plugin.state
@@ -16,20 +16,25 @@ export interface Plugin<
 }
 
 export interface StatefulPlugin<
-  Action extends ActionI = InitAction,
+  Actions extends BaseActions = BaseActions,
   State = unknown,
   IC extends Record<string, unknown> = {},
   RC extends Record<string, unknown> = {}
 > extends Plugin<IC, RC> {
-  state: PluginState<Action, State, RC>
+  state: PluginState<Actions, State, RC>
 }
 
 export interface PluginState<
-  Action extends ActionI,
+  Actions extends BaseActions,
   State,
   Context extends Record<string, unknown>
 > {
   initial: State
-  reduce: Reducer<Action, State>
-  onUpdate(action: Action, state: State, context: Context): any
+  reducers: Reducers<Actions, State>
+  onUpdate?<Action extends keyof Actions>(
+    action: Action,
+    param: Actions[Action],
+    state: State,
+    context: Context
+  ): void | (() => void)
 }

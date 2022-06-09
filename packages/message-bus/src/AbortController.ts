@@ -10,7 +10,9 @@ export function fromSignal(abortSignal: AbortSignal) {
   if (abortSignal.aborted) {
     abortController.abort()
   } else {
-    abortSignal.addEventListener('abort', () => abortController.abort())
+    abortSignal.addEventListener('abort', () => abortController.abort(), {
+      once: true,
+    })
   }
 
   return abortController
@@ -28,36 +30,29 @@ export class AbortSignalComposite {
   }
 
   get aborted() {
-    for (const { aborted } of this.#abortSignals) {
-      if (aborted) return true
-    }
+    for (const { aborted } of this.#abortSignals) if (aborted) return true
     return false
   }
 
   set onabort(listener: () => any) {
-    for (const abortSignal of this.#abortSignals) {
-      abortSignal.onabort = listener
-    }
+    for (const abortSignal of this.#abortSignals) abortSignal.onabort = listener
   }
 
   dispatchEvent: AbortSignal['dispatchEvent'] = (...args) => {
     let result = true
-    for (const abortSignal of this.#abortSignals) {
+    for (const abortSignal of this.#abortSignals)
       result = abortSignal.dispatchEvent(...args) && result
-    }
     return result
   }
 
   addEventListener: AbortSignal['addEventListener'] = (...args) => {
-    for (const abortSignal of this.#abortSignals) {
+    for (const abortSignal of this.#abortSignals)
       abortSignal.addEventListener(...args)
-    }
   }
 
   removeEventListener: AbortSignal['removeEventListener'] = (...args) => {
-    for (const abortSignal of this.#abortSignals) {
+    for (const abortSignal of this.#abortSignals)
       abortSignal.removeEventListener(...args)
-    }
   }
 
   onAbort(fn: () => any) {

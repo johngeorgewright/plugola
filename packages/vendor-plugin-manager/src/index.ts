@@ -7,7 +7,7 @@ import {
   RunContext,
   StatefulPlugin,
 } from '@plugola/plugin-manager'
-import type { ActionI } from '@plugola/store'
+import { BaseActions } from '@plugola/store'
 import { MessageBus } from '@plugola/message-bus'
 
 export default class VendorPluginManager<
@@ -33,14 +33,14 @@ export default class VendorPluginManager<
     this.#automaticallyAuthorizedPlugins.add(name)
   }
 
-  override registerStatefulPlugin<Action extends ActionI, State>(
+  override registerStatefulPlugin<Actions extends BaseActions, State>(
     name: string,
     plugin: Omit<
       StatefulPlugin<
-        Action,
+        Actions,
         State,
         InitContext<MB> & ExtraContext & ExtraInitContext,
-        StatefulContext<MB, Action, State> & ExtraContext & ExtraRunContext
+        StatefulContext<MB, Actions, State> & ExtraContext & ExtraRunContext
       >,
       'name'
     >
@@ -63,7 +63,7 @@ export default class VendorPluginManager<
     super.registerPlugin(name, plugin)
     for (const vendorId of vendorIds)
       this.#vendors = updateMap(this.#vendors, vendorId, (pluginNames) =>
-        pluginNames ? [...pluginNames, name] : pluginNames!
+        pluginNames ? [...pluginNames, name] : [name]
       )
   }
 
