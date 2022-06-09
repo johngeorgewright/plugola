@@ -1617,7 +1617,7 @@ __metadata:
     "@types/jest": 27.5.2
     jest: 27.5.1
     rimraf: 3.0.2
-    semantic-release: 19.0.2
+    semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
     tslib: ^2.3.1
@@ -1638,7 +1638,7 @@ __metadata:
     "@types/node": 16.11.39
     jest: 27.5.1
     rimraf: 3.0.2
-    semantic-release: 19.0.2
+    semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
     tslib: ^2.3.1
@@ -1662,7 +1662,7 @@ __metadata:
     jest: 27.5.1
     node-abort-controller: ^3.0.1
     rimraf: 3.0.2
-    semantic-release: 19.0.2
+    semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
     ts-node: 10.8.1
@@ -1691,7 +1691,7 @@ __metadata:
     lint-staged: 12.5.0
     mkdirp-infer-owner: 2.0.0
     prettier: 2.6.2
-    semantic-release: 19.0.2
+    semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
     tslib: 2.4.0
     typescript: 4.6.4
@@ -1717,7 +1717,7 @@ __metadata:
     jest: 27.5.1
     node-abort-controller: ^3.0.1
     rimraf: 3.0.2
-    semantic-release: 19.0.2
+    semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
     ts-node: 10.8.1
@@ -1741,7 +1741,7 @@ __metadata:
     "@types/node": 17.0.21
     jest: 27.5.1
     rimraf: 3.0.2
-    semantic-release: 19.0.2
+    semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
     tslib: ^2.3.1
@@ -1763,7 +1763,7 @@ __metadata:
     "@types/jest": 27.5.2
     jest: 27.5.1
     rimraf: 3.0.2
-    semantic-release: 19.0.2
+    semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
     tslib: 2.4.0
@@ -1786,7 +1786,7 @@ __metadata:
     "@types/jest": 27.5.2
     jest: 27.5.1
     rimraf: 3.0.2
-    semantic-release: 19.0.2
+    semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
     tslib: ^2.3.1
@@ -1810,7 +1810,7 @@ __metadata:
     "@types/jest": 27.5.2
     jest: 27.5.1
     rimraf: 3.0.2
-    semantic-release: 19.0.2
+    semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
     ts-jest: 27.1.5
     tslib: 2.4.0
@@ -10385,9 +10385,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:19.0.2":
-  version: 19.0.2
-  resolution: "semantic-release@npm:19.0.2"
+"semantic-release@npm:19.0.3":
+  version: 19.0.3
+  resolution: "semantic-release@npm:19.0.3"
   dependencies:
     "@semantic-release/commit-analyzer": ^9.0.2
     "@semantic-release/error": ^3.0.0
@@ -10419,7 +10419,7 @@ __metadata:
     yargs: ^16.2.0
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: 0807cae8c57445793d3181a15cd587950aaf6b9c6ea9f4b7876b85a4ac78d1cd8d53f309512fe53eca2a8ed48600dd4d5483ac403bb42bfcf1c88a2c2340cf65
+  checksum: 89afc3bba5b7addc503e92387de76274bf7f8b6c955ea4338760719f91ed730df9774ccfc58b28a0c739eb1eb3bed1f9c9bef393dda1156c4481197bb6671760
   languageName: node
   linkType: hard
 
