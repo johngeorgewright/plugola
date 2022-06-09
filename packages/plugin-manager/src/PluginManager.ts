@@ -94,14 +94,16 @@ export default class PluginManager<
   #addPlugin(plugin: Plugin) {
     this.#plugins[plugin.name] = plugin
     this.#dependencyGraph.vertex(plugin)
-    const dependencies = plugin.dependencies || []
-    for (const dependency of dependencies) {
+    const { dependencies = [] } = plugin
+    for (const dependency of dependencies)
       this.#dependencyGraph.addDependency(plugin, this.#getPlugin(dependency))
-    }
   }
 
   async run() {
-    await this.#mapEnabledPlugins((plugin) => this.#runPlugin(plugin))
+    let promises: Promise<void>[] = []
+    for (const pluginName of this.#enabledPlugins)
+      promises.push(this.#runPlugin(this.#getPlugin(pluginName)))
+    await Promise.all(promises)
   }
 
   async enableAllPlugins() {
@@ -109,14 +111,13 @@ export default class PluginManager<
   }
 
   readonly enablePlugins = async (pluginNames: string[]) => {
+    let promises: Promise<void>[] = []
     for (const pluginName of pluginNames) {
       this.#enabledPlugins.add(pluginName)
+      if (this.#enabledPlugins.has(pluginName))
+        promises.push(this.#initPlugin(this.#getPlugin(pluginName)))
     }
-
-    await this.#mapEnabledPlugins(
-      (plugin) => this.#initPlugin(plugin),
-      pluginNames
-    )
+    await Promise.all(promises)
   }
 
   readonly disablePlugins = (pluginNames: string[]) => {
@@ -124,9 +125,8 @@ export default class PluginManager<
     for (const pluginName of pluginNames) {
       const plugin = this.#getPlugin(pluginName)
       if (this.#disablePlugin(plugin)) disabled++
-      for (const dep of this.#dependencyGraph.dependencies(plugin)) {
+      for (const dep of this.#dependencyGraph.dependencies(plugin))
         if (this.#disablePlugin(dep)) disabled++
-      }
     }
     return disabled
   }
@@ -140,16 +140,14 @@ export default class PluginManager<
   }
 
   #isDependencyOfEnabledPlugin(dependency: Plugin) {
-    for (const plugin of this.#dependencyGraph.whichDependOn(dependency)) {
+    for (const plugin of this.#dependencyGraph.whichDependOn(dependency))
       if (this.#enabledPlugins.has(plugin.name)) return true
-    }
     return false
   }
 
   #getPlugin(pluginName: string) {
-    if (!this.#plugins[pluginName]) {
+    if (!this.#plugins[pluginName])
       throw new Error(`The plugin "${pluginName}" isn't registered.`)
-    }
     return this.#plugins[pluginName]
   }
 
@@ -167,13 +165,9 @@ export default class PluginManager<
   }
 
   async #initPlugin(plugin: Plugin, signal?: AbortSignal) {
-    if (this.#initialized.has(plugin) || !plugin.init || signal?.aborted) {
-      return
-    }
-
+    if (this.#initialized.has(plugin) || !plugin.init || signal?.aborted) return
     const abortController = this.#abortController(plugin)
     signal?.addEventListener('abort', () => abortController.abort())
-
     this.#initialized.add(plugin)
 
     await this.#pluginRace(
@@ -193,13 +187,9 @@ export default class PluginManager<
   }
 
   async #runPlugin(plugin: Plugin, signal?: AbortSignal) {
-    if (this.#ran.has(plugin) || !plugin.run || signal?.aborted) {
-      return
-    }
-
+    if (this.#ran.has(plugin) || !plugin.run || signal?.aborted) return
     const abortController = this.#abortController(plugin)
     signal?.addEventListener('abort', () => abortController.abort())
-
     this.#ran.add(plugin)
 
     await this.#pluginRace(
@@ -234,28 +224,14 @@ export default class PluginManager<
       : fn(pluginSignal)
   }
 
-  async #mapEnabledPlugins(
-    map: (plugin: Plugin, index: number) => Promise<any>,
-    pluginNames = [...this.#enabledPlugins]
-  ) {
-    await Promise.all(
-      pluginNames
-        .filter((pluginName) => this.#enabledPlugins.has(pluginName))
-        .map((pluginName, i) => map(this.#getPlugin(pluginName), i))
-    )
-  }
-
   async #mapDependencies(
     plugin: Plugin,
     filter: (plugin: Plugin) => boolean,
     map: (plugin: Plugin) => Promise<any>
   ) {
     const promises = []
-
-    for (const dep of this.#dependencyGraph.dependencies(plugin)) {
+    for (const dep of this.#dependencyGraph.dependencies(plugin))
       if (filter(dep)) promises.push(map(dep))
-    }
-
     await Promise.all(promises)
   }
 
@@ -303,9 +279,8 @@ export default class PluginManager<
     pluginName: string,
     context: StatefulContext<MB> & ExtraContext & ExtraRunContext
   ) {
-    for (const handler of this.#createStoreHandlers) {
+    for (const handler of this.#createStoreHandlers)
       handler(pluginName, context)
-    }
   }
 
   #createContext({ name }: Plugin, signal: AbortSignal) {
