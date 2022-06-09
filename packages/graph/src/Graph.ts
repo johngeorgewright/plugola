@@ -27,10 +27,7 @@ export default class Graph<T, Edge extends string> {
   }
 
   find(fn: (node: T) => boolean) {
-    for (const node of this.#adjList.keys()) {
-      if (fn(node)) return node
-    }
-
+    for (const node of this.#adjList.keys()) if (fn(node)) return node
     throw new Error('Node not found')
   }
 
@@ -59,13 +56,9 @@ export default class Graph<T, Edge extends string> {
   ): Generator<T, Set<T>> {
     if (visited.has(node)) return visited
     visited = new Set(visited).add(node)
-
-    for (const edge of this.edges(node, edgeName)) {
+    for (const edge of this.edges(node, edgeName))
       visited = yield* this.#dfs(edge, edgeName, visited, true)
-    }
-
     if (yieldNode) yield node
-
     return visited
   }
 }
