@@ -1670,7 +1670,7 @@ __metadata:
     jest-environment-jsdom: 28.0.2
     prettier: 2.6.2
     rimraf: 3.0.2
-    ts-jest: 28.0.0
+    ts-jest: 28.0.5
     tslib: 2.4.0
     typescript: 4.6.4
     yeoman-generator: 5.6.1
@@ -1692,7 +1692,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 28.0.0
+    ts-jest: 28.0.5
     tslib: ^2.3.1
     typescript: 4.6.4
   languageName: unknown
@@ -1714,7 +1714,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 28.0.0
+    ts-jest: 28.0.5
     tslib: ^2.3.1
     typescript: 4.6.4
   languageName: unknown
@@ -1739,7 +1739,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 28.0.0
+    ts-jest: 28.0.5
     ts-node: 10.8.1
     ts-toolbelt: ^9.6.0
     tslib: ^2.3.1
@@ -1796,7 +1796,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 28.0.0
+    ts-jest: 28.0.5
     ts-node: 10.8.1
     tslib: ^2.3.1
     typescript: 4.6.4
@@ -1821,7 +1821,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 28.0.0
+    ts-jest: 28.0.5
     tslib: ^2.3.1
     typescript: 4.6.4
   languageName: unknown
@@ -1844,7 +1844,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 28.0.0
+    ts-jest: 28.0.5
     tslib: 2.4.0
     typescript: 4.6.4
   peerDependencies:
@@ -1868,7 +1868,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 28.0.0
+    ts-jest: 28.0.5
     tslib: ^2.3.1
     typescript: 4.6.4
   languageName: unknown
@@ -1893,7 +1893,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.3
     semantic-release-monorepo: 7.0.5
-    ts-jest: 28.0.0
+    ts-jest: 28.0.5
     tslib: 2.4.0
     typescript: 4.6.4
   peerDependencies:
@@ -7375,7 +7375,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:2.x, json5@npm:^2.1.2":
+"json5@npm:^2.1.2":
   version: 2.2.0
   resolution: "json5@npm:2.2.0"
   dependencies:
@@ -11690,28 +11690,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:28.0.0":
-  version: 28.0.0
-  resolution: "ts-jest@npm:28.0.0"
+"ts-jest@npm:28.0.5":
+  version: 28.0.5
+  resolution: "ts-jest@npm:28.0.5"
   dependencies:
     bs-logger: 0.x
     fast-json-stable-stringify: 2.x
     jest-util: ^28.0.0
-    json5: 2.x
+    json5: ^2.2.1
     lodash.memoize: 4.x
     make-error: 1.x
     semver: 7.x
-    yargs-parser: ^20.x
+    yargs-parser: ^21.0.1
   peerDependencies:
     "@babel/core": ">=7.0.0-beta.0 <8"
-    "@types/jest": ^27.0.0
     babel-jest: ^28.0.0
     jest: ^28.0.0
     typescript: ">=4.3"
   peerDependenciesMeta:
     "@babel/core":
-      optional: true
-    "@types/jest":
       optional: true
     babel-jest:
       optional: true
@@ -11719,7 +11716,7 @@ __metadata:
       optional: true
   bin:
     ts-jest: cli.js
-  checksum: a8bbcb5ec931e6f9a9a347cb28d211c1ca440e6205128fcd766e6edbb0706469cb0e675d766a86bfda813037d65a82f0956ed49a452241097a4577970279cb90
+  checksum: 53e05db5b7e1e4f4137c47594f902f5caf585ebc73dda67c4552c1ed784d4fde532c5693a61d877d9462290c7965233c2124050b0f00fd4c85cde9bb1a51c974
   languageName: node
   linkType: hard
 
@@ -12612,7 +12609,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs-parser@npm:^20.2.2, yargs-parser@npm:^20.2.3, yargs-parser@npm:^20.x":
+"yargs-parser@npm:^20.2.2, yargs-parser@npm:^20.2.3":
   version: 20.2.9
   resolution: "yargs-parser@npm:20.2.9"
   checksum: 8bb69015f2b0ff9e17b2c8e6bfe224ab463dd00ca211eece72a4cd8a906224d2703fb8a326d36fdd0e68701e201b2a60ed7cf81ce0fd9b3799f9fe7745977ae3
@@ -12623,6 +12620,13 @@ __metadata:
   version: 21.0.0
   resolution: "yargs-parser@npm:21.0.0"
   checksum: 1e205fca1cb7a36a1585e2b94a64e641c12741b53627d338e12747f4dca3c3610cdd9bb235040621120548dd74c3ef03a8168d52a1eabfedccbe4a62462b6731
+  languageName: node
+  linkType: hard
+
+"yargs-parser@npm:^21.0.1":
+  version: 21.0.1
+  resolution: "yargs-parser@npm:21.0.1"
+  checksum: c3ea2ed12cad0377ce3096b3f138df8267edf7b1aa7d710cd502fe16af417bafe4443dd71b28158c22fcd1be5dfd0e86319597e47badf42ff83815485887323a
   languageName: node
   linkType: hard
 
