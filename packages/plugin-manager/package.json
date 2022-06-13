@@ -33,7 +33,7 @@
     "semantic-release-monorepo": "7.0.5",
     "ts-jest": "28.0.0",
     "ts-node": "10.8.1",
-    "typescript": "4.6.4"
+    "typescript": "4.7.3"
   },
   "dependencies": {
     "@johngw/async": "4.1.1",
