@@ -315,7 +315,7 @@ test('cleaning up plugins when disabled in the init phase', async () => {
 test('plugins that time out', async () => {
   const abort = jest.fn<void, [string]>()
 
-  pluginManager = new PluginManager(messageBus, { pluginTimeout: 100 }) as any
+  pluginManager = new PluginManager(messageBus, { pluginTimeout: 100 })
 
   pluginManager.registerPlugin('foo', {
     async init({ signal }) {

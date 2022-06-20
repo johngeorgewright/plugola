@@ -29,6 +29,8 @@ beforeEach(() => {
 test('state management', () => {
   expect(store.state).toEqual({ foo: '' })
   store.dispatch('bar', null)
+  // @ts-expect-error
+  store.dispatch('bar', 'error')
   expect(store.state).toEqual({ foo: 'bar' })
   store.dispatch('foo', 'mung')
   expect(store.state).toEqual({ foo: 'mung' })
