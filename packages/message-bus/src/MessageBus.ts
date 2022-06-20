@@ -58,9 +58,8 @@ export default class MessageBus<
   }
 
   #reportError(brokerId: string, eventName: Stringable, error: Error) {
-    for (const errorHandler of this.#errorHandlers) {
+    for (const errorHandler of this.#errorHandlers)
       errorHandler(new MessageBusError(brokerId, eventName, error))
-    }
   }
 
   broker(id: string, abort?: AbortSignal | AbortController) {
@@ -287,9 +286,7 @@ export default class MessageBus<
     args: EventGens[EventName]['args'],
     abortSignal?: AbortSignal
   ): AsyncIterable<EventGens[EventName]['yield']> {
-    if (!this.#started) {
-      await this.#queue(broker, () => {})
-    }
+    if (!this.#started) await this.#queue(broker, () => {})
 
     yield* combineIterators(
       ...(this.#eventGenerators[eventName] || [])!
@@ -363,13 +360,12 @@ export default class MessageBus<
       (invoker) => this.#argumentIndex(invoker.args, args) !== -1
     )
 
-    if (registeredInvoker) {
+    if (registeredInvoker)
       throw new Error(
         `An invoker has already been registered that matches ${invokableName.toString()} with args: ${args.join(
           ', '
         )}.`
       )
-    }
 
     const subscriber = {
       broker,
@@ -424,9 +420,7 @@ export default class MessageBus<
   ): void | Promise<Events[EventName] | typeof CancelEvent> {
     const eventInterceptors = (this.#eventInterceptors[eventName] || [])!
 
-    if (!eventInterceptors.length) {
-      return
-    }
+    if (!eventInterceptors.length) return
 
     return (async () => {
       let moddedArgs: Events[EventName] | typeof CancelEvent = args
@@ -434,20 +428,16 @@ export default class MessageBus<
       for (const interceptor of eventInterceptors) {
         const index = this.#argumentIndex(interceptor.args, moddedArgs)
 
-        if (index === -1) {
-          continue
-        }
+        if (index === -1) continue
 
         const newArgs = await interceptor.fn(...moddedArgs.slice(index))
 
-        if (newArgs === CancelEvent) {
-          return CancelEvent
-        } else if (newArgs) {
+        if (newArgs === CancelEvent) return CancelEvent
+        else if (newArgs)
           moddedArgs = [
             ...moddedArgs.slice(0, index),
             ...newArgs,
           ] as Events[EventName]
-        }
       }
 
       return moddedArgs
@@ -461,9 +451,7 @@ export default class MessageBus<
     const invokerInterceptors = (this.#invokerInterceptors[invokableName] ||
       [])!
 
-    if (!invokerInterceptors.length) {
-      return args
-    }
+    if (!invokerInterceptors.length) return args
 
     return invokerInterceptors.reduce<
       Promise<Invokables[InvokableName]['args']>
@@ -471,9 +459,7 @@ export default class MessageBus<
       const args = await acc
       const index = this.#argumentIndex(interceptor.args, args)
 
-      if (index === -1) {
-        return args
-      }
+      if (index === -1) return args
 
       const newArgs = await Promise.resolve(
         interceptor.fn(...args.slice(index))
@@ -543,20 +529,11 @@ export default class MessageBus<
   }
 
   #argumentIndex(args1: ArrayLike<unknown>, args2: ArrayLike<unknown>) {
-    if (!args1.length) {
-      return 0
-    } else if (args1.length > args2.length) {
-      return -1
-    }
+    if (!args1.length) return 0
+    else if (args1.length > args2.length) return -1
 
-    let i: number
-
-    for (i = 0; i < args1.length; i++) {
-      if (args1[i] !== args2[i]) {
-        return -1
-      }
-    }
-
+    let i = 0
+    for (; i < args1.length; i++) if (args1[i] !== args2[i]) return -1
     return i
   }
 
