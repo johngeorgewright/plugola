@@ -365,7 +365,7 @@ export default class MessageBus<
 
     if (registeredInvoker) {
       throw new Error(
-        `An invoker has already been registered that matches ${invokableName} with args: ${args.join(
+        `An invoker has already been registered that matches ${invokableName.toString()} with args: ${args.join(
           ', '
         )}.`
       )
@@ -531,7 +531,9 @@ export default class MessageBus<
       invokers.find((invoker) => this.#argumentIndex(invoker.args, args) !== -1)
 
     if (!invoker) {
-      throw new Error(`Cannot find matching invoker for ${invokableName}.`)
+      throw new Error(
+        `Cannot find matching invoker for ${invokableName.toString()}.`
+      )
     }
 
     return invoker.fn(
