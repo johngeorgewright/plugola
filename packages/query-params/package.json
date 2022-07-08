@@ -23,7 +23,7 @@
     "@semantic-release/github": "8.0.5",
     "@semantic-release/npm": "9.0.1",
     "@semantic-release/release-notes-generator": "10.0.3",
-    "@types/jest": "27.5.2",
+    "@types/jest": "28.1.4",
     "@types/node": "17.0.21",
     "jest": "28.1.2",
     "jest-environment-jsdom": "28.1.2",
