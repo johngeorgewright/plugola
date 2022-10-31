@@ -30,7 +30,7 @@
   "dependencies": {
     "change-case": "4.1.2",
     "rimraf": "3.0.2",
-    "tslib": "2.4.0",
+    "tslib": "2.4.1",
     "yeoman-generator": "5.7.0"
   }
 }
