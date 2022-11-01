@@ -152,9 +152,10 @@ export default class PluginManager<
   readonly enablePlugins = async (pluginNames: string[]) => {
     let promises: Promise<void>[] = []
     for (const pluginName of pluginNames) {
-      this.#enabledPlugins.add(pluginName)
-      if (this.#enabledPlugins.has(pluginName))
+      if (!this.#enabledPlugins.has(pluginName)) {
+        this.#enabledPlugins.add(pluginName)
         promises.push(this.#initPlugin(this.#getPlugin(pluginName)))
+      }
     }
     await Promise.all(promises)
   }
