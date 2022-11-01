@@ -5,6 +5,8 @@ import type { AddAbortSignal } from './MessageBus'
 
 export type EventsT = Record<string, unknown[]>
 
+export type CreateEvents<T extends EventsT> = T
+
 export type SubscriberFn<Args extends unknown[]> = (
   ...args: AddAbortSignal<Args>
 ) => void | Promise<void>

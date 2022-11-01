@@ -7,6 +7,8 @@ export type EventGeneratorsT = Record<
   { args: unknown[]; yield: unknown }
 >
 
+export type CreateEventGenerators<T extends EventGeneratorsT> = T
+
 export type EventGeneratorFn<Args extends unknown[], R> = (
   ...args: AddAbortSignal<Args>
 ) => AsyncIterable<R>

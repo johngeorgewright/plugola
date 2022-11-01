@@ -4,9 +4,12 @@ import { CancelEvent } from './symbols'
 import { AbortError, timeout } from '@johngw/async'
 import MessageBusError from './MessageBusError'
 import { AbortSignalComposite } from './AbortController'
+import { CreateEvents } from './types/events'
+import { CreateInvokables } from './types/invokables'
+import { CreateEventGenerators } from './types/generators'
 
 describe('events', () => {
-  type Events = { foo: []; bar: [string]; mung: [string, number] }
+  type Events = CreateEvents<{ foo: []; bar: [string]; mung: [string, number] }>
   let messageBus: MessageBus<Events, {}, {}>
   let broker: Broker<Events, {}, {}>
   let foo: jest.Mock<void, []>
@@ -138,10 +141,10 @@ describe('events', () => {
 })
 
 describe('iterators', () => {
-  type Iterables = {
+  type Iterables = CreateEventGenerators<{
     foo: { args: []; yield: string }
     bar: { args: [string]; yield: string }
-  }
+  }>
   let messageBus: MessageBus<{}, Iterables, {}>
   let broker: Broker<{}, Iterables, {}>
 
@@ -192,12 +195,12 @@ describe('iterators', () => {
 })
 
 describe('invokables', () => {
-  type Invokables = {
+  type Invokables = CreateInvokables<{
     foo: { args: []; return: string }
     bar: { args: [string]; return: string }
     afoo: { args: [string]; return: string }
     never: { args: []; return: Promise<never> }
-  }
+  }>
   let messageBus: MessageBus<{}, {}, Invokables>
   let broker: Broker<{}, {}, Invokables>
   let foo: jest.Mock<string>

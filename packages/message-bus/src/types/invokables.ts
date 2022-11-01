@@ -5,6 +5,8 @@ import type { AddAbortSignal } from './MessageBus'
 
 export type InvokablesT = Record<string, { args: unknown[]; return: unknown }>
 
+export type CreateInvokables<T extends InvokablesT> = T
+
 export type InvokerFn<Args extends unknown[], Result> = (
   ...args: AddAbortSignal<Args>
 ) => Result | Promise<UnpackResolvableValue<Result>>
