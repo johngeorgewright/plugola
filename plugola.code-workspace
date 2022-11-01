@@ -12,7 +12,8 @@
     {
       "name": "📦 @plugola/vendor-plugin-manager",
       "path": "packages/vendor-plugin-manager"
-    }
+    },
+    { "name": "🤖 github", "path": ".github" }
   ],
   "settings": {
     "search.exclude": { "**/dist": true, "**/.pnp.*": true, "**/.yarn": true },
