@@ -85,7 +85,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.1"],\
             ["isbinaryfile", "npm:5.0.0"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.2.2"],\
-            ["json-parse-even-better-errors", "npm:2.3.1"],\
+            ["json-parse-even-better-errors", "npm:3.0.0"],\
             ["lint-staged", "npm:13.0.3"],\
             ["mkdirp-infer-owner", "npm:2.0.0"],\
             ["prettier", "npm:2.7.1"],\
@@ -2501,7 +2501,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["husky", "npm:8.0.1"],\
             ["isbinaryfile", "npm:5.0.0"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.2.2"],\
-            ["json-parse-even-better-errors", "npm:2.3.1"],\
+            ["json-parse-even-better-errors", "npm:3.0.0"],\
             ["lint-staged", "npm:13.0.3"],\
             ["mkdirp-infer-owner", "npm:2.0.0"],\
             ["prettier", "npm:2.7.1"],\
@@ -8985,6 +8985,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/json-parse-even-better-errors-npm-2.3.1-144d62256e-798ed4cf33.zip/node_modules/json-parse-even-better-errors/",\
           "packageDependencies": [\
             ["json-parse-even-better-errors", "npm:2.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/json-parse-even-better-errors-npm-3.0.0-3675833c0a-f1970b5220.zip/node_modules/json-parse-even-better-errors/",\
+          "packageDependencies": [\
+            ["json-parse-even-better-errors", "npm:3.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
