@@ -16,46 +16,46 @@ beforeEach(() => {
 
 test('dfs', () => {
   expect([...graph.dfs('A', 'like')]).toMatchInlineSnapshot(`
-Array [
-  "F",
-  "C",
-  "B",
-  "E",
-  "D",
-  "A",
-]
-`)
+    [
+      "F",
+      "C",
+      "B",
+      "E",
+      "D",
+      "A",
+    ]
+  `)
 
   expect([...graph.dfs('A', 'like', false)]).toMatchInlineSnapshot(`
-Array [
-  "F",
-  "C",
-  "B",
-  "E",
-  "D",
-]
-`)
+    [
+      "F",
+      "C",
+      "B",
+      "E",
+      "D",
+    ]
+  `)
 })
 
 test('bfs', () => {
   expect([...graph.bfs('A', 'like')]).toMatchInlineSnapshot(`
-Array [
-  "A",
-  "B",
-  "D",
-  "E",
-  "C",
-  "F",
-]
-`)
+    [
+      "A",
+      "B",
+      "D",
+      "E",
+      "C",
+      "F",
+    ]
+  `)
 
   expect([...graph.bfs('A', 'like', false)]).toMatchInlineSnapshot(`
-Array [
-  "B",
-  "D",
-  "E",
-  "C",
-  "F",
-]
-`)
+    [
+      "B",
+      "D",
+      "E",
+      "C",
+      "F",
+    ]
+  `)
 })
