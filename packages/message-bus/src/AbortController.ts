@@ -25,7 +25,7 @@ export function fromSignal(abortSignal: AbortSignal) {
 export class AbortSignalComposite {
   #abortSignals: Iterable<AbortSignal>
 
-  private constructor(abortSignals: Iterable<AbortSignal>) {
+  constructor(abortSignals: Iterable<AbortSignal>) {
     this.#abortSignals = abortSignals
   }
 
