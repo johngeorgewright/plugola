@@ -82,7 +82,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
             ["commitizen", "npm:4.2.5"],\
             ["cz-conventional-changelog", "npm:3.3.0"],\
-            ["husky", "npm:8.0.1"],\
+            ["husky", "npm:8.0.2"],\
             ["isbinaryfile", "npm:5.0.0"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.3.0"],\
             ["json-parse-even-better-errors", "npm:3.0.0"],\
@@ -2498,7 +2498,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
             ["commitizen", "npm:4.2.5"],\
             ["cz-conventional-changelog", "npm:3.3.0"],\
-            ["husky", "npm:8.0.1"],\
+            ["husky", "npm:8.0.2"],\
             ["isbinaryfile", "npm:5.0.0"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.3.0"],\
             ["json-parse-even-better-errors", "npm:3.0.0"],\
@@ -7614,10 +7614,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["husky", [\
-        ["npm:8.0.1", {\
-          "packageLocation": "./.yarn/cache/husky-npm-8.0.1-85fede8470-943a73a13d.zip/node_modules/husky/",\
+        ["npm:8.0.2", {\
+          "packageLocation": "./.yarn/cache/husky-npm-8.0.2-46c70b41ed-e101656fcb.zip/node_modules/husky/",\
           "packageDependencies": [\
-            ["husky", "npm:8.0.1"]\
+            ["husky", "npm:8.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
