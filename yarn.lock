@@ -1777,7 +1777,7 @@ __metadata:
   resolution: "@plugola/generator@workspace:packages/generator"
   dependencies:
     "@types/jest": 29.2.4
-    "@types/node": 16.18.8
+    "@types/node": 16.18.9
     "@types/prettier": 2.7.1
     "@types/rimraf": 3.0.2
     "@types/yeoman-generator": 5.2.11
@@ -1824,7 +1824,7 @@ __metadata:
     "@semantic-release/github": 8.0.7
     "@semantic-release/release-notes-generator": 10.0.3
     "@types/jest": 29.2.4
-    "@types/node": 16.18.8
+    "@types/node": 16.18.9
     jest: 29.3.1
     jest-environment-jsdom: 29.3.1
     rimraf: 3.0.2
@@ -1848,7 +1848,7 @@ __metadata:
     "@semantic-release/github": 8.0.7
     "@semantic-release/release-notes-generator": 10.0.3
     "@types/jest": 29.2.4
-    "@types/node": 16.18.8
+    "@types/node": 16.18.9
     jest: 29.3.1
     jest-environment-jsdom: 29.3.1
     node-abort-controller: ^3.0.1
@@ -1905,7 +1905,7 @@ __metadata:
     "@semantic-release/github": 8.0.7
     "@semantic-release/release-notes-generator": 10.0.3
     "@types/jest": 29.2.4
-    "@types/node": 16.18.8
+    "@types/node": 16.18.9
     jest: 29.3.1
     jest-environment-jsdom: 29.3.1
     node-abort-controller: ^3.0.1
@@ -2536,10 +2536,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.18.8":
-  version: 16.18.8
-  resolution: "@types/node@npm:16.18.8"
-  checksum: 149f6a6d010a0c8842800b4b7e0e9db842d3133b9461e48224c769cfc8e1960ecb2791596ad18295a7318b3189475c88d007dee122be0b77bf54db025465cf21
+"@types/node@npm:16.18.9":
+  version: 16.18.9
+  resolution: "@types/node@npm:16.18.9"
+  checksum: 7dc9cb417869592b2ad64233d06cd3eda63b8ae31d72a0811e4f5ac5a2ef01feb4d4c91159481e506c7a56951981359e75069c7fae6f0de90fc0c3c8b69a36cd
   languageName: node
   linkType: hard
 
