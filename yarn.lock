@@ -1786,7 +1786,7 @@ __metadata:
     jest-environment-jsdom: 29.3.1
     prettier: 2.8.2
     rimraf: 3.0.2
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     tslib: 2.4.1
     typescript: 4.8.4
     yeoman-generator: 5.7.0
@@ -1808,7 +1808,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     tslib: ^2.3.1
     typescript: 4.8.4
   languageName: unknown
@@ -1830,7 +1830,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     tslib: ^2.3.1
     typescript: 4.8.4
   languageName: unknown
@@ -1855,7 +1855,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     ts-node: 10.9.1
     ts-toolbelt: ^9.6.0
     tslib: ^2.3.1
@@ -1912,7 +1912,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     ts-node: 10.9.1
     tslib: ^2.3.1
     typescript: 4.8.4
@@ -1937,7 +1937,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     tslib: ^2.3.1
     typescript: 4.8.4
   languageName: unknown
@@ -1960,7 +1960,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     tslib: 2.4.1
     typescript: 4.8.4
   peerDependencies:
@@ -1984,7 +1984,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     tslib: ^2.3.1
     typescript: 4.8.4
   languageName: unknown
@@ -2009,7 +2009,7 @@ __metadata:
     rimraf: 3.0.2
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
-    ts-jest: 29.0.4
+    ts-jest: 29.0.5
     tslib: 2.4.1
     typescript: 4.8.4
   peerDependencies:
@@ -12211,9 +12211,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-jest@npm:29.0.4":
-  version: 29.0.4
-  resolution: "ts-jest@npm:29.0.4"
+"ts-jest@npm:29.0.5":
+  version: 29.0.5
+  resolution: "ts-jest@npm:29.0.5"
   dependencies:
     bs-logger: 0.x
     fast-json-stable-stringify: 2.x
@@ -12240,7 +12240,7 @@ __metadata:
       optional: true
   bin:
     ts-jest: cli.js
-  checksum: c3daa71835fabd0c98eefc8611edc083cd2c78cbe9a02c1edea707a907afffafc1e61051f4746c0634904d4c68cd70736d0875ae644f55c6ed8beb950bf78689
+  checksum: f60f129c2287f4c963d9ee2677132496c5c5a5d39c27ad234199a1140c26318a7d5bda34890ab0e30636ec42a8de28f84487c09e9dcec639c9c67812b3a38373
   languageName: node
   linkType: hard
 
