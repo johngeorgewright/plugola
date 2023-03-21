@@ -88,7 +88,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["json-parse-even-better-errors", "npm:3.0.0"],\
             ["lint-staged", "npm:13.2.0"],\
             ["mkdirp-infer-owner", "npm:2.0.0"],\
-            ["prettier", "npm:2.8.5"],\
+            ["prettier", "npm:2.8.6"],\
             ["semantic-release", "npm:19.0.5"],\
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],\
             ["tslib", "npm:2.5.0"],\
@@ -2433,7 +2433,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["change-case", "npm:4.1.2"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.5.0"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.5.0"],\
-            ["prettier", "npm:2.8.5"],\
+            ["prettier", "npm:2.8.6"],\
             ["rimraf", "npm:3.0.2"],\
             ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.0.5"],\
             ["tslib", "npm:2.5.0"],\
@@ -2539,7 +2539,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["json-parse-even-better-errors", "npm:3.0.0"],\
             ["lint-staged", "npm:13.2.0"],\
             ["mkdirp-infer-owner", "npm:2.0.0"],\
-            ["prettier", "npm:2.8.5"],\
+            ["prettier", "npm:2.8.6"],\
             ["semantic-release", "npm:19.0.5"],\
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],\
             ["tslib", "npm:2.5.0"],\
@@ -12161,10 +12161,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["prettier", [\
-        ["npm:2.8.5", {\
-          "packageLocation": "./.yarn/cache/prettier-npm-2.8.5-3f60833fcb-b7f8d30e14.zip/node_modules/prettier/",\
+        ["npm:2.8.6", {\
+          "packageLocation": "./.yarn/cache/prettier-npm-2.8.6-24bd3d3356-8ac94fa67a.zip/node_modules/prettier/",\
           "packageDependencies": [\
-            ["prettier", "npm:2.8.5"]\
+            ["prettier", "npm:2.8.6"]\
           ],\
           "linkType": "HARD"\
         }]\
