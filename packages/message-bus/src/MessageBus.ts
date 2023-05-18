@@ -1,4 +1,3 @@
-import { AbortController, AbortSignal } from 'node-abort-controller'
 import { AbortError } from '@johngw/async'
 import {
   accumulate,
@@ -220,7 +219,7 @@ export default class MessageBus<
     eventName: EventName,
     args: Args,
     abortSignal?: AbortSignal
-  ) {
+  ): Promise<UntilRtn<Events[EventName], Args>> {
     return new Promise<UntilRtn<Events[EventName], Args>>((resolve, reject) => {
       const abortSignalComposite = AbortSignalComposite.create(
         abortSignal,

@@ -69,11 +69,11 @@ export = class PackageGenerator extends Generator {
 
     this.packageJson.set('scripts', {
       build:
-        "yarn clean && yarn tsc && yarn rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
-      clean: 'yarn rimraf dist',
-      start: 'yarn tsc --watch --preserveWatchOutput',
-      release: 'yarn semantic-release -e semantic-release-monorepo',
-      test: 'yarn jest',
+        "yarn clean && tsc && rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
+      clean: 'rimraf dist',
+      start: 'tsc --watch --preserveWatchOutput',
+      release: 'semantic-release -e semantic-release-monorepo',
+      test: 'jest',
     })
 
     this.packageJson.set('license', 'MIT')

@@ -1,5 +1,3 @@
-import { AbortController, AbortSignal } from 'node-abort-controller'
-
 /**
  * Creates a new AbortController and pipes an abort
  * signal into it.
@@ -22,7 +20,7 @@ export function fromSignal(abortSignal: AbortSignal) {
  * Monitor multiple AbortSignals using the same interface as
  * a single AbortSignal
  */
-export class AbortSignalComposite {
+export class AbortSignalComposite implements AbortSignal {
   #abortSignals: Iterable<AbortSignal>
 
   constructor(abortSignals: Iterable<AbortSignal>) {
@@ -32,6 +30,12 @@ export class AbortSignalComposite {
   get aborted() {
     for (const { aborted } of this.#abortSignals) if (aborted) return true
     return false
+  }
+
+  get reason() {
+    return [...this.#abortSignals]
+      .map((abortSignal) => abortSignal.reason)
+      .join('\n')
   }
 
   set onabort(listener: () => any) {
@@ -57,6 +61,10 @@ export class AbortSignalComposite {
 
   onAbort(fn: () => any) {
     this.addEventListener('abort', fn)
+  }
+
+  throwIfAborted(): void {
+    if (this.aborted) throw new Error(this.reason)
   }
 
   static create(...abortSignals: Array<AbortSignal | undefined>) {

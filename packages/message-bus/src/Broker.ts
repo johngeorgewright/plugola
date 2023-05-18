@@ -1,4 +1,3 @@
-import { AbortController, AbortSignal } from 'node-abort-controller'
 import type MessageBus from './MessageBus'
 import SubscriptionDisposer from './SubscriptionDisposer'
 import type {

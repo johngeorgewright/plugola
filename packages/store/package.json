@@ -5,11 +5,11 @@
   "main": "dist/Store.js",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean && yarn tsc && yarn rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
-    "clean": "yarn rimraf dist",
-    "start": "yarn tsc --watch --preserveWatchOutput",
-    "release": "yarn semantic-release -e semantic-release-monorepo",
-    "test": "yarn jest"
+    "build": "yarn clean && tsc && rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
+    "clean": "rimraf dist",
+    "start": "tsc --watch --preserveWatchOutput",
+    "release": "semantic-release -e semantic-release-monorepo",
+    "test": "jest"
   },
   "author": "",
   "license": "MIT",
@@ -26,13 +26,13 @@
     "@types/jest": "29.5.1",
     "jest": "29.5.0",
     "jest-environment-jsdom": "29.5.0",
-    "rimraf": "3.0.2",
+    "rimraf": "5.0.1",
     "semantic-release": "21.0.2",
     "semantic-release-monorepo": "7.0.5",
     "ts-jest": "29.1.0",
-    "typescript": "4.9.5"
+    "typescript": "5.0.4"
   },
   "dependencies": {
-    "tslib": "^2.3.1"
+    "tslib": "2.5.1"
   }
 }
