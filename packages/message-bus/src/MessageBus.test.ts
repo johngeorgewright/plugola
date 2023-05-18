@@ -185,6 +185,10 @@ describe('iterators', () => {
       yield 'face'
     })
 
+    broker.generator('bar', 'shouldIgnore', async function* () {
+      yield 'ERROR'
+    })
+
     messageBus.start()
     for await (const result of broker.iterate('bar', 'mung')) {
       results.push(result)
@@ -234,13 +238,19 @@ describe('invokables', () => {
     expect(await promise).toBe('foo')
   })
 
-  test('invoking unregistered', (done) => {
+  test('invoking unregistered', async () => {
     messageBus.start()
-    broker
+    try {
       // @ts-ignore
-      .invoke('not register')
-      .then(() => done('It should have errored.'))
-      .catch(() => done())
+      await broker.invoke('not register')
+    } catch (error) {
+      expect(error).toHaveProperty(
+        'message',
+        'Cannot find matching invoker for "not register".'
+      )
+      return
+    }
+    throw new Error('Invoking an unregistered endpoint should error')
   })
 
   test('registering more than once', () => {

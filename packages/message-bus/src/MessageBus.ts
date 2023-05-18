@@ -517,7 +517,7 @@ export default class MessageBus<
 
     if (!invoker) {
       throw new Error(
-        `Cannot find matching invoker for ${invokableName.toString()}.`
+        `Cannot find matching invoker for "${invokableName.toString()}".`
       )
     }
 
