@@ -54,10 +54,11 @@ jobs:
 
   publish-npm:
     name: NPM
-    if: github.actor != 'renovate[bot]'
     needs: [build]
     runs-on: ubuntu-latest
     environment: npm
+    concurrency:
+      group: release
     steps:
       - name: Checkout project
         uses: actions/checkout@v3

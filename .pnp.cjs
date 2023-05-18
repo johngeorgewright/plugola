@@ -1869,7 +1869,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@johngw-map-npm-1.3.1-e068b85473-db71b66b4a.zip/node_modules/@johngw/map/",\
           "packageDependencies": [\
             ["@johngw/map", "npm:1.3.1"],\
-            ["tslib", "npm:2.5.1"]\
+            ["tslib", "npm:2.5.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1879,7 +1879,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@johngw-object-npm-1.2.2-888b149afa-0e9d5439e9.zip/node_modules/@johngw/object/",\
           "packageDependencies": [\
             ["@johngw/object", "npm:1.2.2"],\
-            ["tslib", "npm:2.5.1"]\
+            ["tslib", "npm:2.5.0"]\
           ],\
           "linkType": "HARD"\
         }]\
