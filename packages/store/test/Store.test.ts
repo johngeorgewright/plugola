@@ -1,4 +1,4 @@
-import { BaseActions, Store } from './Store'
+import { BaseActions, Store } from '../src/Store'
 
 interface Actions extends BaseActions {
   foo: string

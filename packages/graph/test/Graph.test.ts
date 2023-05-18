@@ -1,4 +1,4 @@
-import Graph from './Graph'
+import Graph from '../src/Graph'
 
 let graph: Graph<string, 'like'>
 

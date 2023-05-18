@@ -4,7 +4,7 @@
   "description": "Logger/debugger for the store",
   "main": "dist/index.js",
   "scripts": {
-    "build": "yarn clean && tsc && rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
+    "build": "yarn clean && tsc",
     "clean": "rimraf dist",
     "start": "tsc --watch --preserveWatchOutput",
     "release": "semantic-release -e semantic-release-monorepo",

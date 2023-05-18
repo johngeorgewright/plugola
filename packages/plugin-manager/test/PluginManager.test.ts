@@ -1,5 +1,5 @@
 import { Broker, MessageBus } from '@plugola/message-bus'
-import PluginManager from './PluginManager'
+import PluginManager from '../src/PluginManager'
 import { timeout } from '@johngw/async'
 import { BaseActions, Store } from '@plugola/store'
 

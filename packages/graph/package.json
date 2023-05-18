@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "sideEffects": false,
   "scripts": {
-    "build": "yarn clean && tsc && rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
-    "clean": "yarn rimraf dist",
+    "build": "yarn clean && tsc",
+    "clean": "rimraf dist",
     "start": "tsc --watch --preserveWatchOutput",
     "release": "semantic-release -e semantic-release-monorepo",
     "test": "jest"

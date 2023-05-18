@@ -1,12 +1,12 @@
-import Broker from './Broker'
-import MessageBus from './MessageBus'
-import { CancelEvent } from './symbols'
+import Broker from '../src/Broker'
+import MessageBus from '../src/MessageBus'
+import { CancelEvent } from '../src/symbols'
 import { AbortError, timeout } from '@johngw/async'
-import MessageBusError from './MessageBusError'
-import { AbortSignalComposite } from './AbortController'
-import { CreateEvents } from './types/events'
-import { CreateInvokables } from './types/invokables'
-import { CreateEventGenerators } from './types/generators'
+import MessageBusError from '../src/MessageBusError'
+import { AbortSignalComposite } from '../src/AbortController'
+import { CreateEvents } from '../src/types/events'
+import { CreateInvokables } from '../src/types/invokables'
+import { CreateEventGenerators } from '../src/types/generators'
 
 describe('events', () => {
   type Events = CreateEvents<{ foo: []; bar: [string]; mung: [string, number] }>

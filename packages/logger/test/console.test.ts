@@ -1,4 +1,4 @@
-import console from './console'
+import console from '../src/console'
 
 test('table', () => {
   class Person {

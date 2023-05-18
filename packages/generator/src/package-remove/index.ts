@@ -3,10 +3,7 @@ import { readdir, writeFile } from 'fs/promises'
 import Generator from 'yeoman-generator'
 import { validateGenerationFromRoot } from '../validation'
 import prettier from 'prettier'
-import rimrafCB from 'rimraf'
-import { promisify } from 'util'
-
-const rimraf = promisify(rimrafCB)
+import { rimraf } from 'rimraf'
 
 export = class RemovePackageGenerator extends Generator {
   #vsCodeWS = 'plugola.code-workspace'

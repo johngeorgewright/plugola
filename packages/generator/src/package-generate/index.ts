@@ -68,8 +68,7 @@ export = class PackageGenerator extends Generator {
     }
 
     this.packageJson.set('scripts', {
-      build:
-        "yarn clean && tsc && rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
+      build: 'yarn clean && tsc',
       clean: 'rimraf dist',
       start: 'tsc --watch --preserveWatchOutput',
       release: 'semantic-release -e semantic-release-monorepo',
@@ -117,8 +116,13 @@ export = class PackageGenerator extends Generator {
     )
 
     this.fs.copy(
-      this.templatePath('jest.config.json'),
-      this.destinationPath('jest.config.json')
+      this.templatePath('tsconfig.test.json'),
+      this.destinationPath('tsconfig.test.json')
+    )
+
+    this.fs.copy(
+      this.templatePath('jest.config.ts.template'),
+      this.destinationPath('jest.config.ts')
     )
 
     this.fs.copyTpl(
@@ -140,8 +144,8 @@ export = class PackageGenerator extends Generator {
     )
 
     this.fs.copyTpl(
-      this.templatePath('package-src/index.test.ts.template'),
-      this.destinationPath('src/index.test.ts'),
+      this.templatePath('package-test/index.test.ts.template'),
+      this.destinationPath('test/index.test.ts'),
       context
     )
 

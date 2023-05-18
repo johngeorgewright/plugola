@@ -4,7 +4,7 @@
   "description": "A drop-in replacement for the plugin manager that handles CMP vendors",
   "main": "dist/index.js",
   "scripts": {
-    "build": "yarn clean && tsc && rimraf 'dist/**/?(__tests__|__mocks__|__setup__|*.test.*)'",
+    "build": "yarn clean && tsc",
     "clean": "rimraf dist",
     "start": "tsc --watch --preserveWatchOutput",
     "release": "semantic-release -e semantic-release-monorepo",

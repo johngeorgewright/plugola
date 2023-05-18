@@ -1,4 +1,4 @@
-import parseQueryParams from './parseQueryParams'
+import parseQueryParams from '../src/parseQueryParams'
 
 test('strings', () => {
   expect(parseQueryParams('?foo=bar&mung=face')).toEqual({
