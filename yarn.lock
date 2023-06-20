@@ -2103,6 +2103,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.0.7
     "@semantic-release/release-notes-generator": 11.0.1
+    "@types/jest": 29.5.1
     commitizen: 4.3.0
     cz-conventional-changelog: 3.3.0
     husky: 8.0.3
@@ -2214,6 +2215,7 @@ __metadata:
     semantic-release: 21.0.2
     semantic-release-monorepo: 7.0.5
     ts-jest: 29.1.0
+    ts-toolbelt: 9.6.0
     tslib: 2.5.1
     typescript: 5.0.4
   languageName: unknown

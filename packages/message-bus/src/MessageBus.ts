@@ -34,6 +34,7 @@ import {
 import { Stringable, UnpackResolvableValue } from './types/util'
 import { ErrorHandler, Unsubscriber } from './types/MessageBus'
 import { AbortSignalComposite, fromSignal } from './AbortController'
+import { InvokableNotRegisteredError } from './errors/InvokableNotRegisteredError'
 
 export default class MessageBus<
   Events extends EventsT = EventsT,
@@ -516,9 +517,7 @@ export default class MessageBus<
       invokers.find((invoker) => this.#argumentIndex(invoker.args, args) !== -1)
 
     if (!invoker) {
-      throw new Error(
-        `Cannot find matching invoker for "${invokableName.toString()}".`
-      )
+      throw new InvokableNotRegisteredError(this, invokableName.toString())
     }
 
     return invoker.fn(

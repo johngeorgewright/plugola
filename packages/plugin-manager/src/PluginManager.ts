@@ -219,7 +219,7 @@ export default class PluginManager<
 
     await this.#pluginRace(
       async (signal) => {
-        await this.#mapDependencies(
+        await this.#filterMapDependencies(
           plugin,
           (dep) => !this.#initialized.has(dep),
           (dep) => this.#initPlugin(dep, signal)
@@ -249,7 +249,7 @@ export default class PluginManager<
 
     await this.#pluginRace(
       async (signal) => {
-        await this.#mapDependencies(
+        await this.#filterMapDependencies(
           plugin,
           (dep) => !this.#ran.has(dep),
           (dep) => this.#runPlugin(dep, signal)
@@ -279,7 +279,7 @@ export default class PluginManager<
       : fn(pluginSignal)
   }
 
-  async #mapDependencies(
+  async #filterMapDependencies(
     plugin: Plugin,
     filter: (plugin: Plugin) => boolean,
     map: (plugin: Plugin) => Promise<any>

@@ -61,10 +61,24 @@ export default class VendorPluginManager<
     >
   ) {
     super.registerPlugin(name, plugin)
-    for (const vendorId of vendorIds)
-      this.#vendors = updateMap(this.#vendors, vendorId, (pluginNames) =>
-        pluginNames ? [...pluginNames, name] : [name]
-      )
+    this.#relatedPluginAndVendorIds(name, vendorIds)
+  }
+
+  registerStatefulVendorPlugin<Actions extends BaseActions, State>(
+    name: string,
+    vendorIds: number[],
+    plugin: Omit<
+      StatefulPlugin<
+        Actions,
+        State,
+        InitContext<MB> & ExtraContext & ExtraInitContext,
+        StatefulContext<MB, Actions, State> & ExtraContext & ExtraRunContext
+      >,
+      'name'
+    >
+  ) {
+    super.registerStatefulPlugin(name, plugin)
+    this.#relatedPluginAndVendorIds(name, vendorIds)
   }
 
   async enableAuthorizedPlugins(authorizedVendorIds: number[]) {
@@ -78,5 +92,13 @@ export default class VendorPluginManager<
         []
       ),
     ])
+  }
+
+  #relatedPluginAndVendorIds(pluginName: string, vendorIds: number[]) {
+    for (const vendorId of vendorIds)
+      this.#vendors = updateMap(this.#vendors, vendorId, (pluginNames = []) => [
+        ...pluginNames,
+        pluginName,
+      ])
   }
 }

@@ -16,6 +16,19 @@ export function fromSignal(abortSignal: AbortSignal) {
   return abortController
 }
 
+export class AbortSignalReasonComposite extends Error {
+  #reasons: any[]
+
+  constructor(reasons: any[]) {
+    super('AbortSignalReasonComposite')
+    this.#reasons = reasons
+  }
+
+  get reasons() {
+    return this.#reasons
+  }
+}
+
 /**
  * Monitor multiple AbortSignals using the same interface as
  * a single AbortSignal
@@ -33,9 +46,12 @@ export class AbortSignalComposite implements AbortSignal {
   }
 
   get reason() {
-    return [...this.#abortSignals]
-      .map((abortSignal) => abortSignal.reason)
-      .join('\n')
+    const reasons: any[] = []
+
+    for (const { aborted, reason } of this.#abortSignals)
+      if (aborted) reasons.push(reason)
+
+    return new AbortSignalReasonComposite(reasons)
   }
 
   set onabort(listener: () => any) {
@@ -64,7 +80,7 @@ export class AbortSignalComposite implements AbortSignal {
   }
 
   throwIfAborted(): void {
-    if (this.aborted) throw new Error(this.reason)
+    if (this.aborted) throw this.reason
   }
 
   static create(...abortSignals: Array<AbortSignal | undefined>) {
