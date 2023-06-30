@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
   "devDependencies": {
-    "@plugola/message-bus": "workspace:packages/message-bus",
     "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
@@ -36,12 +35,8 @@
     "typescript": "5.0.4"
   },
   "dependencies": {
-    "@johngw/async": "5.0.0",
+    "@johngw/async": "5.0.1",
     "@plugola/graph": "workspace:packages/graph",
-    "@plugola/store": "workspace:packages/store",
-    "tslib": "2.5.1"
-  },
-  "peerDependencies": {
-    "@plugola/message-bus": "^3.0.0"
+    "tslib": "2.6.0"
   }
 }

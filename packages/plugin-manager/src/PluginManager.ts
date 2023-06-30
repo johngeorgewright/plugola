@@ -1,7 +1,5 @@
-import { RunContext, InitContext, StatefulContext } from './Context'
-import { isStatefulPlugin, Plugin, StatefulPlugin } from './Plugin'
-import { Store, BaseActions } from '@plugola/store'
-import type { MessageBus, MessageBusBroker } from '@plugola/message-bus'
+import { RunContext, InitContext } from './Context'
+import { Plugin } from './Plugin'
 import { race, timeout } from '@johngw/async'
 import DependencyGraph from './DependencyGraph'
 
@@ -17,7 +15,6 @@ export interface PluginManagerOptions<
 }
 
 export default class PluginManager<
-  MB extends MessageBus,
   ExtraContext extends Record<string, unknown>,
   ExtraInitContext extends Record<string, unknown>,
   ExtraRunContext extends Record<string, unknown>
@@ -26,15 +23,8 @@ export default class PluginManager<
   #dependencyGraph = new DependencyGraph<Plugin>()
   #initialized = new Set<Plugin>()
   #ran = new Set<Plugin>()
-  #createStoreHandlers: Array<
-    (
-      pluginName: string,
-      context: StatefulContext<MB> & ExtraContext & ExtraRunContext
-    ) => any
-  > = []
   #abortControllers = new WeakMap<Plugin, AbortController>()
   #enabledPlugins = new Set<string>()
-  #messageBus: MB
   #options: PluginManagerOptions<
     ExtraContext,
     ExtraInitContext,
@@ -42,19 +32,13 @@ export default class PluginManager<
   >
 
   constructor(
-    messageBus: MB,
     options: PluginManagerOptions<
       ExtraContext,
       ExtraInitContext,
       ExtraRunContext
     > = {}
   ) {
-    this.#messageBus = messageBus
     this.#options = options
-  }
-
-  get messageBus() {
-    return this.#messageBus
   }
 
   /**
@@ -67,7 +51,7 @@ export default class PluginManager<
       ExtraRunContext
     >
   ) {
-    const pluginManager = new PluginManager(this.#messageBus, {
+    const pluginManager = new PluginManager({
       ...options,
       addContext: (pluginName) =>
         ({
@@ -87,46 +71,21 @@ export default class PluginManager<
     })
     pluginManager.#plugins = this.#plugins
     pluginManager.#dependencyGraph = this.#dependencyGraph
-    pluginManager.#createStoreHandlers = this.#createStoreHandlers
     pluginManager.#abortControllers = this.#abortControllers
     return pluginManager
-  }
-
-  registerStatefulPlugin<Actions extends BaseActions, State>(
-    name: string,
-    plugin: Omit<
-      StatefulPlugin<
-        Actions,
-        State,
-        InitContext<MB> & ExtraContext & ExtraInitContext,
-        StatefulContext<MB, Actions, State> & ExtraContext & ExtraRunContext
-      >,
-      'name'
-    >
-  ) {
-    this.#addPlugin({ name, ...plugin })
   }
 
   registerPlugin(
     name: string,
     plugin: Omit<
       Plugin<
-        InitContext<MB> & ExtraContext & ExtraInitContext,
-        RunContext<MB> & ExtraContext & ExtraRunContext
+        InitContext & ExtraContext & ExtraInitContext,
+        RunContext & ExtraContext & ExtraRunContext
       >,
       'name'
     >
   ) {
     this.#addPlugin({ name, ...plugin })
-  }
-
-  onCreateStore(
-    handler: (
-      pluginName: string,
-      context: StatefulContext<MB> & ExtraContext & ExtraRunContext
-    ) => any
-  ) {
-    this.#createStoreHandlers.push(handler)
   }
 
   #addPlugin(plugin: Plugin) {
@@ -234,9 +193,7 @@ export default class PluginManager<
   }
 
   async #runPlugin(plugin: Plugin, signal?: AbortSignal) {
-    const runnable =
-      'run' in plugin ||
-      (isStatefulPlugin(plugin) && 'onUpdate' in plugin.state)
+    const runnable = 'run' in plugin
 
     if (this.#ran.has(plugin) || !runnable || signal?.aborted) return
 
@@ -255,9 +212,7 @@ export default class PluginManager<
           (dep) => this.#runPlugin(dep, signal)
         )
 
-        const context = isStatefulPlugin(plugin)
-          ? this.#createStatefulRunContext(plugin, signal)
-          : this.#createRunContext(plugin, signal)
+        const context = this.#createRunContext(plugin, signal)
 
         await plugin.run?.(context)
       },
@@ -311,38 +266,8 @@ export default class PluginManager<
     }
   }
 
-  #createStatefulRunContext(plugin: StatefulPlugin, signal: AbortSignal) {
-    const context = {
-      ...this.#createContext(plugin, signal),
-      store: new Store(plugin.state.initial, plugin.state.reducers),
-      ...(this.#options.addRunContext?.(plugin.name) || {}),
-    }
-
-    this.#notifyCreateStoreHandlers(
-      plugin.name,
-      context as StatefulContext<MB> & ExtraContext & ExtraRunContext
-    )
-
-    context.store.subscribe((action, param, state) =>
-      plugin.state.onUpdate?.(action, param, state, context)
-    )
-
-    context.store.init()
-
-    return context
-  }
-
-  #notifyCreateStoreHandlers(
-    pluginName: string,
-    context: StatefulContext<MB> & ExtraContext & ExtraRunContext
-  ) {
-    for (const handler of this.#createStoreHandlers)
-      handler(pluginName, context)
-  }
-
   #createContext({ name }: Plugin, signal: AbortSignal) {
     return {
-      broker: this.#messageBus.broker(name, signal) as MessageBusBroker<MB>,
       signal,
       ...(this.#options.addContext?.(name) || {}),
     }

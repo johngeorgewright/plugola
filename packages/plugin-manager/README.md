@@ -18,13 +18,10 @@ import './plugins/session-depth'
 ```typescript
 // ./plugin-manager.ts
 
-import { MessageBus } from '@plugola/message-bus'
 import { PluginManager } from '@plugola/plugin-manager'
 import { Logger, ConsoleLoggerBehavior } from '@plugola/logger'
 
-const messageBus = new MessageBus()
-
-const pluginManager = new PluginManager(messageBus, {
+const pluginManager = new PluginManager({
   addContext: (pluginName) => ({
     log: new Logger(pluginName, new ConsoleLoggerBehavior()),
     sessionStorage,
@@ -39,9 +36,7 @@ export default pluginManager
 
 import pluginManager from './pluginManager'
 
-pluginManager.registerPlugin({
-  name: 'session-depth',
-
+pluginManager.registerPlugin('session-depth', {
   async run({ log, sessionStorage }) {
     const depth = Number(sessionStorage.getItem('visitied') || '0') + 1
     log.debug('depth', depth)
