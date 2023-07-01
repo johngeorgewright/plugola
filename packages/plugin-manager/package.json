@@ -36,7 +36,7 @@
     "typescript": "5.0.4"
   },
   "dependencies": {
-    "@johngw/async": "5.0.0",
+    "@johngw/async": "5.0.1",
     "@plugola/graph": "workspace:packages/graph",
     "@plugola/store": "workspace:packages/store",
     "tslib": "2.5.1"

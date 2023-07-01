@@ -1851,6 +1851,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.5.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:5.0.1", {\
+          "packageLocation": "./.yarn/cache/@johngw-async-npm-5.0.1-809f6d0ee4-e26f26d5de.zip/node_modules/@johngw/async/",\
+          "packageDependencies": [\
+            ["@johngw/async", "npm:5.0.1"],\
+            ["@johngw/object", "npm:1.2.3"],\
+            ["tslib", "npm:2.5.2"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@johngw/async-iterator", [\
@@ -1881,6 +1890,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@johngw/object", "npm:1.2.2"],\
             ["tslib", "npm:2.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.3", {\
+          "packageLocation": "./.yarn/cache/@johngw-object-npm-1.2.3-c0e883fa75-60a0dd4248.zip/node_modules/@johngw/object/",\
+          "packageDependencies": [\
+            ["@johngw/object", "npm:1.2.3"],\
+            ["tslib", "npm:2.5.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2715,7 +2732,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/message-bus/",\
           "packageDependencies": [\
             ["@plugola/message-bus", "workspace:packages/message-bus"],\
-            ["@johngw/async", "npm:5.0.0"],\
+            ["@johngw/async", "npm:5.0.1"],\
             ["@johngw/async-iterator", "npm:4.0.0"],\
             ["@semantic-release/commit-analyzer", "virtual:97efea6e6ed679d1b12b286efdf34775793cf3fe0408c2b96c7601039dadfb9d5f6ecc6e60a79c0b5d97872c67aabf027b7d6fd8e25b4de748eccc6c0bfa17ee#npm:9.0.2"],\
             ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
@@ -2775,7 +2792,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/@plugola-plugin-manager-virtual-a832595866/1/packages/plugin-manager/",\
           "packageDependencies": [\
             ["@plugola/plugin-manager", "virtual:b2a0aaf13a51905cc066393ee4e5f1bfd99ff537be4af07e7632f1ba5be627a43aaf1134afa2c7d0e7aa4674f47a1afd5f62992733e4cb8fa35b2088d18ce873#workspace:packages/plugin-manager"],\
-            ["@johngw/async", "npm:5.0.0"],\
+            ["@johngw/async", "npm:5.0.1"],\
             ["@plugola/graph", "workspace:packages/graph"],\
             ["@plugola/message-bus", "workspace:packages/message-bus"],\
             ["@plugola/store", "workspace:packages/store"],\
@@ -2807,7 +2824,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/plugin-manager/",\
           "packageDependencies": [\
             ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],\
-            ["@johngw/async", "npm:5.0.0"],\
+            ["@johngw/async", "npm:5.0.1"],\
             ["@plugola/graph", "workspace:packages/graph"],\
             ["@plugola/message-bus", "workspace:packages/message-bus"],\
             ["@plugola/store", "workspace:packages/store"],\
@@ -15261,6 +15278,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/tslib-npm-2.5.1-71910bf222-535e41e956.zip/node_modules/tslib/",\
           "packageDependencies": [\
             ["tslib", "npm:2.5.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:2.5.2", {\
+          "packageLocation": "./.yarn/cache/tslib-npm-2.5.2-3f1b58afbb-4d3c1e238b.zip/node_modules/tslib/",\
+          "packageDependencies": [\
+            ["tslib", "npm:2.5.2"]\
           ],\
           "linkType": "HARD"\
         }]\
