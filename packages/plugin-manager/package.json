@@ -39,7 +39,7 @@
     "@johngw/async": "5.0.1",
     "@plugola/graph": "workspace:packages/graph",
     "@plugola/store": "workspace:packages/store",
-    "tslib": "2.5.1"
+    "tslib": "2.6.0"
   },
   "peerDependencies": {
     "@plugola/message-bus": "^3.0.0"
