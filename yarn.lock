@@ -1302,24 +1302,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/async-iterator@npm:4.0.0":
-  version: 4.0.0
-  resolution: "@johngw/async-iterator@npm:4.0.0"
+"@johngw/async-iterator@npm:4.0.1":
+  version: 4.0.1
+  resolution: "@johngw/async-iterator@npm:4.0.1"
   dependencies:
-    "@johngw/async": 5.0.0
-    "@johngw/object": 1.2.2
-    tslib: 2.5.1
-  checksum: f928131a092d2170ae5d2ff8e8da78f23a79bede8da1a6dd639b2aad2c2bf239c1d3498322814090ed95e28bc90edaa796e8603343048dedbf6bb3a337acec42
-  languageName: node
-  linkType: hard
-
-"@johngw/async@npm:5.0.0":
-  version: 5.0.0
-  resolution: "@johngw/async@npm:5.0.0"
-  dependencies:
-    "@johngw/object": 1.2.2
-    tslib: 2.5.1
-  checksum: 37268520bd3311514544dc7fbf96f697f07c0725b8f7085402a59653b7f6c53336e8bbcb6898698430302dafb8e922970164b6be4d1669e0de4eb524257233a3
+    "@johngw/async": 5.0.1
+    "@johngw/object": 1.2.3
+    tslib: 2.5.2
+  checksum: bc30e75b94defce0878a5847cc317c49d080b0a93c09fd54e03deced42c1e116488f61026757361010ae9ccbdd3d152e5f9b28403a1e8aa451c63f94c5270a1e
   languageName: node
   linkType: hard
 
@@ -1339,15 +1329,6 @@ __metadata:
   dependencies:
     tslib: ^2.5.0
   checksum: db71b66b4ab0f23b6696109fd0921c1b1c5fb2609ac90267aca075d78443f6d52da319553398537efb882e6ff3a1c757d7767afad0bcc32ebbc8f916a7914efd
-  languageName: node
-  linkType: hard
-
-"@johngw/object@npm:1.2.2":
-  version: 1.2.2
-  resolution: "@johngw/object@npm:1.2.2"
-  dependencies:
-    tslib: ^2.5.0
-  checksum: 0e9d5439e915c4e066b171fde0440af60d975c2c4ccc713012f8bd8f87e373d31bf793cb3442115958952c85a5341da52092cff7c7a90327e5201e8611d564af
   languageName: node
   linkType: hard
 
@@ -2090,7 +2071,7 @@ __metadata:
   resolution: "@plugola/message-bus@workspace:packages/message-bus"
   dependencies:
     "@johngw/async": 5.0.1
-    "@johngw/async-iterator": 4.0.0
+    "@johngw/async-iterator": 4.0.1
     "@semantic-release/commit-analyzer": 9.0.2
     "@semantic-release/exec": 6.0.3
     "@semantic-release/git": 10.0.1

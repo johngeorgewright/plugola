@@ -1843,15 +1843,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/async", [\
-        ["npm:5.0.0", {\
-          "packageLocation": "./.yarn/cache/@johngw-async-npm-5.0.0-d80741554a-37268520bd.zip/node_modules/@johngw/async/",\
-          "packageDependencies": [\
-            ["@johngw/async", "npm:5.0.0"],\
-            ["@johngw/object", "npm:1.2.2"],\
-            ["tslib", "npm:2.5.1"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:5.0.1", {\
           "packageLocation": "./.yarn/cache/@johngw-async-npm-5.0.1-809f6d0ee4-e26f26d5de.zip/node_modules/@johngw/async/",\
           "packageDependencies": [\
@@ -1863,13 +1854,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/async-iterator", [\
-        ["npm:4.0.0", {\
-          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-4.0.0-610aea9f91-f928131a09.zip/node_modules/@johngw/async-iterator/",\
+        ["npm:4.0.1", {\
+          "packageLocation": "./.yarn/cache/@johngw-async-iterator-npm-4.0.1-ebcf9b92b3-bc30e75b94.zip/node_modules/@johngw/async-iterator/",\
           "packageDependencies": [\
-            ["@johngw/async-iterator", "npm:4.0.0"],\
-            ["@johngw/async", "npm:5.0.0"],\
-            ["@johngw/object", "npm:1.2.2"],\
-            ["tslib", "npm:2.5.1"]\
+            ["@johngw/async-iterator", "npm:4.0.1"],\
+            ["@johngw/async", "npm:5.0.1"],\
+            ["@johngw/object", "npm:1.2.3"],\
+            ["tslib", "npm:2.5.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1885,14 +1876,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/object", [\
-        ["npm:1.2.2", {\
-          "packageLocation": "./.yarn/cache/@johngw-object-npm-1.2.2-888b149afa-0e9d5439e9.zip/node_modules/@johngw/object/",\
-          "packageDependencies": [\
-            ["@johngw/object", "npm:1.2.2"],\
-            ["tslib", "npm:2.5.0"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:1.2.3", {\
           "packageLocation": "./.yarn/cache/@johngw-object-npm-1.2.3-c0e883fa75-60a0dd4248.zip/node_modules/@johngw/object/",\
           "packageDependencies": [\
@@ -2733,7 +2716,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@plugola/message-bus", "workspace:packages/message-bus"],\
             ["@johngw/async", "npm:5.0.1"],\
-            ["@johngw/async-iterator", "npm:4.0.0"],\
+            ["@johngw/async-iterator", "npm:4.0.1"],\
             ["@semantic-release/commit-analyzer", "virtual:97efea6e6ed679d1b12b286efdf34775793cf3fe0408c2b96c7601039dadfb9d5f6ecc6e60a79c0b5d97872c67aabf027b7d6fd8e25b4de748eccc6c0bfa17ee#npm:9.0.2"],\
             ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
