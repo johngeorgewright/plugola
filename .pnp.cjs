@@ -2811,7 +2811,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.1.1"],\
             ["tslib", "npm:2.6.0"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"],\
-            ["yeoman-generator", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.8.0"]\
+            ["yeoman-generator", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.9.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -11054,10 +11054,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:229688e0cb9129569fb58f0685dd870cc2c9a57f813beebabeebe36a2f4520b389c2ba637bccee860286aa2b4fea7ca0d1d6e81e8ea64ca60f4f1e59b58e235c#npm:9.6.0", {\
-          "packageLocation": "./.yarn/__virtual__/mem-fs-editor-virtual-450c9ab746/0/cache/mem-fs-editor-npm-9.6.0-20979aee09-e8bbab0366.zip/node_modules/mem-fs-editor/",\
+        ["virtual:99748abe166cc4df12ccb1d8bf5f36119575bbac641336674ece41a77a33c7a30068644ea6ba03fa9ad10bfcb3fb78f9ab379d6d8c660a62cee8436ff030b328#npm:9.6.0", {\
+          "packageLocation": "./.yarn/__virtual__/mem-fs-editor-virtual-1a1ad71aae/0/cache/mem-fs-editor-npm-9.6.0-20979aee09-e8bbab0366.zip/node_modules/mem-fs-editor/",\
           "packageDependencies": [\
-            ["mem-fs-editor", "virtual:229688e0cb9129569fb58f0685dd870cc2c9a57f813beebabeebe36a2f4520b389c2ba637bccee860286aa2b4fea7ca0d1d6e81e8ea64ca60f4f1e59b58e235c#npm:9.6.0"],\
+            ["mem-fs-editor", "virtual:99748abe166cc4df12ccb1d8bf5f36119575bbac641336674ece41a77a33c7a30068644ea6ba03fa9ad10bfcb3fb78f9ab379d6d8c660a62cee8436ff030b328#npm:9.6.0"],\
             ["@types/mem-fs", null],\
             ["binaryextensions", "npm:4.18.0"],\
             ["commondir", "npm:1.0.1"],\
@@ -12692,6 +12692,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/pacote-npm-15.1.3-c419c60be9-de03c08e2e.zip/node_modules/pacote/",\
           "packageDependencies": [\
             ["pacote", "npm:15.1.3"],\
+            ["@npmcli/git", "npm:4.0.4"],\
+            ["@npmcli/installed-package-contents", "npm:2.0.2"],\
+            ["@npmcli/promise-spawn", "npm:6.0.2"],\
+            ["@npmcli/run-script", "npm:6.0.1"],\
+            ["cacache", "npm:17.1.0"],\
+            ["fs-minipass", "npm:3.0.2"],\
+            ["minipass", "npm:5.0.0"],\
+            ["npm-package-arg", "npm:10.1.0"],\
+            ["npm-packlist", "npm:7.0.4"],\
+            ["npm-pick-manifest", "npm:8.0.1"],\
+            ["npm-registry-fetch", "npm:14.0.5"],\
+            ["proc-log", "npm:3.0.0"],\
+            ["promise-retry", "npm:2.0.1"],\
+            ["read-package-json", "npm:6.0.3"],\
+            ["read-package-json-fast", "npm:3.0.2"],\
+            ["sigstore", "npm:1.4.0"],\
+            ["ssri", "npm:10.0.4"],\
+            ["tar", "npm:6.1.14"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:15.2.0", {\
+          "packageLocation": "./.yarn/cache/pacote-npm-15.2.0-b9ed3321e9-c731572be2.zip/node_modules/pacote/",\
+          "packageDependencies": [\
+            ["pacote", "npm:15.2.0"],\
             ["@npmcli/git", "npm:4.0.4"],\
             ["@npmcli/installed-package-contents", "npm:2.0.2"],\
             ["@npmcli/promise-spawn", "npm:6.0.2"],\
@@ -16629,17 +16654,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["yeoman-generator", [\
-        ["npm:5.8.0", {\
-          "packageLocation": "./.yarn/cache/yeoman-generator-npm-5.8.0-57279166fe-dd9fbbfca7.zip/node_modules/yeoman-generator/",\
+        ["npm:5.9.0", {\
+          "packageLocation": "./.yarn/cache/yeoman-generator-npm-5.9.0-c857a16d32-f9e76e21af.zip/node_modules/yeoman-generator/",\
           "packageDependencies": [\
-            ["yeoman-generator", "npm:5.8.0"]\
+            ["yeoman-generator", "npm:5.9.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.8.0", {\
-          "packageLocation": "./.yarn/__virtual__/yeoman-generator-virtual-229688e0cb/0/cache/yeoman-generator-npm-5.8.0-57279166fe-dd9fbbfca7.zip/node_modules/yeoman-generator/",\
+        ["virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.9.0", {\
+          "packageLocation": "./.yarn/__virtual__/yeoman-generator-virtual-99748abe16/0/cache/yeoman-generator-npm-5.9.0-c857a16d32-f9e76e21af.zip/node_modules/yeoman-generator/",\
           "packageDependencies": [\
-            ["yeoman-generator", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.8.0"],\
+            ["yeoman-generator", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:5.9.0"],\
             ["@types/yeoman-environment", null],\
             ["chalk", "npm:4.1.2"],\
             ["dargs", "npm:7.0.0"],\
@@ -16647,8 +16672,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["execa", "npm:5.1.1"],\
             ["github-username", "npm:6.0.0"],\
             ["lodash", "npm:4.17.21"],\
-            ["mem-fs-editor", "virtual:229688e0cb9129569fb58f0685dd870cc2c9a57f813beebabeebe36a2f4520b389c2ba637bccee860286aa2b4fea7ca0d1d6e81e8ea64ca60f4f1e59b58e235c#npm:9.6.0"],\
+            ["mem-fs-editor", "virtual:99748abe166cc4df12ccb1d8bf5f36119575bbac641336674ece41a77a33c7a30068644ea6ba03fa9ad10bfcb3fb78f9ab379d6d8c660a62cee8436ff030b328#npm:9.6.0"],\
             ["minimist", "npm:1.2.5"],\
+            ["pacote", "npm:15.2.0"],\
             ["read-pkg-up", "npm:7.0.1"],\
             ["run-async", "npm:2.4.1"],\
             ["semver", "npm:7.3.5"],\
