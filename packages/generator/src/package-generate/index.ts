@@ -172,16 +172,5 @@ export = class PackageGenerator extends Generator {
 
   async install() {
     this.spawnCommandSync('yarn', [])
-
-    if (this.#answers.public) {
-      this.spawnCommandSync('yarn', [
-        'workspace',
-        `${this.#namespace}/${paramCase(this.#answers.name!)}`,
-        'npm',
-        'publish',
-        '--access',
-        'public',
-      ])
-    }
   }
 }
