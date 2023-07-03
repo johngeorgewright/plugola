@@ -27,25 +27,25 @@ beforeEach(() => {
   streams = new Streams()
 })
 
-test('accessing streams from a dictionary', async () => {
+test('accessing streams from a dictionary', (done) => {
   expect(streams.fork('bar')).toBeInstanceOf(ReadableStream)
-  expect(streams.control('bar')).toBeInstanceOf(Promise)
   streams.start()
-  expect(await streams.control('bar')).toBeInstanceOf(SubjectController)
+  streams.control('bar', (controller) => {
+    expect(controller).toBeInstanceOf(SubjectController)
+    done()
+  })
 })
 
 test('subscribing to a stream before it has been controlled', async () => {
-  const promise = Promise.all([
-    expect(streams.fork('foo')).toMatchTimeline(`
-      -hello-world-
-    `),
+  const promise = expect(streams.fork('foo')).toMatchTimeline(`
+    -hello-world-
+  `)
 
-    streams.control('foo').then((controller) => {
-      controller.enqueue('hello')
-      controller.enqueue('world')
-      controller.close()
-    }),
-  ])
+  streams.control('foo', (controller) => {
+    controller.enqueue('hello')
+    controller.enqueue('world')
+    controller.close()
+  })
 
   streams.start()
 
@@ -53,29 +53,26 @@ test('subscribing to a stream before it has been controlled', async () => {
 })
 
 test('subscribing to a stream after it has been controlled', async () => {
-  const promise = Promise.all([
-    streams.control('foo').then((controller) => {
-      controller.enqueue('hello')
-      controller.enqueue('world')
-      controller.close()
-    }),
-
-    expect(streams.fork('foo')).toMatchTimeline(`
-      -hello-world-
-    `),
-  ])
+  streams.control('foo', (controller) => {
+    controller.enqueue('hello')
+    controller.enqueue('world')
+    controller.close()
+  })
 
   streams.start()
 
-  await promise
+  await expect(streams.fork('foo')).toMatchTimeline(`
+    -hello-world-
+  `)
 })
 
 test('recall streams', async () => {
   streams.start()
-  const controller = await streams.controlRecall('foo')
-  controller.enqueue('hello')
-  controller.enqueue('world')
-  controller.close()
+  streams.controlRecall('foo', (controller) => {
+    controller.enqueue('hello')
+    controller.enqueue('world')
+    controller.close()
+  })
   expect(await toArray(streams.forkRecall('foo'))).toEqual(['hello', 'world'])
   expect(await toArray(streams.forkRecall('foo'))).toEqual(['world'])
   expect(await toArray(streams.forkRecall('foo'))).toEqual(['world'])
@@ -92,26 +89,28 @@ test('replay streams', async () => {
   expect(await toArray(streams.forkReplay('bar'))).toEqual(['hello', 'world'])
 })
 
-test('stateful streams', async () => {
+test('stateful streams', (done) => {
   streams.start()
-  const promise = streams.forkState('foo').then(toArray)
+  streams.forkState('foo', async (stream) => {
+    expect(await toArray(stream)).toMatchInlineSnapshot(`
+      [
+        {
+          "action": "__INIT__",
+          "state": 1,
+        },
+        {
+          "action": "inc",
+          "param": undefined,
+          "state": 2,
+        },
+      ]
+    `)
+    done()
+  })
   const controller = streams.controlState('foo', {
     __INIT__: () => 1,
     inc: (state) => state + 1,
   })
   controller.dispatch('inc')
   controller.close()
-  expect(await promise).toMatchInlineSnapshot(`
-    [
-      {
-        "action": "__INIT__",
-        "state": 1,
-      },
-      {
-        "action": "inc",
-        "param": undefined,
-        "state": 2,
-      },
-    ]
-  `)
 })

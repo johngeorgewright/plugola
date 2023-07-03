@@ -4,6 +4,7 @@ import {
   ForkableRecallStream,
   ForkableReplayStream,
   StatefulSubject,
+  StateReducerOutput,
   StateReducers,
   Subject,
 } from '@johngw/stream'
@@ -56,25 +57,45 @@ export class Streams<
     return this.#replaySubject(name).fork()
   }
 
-  async forkState<Name extends keyof StatefulSubjects>(name: Name) {
-    await this.#whenRunning
-    if (!this.#statefulSubjects[name])
-      throw new Error(`No stateful subject "${String(name)}".`)
-    return this.#statefulSubjects[name].fork()
+  forkState<Name extends keyof StatefulSubjects>(
+    name: Name,
+    cb: (
+      stream: ReadableStream<
+        StateReducerOutput<
+          StatefulSubjects[Name]['actions'],
+          StatefulSubjects[Name]['state']
+        >
+      >
+    ) => any
+  ) {
+    this.#whenRunning.then(() => {
+      if (!this.#statefulSubjects[name])
+        throw new Error(`No stateful subject "${String(name)}".`)
+      cb(
+        this.#statefulSubjects[name].fork() as ReadableStream<
+          StateReducerOutput<
+            StatefulSubjects[Name]['actions'],
+            StatefulSubjects[Name]['state']
+          >
+        >
+      )
+    })
   }
 
-  async control<Name extends keyof Subjects>(
-    name: Name
-  ): Promise<Controllable<Subjects[Name]>> {
-    await this.#whenRunning
-    return this.#subject(name).control()
+  control<Name extends keyof Subjects>(
+    name: Name,
+    cb: (controller: Controllable<Subjects[Name]>) => any
+  ) {
+    this.#whenRunning.then(() => cb(this.#subject(name).control()))
   }
 
-  async controlRecall<Name extends keyof RecallSubjects>(
-    name: Name
-  ): Promise<Controllable<RecallSubjects[Name]>> {
-    await this.#whenRunning
-    return this.#recallSubject(name).control()
+  controlRecall<Name extends keyof RecallSubjects>(
+    name: Name,
+    cb: (controller: Controllable<RecallSubjects[Name]>) => any
+  ) {
+    this.#whenRunning.then(() => {
+      cb(this.#recallSubject(name).control())
+    })
   }
 
   controlReplay<Name extends keyof ReplaySubjects>(
