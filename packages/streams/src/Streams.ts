@@ -113,11 +113,13 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
   }
 
   #whenStarted(signal?: AbortSignal) {
-    return new Promise<void>((resolve, reject) => {
-      if (signal?.aborted) return reject(new AbortError())
-      signal?.addEventListener('abort', () => reject(new AbortError()))
-      this.#untilStart.then(resolve)
-    })
+    return signal
+      ? new Promise<void>((resolve, reject) => {
+          if (signal.aborted) return reject(new AbortError())
+          signal.addEventListener('abort', () => reject(new AbortError()))
+          this.#untilStart.then(resolve)
+        })
+      : this.#untilStart
   }
 
   #subject<Name extends keyof Dict['subjects']>(name: Name) {
