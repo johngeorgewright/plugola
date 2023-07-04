@@ -1,4 +1,4 @@
-import { defer } from '@johngw/async'
+import { AbortError, defer } from '@johngw/async'
 import {
   Controllable,
   ForkableRecallStream,
@@ -47,13 +47,13 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
     StatefulSubject<StateReducers<any, any>, any>
   >
 
-  readonly #whenRunning: Promise<void>
+  readonly #untilStart: Promise<void>
 
   readonly start: () => void
 
   constructor() {
     const deffered = defer()
-    this.#whenRunning = deffered.promise
+    this.#untilStart = deffered.promise
     this.start = deffered.resolve
   }
 
@@ -69,18 +69,27 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
     return this.#replaySubject(name).fork()
   }
 
-  async forkState<Name extends keyof Dict['statefulSubjects']>(name: Name) {
-    await this.#whenRunning
+  async forkState<Name extends keyof Dict['statefulSubjects']>(
+    name: Name,
+    signal?: AbortSignal
+  ) {
+    await this.#whenStarted(signal)
     return this.#statefulSubject(name).fork()
   }
 
-  async control<Name extends keyof Dict['subjects']>(name: Name) {
-    await this.#whenRunning
+  async control<Name extends keyof Dict['subjects']>(
+    name: Name,
+    signal?: AbortSignal
+  ) {
+    await this.#whenStarted(signal)
     return this.#subject(name).control()
   }
 
-  async controlRecall<Name extends keyof Dict['recallSubjects']>(name: Name) {
-    await this.#whenRunning
+  async controlRecall<Name extends keyof Dict['recallSubjects']>(
+    name: Name,
+    signal?: AbortSignal
+  ) {
+    await this.#whenStarted(signal)
     return this.#recallSubject(name).control()
   }
 
@@ -97,14 +106,18 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
       Dict['statefulSubjects'][Name]['state']
     >
   ) {
-    if (reducers) {
-      if (this.#statefulSubjects[name])
-        throw new Error(
-          `Cannot override the stateful subject "${String(name)}"`
-        )
-      this.#statefulSubjects[name] = new StatefulSubject(reducers)
-    }
-    return this.#statefulSubject(name).control()
+    return this.#statefulSubject(
+      name,
+      reducers && new StatefulSubject(reducers)
+    ).control()
+  }
+
+  #whenStarted(signal?: AbortSignal) {
+    return new Promise<void>((resolve, reject) => {
+      if (signal?.aborted) return reject(new AbortError())
+      signal?.addEventListener('abort', () => reject(new AbortError()))
+      this.#untilStart.then(resolve)
+    })
   }
 
   #subject<Name extends keyof Dict['subjects']>(name: Name) {
@@ -128,8 +141,20 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
     return this.#replaySubjects[name] as Subject<Dict['replaySubjects'][Name]>
   }
 
-  #statefulSubject<Name extends keyof Dict['statefulSubjects']>(name: Name) {
-    if (!this.#statefulSubjects[name])
+  #statefulSubject<Name extends keyof Dict['statefulSubjects']>(
+    name: Name,
+    subject?: StatefulSubject<
+      Dict['statefulSubjects'][Name]['actions'],
+      Dict['statefulSubjects'][Name]['state']
+    >
+  ) {
+    if (subject)
+      if (this.#statefulSubjects[name])
+        throw new Error(
+          `Cannot override the stateful subject "${String(name)}"`
+        )
+      else this.#statefulSubjects[name] = subject
+    else if (!this.#statefulSubjects[name])
       throw new Error(
         `No registered stateful subject "${String(
           name
