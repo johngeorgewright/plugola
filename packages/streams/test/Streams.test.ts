@@ -2,38 +2,36 @@ import { SubjectController, toArray } from '@johngw/stream'
 import { Streams } from '../src'
 import '@johngw/stream-jest'
 
-let streams: Streams<
-  {
+let streams: Streams<{
+  subjects: {
     foo: string
     bar: { a: number; b: string }
-  },
-  {
+  }
+  recallSubjects: {
     foo: string
     bar: number
-  },
-  {
+  }
+  replaySubjects: {
     foo: number
     bar: string
-  },
-  {
+  }
+  statefulSubjects: {
     foo: {
       actions: { inc: void }
       state: number
     }
   }
->
+}>
 
 beforeEach(() => {
   streams = new Streams()
 })
 
-test('accessing streams from a dictionary', (done) => {
+test('accessing streams from a dictionary', async () => {
   expect(streams.fork('bar')).toBeInstanceOf(ReadableStream)
   streams.start()
-  streams.control('bar', (controller) => {
-    expect(controller).toBeInstanceOf(SubjectController)
-    done()
-  })
+  const controller = await streams.control('bar')
+  expect(controller).toBeInstanceOf(SubjectController)
 })
 
 test('subscribing to a stream before it has been controlled', async () => {
@@ -41,7 +39,7 @@ test('subscribing to a stream before it has been controlled', async () => {
     -hello-world-
   `)
 
-  streams.control('foo', (controller) => {
+  streams.control('foo').then((controller) => {
     controller.enqueue('hello')
     controller.enqueue('world')
     controller.close()
@@ -53,7 +51,7 @@ test('subscribing to a stream before it has been controlled', async () => {
 })
 
 test('subscribing to a stream after it has been controlled', async () => {
-  streams.control('foo', (controller) => {
+  streams.control('foo').then((controller) => {
     controller.enqueue('hello')
     controller.enqueue('world')
     controller.close()
@@ -68,7 +66,7 @@ test('subscribing to a stream after it has been controlled', async () => {
 
 test('recall streams', async () => {
   streams.start()
-  streams.controlRecall('foo', (controller) => {
+  streams.controlRecall('foo').then((controller) => {
     controller.enqueue('hello')
     controller.enqueue('world')
     controller.close()
@@ -89,10 +87,11 @@ test('replay streams', async () => {
   expect(await toArray(streams.forkReplay('bar'))).toEqual(['hello', 'world'])
 })
 
-test('stateful streams', (done) => {
-  streams.start()
-  streams.forkState('foo', async (stream) => {
-    expect(await toArray(stream)).toMatchInlineSnapshot(`
+test('stateful streams', async () => {
+  const p = expect(
+    streams.forkState('foo').then(toArray)
+  ).resolves.toMatchInlineSnapshot(
+    `
       [
         {
           "action": "__INIT__",
@@ -104,13 +103,14 @@ test('stateful streams', (done) => {
           "state": 2,
         },
       ]
-    `)
-    done()
-  })
+    `
+  )
   const controller = streams.controlState('foo', {
     __INIT__: () => 1,
     inc: (state) => state + 1,
   })
   controller.dispatch('inc')
   controller.close()
+  streams.start()
+  await p
 })
