@@ -77,7 +77,16 @@ parseQueryParams('cfg.foo=bar', {
   // ... but only use query params that start with `cfg.`
   filter: (key) => key.startsWith('cfg.'),
   // ... and remove `cfg.` from the property name
-  amendKey: (key) => key.substr(3),
+  amendKey: (key) => key.substr(4),
 })
 // { foo: 'bar' }
+
+// Or achieving a similar thing with `set` prop.
+parseQueryParams('cfg.foo=bar', {
+  into: config,
+  set: (queryParams, key, value) =>
+    key.startsWith('cfg.')
+      ? { ...queryParams, [key.substr(4)]: value }
+      : queryParams,
+})
 ```

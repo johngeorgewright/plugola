@@ -3211,9 +3211,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.3"],\
             ["@types/jest", "npm:29.5.2"],\
+            ["@types/lodash.set", "npm:4.3.7"],\
             ["@types/node", "npm:18.16.12"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.0"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.6.0"],\
+            ["lodash.set", "npm:4.3.2"],\
             ["rimraf", "npm:5.0.1"],\
             ["semantic-release", "npm:21.0.6"],\
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.5"],\
@@ -4221,6 +4223,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/keyv", "npm:3.1.4"],\
             ["@types/node", "npm:16.11.11"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/lodash", [\
+        ["npm:4.14.195", {\
+          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.195-a2a8254638-39b75ca635.zip/node_modules/@types/lodash/",\
+          "packageDependencies": [\
+            ["@types/lodash", "npm:4.14.195"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/lodash.set", [\
+        ["npm:4.3.7", {\
+          "packageLocation": "./.yarn/cache/@types-lodash.set-npm-4.3.7-82bc374ea5-18bedc56ff.zip/node_modules/@types/lodash.set/",\
+          "packageDependencies": [\
+            ["@types/lodash.set", "npm:4.3.7"],\
+            ["@types/lodash", "npm:4.14.195"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -11407,6 +11428,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash.padstart-npm-4.6.1-c905d3b705-0d6ad92c62.zip/node_modules/lodash.padstart/",\
           "packageDependencies": [\
             ["lodash.padstart", "npm:4.6.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lodash.set", [\
+        ["npm:4.3.2", {\
+          "packageLocation": "./.yarn/cache/lodash.set-npm-4.3.2-7586c942c2-a9122f49ee.zip/node_modules/lodash.set/",\
+          "packageDependencies": [\
+            ["lodash.set", "npm:4.3.2"]\
           ],\
           "linkType": "HARD"\
         }]\

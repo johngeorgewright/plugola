@@ -2465,9 +2465,11 @@ __metadata:
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 11.0.3
     "@types/jest": 29.5.2
+    "@types/lodash.set": 4.3.7
     "@types/node": 18.16.12
     jest: 29.6.0
     jest-environment-jsdom: 29.6.0
+    lodash.set: 4.3.2
     rimraf: 5.0.1
     semantic-release: 21.0.6
     semantic-release-monorepo: 7.0.5
@@ -3173,6 +3175,22 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: b5f8aa592cc21c16d99e69aec0976f12b893b055e4456d90148a610a6b6088e297b2ba5f38f8c8280cef006cfd8f9ec99e069905020882619dc5fc8aa46f5f27
+  languageName: node
+  linkType: hard
+
+"@types/lodash.set@npm:4.3.7":
+  version: 4.3.7
+  resolution: "@types/lodash.set@npm:4.3.7"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: 18bedc56ff2ed38b4efbeefef3b5bc0edfa24c821e5242d2c6180875cf890f4b98b325179ce71dd2e412e719d5a497857a9a494ce1be3245a69a97f2e17a624b
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.14.195
+  resolution: "@types/lodash@npm:4.14.195"
+  checksum: 39b75ca635b3fa943d17d3d3aabc750babe4c8212485a4df166fe0516e39288e14b0c60afc6e21913cc0e5a84734633c71e617e2bd14eaa1cf51b8d7799c432e
   languageName: node
   linkType: hard
 
@@ -9630,6 +9648,13 @@ __metadata:
   version: 4.6.1
   resolution: "lodash.padstart@npm:4.6.1"
   checksum: 0d6ad92c626d351db85de539e41df3238d7d36c5fbfc5f57c4f060c90c73ad9f1db566463487795fdf0bf290a8f133189a0bd91d051032f6eb2d15b7e1863b5e
+  languageName: node
+  linkType: hard
+
+"lodash.set@npm:4.3.2":
+  version: 4.3.2
+  resolution: "lodash.set@npm:4.3.2"
+  checksum: a9122f49eef9f2d0fc9061a33d87f8e5b8c6b23d46e8b9e9ce1529d3588d79741bd1145a3abdfa3b13082703e65af27ff18d8a07bfc22b9be32f3fc36f763f70
   languageName: node
   linkType: hard
 
