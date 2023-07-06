@@ -39,6 +39,13 @@ parseQueryParams('foo[+]=bar,face', into:{foo:['mung']})
 // { foo: ['mung', 'bar', 'face'] }
 ```
 
+#### Subtracting from arrays
+
+```javascript
+parseQueryParams('foo[-]=mung', { into: { foo: ['bar', 'mung'] } })
+// { foo: ['bar'] }
+```
+
 ### Flags
 
 ```javascript
