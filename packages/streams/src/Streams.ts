@@ -3,7 +3,10 @@ import {
   Controllable,
   ForkableRecallStream,
   ForkableReplayStream,
+  interpose,
   StatefulSubject,
+  StateReducerInput,
+  StateReducerOutput,
   StateReducers,
   Subject,
 } from '@johngw/stream'
@@ -30,22 +33,24 @@ export type CreateStreamDict<D extends Partial<StreamDict>> = O.Merge<
 >
 
 export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
-  readonly #subjects = {} as Record<keyof Dict['subjects'], Subject<unknown>>
+  readonly #subjects: Partial<
+    Record<keyof Dict['subjects'], Subject<unknown>>
+  > = {}
 
-  readonly #recallSubjects = {} as Record<
-    keyof Dict['recallSubjects'],
-    Subject<unknown>
-  >
+  readonly #recallSubjects: Partial<
+    Record<keyof Dict['recallSubjects'], Subject<unknown>>
+  > = {}
 
-  readonly #replaySubjects = {} as Record<
-    keyof Dict['replaySubjects'],
-    Subject<unknown>
-  >
+  readonly #replaySubjects: Partial<
+    Record<keyof Dict['replaySubjects'], Subject<unknown>>
+  > = {}
 
-  readonly #statefulSubjects = {} as Record<
-    keyof Dict['statefulSubjects'],
-    StatefulSubject<StateReducers<any, any>, any>
-  >
+  readonly #statefulSubjects: Partial<
+    Record<
+      keyof Dict['statefulSubjects'],
+      StatefulSubject<StateReducers<any, any>, any>
+    >
+  > = {}
 
   readonly #untilStart: Promise<void>
 
@@ -58,45 +63,66 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
   }
 
   fork<Name extends keyof Dict['subjects']>(name: Name) {
-    return this.#subject(name).fork()
+    return this.subject(name).fork()
   }
 
   forkRecall<Name extends keyof Dict['recallSubjects']>(name: Name) {
-    return this.#recallSubject(name).fork()
+    return this.recallSubject(name).fork()
   }
 
   forkReplay<Name extends keyof Dict['replaySubjects']>(name: Name) {
-    return this.#replaySubject(name).fork()
+    return this.replaySubject(name).fork()
   }
 
-  async forkState<Name extends keyof Dict['statefulSubjects']>(
+  forkState<Name extends keyof Dict['statefulSubjects']>(
     name: Name,
-    signal?: AbortSignal
+    signal?: AbortSignal,
   ) {
-    await this.#whenStarted(signal)
-    return this.#statefulSubject(name).fork()
+    type O = StateReducerOutput<
+      Dict['statefulSubjects'][Name]['actions'],
+      Dict['statefulSubjects'][Name]['state']
+    >
+
+    let reader: ReadableStreamDefaultReader<O>
+
+    return new ReadableStream<O>({
+      start: async () => {
+        await this.whenStarted(signal)
+        reader = this.statefulSubject(name).fork().getReader()
+      },
+
+      cancel: (reason) => reader.cancel(reason),
+
+      pull: async (controller) => {
+        let result: ReadableStreamReadResult<O>
+        try {
+          result = await reader.read()
+        } catch (error) {
+          return controller.error(error)
+        }
+        if (result.done) return controller.close()
+        else controller.enqueue(result.value)
+      },
+    })
   }
 
-  async control<Name extends keyof Dict['subjects']>(
+  control<Name extends keyof Dict['subjects']>(
     name: Name,
-    signal?: AbortSignal
-  ) {
-    await this.#whenStarted(signal)
-    return this.#subject(name).control()
+    signal?: AbortSignal,
+  ): Controllable<Dict['subjects'][Name]> {
+    return this.subject(name, signal).control()
   }
 
-  async controlRecall<Name extends keyof Dict['recallSubjects']>(
+  controlRecall<Name extends keyof Dict['recallSubjects']>(
     name: Name,
-    signal?: AbortSignal
-  ) {
-    await this.#whenStarted(signal)
-    return this.#recallSubject(name).control()
+  ): Controllable<Dict['recallSubjects'][Name]> {
+    return this.recallSubject(name).control()
   }
 
   controlReplay<Name extends keyof Dict['replaySubjects']>(
-    name: Name
+    name: Name,
   ): Controllable<Dict['replaySubjects'][Name]> {
-    return this.#replaySubject(name).control()
+    return this.replaySubject(name).control()
   }
 
   controlState<Name extends keyof Dict['statefulSubjects']>(
@@ -104,15 +130,52 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
     reducers?: StateReducers<
       Dict['statefulSubjects'][Name]['actions'],
       Dict['statefulSubjects'][Name]['state']
-    >
+    >,
   ) {
-    return this.#statefulSubject(
-      name,
-      reducers && new StatefulSubject(reducers)
+    return (
+      reducers
+        ? this.setStatefulSubject(name, reducers)
+        : this.statefulSubject(name)
     ).control()
   }
 
-  #whenStarted(signal?: AbortSignal) {
+  write<Name extends keyof Dict['subjects']>(
+    name: Name,
+    {
+      queuingStrategy,
+      signal,
+    }: {
+      queuingStrategy?: QueuingStrategy
+      signal?: AbortSignal
+    } = {},
+  ): WritableStream<Dict['subjects'][Name]> {
+    return this.subject(name, signal).write(queuingStrategy)
+  }
+
+  writeRecall<Name extends keyof Dict['recallSubjects']>(
+    name: Name,
+    queuingStrategy: QueuingStrategy,
+  ): WritableStream<Dict['recallSubjects'][Name]> {
+    return this.recallSubject(name).write(queuingStrategy)
+  }
+
+  writeReplay<Name extends keyof Dict['replaySubjects']>(
+    name: Name,
+    queuingStrategy?: QueuingStrategy,
+  ): WritableStream<Dict['replaySubjects'][Name]> {
+    return this.replaySubject(name).write(queuingStrategy)
+  }
+
+  writeState<Name extends keyof Dict['statefulSubjects']>(
+    name: Name,
+    queuingStrategy?: QueuingStrategy,
+  ): WritableStream<
+    StateReducerInput<Dict['statefulSubjects'][Name]['actions']>
+  > {
+    return this.statefulSubject(name).write(queuingStrategy)
+  }
+
+  whenStarted(signal?: AbortSignal): Promise<void> {
     return signal
       ? new Promise<void>((resolve, reject) => {
           if (signal.aborted) return reject(new AbortError())
@@ -122,12 +185,20 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
       : this.#untilStart
   }
 
-  #subject<Name extends keyof Dict['subjects']>(name: Name) {
-    if (!this.#subjects[name]) this.#subjects[name] = new Subject()
+  subject<Name extends keyof Dict['subjects']>(
+    name: Name,
+    signal?: AbortSignal,
+  ): Subject<Dict['subjects'][Name]> {
+    if (!this.#subjects[name])
+      this.#subjects[name] = new Subject({
+        pre: [interpose(this.whenStarted(signal))],
+      })
     return this.#subjects[name] as Subject<Dict['subjects'][Name]>
   }
 
-  #recallSubject<Name extends keyof Dict['recallSubjects']>(name: Name) {
+  recallSubject<Name extends keyof Dict['recallSubjects']>(
+    name: Name,
+  ): Subject<Dict['recallSubjects'][Name]> {
     if (!this.#recallSubjects[name])
       this.#recallSubjects[name] = new Subject({
         forkable: new ForkableRecallStream(),
@@ -135,7 +206,9 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
     return this.#recallSubjects[name] as Subject<Dict['recallSubjects'][Name]>
   }
 
-  #replaySubject<Name extends keyof Dict['replaySubjects']>(name: Name) {
+  replaySubject<Name extends keyof Dict['replaySubjects']>(
+    name: Name,
+  ): Subject<Dict['replaySubjects'][Name]> {
     if (!this.#replaySubjects[name])
       this.#replaySubjects[name] = new Subject({
         forkable: new ForkableReplayStream(),
@@ -143,28 +216,37 @@ export class Streams<Dict extends StreamDict = CreateStreamDict<{}>> {
     return this.#replaySubjects[name] as Subject<Dict['replaySubjects'][Name]>
   }
 
-  #statefulSubject<Name extends keyof Dict['statefulSubjects']>(
+  statefulSubject<Name extends keyof Dict['statefulSubjects']>(
     name: Name,
-    subject?: StatefulSubject<
-      Dict['statefulSubjects'][Name]['actions'],
-      Dict['statefulSubjects'][Name]['state']
-    >
-  ) {
-    if (subject)
-      if (this.#statefulSubjects[name])
-        throw new Error(
-          `Cannot override the stateful subject "${String(name)}"`
-        )
-      else this.#statefulSubjects[name] = subject
-    else if (!this.#statefulSubjects[name])
+  ): StatefulSubject<
+    Dict['statefulSubjects'][Name]['actions'],
+    Dict['statefulSubjects'][Name]['state']
+  > {
+    if (!this.#statefulSubjects[name])
       throw new Error(
         `No registered stateful subject "${String(
-          name
-        )}". It must be created with streams.controlState(name, reducers)`
+          name,
+        )}". It must be created with streams.controlState(name, reducers)`,
       )
     return this.#statefulSubjects[name] as StatefulSubject<
       Dict['statefulSubjects'][Name]['actions'],
       Dict['statefulSubjects'][Name]['state']
     >
+  }
+
+  setStatefulSubject<Name extends keyof Dict['statefulSubjects']>(
+    name: Name,
+    reducers: StateReducers<
+      Dict['statefulSubjects'][Name]['actions'],
+      Dict['statefulSubjects'][Name]['state']
+    >,
+  ): StatefulSubject<
+    Dict['statefulSubjects'][Name]['actions'],
+    Dict['statefulSubjects'][Name]['state']
+  > {
+    if (this.#statefulSubjects[name])
+      throw new Error(`Cannot override the stateful subject "${String(name)}"`)
+    this.#statefulSubjects[name] = new StatefulSubject(reducers)
+    return this.#statefulSubjects[name]!
   }
 }

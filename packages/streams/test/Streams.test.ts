@@ -1,4 +1,4 @@
-import { SubjectController, toArray } from '@johngw/stream'
+import { fromCollection, toArray } from '@johngw/stream'
 import { Streams } from '../src'
 import '@johngw/stream-jest'
 
@@ -27,23 +27,15 @@ beforeEach(() => {
   streams = new Streams()
 })
 
-test('accessing streams from a dictionary', async () => {
-  expect(streams.fork('bar')).toBeInstanceOf(ReadableStream)
-  streams.start()
-  const controller = await streams.control('bar')
-  expect(controller).toBeInstanceOf(SubjectController)
-})
-
 test('subscribing to a stream before it has been controlled', async () => {
   const promise = expect(streams.fork('foo')).toMatchTimeline(`
     -hello-world-
   `)
 
-  streams.control('foo').then((controller) => {
-    controller.enqueue('hello')
-    controller.enqueue('world')
-    controller.close()
-  })
+  const controller = streams.control('foo')
+  controller.enqueue('hello')
+  controller.enqueue('world')
+  controller.close()
 
   streams.start()
 
@@ -51,11 +43,10 @@ test('subscribing to a stream before it has been controlled', async () => {
 })
 
 test('subscribing to a stream after it has been controlled', async () => {
-  streams.control('foo').then((controller) => {
-    controller.enqueue('hello')
-    controller.enqueue('world')
-    controller.close()
-  })
+  const controller = streams.control('foo')
+  controller.enqueue('hello')
+  controller.enqueue('world')
+  controller.close()
 
   streams.start()
 
@@ -66,11 +57,10 @@ test('subscribing to a stream after it has been controlled', async () => {
 
 test('recall streams', async () => {
   streams.start()
-  streams.controlRecall('foo').then((controller) => {
-    controller.enqueue('hello')
-    controller.enqueue('world')
-    controller.close()
-  })
+  const controller = streams.controlRecall('foo')
+  controller.enqueue('hello')
+  controller.enqueue('world')
+  controller.close()
   expect(await toArray(streams.forkRecall('foo'))).toEqual(['hello', 'world'])
   expect(await toArray(streams.forkRecall('foo'))).toEqual(['world'])
   expect(await toArray(streams.forkRecall('foo'))).toEqual(['world'])
@@ -78,39 +68,50 @@ test('recall streams', async () => {
 
 test('replay streams', async () => {
   streams.start()
-  const controller = streams.controlReplay('bar')
-  controller.enqueue('hello')
-  controller.enqueue('world')
-  controller.close()
+  fromCollection(['hello', 'world']).pipeTo(streams.writeReplay('bar'))
   expect(await toArray(streams.forkReplay('bar'))).toEqual(['hello', 'world'])
   expect(await toArray(streams.forkReplay('bar'))).toEqual(['hello', 'world'])
   expect(await toArray(streams.forkReplay('bar'))).toEqual(['hello', 'world'])
 })
 
 test('stateful streams', async () => {
-  const p = expect(
-    streams.forkState('foo').then(toArray)
-  ).resolves.toMatchInlineSnapshot(
-    `
-      [
-        {
-          "action": "__INIT__",
-          "state": 1,
-        },
-        {
-          "action": "inc",
-          "param": undefined,
-          "state": 2,
-        },
-      ]
-    `
-  )
+  const p = expect(toArray(streams.forkState('foo'))).resolves
+    .toMatchInlineSnapshot(`
+                    [
+                      {
+                        "action": "__INIT__",
+                        "state": 1,
+                      },
+                      {
+                        "action": "inc",
+                        "param": undefined,
+                        "state": 2,
+                      },
+                    ]
+                `)
   const controller = streams.controlState('foo', {
     __INIT__: () => 1,
     inc: (state) => state + 1,
   })
   controller.dispatch('inc')
   controller.close()
+  streams.start()
+  await p
+})
+
+test('writing to a stream with another stream', async () => {
+  fromCollection(['a', 'b', 'c', 'd']).pipeTo(streams.write('foo'))
+
+  const p = expect(toArray(streams.fork('foo'))).resolves
+    .toMatchInlineSnapshot(`
+              [
+                "a",
+                "b",
+                "c",
+                "d",
+              ]
+            `)
+
   streams.start()
   await p
 })
