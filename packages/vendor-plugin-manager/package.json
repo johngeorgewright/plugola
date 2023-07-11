@@ -16,9 +16,7 @@
   },
   "homepage": "https://github.com/johngeorgewright/plugola#readme",
   "devDependencies": {
-    "@plugola/message-bus": "workspace:packages/message-bus",
     "@plugola/plugin-manager": "workspace:packages/plugin-manager",
-    "@plugola/store": "workspace:packages/store",
     "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
@@ -38,8 +36,6 @@
     "tslib": "2.6.0"
   },
   "peerDependencies": {
-    "@plugola/message-bus": "^3.0.0",
-    "@plugola/plugin-manager": "^5.0.0",
-    "@plugola/store": "^5.0.0"
+    "@plugola/plugin-manager": "^5.0.0"
   }
 }

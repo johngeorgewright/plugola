@@ -1,17 +1,10 @@
-import { Broker, MessageBus } from '@plugola/message-bus'
 import PluginManager from '../src/PluginManager'
 import { timeout } from '@johngw/async'
-import { BaseActions, Store } from '@plugola/store'
 
-type Events = { foo: [string] }
-
-let messageBus: MessageBus<Events>
-let pluginManager: PluginManager<typeof messageBus, {}, {}, {}>
+let pluginManager: PluginManager<{}, {}, {}>
 
 beforeEach(() => {
-  messageBus = new MessageBus()
-  messageBus.start()
-  pluginManager = new PluginManager(messageBus) as any
+  pluginManager = new PluginManager() as any
 })
 
 test('initializing plugins', async () => {
@@ -68,73 +61,6 @@ test('running normal plugins', async () => {
   expect(result!).toBe('running mung')
 })
 
-test('running stateful plugins', async () => {
-  let result: string
-  const onUpdate = jest.fn()
-
-  interface Actions extends BaseActions {
-    foo: null
-  }
-
-  type State = 'foo' | 'bar'
-
-  pluginManager.registerStatefulPlugin<Actions, State>('foo', {
-    state: {
-      initial: 'bar',
-
-      reducers: {
-        foo: () => 'foo',
-      },
-
-      onUpdate,
-    },
-
-    run({ store }) {
-      expect(store.state).toBe('bar')
-      store.dispatch('foo', null)
-      result = store.state
-    },
-  })
-
-  await pluginManager.enableAllPlugins()
-  await pluginManager.run()
-  expect(result!).toBe('foo')
-  expect(onUpdate).toHaveBeenCalledWith(
-    'foo',
-    null,
-    'foo',
-    expect.objectContaining({
-      broker: expect.any(Broker),
-      store: expect.any(Store),
-    })
-  )
-})
-
-test('modifying stores', async () => {
-  const onCreateStore = jest.fn()
-
-  pluginManager.onCreateStore(onCreateStore)
-
-  pluginManager.registerStatefulPlugin<BaseActions, number>('foo', {
-    state: {
-      initial: 0,
-      reducers: {
-        __INIT__: (_, state) => state,
-      },
-      onUpdate() {},
-    },
-    run() {},
-  })
-
-  await pluginManager.enableAllPlugins()
-  await pluginManager.run()
-
-  expect(onCreateStore).toHaveBeenCalledWith(
-    'foo',
-    expect.objectContaining({ store: expect.any(Store) })
-  )
-})
-
 test('running with a dependency tree', async () => {
   let result: string = ''
 
@@ -163,28 +89,8 @@ test('running with a dependency tree', async () => {
   expect(result!).toBe('foobarmung')
 })
 
-test('using the message bus to communicate between plugins', async () => {
-  let str: string
-
-  pluginManager.registerPlugin('foo', {
-    async run({ broker }) {
-      ;[str] = await broker.until('foo')
-    },
-  })
-
-  pluginManager.registerPlugin('bar', {
-    run({ broker }) {
-      broker.emit('foo', 'bar')
-    },
-  })
-
-  await pluginManager.enableAllPlugins()
-  await pluginManager.run()
-  expect(str!).toBe('bar')
-})
-
 test('extra context', async () => {
-  const pluginManager = new PluginManager(messageBus, {
+  const pluginManager = new PluginManager({
     addContext(pluginName) {
       return {
         foo: pluginName,
@@ -292,7 +198,7 @@ test('cleaning up plugins when disabled in the init phase', async () => {
   pluginManager.registerPlugin('foo', {
     async init({ disablePlugins, signal }) {
       await timeout(10, signal)
-      disablePlugins(['bar'])
+      expect(disablePlugins(['bar'])).toEqual(1)
     },
     run: foo,
   })
@@ -315,7 +221,7 @@ test('cleaning up plugins when disabled in the init phase', async () => {
 test('plugins that time out', async () => {
   const abort = jest.fn<void, [string]>()
 
-  pluginManager = new PluginManager(messageBus, { pluginTimeout: 100 })
+  pluginManager = new PluginManager({ pluginTimeout: 100 })
 
   pluginManager.registerPlugin('foo', {
     async init({ signal }) {
@@ -338,7 +244,7 @@ test('plugins that time out', async () => {
 test('replacing context', async () => {
   const run = jest.fn()
 
-  const pluginManager = new PluginManager(messageBus, {
+  const pluginManager = new PluginManager({
     addContext: () => ({ foo: 'bar' }),
   })
 

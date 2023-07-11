@@ -1,3 +1,4 @@
+import set from 'lodash.set'
 import parseQueryParams from '../src/parseQueryParams'
 
 test('strings', () => {
@@ -80,5 +81,14 @@ test('filter into', () => {
   ).toEqual({
     foo: 'bar',
     version: 1,
+  })
+})
+
+test('custom merge function', () => {
+  expect(parseQueryParams('foo.bar=fbar&foo.face=fface', { set })).toEqual({
+    foo: {
+      bar: 'fbar',
+      face: 'fface',
+    },
   })
 })
