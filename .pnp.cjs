@@ -1508,12 +1508,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:658d375d8a2682df487e0f82908a4064212454abb9799a71f418ff4895a467423e10832ae50012302f5a0f8e4e4486c5dab6eec0513cc024a023ea4d86ec607b#npm:4.4.0", {\
-          "packageLocation": "./.yarn/__virtual__/@eslint-community-eslint-utils-virtual-4c02bb82ea/0/cache/@eslint-community-eslint-utils-npm-4.4.0-d1791bd5a3-cdfe3ae42b.zip/node_modules/@eslint-community/eslint-utils/",\
+        ["virtual:5757109ac88221e94a852cc9f73e2f55465a7102fffadd66cbbc453ec0085a59a55391bf490e79144c3026a10d76b992734f4e89f8c9b0e26d0c979c648afdd9#npm:4.4.0", {\
+          "packageLocation": "./.yarn/__virtual__/@eslint-community-eslint-utils-virtual-944437d78e/0/cache/@eslint-community-eslint-utils-npm-4.4.0-d1791bd5a3-cdfe3ae42b.zip/node_modules/@eslint-community/eslint-utils/",\
           "packageDependencies": [\
-            ["@eslint-community/eslint-utils", "virtual:658d375d8a2682df487e0f82908a4064212454abb9799a71f418ff4895a467423e10832ae50012302f5a0f8e4e4486c5dab6eec0513cc024a023ea4d86ec607b#npm:4.4.0"],\
+            ["@eslint-community/eslint-utils", "virtual:5757109ac88221e94a852cc9f73e2f55465a7102fffadd66cbbc453ec0085a59a55391bf490e79144c3026a10d76b992734f4e89f8c9b0e26d0c979c648afdd9#npm:4.4.0"],\
             ["@types/eslint", null],\
-            ["eslint", "npm:8.44.0"],\
+            ["eslint", "npm:8.43.0"],\
             ["eslint-visitor-keys", "npm:3.4.1"]\
           ],\
           "packagePeers": [\
@@ -1551,10 +1551,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@eslint/js", [\
-        ["npm:8.44.0", {\
-          "packageLocation": "./.yarn/cache/@eslint-js-npm-8.44.0-66b473d41b-fc53958322.zip/node_modules/@eslint/js/",\
+        ["npm:8.43.0", {\
+          "packageLocation": "./.yarn/cache/@eslint-js-npm-8.43.0-60a60994b7-580487a09c.zip/node_modules/@eslint/js/",\
           "packageDependencies": [\
-            ["@eslint/js", "npm:8.44.0"]\
+            ["@eslint/js", "npm:8.43.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1994,44 +1994,44 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/stream", [\
-        ["portal:../stream/packages/stream::locator=%40plugola%2Fmono-repo%40workspace%3A.", {\
-          "packageLocation": "../stream/packages/stream/",\
+        ["npm:3.0.4", {\
+          "packageLocation": "./.yarn/cache/@johngw-stream-npm-3.0.4-8612b01f5e-7a3f7a029e.zip/node_modules/@johngw/stream/",\
           "packageDependencies": [\
-            ["@johngw/stream", "portal:../stream/packages/stream::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
-            ["@johngw/stream-common", "portal:../stream/packages/stream-common::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
+            ["@johngw/stream", "npm:3.0.4"],\
+            ["@johngw/stream-common", "npm:1.1.2"],\
             ["assert-never", "npm:1.2.1"],\
             ["ts-toolbelt", "npm:9.6.0"],\
             ["tslib", "npm:2.5.0"]\
           ],\
-          "linkType": "SOFT"\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@johngw/stream-common", [\
-        ["portal:../stream/packages/stream-common::locator=%40plugola%2Fmono-repo%40workspace%3A.", {\
-          "packageLocation": "../stream/packages/stream-common/",\
+        ["npm:1.1.2", {\
+          "packageLocation": "./.yarn/cache/@johngw-stream-common-npm-1.1.2-73d138c3f7-581ce6923d.zip/node_modules/@johngw/stream-common/",\
           "packageDependencies": [\
-            ["@johngw/stream-common", "portal:../stream/packages/stream-common::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
+            ["@johngw/stream-common", "npm:1.1.2"],\
             ["assert-never", "npm:1.2.1"],\
-            ["eslint", "npm:8.44.0"],\
+            ["eslint", "npm:8.43.0"],\
             ["ts-toolbelt", "npm:9.6.0"],\
             ["tslib", "npm:2.5.0"]\
           ],\
-          "linkType": "SOFT"\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@johngw/stream-jest", [\
-        ["portal:../stream/packages/stream-jest::locator=%40plugola%2Fmono-repo%40workspace%3A.", {\
-          "packageLocation": "../stream/packages/stream-jest/",\
+        ["npm:1.0.2", {\
+          "packageLocation": "./.yarn/cache/@johngw-stream-jest-npm-1.0.2-2a66354f26-68ffbc3a5a.zip/node_modules/@johngw/stream-jest/",\
           "packageDependencies": [\
-            ["@johngw/stream-jest", "portal:../stream/packages/stream-jest::locator=%40plugola%2Fmono-repo%40workspace%3A."]\
+            ["@johngw/stream-jest", "npm:1.0.2"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#portal:../stream/packages/stream-jest::locator=%40plugola%2Fmono-repo%40workspace%3A.", {\
-          "packageLocation": "./.yarn/__virtual__/@johngw-stream-jest-virtual-69d5f328cc/2/stream/packages/stream-jest/",\
+        ["virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.2", {\
+          "packageLocation": "./.yarn/__virtual__/@johngw-stream-jest-virtual-e384e8c590/0/cache/@johngw-stream-jest-npm-1.0.2-2a66354f26-68ffbc3a5a.zip/node_modules/@johngw/stream-jest/",\
           "packageDependencies": [\
-            ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#portal:../stream/packages/stream-jest::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
-            ["@johngw/stream-test", "portal:../stream/packages/stream-test::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
+            ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.2"],\
+            ["@johngw/stream-test", "npm:1.1.2"],\
             ["@types/expect", null],\
             ["@types/johngw__stream-test", null],\
             ["expect", "npm:29.6.1"],\
@@ -2043,30 +2043,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/johngw__stream-test",\
             "expect"\
           ],\
-          "linkType": "SOFT"\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@johngw/stream-test", [\
-        ["portal:../stream/packages/stream-test::locator=%40plugola%2Fmono-repo%40workspace%3A.", {\
-          "packageLocation": "../stream/packages/stream-test/",\
+        ["npm:1.1.2", {\
+          "packageLocation": "./.yarn/cache/@johngw-stream-test-npm-1.1.2-261808a7e5-9b1a8cde9b.zip/node_modules/@johngw/stream-test/",\
           "packageDependencies": [\
-            ["@johngw/stream-test", "portal:../stream/packages/stream-test::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
-            ["@johngw/stream-common", "portal:../stream/packages/stream-common::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
-            ["@johngw/timeline", "npm:1.0.6"],\
+            ["@johngw/stream-test", "npm:1.1.2"],\
+            ["@johngw/stream-common", "npm:1.1.2"],\
+            ["@johngw/timeline", "npm:1.0.5"],\
             ["assert-never", "npm:1.2.1"],\
             ["js-yaml", "npm:4.1.0"],\
             ["ts-toolbelt", "npm:9.6.0"],\
             ["tslib", "npm:2.5.0"],\
             ["web-streams-polyfill", "npm:3.2.1"]\
           ],\
-          "linkType": "SOFT"\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@johngw/timeline", [\
-        ["npm:1.0.6", {\
-          "packageLocation": "./.yarn/cache/@johngw-timeline-npm-1.0.6-991a139889-1b04395ee0.zip/node_modules/@johngw/timeline/",\
+        ["npm:1.0.5", {\
+          "packageLocation": "./.yarn/cache/@johngw-timeline-npm-1.0.5-97237bf9cd-a683bc6dad.zip/node_modules/@johngw/timeline/",\
           "packageDependencies": [\
-            ["@johngw/timeline", "npm:1.0.6"],\
+            ["@johngw/timeline", "npm:1.0.5"],\
             ["js-yaml", "npm:4.1.0"],\
             ["tslib", "npm:2.5.3"]\
           ],\
@@ -3289,9 +3289,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@plugola/streams", "workspace:packages/streams"],\
             ["@johngw/async", "npm:5.0.1"],\
-            ["@johngw/stream", "portal:../stream/packages/stream::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
-            ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#portal:../stream/packages/stream-jest::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
-            ["@johngw/stream-test", "portal:../stream/packages/stream-test::locator=%40plugola%2Fmono-repo%40workspace%3A."],\
+            ["@johngw/stream", "npm:3.0.4"],\
+            ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.2"],\
+            ["@johngw/stream-test", "npm:1.1.2"],\
             ["@semantic-release/commit-analyzer", "virtual:97efea6e6ed679d1b12b286efdf34775793cf3fe0408c2b96c7601039dadfb9d5f6ecc6e60a79c0b5d97872c67aabf027b7d6fd8e25b4de748eccc6c0bfa17ee#npm:9.0.2"],\
             ["@semantic-release/exec", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:6.0.3"],\
             ["@semantic-release/git", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.0.1"],\
@@ -7458,14 +7458,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["eslint", [\
-        ["npm:8.44.0", {\
-          "packageLocation": "./.yarn/cache/eslint-npm-8.44.0-658d375d8a-d06309ce4a.zip/node_modules/eslint/",\
+        ["npm:8.43.0", {\
+          "packageLocation": "./.yarn/cache/eslint-npm-8.43.0-5757109ac8-55654ce00b.zip/node_modules/eslint/",\
           "packageDependencies": [\
-            ["eslint", "npm:8.44.0"],\
-            ["@eslint-community/eslint-utils", "virtual:658d375d8a2682df487e0f82908a4064212454abb9799a71f418ff4895a467423e10832ae50012302f5a0f8e4e4486c5dab6eec0513cc024a023ea4d86ec607b#npm:4.4.0"],\
+            ["eslint", "npm:8.43.0"],\
+            ["@eslint-community/eslint-utils", "virtual:5757109ac88221e94a852cc9f73e2f55465a7102fffadd66cbbc453ec0085a59a55391bf490e79144c3026a10d76b992734f4e89f8c9b0e26d0c979c648afdd9#npm:4.4.0"],\
             ["@eslint-community/regexpp", "npm:4.5.1"],\
             ["@eslint/eslintrc", "npm:2.1.0"],\
-            ["@eslint/js", "npm:8.44.0"],\
+            ["@eslint/js", "npm:8.43.0"],\
             ["@humanwhocodes/config-array", "npm:0.11.10"],\
             ["@humanwhocodes/module-importer", "npm:1.0.1"],\
             ["@nodelib/fs.walk", "npm:1.2.8"],\

@@ -60,11 +60,5 @@
   "dependencies": {
     "tslib": "2.6.0"
   },
-  "packageManager": "yarn@3.6.1",
-  "resolutions": {
-    "@johngw/stream": "portal:../stream/packages/stream",
-    "@johngw/stream-common": "portal:../stream/packages/stream-common",
-    "@johngw/stream-jest": "portal:../stream/packages/stream-jest",
-    "@johngw/stream-test": "portal:../stream/packages/stream-test"
-  }
+  "packageManager": "yarn@3.6.1"
 }
