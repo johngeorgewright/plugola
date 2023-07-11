@@ -6,7 +6,7 @@ import DependencyGraph from './DependencyGraph'
 export interface PluginManagerOptions<
   ExtraContext extends Record<string, unknown>,
   ExtraInitContext extends Record<string, unknown>,
-  ExtraRunContext extends Record<string, unknown>
+  ExtraRunContext extends Record<string, unknown>,
 > {
   addContext?(pluginName: string): ExtraContext
   addInitContext?(pluginName: string): ExtraInitContext
@@ -17,7 +17,7 @@ export interface PluginManagerOptions<
 export default class PluginManager<
   ExtraContext extends Record<string, unknown>,
   ExtraInitContext extends Record<string, unknown>,
-  ExtraRunContext extends Record<string, unknown>
+  ExtraRunContext extends Record<string, unknown>,
 > {
   #plugins: Record<string, Plugin> = {}
   #dependencyGraph = new DependencyGraph<Plugin>()
@@ -36,7 +36,7 @@ export default class PluginManager<
       ExtraContext,
       ExtraInitContext,
       ExtraRunContext
-    > = {}
+    > = {},
   ) {
     this.#options = options
   }
@@ -49,7 +49,7 @@ export default class PluginManager<
       ExtraContext,
       ExtraInitContext,
       ExtraRunContext
-    >
+    >,
   ) {
     const pluginManager = new PluginManager({
       ...options,
@@ -57,17 +57,17 @@ export default class PluginManager<
         ({
           ...this.#options.addContext?.(pluginName),
           ...options.addContext?.(pluginName),
-        } as ExtraContext),
+        }) as ExtraContext,
       addInitContext: (pluginName) =>
         ({
           ...this.#options.addInitContext?.(pluginName),
           ...options.addInitContext?.(pluginName),
-        } as ExtraInitContext),
+        }) as ExtraInitContext,
       addRunContext: (pluginName) =>
         ({
           ...this.#options.addRunContext?.(pluginName),
           ...options.addRunContext?.(pluginName),
-        } as ExtraRunContext),
+        }) as ExtraRunContext,
     })
     pluginManager.#plugins = this.#plugins
     pluginManager.#dependencyGraph = this.#dependencyGraph
@@ -83,7 +83,7 @@ export default class PluginManager<
         RunContext & ExtraContext & ExtraRunContext
       >,
       'name'
-    >
+    >,
   ) {
     this.#addPlugin({ name, ...plugin })
   }
@@ -159,85 +159,73 @@ export default class PluginManager<
           this.#ran.delete(plugin)
           this.#abortControllers.delete(plugin)
         },
-        { once: true }
+        { once: true },
       )
       this.#abortControllers.set(plugin, abortController)
     }
     return this.#abortControllers.get(plugin)!
   }
 
-  async #initPlugin(plugin: Plugin, signal?: AbortSignal) {
-    if (this.#initialized.has(plugin) || !plugin.init || signal?.aborted) return
+  async #initPlugin(plugin: Plugin) {
+    if (this.#initialized.has(plugin) || !plugin.init) return
 
-    const abortController = this.#abortController(plugin)
-    signal?.addEventListener('abort', () => abortController.abort(), {
-      once: true,
-    })
+    const { signal } = this.#abortController(plugin)
+    if (signal.aborted) return
 
     this.#initialized.add(plugin)
 
-    await this.#pluginRace(
-      async (signal) => {
-        await this.#filterMapDependencies(
-          plugin,
-          (dep) => !this.#initialized.has(dep),
-          (dep) => this.#initPlugin(dep, signal)
-        )
+    await this.#filterMapDependencies(
+      plugin,
+      (dep) => !this.#initialized.has(dep),
+      (dep) => this.#initPlugin(dep),
+    )
 
-        const context = this.#createInitContext(plugin, signal)
-        await plugin.init!(context)
-      },
-      abortController.signal,
-      plugin.initTimeout || this.#options.pluginTimeout
+    await this.#pluginRace(
+      plugin,
+      () => plugin.init!(this.#createInitContext(plugin, signal)),
+      plugin.initTimeout || this.#options.pluginTimeout,
     )
   }
 
-  async #runPlugin(plugin: Plugin, signal?: AbortSignal) {
-    const runnable = 'run' in plugin
+  async #runPlugin(plugin: Plugin) {
+    if (this.#ran.has(plugin) || !plugin.run) return
 
-    if (this.#ran.has(plugin) || !runnable || signal?.aborted) return
-
-    const abortController = this.#abortController(plugin)
-    signal?.addEventListener('abort', () => abortController.abort(), {
-      once: true,
-    })
+    const { signal } = this.#abortController(plugin)
+    if (signal.aborted) return
 
     this.#ran.add(plugin)
 
+    await this.#filterMapDependencies(
+      plugin,
+      (dep) => !this.#ran.has(dep),
+      (dep) => this.#runPlugin(dep),
+    )
+
     await this.#pluginRace(
-      async (signal) => {
-        await this.#filterMapDependencies(
-          plugin,
-          (dep) => !this.#ran.has(dep),
-          (dep) => this.#runPlugin(dep, signal)
-        )
-
-        const context = this.#createRunContext(plugin, signal)
-
-        await plugin.run?.(context)
-      },
-      abortController.signal,
-      this.#options.pluginTimeout
+      plugin,
+      () => plugin.run!(this.#createRunContext(plugin, signal)),
+      this.#options.pluginTimeout,
     )
   }
 
-  #pluginRace(
-    fn: (raceSignal: AbortSignal) => Promise<any>,
-    pluginSignal: AbortSignal,
-    ms?: number
-  ) {
-    return ms
-      ? race(
-          (raceSignal) => [fn(raceSignal), timeout(ms, raceSignal)],
-          pluginSignal
+  #pluginRace(plugin: Plugin, fn: () => Promise<any>, ms?: number) {
+    const { signal } = this.#abortController(plugin)
+
+    return ms === undefined
+      ? fn()
+      : race(
+          (signal) => [
+            fn(),
+            timeout(ms, signal).then(() => this.disablePlugins([plugin.name])),
+          ],
+          signal,
         )
-      : fn(pluginSignal)
   }
 
   async #filterMapDependencies(
     plugin: Plugin,
     filter: (plugin: Plugin) => boolean,
-    map: (plugin: Plugin) => Promise<any>
+    map: (plugin: Plugin) => Promise<any>,
   ) {
     const promises = []
 
@@ -258,7 +246,7 @@ export default class PluginManager<
 
   #createRunContext(
     plugin: Plugin,
-    signal: AbortSignal
+    signal: AbortSignal,
   ): Record<string, unknown> {
     return {
       ...this.#createContext(plugin, signal),

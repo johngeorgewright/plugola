@@ -198,7 +198,7 @@ test('cleaning up plugins when disabled in the init phase', async () => {
   pluginManager.registerPlugin('foo', {
     async init({ disablePlugins, signal }) {
       await timeout(10, signal)
-      disablePlugins(['bar'])
+      expect(disablePlugins(['bar'])).toEqual(1)
     },
     run: foo,
   })
