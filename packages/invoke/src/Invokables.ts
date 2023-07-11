@@ -71,17 +71,6 @@ export class Invokables<Dict extends InvokablesDict> {
 
   async invoke<InvokableName extends keyof Dict>(
     invokableName: InvokableName,
-    abortSignal: AbortSignal,
-    ...args: Dict[InvokableName]['args']
-  ): Promise<Dict[InvokableName]['return']>
-
-  async invoke<InvokableName extends keyof Dict>(
-    invokableName: InvokableName,
-    ...args: Dict[InvokableName]['args']
-  ): Promise<Dict[InvokableName]['return']>
-
-  async invoke<InvokableName extends keyof Dict>(
-    invokableName: InvokableName,
     abortSignalOrFirstArg: AbortSignal | Dict[InvokableName]['args'][0],
     ...restOfArgs:
       | Dict[InvokableName]['args']
