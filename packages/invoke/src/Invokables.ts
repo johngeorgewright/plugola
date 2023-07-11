@@ -35,7 +35,7 @@ export class Invokables<Dict extends InvokablesDict> {
     >
     const invokers = this.#invokers[invokableName] || []
     const registeredInvoker = invokers!.find(
-      (invoker) => this.#argumentIndex(invoker.args, args) !== -1
+      (invoker) => this.#argumentIndex(invoker.args, args) !== -1,
     )
 
     if (registeredInvoker)
@@ -51,7 +51,7 @@ export class Invokables<Dict extends InvokablesDict> {
     const cancel = () => {
       this.#invokers[invokableName] = removeItem(
         subscriber,
-        this.#invokers[invokableName] as any
+        this.#invokers[invokableName] as any,
       )
     }
 
@@ -71,14 +71,25 @@ export class Invokables<Dict extends InvokablesDict> {
 
   async invoke<InvokableName extends keyof Dict>(
     invokableName: InvokableName,
-    abortSignalOrFirstArg: Dict[InvokableName]['args'][0] | AbortSignal,
+    abortSignal: AbortSignal,
+    ...args: Dict[InvokableName]['args']
+  ): Promise<Dict[InvokableName]['return']>
+
+  async invoke<InvokableName extends keyof Dict>(
+    invokableName: InvokableName,
+    ...args: Dict[InvokableName]['args']
+  ): Promise<Dict[InvokableName]['return']>
+
+  async invoke<InvokableName extends keyof Dict>(
+    invokableName: InvokableName,
+    abortSignalOrFirstArg: AbortSignal | Dict[InvokableName]['args'][0],
     ...restOfArgs:
       | Dict[InvokableName]['args']
       | L.Tail<Dict[InvokableName]['args']>
   ): Promise<Dict[InvokableName]['return']> {
     const abortSignal =
       abortSignalOrFirstArg instanceof AbortSignal
-        ? abortSignalOrFirstArg
+        ? (abortSignalOrFirstArg as AbortSignal)
         : undefined
 
     const args =
@@ -109,7 +120,7 @@ export class Invokables<Dict extends InvokablesDict> {
   async #callInvoker<InvokableName extends keyof Dict>(
     invokableName: InvokableName,
     args: Dict[InvokableName]['args'],
-    abortSignal: AbortSignal = new AbortController().signal
+    abortSignal: AbortSignal = new AbortController().signal,
   ): Promise<Dict[InvokableName]['return']> {
     const invokers = this.#invokers[invokableName]
     const invoker =
@@ -122,12 +133,14 @@ export class Invokables<Dict extends InvokablesDict> {
 
     return invoker.fn(
       ...args.slice(this.#argumentIndex(invoker.args, args)),
-      abortSignal
+      abortSignal,
     )
   }
 
   async #queue<T>(handler: () => T, abortSignal?: AbortSignal) {
     return new Promise<Awaited<T>>((resolve, reject) => {
+      if (abortSignal?.aborted) return reject(new AbortError())
+
       const fn = () => resolve(handler() as Awaited<T>)
       this.#queued.push(fn)
 
