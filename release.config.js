@@ -7,9 +7,9 @@ module.exports = {
       '@semantic-release/exec',
       {
         verifyConditionsCmd: 'yarn npm whoami --publish',
-        prepareCmd: 'yarn version ${nextRelease.version} --access public',
+        prepareCmd: 'yarn version ${nextRelease.version}',
         publishCmd:
-          "yarn npm publish && echo 'version=${nextRelease.version}' >> $GITHUB_OUTPUT",
+          "yarn npm publish --access public && echo 'version=${nextRelease.version}' >> $GITHUB_OUTPUT",
       },
     ],
     [
