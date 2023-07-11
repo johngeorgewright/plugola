@@ -1994,10 +1994,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/stream", [\
-        ["npm:3.0.4", {\
-          "packageLocation": "./.yarn/cache/@johngw-stream-npm-3.0.4-8612b01f5e-7a3f7a029e.zip/node_modules/@johngw/stream/",\
+        ["npm:3.1.0", {\
+          "packageLocation": "./.yarn/cache/@johngw-stream-npm-3.1.0-f6bb9b5a99-a9de622a60.zip/node_modules/@johngw/stream/",\
           "packageDependencies": [\
-            ["@johngw/stream", "npm:3.0.4"],\
+            ["@johngw/stream", "npm:3.1.0"],\
             ["@johngw/stream-common", "npm:1.1.2"],\
             ["assert-never", "npm:1.2.1"],\
             ["ts-toolbelt", "npm:9.6.0"],\
@@ -3289,7 +3289,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@plugola/streams", "workspace:packages/streams"],\
             ["@johngw/async", "npm:5.0.1"],\
-            ["@johngw/stream", "npm:3.0.4"],\
+            ["@johngw/stream", "npm:3.1.0"],\
             ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.2"],\
             ["@johngw/stream-test", "npm:1.1.2"],\
             ["@semantic-release/commit-analyzer", "virtual:97efea6e6ed679d1b12b286efdf34775793cf3fe0408c2b96c7601039dadfb9d5f6ecc6e60a79c0b5d97872c67aabf027b7d6fd8e25b4de748eccc6c0bfa17ee#npm:9.0.2"],\

@@ -1454,15 +1454,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/stream@npm:3.0.4":
-  version: 3.0.4
-  resolution: "@johngw/stream@npm:3.0.4"
+"@johngw/stream@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@johngw/stream@npm:3.1.0"
   dependencies:
     "@johngw/stream-common": 1.1.2
     assert-never: 1.2.1
     ts-toolbelt: 9.6.0
     tslib: 2.5.0
-  checksum: 7a3f7a029e9989032278c21075cfdcd0a46724080c29ccdad466ba6227d8df47914d7d6a77b1f63352e2861cce05ae4cc612088101c3a498f31c6fe4d6fdc18c
+  checksum: a9de622a6034845bbdff444a5fbd51366e140f910c520495593cc34e826dc0be4e0e74ae4721a2f6979799a1ca222c9c9743e322e3be97447ce82a4cb1bd5ca4
   languageName: node
   linkType: hard
 
@@ -2538,7 +2538,7 @@ __metadata:
   resolution: "@plugola/streams@workspace:packages/streams"
   dependencies:
     "@johngw/async": 5.0.1
-    "@johngw/stream": 3.0.4
+    "@johngw/stream": 3.1.0
     "@johngw/stream-jest": 1.0.2
     "@johngw/stream-test": 1.1.2
     "@semantic-release/commit-analyzer": 9.0.2
