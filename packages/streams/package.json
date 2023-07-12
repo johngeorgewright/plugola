@@ -1,6 +1,6 @@
 {
   "name": "@plugola/streams",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A dictionary of streams used in plugola plugins",
   "main": "dist/index.js",
   "scripts": {
