@@ -71,7 +71,7 @@ export = class PackageGenerator extends Generator {
       build: 'yarn clean && tsc',
       clean: 'rimraf dist',
       start: 'tsc --watch --preserveWatchOutput',
-      release: 'semantic-release -e semantic-release-monorepo',
+      release: 'semantic-release',
       test: 'jest',
     })
 
@@ -167,7 +167,10 @@ export = class PackageGenerator extends Generator {
     const prettierOptions = (await prettier.resolveConfig(file)) || {}
     prettierOptions.parser = 'json'
 
-    writeFile(file, prettier.format(JSON.stringify(vsCodeWS), prettierOptions))
+    writeFile(
+      file,
+      await prettier.format(JSON.stringify(vsCodeWS), prettierOptions)
+    )
   }
 
   async install() {

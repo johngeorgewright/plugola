@@ -7,7 +7,7 @@
     "build": "yarn clean && tsc",
     "clean": "rimraf dist",
     "start": "tsc --watch --preserveWatchOutput",
-    "release": "semantic-release -e semantic-release-monorepo",
+    "release": "semantic-release",
     "test": "jest --passWithNoTests"
   },
   "license": "MIT",

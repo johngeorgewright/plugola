@@ -11,6 +11,7 @@
     { "name": "📦 @plugola/store", "path": "packages/store" },
     { "name": "📦 @plugola/store-logger", "path": "packages/store-logger" },
     { "name": "📦 @plugola/streams", "path": "packages/streams" },
+    { "name": "📦 @plugola/test", "path": "packages/test" },
     {
       "name": "📦 @plugola/vendor-plugin-manager",
       "path": "packages/vendor-plugin-manager"
