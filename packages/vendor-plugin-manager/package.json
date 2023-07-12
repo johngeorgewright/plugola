@@ -7,7 +7,7 @@
     "build": "yarn clean && tsc",
     "clean": "rimraf dist",
     "start": "tsc --watch --preserveWatchOutput",
-    "release": "semantic-release -e semantic-release-monorepo",
+    "release": "semantic-release",
     "test": "jest --passWithNoTests"
   },
   "license": "MIT",
@@ -36,6 +36,6 @@
     "tslib": "2.6.0"
   },
   "peerDependencies": {
-    "@plugola/plugin-manager": "^5.0.0"
+    "@plugola/plugin-manager": "^5.3.0"
   }
 }

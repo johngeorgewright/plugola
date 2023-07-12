@@ -15,6 +15,13 @@ export default class VendorPluginManager<
   #vendors: Map<number, string[]> = new Map()
 
   override registerPlugin(
+    plugin: Plugin<
+      InitContext & ExtraContext & ExtraInitContext,
+      RunContext & ExtraContext & ExtraRunContext
+    >
+  ): void
+
+  override registerPlugin(
     name: string,
     plugin: Omit<
       Plugin<
@@ -23,8 +30,43 @@ export default class VendorPluginManager<
       >,
       'name'
     >
+  ): void
+
+  override registerPlugin(
+    nameOrPlugin:
+      | string
+      | Plugin<
+          InitContext & ExtraContext & ExtraInitContext,
+          RunContext & ExtraContext & ExtraRunContext
+        >,
+    plugin?: Omit<
+      Plugin<
+        InitContext & ExtraContext & ExtraInitContext,
+        RunContext & ExtraContext & ExtraRunContext
+      >,
+      'name'
+    >
   ) {
-    super.registerPlugin(name, plugin)
+    super.registerPlugin(
+      nameOrPlugin as string,
+      plugin as Omit<
+        Plugin<
+          InitContext & ExtraContext & ExtraInitContext,
+          RunContext & ExtraContext & ExtraRunContext
+        >,
+        'name'
+      >
+    )
+
+    const name = plugin
+      ? (nameOrPlugin as string)
+      : (
+          nameOrPlugin as Plugin<
+            InitContext & ExtraContext & ExtraInitContext,
+            RunContext & ExtraContext & ExtraRunContext
+          >
+        ).name
+
     this.#automaticallyAuthorizedPlugins.add(name)
   }
 

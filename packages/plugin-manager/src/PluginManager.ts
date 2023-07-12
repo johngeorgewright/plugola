@@ -6,7 +6,7 @@ import DependencyGraph from './DependencyGraph'
 export interface PluginManagerOptions<
   ExtraContext extends Record<string, unknown>,
   ExtraInitContext extends Record<string, unknown>,
-  ExtraRunContext extends Record<string, unknown>,
+  ExtraRunContext extends Record<string, unknown>
 > {
   addContext?(pluginName: string): ExtraContext
   addInitContext?(pluginName: string): ExtraInitContext
@@ -17,7 +17,7 @@ export interface PluginManagerOptions<
 export default class PluginManager<
   ExtraContext extends Record<string, unknown>,
   ExtraInitContext extends Record<string, unknown>,
-  ExtraRunContext extends Record<string, unknown>,
+  ExtraRunContext extends Record<string, unknown>
 > {
   #plugins: Record<string, Plugin> = {}
   #dependencyGraph = new DependencyGraph<Plugin>()
@@ -36,7 +36,7 @@ export default class PluginManager<
       ExtraContext,
       ExtraInitContext,
       ExtraRunContext
-    > = {},
+    > = {}
   ) {
     this.#options = options
   }
@@ -49,7 +49,7 @@ export default class PluginManager<
       ExtraContext,
       ExtraInitContext,
       ExtraRunContext
-    >,
+    >
   ) {
     const pluginManager = new PluginManager({
       ...options,
@@ -57,23 +57,30 @@ export default class PluginManager<
         ({
           ...this.#options.addContext?.(pluginName),
           ...options.addContext?.(pluginName),
-        }) as ExtraContext,
+        } as ExtraContext),
       addInitContext: (pluginName) =>
         ({
           ...this.#options.addInitContext?.(pluginName),
           ...options.addInitContext?.(pluginName),
-        }) as ExtraInitContext,
+        } as ExtraInitContext),
       addRunContext: (pluginName) =>
         ({
           ...this.#options.addRunContext?.(pluginName),
           ...options.addRunContext?.(pluginName),
-        }) as ExtraRunContext,
+        } as ExtraRunContext),
     })
     pluginManager.#plugins = this.#plugins
     pluginManager.#dependencyGraph = this.#dependencyGraph
     pluginManager.#abortControllers = this.#abortControllers
     return pluginManager
   }
+
+  registerPlugin(
+    plugin: Plugin<
+      InitContext & ExtraContext & ExtraInitContext,
+      RunContext & ExtraContext & ExtraRunContext
+    >
+  ): void
 
   registerPlugin(
     name: string,
@@ -83,9 +90,32 @@ export default class PluginManager<
         RunContext & ExtraContext & ExtraRunContext
       >,
       'name'
-    >,
+    >
+  ): void
+
+  registerPlugin(
+    nameOrPlugin:
+      | string
+      | Plugin<
+          InitContext & ExtraContext & ExtraInitContext,
+          RunContext & ExtraContext & ExtraRunContext
+        >,
+    plugin?: Omit<
+      Plugin<
+        InitContext & ExtraContext & ExtraInitContext,
+        RunContext & ExtraContext & ExtraRunContext
+      >,
+      'name'
+    >
   ) {
-    this.#addPlugin({ name, ...plugin })
+    this.#addPlugin(
+      plugin
+        ? { name: nameOrPlugin as string, ...plugin }
+        : (nameOrPlugin as Plugin<
+            InitContext & ExtraContext & ExtraInitContext,
+            RunContext & ExtraContext & ExtraRunContext
+          >)
+    )
   }
 
   #addPlugin(plugin: Plugin) {
@@ -129,6 +159,10 @@ export default class PluginManager<
     return disabled
   }
 
+  disableAllPlugins() {
+    return this.disablePlugins(Object.keys(this.#plugins))
+  }
+
   #disablePlugin(plugin: Plugin) {
     if (!this.#enabledPlugins.has(plugin.name)) return false
     if (this.#isDependencyOfEnabledPlugin(plugin)) return false
@@ -159,7 +193,7 @@ export default class PluginManager<
           this.#ran.delete(plugin)
           this.#abortControllers.delete(plugin)
         },
-        { once: true },
+        { once: true }
       )
       this.#abortControllers.set(plugin, abortController)
     }
@@ -177,13 +211,13 @@ export default class PluginManager<
     await this.#filterMapDependencies(
       plugin,
       (dep) => !this.#initialized.has(dep),
-      (dep) => this.#initPlugin(dep),
+      (dep) => this.#initPlugin(dep)
     )
 
     await this.#pluginRace(
       plugin,
       () => plugin.init!(this.#createInitContext(plugin, signal)),
-      plugin.initTimeout || this.#options.pluginTimeout,
+      plugin.initTimeout || this.#options.pluginTimeout
     )
   }
 
@@ -198,13 +232,13 @@ export default class PluginManager<
     await this.#filterMapDependencies(
       plugin,
       (dep) => !this.#ran.has(dep),
-      (dep) => this.#runPlugin(dep),
+      (dep) => this.#runPlugin(dep)
     )
 
     await this.#pluginRace(
       plugin,
       () => plugin.run!(this.#createRunContext(plugin, signal)),
-      this.#options.pluginTimeout,
+      this.#options.pluginTimeout
     )
   }
 
@@ -218,14 +252,14 @@ export default class PluginManager<
             fn(),
             timeout(ms, signal).then(() => this.disablePlugins([plugin.name])),
           ],
-          signal,
+          signal
         )
   }
 
   async #filterMapDependencies(
     plugin: Plugin,
     filter: (plugin: Plugin) => boolean,
-    map: (plugin: Plugin) => Promise<any>,
+    map: (plugin: Plugin) => Promise<any>
   ) {
     const promises = []
 
@@ -246,7 +280,7 @@ export default class PluginManager<
 
   #createRunContext(
     plugin: Plugin,
-    signal: AbortSignal,
+    signal: AbortSignal
   ): Record<string, unknown> {
     return {
       ...this.#createContext(plugin, signal),
