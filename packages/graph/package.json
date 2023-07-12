@@ -8,7 +8,7 @@
     "build": "yarn clean && tsc",
     "clean": "rimraf dist",
     "start": "tsc --watch --preserveWatchOutput",
-    "release": "semantic-release",
+    "release": "semantic-release && sleep 2",
     "test": "jest"
   },
   "license": "MIT",

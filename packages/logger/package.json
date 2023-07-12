@@ -7,7 +7,7 @@
   "scripts": {
     "build": "yarn clean && tsc",
     "clean": "rimraf dist",
-    "release": "semantic-release",
+    "release": "semantic-release && sleep 2",
     "start": "tsc --watch --preserveWatchOutput",
     "test": "jest"
   },
