@@ -76,6 +76,13 @@ export default class PluginManager<
   }
 
   registerPlugin(
+    plugin: Plugin<
+      InitContext & ExtraContext & ExtraInitContext,
+      RunContext & ExtraContext & ExtraRunContext
+    >
+  ): void
+
+  registerPlugin(
     name: string,
     plugin: Omit<
       Plugin<
@@ -84,8 +91,31 @@ export default class PluginManager<
       >,
       'name'
     >
+  ): void
+
+  registerPlugin(
+    nameOrPlugin:
+      | string
+      | Plugin<
+          InitContext & ExtraContext & ExtraInitContext,
+          RunContext & ExtraContext & ExtraRunContext
+        >,
+    plugin?: Omit<
+      Plugin<
+        InitContext & ExtraContext & ExtraInitContext,
+        RunContext & ExtraContext & ExtraRunContext
+      >,
+      'name'
+    >
   ) {
-    this.#addPlugin({ name, ...plugin })
+    this.#addPlugin(
+      plugin
+        ? { name: nameOrPlugin as string, ...plugin }
+        : (nameOrPlugin as Plugin<
+            InitContext & ExtraContext & ExtraInitContext,
+            RunContext & ExtraContext & ExtraRunContext
+          >)
+    )
   }
 
   #addPlugin(plugin: Plugin) {
