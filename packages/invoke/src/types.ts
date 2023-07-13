@@ -13,15 +13,33 @@ export type InvokerFn<Args extends unknown[], Result> = (
   ...args: AddAbortSignal<Args>
 ) => Result | Promise<Awaited<Result>>
 
+/**
+ * Create a `.register` argument union from a list of arguments and a return type.
+ *
+ * @example
+ * type Args = InvokerRegistrationArgs<[string, number], string>
+ * // | [string, number, InvokerFn<[], string>]
+ * // | [string, InvokerFn<[number], string>]
+ * // | [InvokerFn<[string, number], string>]
+ */
 export type InvokerRegistrationArgs<
   A extends unknown[],
+  Return
+> = _InvokerRegistrationArgs<A, Return, [], [InvokerFn<A, Return>]>
+
+type _InvokerRegistrationArgs<
+  A extends unknown[],
   Return,
-  B extends unknown[] = []
+  B extends unknown[],
+  Acc extends unknown[]
 > = L.Length<A> extends 0
-  ? [InvokerFn<B, Return>]
-  :
-      | L.Append<A, InvokerFn<B, Return>>
-      | InvokerRegistrationArgs<L.Pop<A>, Return, L.Prepend<B, L.Last<A>>>
+  ? Acc
+  : _InvokerRegistrationArgs<
+      L.Pop<A>,
+      Return,
+      L.Prepend<B, L.Last<A>>,
+      L.Append<A, InvokerFn<B, Return>> | Acc
+    >
 
 export interface Invoker {
   args: unknown[]

@@ -1,3 +1,4 @@
+import { InvokablesDict, InvokerRegistrationArgs } from '@plugola/invoke'
 import type MessageBus from './MessageBus'
 import SubscriptionDisposer from './SubscriptionDisposer'
 import type {
@@ -8,17 +9,13 @@ import type {
   UntilRtn,
 } from './types/events'
 import type { EventGeneratorArgs, EventGeneratorsT } from './types/generators'
-import type {
-  InvokablesT,
-  InvokerInterceptorArgs,
-  InvokerRegistrationArgs,
-} from './types/invokables'
+import type { InvokerInterceptorArgs } from './types/invokables'
 import { ErrorHandler, Unsubscriber } from './types/MessageBus'
 
 export default class Broker<
   Events extends EventsT = EventsT,
   EventGens extends EventGeneratorsT = EventGeneratorsT,
-  Invokables extends InvokablesT = InvokablesT
+  Invokables extends InvokablesDict = InvokablesDict
 > {
   constructor(
     messageBus: MessageBus<Events, EventGens, Invokables>,

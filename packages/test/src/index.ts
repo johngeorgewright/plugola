@@ -1,6 +1,8 @@
 import { PluginManager } from '@plugola/plugin-manager'
 import { TestPlugin } from './TestPlugin'
 
+export { TestPlugin }
+
 export function testPlugin<
   TestContext extends Record<string, unknown>,
   PluginContext extends Record<string, unknown>,

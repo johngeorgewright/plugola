@@ -35,7 +35,7 @@ export class Invokables<Dict extends InvokablesDict> {
     >
     const invokers = this.#invokers[invokableName] || []
     const registeredInvoker = invokers!.find(
-      (invoker) => this.#argumentIndex(invoker.args, args) !== -1,
+      (invoker) => this.#argumentIndex(invoker.args, args) !== -1
     )
 
     if (registeredInvoker)
@@ -51,7 +51,7 @@ export class Invokables<Dict extends InvokablesDict> {
     const cancel = () => {
       this.#invokers[invokableName] = removeItem(
         subscriber,
-        this.#invokers[invokableName] as any,
+        this.#invokers[invokableName] as any
       )
     }
 
@@ -109,7 +109,7 @@ export class Invokables<Dict extends InvokablesDict> {
   async #callInvoker<InvokableName extends keyof Dict>(
     invokableName: InvokableName,
     args: Dict[InvokableName]['args'],
-    abortSignal: AbortSignal = new AbortController().signal,
+    abortSignal: AbortSignal = new AbortController().signal
   ): Promise<Dict[InvokableName]['return']> {
     const invokers = this.#invokers[invokableName]
     const invoker =
@@ -122,7 +122,7 @@ export class Invokables<Dict extends InvokablesDict> {
 
     return invoker.fn(
       ...args.slice(this.#argumentIndex(invoker.args, args)),
-      abortSignal,
+      abortSignal
     )
   }
 

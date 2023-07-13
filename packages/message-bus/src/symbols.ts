@@ -1,1 +1,1 @@
-export const CancelEvent = Symbol('cancel event')
+export const CancelEvent = Symbol.for('cancel event')

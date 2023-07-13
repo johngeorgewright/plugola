@@ -2501,6 +2501,7 @@ __metadata:
   dependencies:
     "@johngw/async": 5.0.1
     "@johngw/async-iterator": 4.0.1
+    "@plugola/invoke": "workspace:*"
     "@semantic-release/commit-analyzer": 9.0.2
     "@semantic-release/exec": 6.0.3
     "@semantic-release/git": 10.0.1
@@ -2622,7 +2623,7 @@ __metadata:
     typescript: 5.0.4
   peerDependencies:
     "@plugola/logger": ^3.0.0
-    "@plugola/store": ^5.0.0
+    "@plugola/store": ^6.0.0
   languageName: unknown
   linkType: soft
 

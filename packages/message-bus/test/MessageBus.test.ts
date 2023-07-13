@@ -5,7 +5,7 @@ import { AbortError, timeout } from '@johngw/async'
 import MessageBusError from '../src/MessageBusError'
 import { AbortSignalComposite } from '../src/AbortController'
 import { CreateEvents } from '../src/types/events'
-import { CreateInvokables } from '../src/types/invokables'
+import { CreateInvokablesDict } from '../src/types/invokables'
 import { CreateEventGenerators } from '../src/types/generators'
 
 describe('events', () => {
@@ -199,7 +199,7 @@ describe('iterators', () => {
 })
 
 describe('invokables', () => {
-  type Invokables = CreateInvokables<{
+  type Invokables = CreateInvokablesDict<{
     foo: { args: []; return: string }
     bar: { args: [string]; return: string }
     afoo: { args: [string]; return: string }
