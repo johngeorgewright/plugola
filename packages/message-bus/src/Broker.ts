@@ -208,7 +208,10 @@ export default class Broker<
 
   interceptInvoker<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
-    ...args: InvokerInterceptorArgs<Invokables[InvokableName]['args']>
+    ...args: InvokerInterceptorArgs<
+      Invokables[InvokableName]['args'],
+      Invokables[InvokableName]['return']
+    >
   ): Unsubscriber {
     return this.#messageBus.interceptInvoker(this, invokableName, args)
   }

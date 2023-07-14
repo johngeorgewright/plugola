@@ -1,4 +1,4 @@
-import { InvokablesDict, InvokerFn } from '@plugola/invoke'
+import type { InvokablesDict, InvokerFn } from '@plugola/invoke'
 import type Broker from '../Broker'
 import type { L } from 'ts-toolbelt'
 
@@ -23,20 +23,29 @@ export type Invokers<Invokables extends InvokablesDict> = Partial<{
   >[]
 }>
 
-export type InvokerInterceptorFn<
-  Args extends unknown[],
-  NewArgs extends unknown[]
-> = (...args: Args) => void | NewArgs
+export type InvokerInterceptorFn<Args extends unknown[], Return> = (
+  next: (...args: Args) => Promise<Return>,
+  ...args: Args
+) => Return | Promise<Return>
 
 export type InvokerInterceptorArgs<
   A extends unknown[],
-  B extends unknown[] = [],
-  C extends unknown[] = A
+  Return
+> = _InvokerInterceptorArgs<A, Return, A, [InvokerInterceptorFn<A, Return>]>
+
+export type _InvokerInterceptorArgs<
+  A extends unknown[],
+  Return,
+  B extends unknown[],
+  Acc extends unknown[]
 > = L.Length<A> extends 0
-  ? [InvokerInterceptorFn<B, C>]
-  :
-      | L.Append<A, InvokerInterceptorFn<B, C>>
-      | InvokerInterceptorArgs<L.Pop<A>, L.Prepend<B, L.Last<A>>, C>
+  ? Acc
+  : _InvokerInterceptorArgs<
+      L.Pop<A>,
+      Return,
+      B,
+      Acc | L.Append<A, InvokerInterceptorFn<B, Return>>
+    >
 
 export type InvokerInterceptors<Invokables extends InvokablesDict> = Partial<{
   [InvokableName in keyof Invokables]: InvokerInterceptor<Broker>[]
@@ -45,5 +54,5 @@ export type InvokerInterceptors<Invokables extends InvokablesDict> = Partial<{
 export interface InvokerInterceptor<B extends Broker> {
   broker: B
   args: unknown[]
-  fn: InvokerInterceptorFn<unknown[], unknown[]>
+  fn: InvokerInterceptorFn<unknown[], unknown>
 }

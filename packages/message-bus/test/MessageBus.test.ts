@@ -268,8 +268,19 @@ describe('invokables', () => {
 
   test('intercept invokers', async () => {
     messageBus.start()
-    broker.interceptInvoker('bar', (x) => [x + '1'])
+    broker.interceptInvoker('bar', (next, x) => next(x + '1'))
     expect(await broker.invoke('bar', 'hello')).toEqual('hello11')
+  })
+
+  test('intercepting with indexed parameters', async () => {
+    messageBus.start()
+    const match = 'hello'
+    broker.interceptInvoker('bar', match, async (next) => {
+      const result = await next(match)
+      return result + ' foo'
+    })
+    expect(await broker.invoke('bar', 'no intercept')).toEqual('no intercept1')
+    expect(await broker.invoke('bar', 'hello')).toEqual('hello1 foo')
   })
 
   test('aborting will throw AbortError', async () => {

@@ -19,15 +19,26 @@ export interface EventGenerator<B extends Broker> {
   fn: EventGeneratorFn<unknown[], unknown>
 }
 
-export type EventGeneratorArgs<
+export type EventGeneratorArgs<A extends unknown[], R> = _EventGeneratorArgs<
+  A,
+  R,
+  [],
+  [EventGeneratorFn<A, R>]
+>
+
+export type _EventGeneratorArgs<
   A extends unknown[],
   R,
-  B extends unknown[] = []
+  B extends unknown[],
+  Acc extends unknown[]
 > = L.Length<A> extends 0
-  ? [EventGeneratorFn<B, R>]
-  :
-      | L.Append<A, EventGeneratorFn<B, R>>
-      | EventGeneratorArgs<L.Pop<A>, R, L.Prepend<B, L.Last<A>>>
+  ? Acc
+  : _EventGeneratorArgs<
+      L.Pop<A>,
+      R,
+      L.Prepend<B, L.Last<A>>,
+      Acc | L.Append<A, EventGeneratorFn<B, R>>
+    >
 
 export type EventGenerators<EventGens extends EventGeneratorsT> = Partial<{
   [EventName in keyof EventGens]: EventGenerator<Broker>[]

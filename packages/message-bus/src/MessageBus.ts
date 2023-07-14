@@ -24,7 +24,11 @@ import {
   EventGenerators,
   EventGeneratorsT,
 } from './types/generators'
-import { InvokerInterceptors, Invokers } from './types/invokables'
+import {
+  InvokerInterceptorArgs,
+  InvokerInterceptors,
+  Invokers,
+} from './types/invokables'
 import { Stringable, UnpackResolvableValue } from './types/util'
 import { ErrorHandler, Unsubscriber } from './types/MessageBus'
 import { AbortSignalComposite, fromSignal } from './AbortController'
@@ -140,7 +144,10 @@ export default class MessageBus<
   interceptInvoker<InvokableName extends keyof Invokables>(
     broker: Broker<Events, EventGens, Invokables>,
     invokableName: InvokableName,
-    args: Invokables[InvokableName]['args']
+    args: InvokerInterceptorArgs<
+      Invokables[InvokableName]['args'],
+      Invokables[InvokableName]['return']
+    >
   ): Unsubscriber {
     const interceptor = {
       broker,
@@ -395,8 +402,8 @@ export default class MessageBus<
     args: Invokables[InvokableName]['args'],
     abortSignal?: AbortSignal
   ): Promise<Invokables[InvokableName]['return']> {
-    const handle = () =>
-      new Promise(async (resolve, reject) => {
+    const handle = async () =>
+      new Promise((resolve, reject) => {
         const abortSignalComposite = AbortSignalComposite.create(
           abortSignal,
           broker.abortSignal
@@ -404,13 +411,7 @@ export default class MessageBus<
         if (abortSignalComposite.aborted) return reject(new AbortError())
         abortSignalComposite.onAbort(() => reject(new AbortError()))
 
-        resolve(
-          this.#callInvoker(
-            invokableName,
-            await this.#callInvokerInterceptors(invokableName, args),
-            abortSignalComposite
-          )
-        )
+        resolve(this.#invokeChain(invokableName, args, abortSignalComposite))
       })
 
     return this.#started ? handle() : this.#queue(broker, handle)
@@ -446,34 +447,29 @@ export default class MessageBus<
     })()
   }
 
-  async #callInvokerInterceptors<InvokableName extends keyof Invokables>(
+  async #invokeChain<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
-    args: Invokables[InvokableName]['args']
-  ) {
-    const invokerInterceptors = (this.#invokerInterceptors[invokableName] ||
-      [])!
+    args: Invokables[InvokableName]['args'],
+    signal: AbortSignal
+  ): Promise<Invokables[InvokableName]['return']> {
+    const invokerInterceptors = this.#invokerInterceptors[invokableName] || []
 
-    if (!invokerInterceptors.length) return args
+    const invokeChain = async (
+      index: number,
+      args: Invokables[InvokableName]['args']
+    ): Promise<Invokables[InvokableName]['return']> => {
+      const interceptor = invokerInterceptors[index]
+      if (!interceptor) return this.#invoke(invokableName, args, signal)
+      const argIndex = this.#argumentIndex(interceptor.args, args)
+      return argIndex === -1
+        ? invokeChain(index + 1, args)
+        : interceptor.fn(
+            (...nextArgs) => invokeChain(index + 1, nextArgs),
+            ...args.slice(argIndex)
+          )
+    }
 
-    return invokerInterceptors.reduce<
-      Promise<Invokables[InvokableName]['args']>
-    >(async (acc, interceptor) => {
-      const args = await acc
-      const index = this.#argumentIndex(interceptor.args, args)
-
-      if (index === -1) return args
-
-      const newArgs = await Promise.resolve(
-        interceptor.fn(...args.slice(index))
-      )
-
-      return newArgs
-        ? ([
-            ...args.slice(0, index),
-            ...newArgs,
-          ] as Invokables[InvokableName]['args'])
-        : args
-    }, Promise.resolve(args))
+    return invokeChain(0, args)
   }
 
   #callSubscribers<EventName extends keyof Events>(
@@ -508,7 +504,7 @@ export default class MessageBus<
     }
   }
 
-  async #callInvoker<InvokableName extends keyof Invokables>(
+  async #invoke<InvokableName extends keyof Invokables>(
     invokableName: InvokableName,
     args: Invokables[InvokableName]['args'],
     abortSignal: AbortSignal
