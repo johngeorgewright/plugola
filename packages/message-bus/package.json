@@ -38,6 +38,6 @@
     "@johngw/async": "5.0.1",
     "@johngw/async-iterator": "4.0.1",
     "ts-toolbelt": "9.6.0",
-    "tslib": "2.6.0"
+    "tslib": "2.6.1"
   }
 }
