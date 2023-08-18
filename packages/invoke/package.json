@@ -1,6 +1,6 @@
 {
   "name": "@plugola/invoke",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Add ability to invoke functions across plugins",
   "main": "dist/index.js",
   "scripts": {
