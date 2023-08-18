@@ -1,6 +1,6 @@
 {
   "name": "@plugola/store-logger",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Logger/debugger for the store",
   "main": "dist/index.js",
   "scripts": {
@@ -37,6 +37,6 @@
   },
   "peerDependencies": {
     "@plugola/logger": "^3.0.0",
-    "@plugola/store": "^6.0.1"
+    "@plugola/store": "^6.0.2"
   }
 }
