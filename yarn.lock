@@ -2618,7 +2618,7 @@ __metadata:
     prettier: 2.8.7
     rimraf: 5.0.1
     ts-jest: 29.1.1
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
     yeoman-generator: 5.9.0
   languageName: unknown
@@ -2640,7 +2640,7 @@ __metadata:
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
     ts-jest: 29.1.1
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -2664,7 +2664,7 @@ __metadata:
     ts-jest: 29.1.1
     ts-node: 10.9.1
     ts-toolbelt: 9.6.0
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -2686,7 +2686,7 @@ __metadata:
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
     ts-jest: 29.1.1
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -2712,7 +2712,7 @@ __metadata:
     ts-jest: 29.1.1
     ts-node: 10.9.1
     ts-toolbelt: 9.6.0
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -2741,7 +2741,7 @@ __metadata:
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
     ts-node: 10.9.1
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
     yo: 4.3.1
   languageName: unknown
@@ -2767,7 +2767,7 @@ __metadata:
     semantic-release-monorepo: 7.0.5
     ts-jest: 29.1.1
     ts-node: 10.9.1
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -2791,7 +2791,7 @@ __metadata:
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
     ts-jest: 29.1.1
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -2814,7 +2814,7 @@ __metadata:
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
     ts-jest: 29.1.1
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   peerDependencies:
     "@plugola/logger": ^3.0.0
@@ -2838,7 +2838,7 @@ __metadata:
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
     ts-jest: 29.1.1
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -2866,7 +2866,7 @@ __metadata:
     semantic-release-monorepo: 7.0.5
     ts-jest: 29.1.0
     ts-toolbelt: 9.6.0
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   peerDependencies:
     "@johngw/stream": ^3.0.3
@@ -2918,7 +2918,7 @@ __metadata:
     semantic-release: 19.0.5
     semantic-release-monorepo: 7.0.5
     ts-jest: 29.1.1
-    tslib: 2.6.1
+    tslib: 2.6.2
     typescript: 5.0.4
   peerDependencies:
     "@plugola/plugin-manager": ^5.3.0
@@ -15589,10 +15589,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.6.1":
-  version: 2.6.1
-  resolution: "tslib@npm:2.6.1"
-  checksum: b0d176d176487905b66ae4d5856647df50e37beea7571c53b8d10ba9222c074b81f1410fb91da13debaf2cbc970663609068bdebafa844ea9d69b146527c38fe
+"tslib@npm:2.6.2":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
   languageName: node
   linkType: hard
 
