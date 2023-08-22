@@ -95,7 +95,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["commitizen", "npm:4.3.0"],\
             ["cz-conventional-changelog", "npm:3.3.0"],\
             ["husky", "npm:8.0.3"],\
@@ -3344,7 +3344,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/generator/",\
           "packageDependencies": [\
             ["@plugola/generator", "workspace:packages/generator"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/node", "npm:20.5.2"],\
             ["@types/prettier", "npm:2.7.3"],\
             ["@types/rimraf", "npm:4.0.5"],\
@@ -3372,7 +3372,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.6.3"],\
             ["rimraf", "npm:5.0.1"],\
@@ -3395,7 +3395,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:8.0.7"],\
             ["@semantic-release/release-notes-generator", "virtual:97efea6e6ed679d1b12b286efdf34775793cf3fe0408c2b96c7601039dadfb9d5f6ecc6e60a79c0b5d97872c67aabf027b7d6fd8e25b4de748eccc6c0bfa17ee#npm:11.0.1"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/node", "npm:20.5.2"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.6.3"],\
@@ -3421,7 +3421,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/node", "npm:20.5.2"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.6.3"],\
@@ -3447,7 +3447,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/node", "npm:20.5.2"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.6.3"],\
@@ -3475,7 +3475,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["commitizen", "npm:4.3.0"],\
             ["cz-conventional-changelog", "npm:3.3.0"],\
             ["husky", "npm:8.0.3"],\
@@ -3507,7 +3507,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/node", "npm:20.5.2"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.6.3"],\
@@ -3532,7 +3532,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/lodash.set", "npm:4.3.7"],\
             ["@types/node", "npm:20.5.2"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
@@ -3558,7 +3558,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.6.3"],\
             ["rimraf", "npm:5.0.1"],\
@@ -3583,7 +3583,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.6.3"],\
             ["rimraf", "npm:5.0.1"],\
@@ -3610,7 +3610,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:8.0.7"],\
             ["@semantic-release/release-notes-generator", "virtual:97efea6e6ed679d1b12b286efdf34775793cf3fe0408c2b96c7601039dadfb9d5f6ecc6e60a79c0b5d97872c67aabf027b7d6fd8e25b4de748eccc6c0bfa17ee#npm:11.0.1"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/node", "npm:20.5.2"],\
             ["expect", "npm:29.6.3"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
@@ -3663,7 +3663,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.6.3"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.6.3"],\
             ["rimraf", "npm:5.0.1"],\
@@ -4434,6 +4434,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-jest-npm-29.5.3-8fc40e94bc-e36bb92e0b.zip/node_modules/@types/jest/",\
           "packageDependencies": [\
             ["@types/jest", "npm:29.5.3"],\
+            ["expect", "npm:29.2.2"],\
+            ["pretty-format", "npm:29.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:29.5.4", {\
+          "packageLocation": "./.yarn/cache/@types-jest-npm-29.5.4-d0885ca455-38ed5942f4.zip/node_modules/@types/jest/",\
+          "packageDependencies": [\
+            ["@types/jest", "npm:29.5.4"],\
             ["expect", "npm:29.2.2"],\
             ["pretty-format", "npm:29.2.1"]\
           ],\
@@ -17665,7 +17674,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/babel-jest", null],\
             ["@types/babel__core", null],\
             ["@types/esbuild", null],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/jest__types", null],\
             ["@types/typescript", null],\
             ["babel-jest", null],\
@@ -17706,7 +17715,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/babel-jest", null],\
             ["@types/babel__core", null],\
             ["@types/esbuild", null],\
-            ["@types/jest", "npm:29.5.3"],\
+            ["@types/jest", "npm:29.5.4"],\
             ["@types/jest__types", null],\
             ["@types/typescript", null],\
             ["babel-jest", null],\
