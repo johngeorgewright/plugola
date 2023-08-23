@@ -1669,18 +1669,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/stream-test@npm:1.1.2":
-  version: 1.1.2
-  resolution: "@johngw/stream-test@npm:1.1.2"
+"@johngw/stream-test@npm:1.2.0":
+  version: 1.2.0
+  resolution: "@johngw/stream-test@npm:1.2.0"
   dependencies:
     "@johngw/stream-common": 1.1.2
-    "@johngw/timeline": 1.0.5
+    "@johngw/timeline": 1.1.0
     assert-never: 1.2.1
     js-yaml: 4.1.0
     ts-toolbelt: 9.6.0
     tslib: 2.5.0
     web-streams-polyfill: 3.2.1
-  checksum: 9b1a8cde9b1896fbfe92f2efece2ae76364c876000f315703fd0a1c0c4b27fdfaa2389b0cdc8bc63417932785c2687fb155f0efb38c5dff65660acb31ba610bb
+  checksum: 8857061e2b07206c7547d5c713fec01a842ed59ddc63edadfe8dbf405498d233a6fb4d9e3d3091b56de6713d74042eb2ad026d52d36ffa2772e62e06031aed9a
   languageName: node
   linkType: hard
 
@@ -1696,13 +1696,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/timeline@npm:1.0.5":
-  version: 1.0.5
-  resolution: "@johngw/timeline@npm:1.0.5"
+"@johngw/timeline@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@johngw/timeline@npm:1.1.0"
   dependencies:
     js-yaml: 4.1.0
-    tslib: 2.5.3
-  checksum: a683bc6dada626f8566b714a5c5da490b8e55ead3c414e6c8c68fc9903baac20b364c685ee9fdfee6b65835cef58194bcccec69d7204544dfdaa9892987b15a7
+    tslib: 2.6.2
+  checksum: 1585c2c6bc83dd1b4b07f084eb902e8cc993c1e84c30876a851ff5e5352d9de3633acdcd422fd447820124713f923d810d53be7fc4e5695feb3377b61b27c712
   languageName: node
   linkType: hard
 
@@ -2884,7 +2884,7 @@ __metadata:
     "@johngw/async": 5.0.1
     "@johngw/stream": 3.1.0
     "@johngw/stream-jest": 1.0.2
-    "@johngw/stream-test": 1.1.2
+    "@johngw/stream-test": 1.2.0
     "@semantic-release/commit-analyzer": 9.0.2
     "@semantic-release/exec": 6.0.3
     "@semantic-release/git": 10.0.1
@@ -15693,13 +15693,6 @@ __metadata:
   version: 2.5.2
   resolution: "tslib@npm:2.5.2"
   checksum: 4d3c1e238b94127ed0e88aa0380db3c2ddae581dc0f4bae5a982345e9f50ee5eda90835b8bfba99b02df10a5734470be197158c36f9129ac49fdc14a6a9da222
-  languageName: node
-  linkType: hard
-
-"tslib@npm:2.5.3":
-  version: 2.5.3
-  resolution: "tslib@npm:2.5.3"
-  checksum: 88902b309afaf83259131c1e13da1dceb0ad1682a213143a1346a649143924d78cf3760c448b84d796938fd76127183894f8d85cbb3bf9c4fddbfcc140c0003c
   languageName: node
   linkType: hard
 
