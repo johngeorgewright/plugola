@@ -2268,7 +2268,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/@johngw-stream-jest-virtual-e384e8c590/0/cache/@johngw-stream-jest-npm-1.0.2-2a66354f26-68ffbc3a5a.zip/node_modules/@johngw/stream-jest/",\
           "packageDependencies": [\
             ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.2"],\
-            ["@johngw/stream-test", "npm:1.1.2"],\
+            ["@johngw/stream-test", "npm:1.2.0"],\
             ["@types/expect", null],\
             ["@types/johngw__stream-test", null],\
             ["expect", "npm:29.6.3"],\
@@ -2284,12 +2284,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/stream-test", [\
-        ["npm:1.1.2", {\
-          "packageLocation": "./.yarn/cache/@johngw-stream-test-npm-1.1.2-261808a7e5-9b1a8cde9b.zip/node_modules/@johngw/stream-test/",\
+        ["npm:1.2.0", {\
+          "packageLocation": "./.yarn/cache/@johngw-stream-test-npm-1.2.0-922e9802c9-8857061e2b.zip/node_modules/@johngw/stream-test/",\
           "packageDependencies": [\
-            ["@johngw/stream-test", "npm:1.1.2"],\
+            ["@johngw/stream-test", "npm:1.2.0"],\
             ["@johngw/stream-common", "npm:1.1.2"],\
-            ["@johngw/timeline", "npm:1.0.5"],\
+            ["@johngw/timeline", "npm:1.1.0"],\
             ["assert-never", "npm:1.2.1"],\
             ["js-yaml", "npm:4.1.0"],\
             ["ts-toolbelt", "npm:9.6.0"],\
@@ -2300,12 +2300,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/timeline", [\
-        ["npm:1.0.5", {\
-          "packageLocation": "./.yarn/cache/@johngw-timeline-npm-1.0.5-97237bf9cd-a683bc6dad.zip/node_modules/@johngw/timeline/",\
+        ["npm:1.1.0", {\
+          "packageLocation": "./.yarn/cache/@johngw-timeline-npm-1.1.0-ff94922d15-1585c2c6bc.zip/node_modules/@johngw/timeline/",\
           "packageDependencies": [\
-            ["@johngw/timeline", "npm:1.0.5"],\
+            ["@johngw/timeline", "npm:1.1.0"],\
             ["js-yaml", "npm:4.1.0"],\
-            ["tslib", "npm:2.5.3"]\
+            ["tslib", "npm:2.6.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3604,7 +3604,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@johngw/async", "npm:5.0.1"],\
             ["@johngw/stream", "npm:3.1.0"],\
             ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.2"],\
-            ["@johngw/stream-test", "npm:1.1.2"],\
+            ["@johngw/stream-test", "npm:1.2.0"],\
             ["@semantic-release/commit-analyzer", "virtual:97efea6e6ed679d1b12b286efdf34775793cf3fe0408c2b96c7601039dadfb9d5f6ecc6e60a79c0b5d97872c67aabf027b7d6fd8e25b4de748eccc6c0bfa17ee#npm:9.0.2"],\
             ["@semantic-release/exec", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:6.0.3"],\
             ["@semantic-release/git", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.0.1"],\
@@ -17926,13 +17926,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/tslib-npm-2.5.2-3f1b58afbb-4d3c1e238b.zip/node_modules/tslib/",\
           "packageDependencies": [\
             ["tslib", "npm:2.5.2"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:2.5.3", {\
-          "packageLocation": "./.yarn/cache/tslib-npm-2.5.3-7756051e02-88902b309a.zip/node_modules/tslib/",\
-          "packageDependencies": [\
-            ["tslib", "npm:2.5.3"]\
           ],\
           "linkType": "HARD"\
         }],\
