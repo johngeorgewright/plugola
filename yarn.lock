@@ -2642,7 +2642,7 @@ __metadata:
   resolution: "@plugola/generator@workspace:packages/generator"
   dependencies:
     "@types/jest": 29.5.4
-    "@types/node": 20.5.7
+    "@types/node": 20.5.8
     "@types/prettier": 2.7.3
     "@types/rimraf": 4.0.5
     "@types/yeoman-generator": 5.2.11
@@ -2689,7 +2689,7 @@ __metadata:
     "@semantic-release/github": 8.0.7
     "@semantic-release/release-notes-generator": 11.0.1
     "@types/jest": 29.5.4
-    "@types/node": 20.5.7
+    "@types/node": 20.5.8
     jest: 29.6.4
     jest-environment-jsdom: 29.6.4
     rimraf: 5.0.1
@@ -2713,7 +2713,7 @@ __metadata:
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
     "@types/jest": 29.5.4
-    "@types/node": 20.5.7
+    "@types/node": 20.5.8
     jest: 29.6.4
     jest-environment-jsdom: 29.6.4
     rimraf: 5.0.1
@@ -2737,7 +2737,7 @@ __metadata:
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
     "@types/jest": 29.5.4
-    "@types/node": 20.5.7
+    "@types/node": 20.5.8
     jest: 29.6.4
     jest-environment-jsdom: 29.6.4
     rimraf: 5.0.1
@@ -2793,7 +2793,7 @@ __metadata:
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
     "@types/jest": 29.5.4
-    "@types/node": 20.5.7
+    "@types/node": 20.5.8
     jest: 29.6.4
     jest-environment-jsdom: 29.6.4
     rimraf: 5.0.1
@@ -2817,7 +2817,7 @@ __metadata:
     "@semantic-release/release-notes-generator": 10.0.3
     "@types/jest": 29.5.4
     "@types/lodash.set": 4.3.7
-    "@types/node": 20.5.7
+    "@types/node": 20.5.8
     jest: 29.6.4
     jest-environment-jsdom: 29.6.4
     lodash.set: 4.3.2
@@ -2891,7 +2891,7 @@ __metadata:
     "@semantic-release/github": 8.0.7
     "@semantic-release/release-notes-generator": 11.0.1
     "@types/jest": 29.5.4
-    "@types/node": 20.5.7
+    "@types/node": 20.5.8
     expect: 29.6.4
     jest: 29.6.4
     jest-environment-jsdom: 29.6.4
@@ -3611,10 +3611,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.5.7":
-  version: 20.5.7
-  resolution: "@types/node@npm:20.5.7"
-  checksum: fc284c8e16ddc04569730d58e87eae349eb1c3dd9020cb79a1862d9d9add6f04e7367a236f3252db8db2572f90278e250f4cd43d27d264972b54394eaba1ed76
+"@types/node@npm:20.5.8":
+  version: 20.5.8
+  resolution: "@types/node@npm:20.5.8"
+  checksum: ccd73e0e99ddfcf42e10b7a30a58a432bc39eeb9d1d59084ed818be468e05375b212a29d03529149aff58366c0eddb9bf367cb335db6620a4855ce315c5ecf28
   languageName: node
   linkType: hard
 
