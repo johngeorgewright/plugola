@@ -1,6 +1,6 @@
 {
   "name": "@plugola/store-logger",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Logger/debugger for the store",
   "main": "dist/index.js",
   "scripts": {
@@ -23,9 +23,9 @@
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "8.1.0",
     "@semantic-release/release-notes-generator": "10.0.3",
-    "@types/jest": "29.5.3",
-    "jest": "29.6.1",
-    "jest-environment-jsdom": "29.6.1",
+    "@types/jest": "29.5.4",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
     "rimraf": "5.0.1",
     "semantic-release": "19.0.5",
     "semantic-release-monorepo": "7.0.5",
@@ -33,10 +33,10 @@
     "typescript": "5.0.4"
   },
   "dependencies": {
-    "tslib": "2.6.0"
+    "tslib": "2.6.2"
   },
   "peerDependencies": {
     "@plugola/logger": "^3.0.0",
-    "@plugola/store": "^6.0.0"
+    "@plugola/store": "^6.0.2"
   }
 }

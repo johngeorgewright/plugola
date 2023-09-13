@@ -1,6 +1,6 @@
 {
   "name": "@plugola/invoke",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Add ability to invoke functions across plugins",
   "main": "dist/index.js",
   "scripts": {
@@ -21,10 +21,10 @@
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "8.0.7",
     "@semantic-release/release-notes-generator": "11.0.1",
-    "@types/jest": "29.5.2",
-    "@types/node": "20.4.1",
-    "jest": "29.6.1",
-    "jest-environment-jsdom": "29.6.1",
+    "@types/jest": "29.5.4",
+    "@types/node": "20.6.0",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
     "rimraf": "5.0.1",
     "semantic-release": "21.0.2",
     "semantic-release-monorepo": "7.0.5",
@@ -34,6 +34,6 @@
   },
   "dependencies": {
     "ts-toolbelt": "9.6.0",
-    "tslib": "2.6.0"
+    "tslib": "2.6.2"
   }
 }

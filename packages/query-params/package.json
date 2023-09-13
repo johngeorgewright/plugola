@@ -1,6 +1,6 @@
 {
   "name": "@plugola/query-params",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Parses location query parameters",
   "main": "dist/index.js",
   "sideEffects": false,
@@ -23,11 +23,11 @@
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "8.1.0",
     "@semantic-release/release-notes-generator": "10.0.3",
-    "@types/jest": "29.5.3",
+    "@types/jest": "29.5.4",
     "@types/lodash.set": "4.3.7",
-    "@types/node": "20.4.1",
-    "jest": "29.6.1",
-    "jest-environment-jsdom": "29.6.1",
+    "@types/node": "20.6.0",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
     "lodash.set": "4.3.2",
     "rimraf": "5.0.1",
     "semantic-release": "19.0.5",
@@ -36,6 +36,6 @@
     "typescript": "5.0.4"
   },
   "dependencies": {
-    "tslib": "2.6.0"
+    "tslib": "2.6.2"
   }
 }
