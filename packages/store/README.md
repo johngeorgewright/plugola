@@ -32,11 +32,11 @@ Now let's create the store.
 import Store from '@plugola/store'
 
 const store = new Store<Actions, State>(
-  // Initial state
-  { authors: [] },
-
   // Actions
   {
+    // This is called to initialise state
+    __init__: () => ({ authors: [] }),
+
     // You cannot mutate state. You must provide a new instance.
     'add author': (author, state) => ({
       ...state,
@@ -44,9 +44,6 @@ const store = new Store<Actions, State>(
     }),
   }
 )
-
-// Initiate the store. This must be called for it to except state changes.
-store.init()
 ```
 
 Now we can dispatch our 'add author' event to change our state.
@@ -73,5 +70,29 @@ The `subscribe` function returns an `unsubscribe` function.
 ```typescript
 const unsubscribe = store.subscribe((action, state) => {
   if (state.authors.length > 5) unsubscribe()
+})
+```
+
+This will, however, only call your subscription each time the state changes. Whatever is returned from an action is checked against the current state with bitwise equality (`===`). You can use this to your advantage if you don't want to update your subscriptions:
+
+```typescript
+const store = new Store<Actions, State>({
+  __init__: () => ({ authors: [] }),
+
+  'add author': (author, state) =>
+    state.authors.includes(author)
+      ? state
+      : {
+          ...state,
+          authors: [...state.authors, author],
+        },
+})
+```
+
+If you'd like to subscribe to actions that have zero effect on the state use the following:
+
+```typescript
+store.subscribeToStaleEvents((action, state) => {
+  console.info(`${action} was dispatch with zero effect to state`, state)
 })
 ```

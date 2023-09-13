@@ -3,25 +3,20 @@ export class Store<Actions extends BaseActions, State> {
   #listeners: Listener<Actions, State>[] = []
   #staleListeners: Listener<Actions, State>[] = []
   #reducers: Reducers<Actions, State>
-  #running = false
-  #state: Readonly<State>
+  #running = true
+  #state!: Readonly<State>
 
-  constructor(initialState: State, reducers: Reducers<Actions, State>) {
+  constructor(reducers: Reducers<Actions, State>) {
     this.#reducers = reducers
-    this.#state = Object.freeze(initialState)
+    this.dispatch('__init__', null)
   }
 
   get state() {
     return this.#state
   }
 
-  init() {
-    this.#running = true
-    this.dispatch('__INIT__', null)
-  }
-
   deinit() {
-    this.dispatch('__DEINIT__', null)
+    this.dispatch('__deinit__', null)
     this.#running = false
   }
 
@@ -46,28 +41,23 @@ export class Store<Actions extends BaseActions, State> {
   }
 
   subscribe(listener: Listener<Actions, State>) {
-    this.#listeners.push(listener)
-
-    if (this.#running) listener('__INIT__', null, this.#state)
-
-    return () => {
-      const index = this.#listeners.indexOf(listener)
-      this.#listeners = [
-        ...this.#listeners.slice(0, index),
-        ...this.#listeners.slice(index + 1),
-      ]
-    }
+    if (this.#running) listener('__init__', null, this.#state)
+    return this.#subscribe(this.#listeners, listener)
   }
 
   subscribeToStaleEvents(listener: Listener<Actions, State>) {
-    this.#staleListeners.push(listener)
+    return this.#subscribe(this.#staleListeners, listener)
+  }
+
+  #subscribe(
+    listeners: Listener<Actions, State>[],
+    listener: Listener<Actions, State>
+  ) {
+    listeners.push(listener)
 
     return () => {
-      const index = this.#staleListeners.indexOf(listener)
-      this.#staleListeners = [
-        ...this.#staleListeners.slice(0, index),
-        ...this.#staleListeners.slice(index + 1),
-      ]
+      const index = listeners.indexOf(listener)
+      listeners = [...listeners.slice(0, index), ...listeners.slice(index + 1)]
     }
   }
 
@@ -82,8 +72,7 @@ export class Store<Actions extends BaseActions, State> {
     action: Action,
     param: Actions[Action]
   ) {
-    for (const listener of this.#listeners)
-      listener(action, param, this.#state)?.()
+    for (const listener of this.#listeners) listener(action, param, this.#state)
   }
 
   #updateStaleSubscribers<Action extends keyof Actions>(
@@ -91,13 +80,13 @@ export class Store<Actions extends BaseActions, State> {
     param: Actions[Action]
   ) {
     for (const listener of this.#staleListeners)
-      listener(action, param, this.#state)?.()
+      listener(action, param, this.#state)
   }
 }
 
 export interface BaseActions {
-  __INIT__?: null
-  __DEINIT__?: null
+  __init__: null
+  __deinit__?: null
 }
 
 export interface Reducer<Param, State> {
@@ -113,5 +102,5 @@ export interface Listener<Actions extends BaseActions, State> {
     action: Action,
     param: Actions[Action],
     state: Readonly<State>
-  ): void | (() => void)
+  ): any
 }

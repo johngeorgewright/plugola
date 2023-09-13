@@ -11,19 +11,12 @@ interface State {
 
 let store: Store<Actions, State>
 
-jest.useFakeTimers()
-
 beforeEach(() => {
-  store = new Store<Actions, State>(
-    { foo: '' },
-    {
-      foo: (foo, state) => ({ ...state, foo }),
-      bar: (_, state) =>
-        state.foo === 'bar' ? state : { ...state, foo: 'bar' },
-    }
-  )
-
-  store.init()
+  store = new Store<Actions, State>({
+    __init__: () => ({ foo: '' }),
+    foo: (foo, state) => ({ ...state, foo }),
+    bar: (_, state) => (state.foo === 'bar' ? state : { ...state, foo: 'bar' }),
+  })
 })
 
 test('state management', () => {
@@ -39,7 +32,6 @@ test('state management', () => {
 test('subscribing to state changes', () => {
   const onUpdate = jest.fn()
   store.subscribe(onUpdate)
-  jest.runAllTimers()
   store.dispatch('bar', null)
   expect(onUpdate).toHaveBeenCalledWith('bar', null, { foo: 'bar' })
 })
