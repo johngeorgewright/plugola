@@ -2257,17 +2257,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@johngw/stream-jest", [\
-        ["npm:1.0.2", {\
-          "packageLocation": "./.yarn/cache/@johngw-stream-jest-npm-1.0.2-2a66354f26-68ffbc3a5a.zip/node_modules/@johngw/stream-jest/",\
+        ["npm:1.0.3", {\
+          "packageLocation": "./.yarn/cache/@johngw-stream-jest-npm-1.0.3-56933bb38a-986426972d.zip/node_modules/@johngw/stream-jest/",\
           "packageDependencies": [\
-            ["@johngw/stream-jest", "npm:1.0.2"]\
+            ["@johngw/stream-jest", "npm:1.0.3"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.2", {\
-          "packageLocation": "./.yarn/__virtual__/@johngw-stream-jest-virtual-e384e8c590/0/cache/@johngw-stream-jest-npm-1.0.2-2a66354f26-68ffbc3a5a.zip/node_modules/@johngw/stream-jest/",\
+        ["virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.3", {\
+          "packageLocation": "./.yarn/__virtual__/@johngw-stream-jest-virtual-eaf5ade79b/0/cache/@johngw-stream-jest-npm-1.0.3-56933bb38a-986426972d.zip/node_modules/@johngw/stream-jest/",\
           "packageDependencies": [\
-            ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.2"],\
+            ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.3"],\
             ["@johngw/stream-test", "npm:1.2.0"],\
             ["@types/expect", null],\
             ["@types/johngw__stream-test", null],\
@@ -3604,7 +3604,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@plugola/streams", "workspace:packages/streams"],\
             ["@johngw/async", "npm:5.0.1"],\
             ["@johngw/stream", "npm:3.1.0"],\
-            ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.2"],\
+            ["@johngw/stream-jest", "virtual:9b3cca7f92befd803a1bbee1f3f63e881a6edcbabc7c2363826ecec2b93f79f8417fd2deb001ca11dca1f9a4c447fd14047b960e356e0d86e97833c30329ec09#npm:1.0.3"],\
             ["@johngw/stream-test", "npm:1.2.0"],\
             ["@semantic-release/commit-analyzer", "virtual:97efea6e6ed679d1b12b286efdf34775793cf3fe0408c2b96c7601039dadfb9d5f6ecc6e60a79c0b5d97872c67aabf027b7d6fd8e25b4de748eccc6c0bfa17ee#npm:9.0.2"],\
             ["@semantic-release/exec", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:6.0.3"],\
