@@ -1657,15 +1657,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/stream-jest@npm:1.0.2":
-  version: 1.0.2
-  resolution: "@johngw/stream-jest@npm:1.0.2"
+"@johngw/stream-jest@npm:1.0.3":
+  version: 1.0.3
+  resolution: "@johngw/stream-jest@npm:1.0.3"
   dependencies:
     tslib: 2.5.0
   peerDependencies:
-    "@johngw/stream-test": ^1.1.2
+    "@johngw/stream-test": ^1.3.1
     expect: ^29.0.0
-  checksum: 68ffbc3a5a3674a9723411ad186b721114f3d701b60d29613efbda1e4fc2f519f594c6090ae98b7a6111a326b2965bc63312bc948d2fbe85027ee917eab6efa4
+  checksum: 986426972d2139ffb13d67273425ae860a449dab3ca507bba05976d344dca4384470ac38059300069cfc63bf54865fefff3945ba5a4cb44b2474ca92cc8d67dd
   languageName: node
   linkType: hard
 
@@ -2884,7 +2884,7 @@ __metadata:
   dependencies:
     "@johngw/async": 5.0.1
     "@johngw/stream": 3.1.0
-    "@johngw/stream-jest": 1.0.2
+    "@johngw/stream-jest": 1.0.3
     "@johngw/stream-test": 1.2.0
     "@semantic-release/commit-analyzer": 9.0.2
     "@semantic-release/exec": 6.0.3
