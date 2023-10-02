@@ -1669,18 +1669,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/stream-test@npm:1.2.0":
-  version: 1.2.0
-  resolution: "@johngw/stream-test@npm:1.2.0"
+"@johngw/stream-test@npm:1.3.1":
+  version: 1.3.1
+  resolution: "@johngw/stream-test@npm:1.3.1"
   dependencies:
     "@johngw/stream-common": 1.1.2
-    "@johngw/timeline": 1.1.0
+    "@johngw/timeline": 2.1.1
     assert-never: 1.2.1
     js-yaml: 4.1.0
     ts-toolbelt: 9.6.0
     tslib: 2.5.0
     web-streams-polyfill: 3.2.1
-  checksum: 8857061e2b07206c7547d5c713fec01a842ed59ddc63edadfe8dbf405498d233a6fb4d9e3d3091b56de6713d74042eb2ad026d52d36ffa2772e62e06031aed9a
+  checksum: 95e63bc91e45ec8b47f015168633c0bb4caef6ebdd1d6d62087324a0669e01a726bc9e49f23fceed82740aad72911fa84565717f1fbc18816830d0b0b6b182e1
   languageName: node
   linkType: hard
 
@@ -1696,13 +1696,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@johngw/timeline@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@johngw/timeline@npm:1.1.0"
+"@johngw/timeline@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@johngw/timeline@npm:2.1.1"
   dependencies:
     js-yaml: 4.1.0
     tslib: 2.6.2
-  checksum: 1585c2c6bc83dd1b4b07f084eb902e8cc993c1e84c30876a851ff5e5352d9de3633acdcd422fd447820124713f923d810d53be7fc4e5695feb3377b61b27c712
+  checksum: d05b2ad92b88150483746416d2580d75f324820b492c0938eb2f19170447fca9f6ac51e287d4909ca7adc1b1610e3e08d29a6919066223acd016730937ef1833
   languageName: node
   linkType: hard
 
@@ -2885,7 +2885,7 @@ __metadata:
     "@johngw/async": 5.0.1
     "@johngw/stream": 3.1.0
     "@johngw/stream-jest": 1.0.3
-    "@johngw/stream-test": 1.2.0
+    "@johngw/stream-test": 1.3.1
     "@semantic-release/commit-analyzer": 9.0.2
     "@semantic-release/exec": 6.0.3
     "@semantic-release/git": 10.0.1
