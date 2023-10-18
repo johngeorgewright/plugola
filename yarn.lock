@@ -2817,7 +2817,7 @@ __metadata:
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
     "@types/jest": 29.5.6
-    "@types/lodash.set": 4.3.7
+    "@types/lodash.set": 4.3.8
     "@types/node": 20.8.6
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
@@ -3530,12 +3530,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash.set@npm:4.3.7":
-  version: 4.3.7
-  resolution: "@types/lodash.set@npm:4.3.7"
+"@types/lodash.set@npm:4.3.8":
+  version: 4.3.8
+  resolution: "@types/lodash.set@npm:4.3.8"
   dependencies:
     "@types/lodash": "*"
-  checksum: 18bedc56ff2ed38b4efbeefef3b5bc0edfa24c821e5242d2c6180875cf890f4b98b325179ce71dd2e412e719d5a497857a9a494ce1be3245a69a97f2e17a624b
+  checksum: d3bd143af5b640d75bbb82bb840baeb8431eec16fc0a41ee63e9c64e166744bbc40992c6ff96ff611cbf8effbbfaffcab37288e98193904a139d2e11897a4790
   languageName: node
   linkType: hard
 
