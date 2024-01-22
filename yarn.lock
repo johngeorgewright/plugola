@@ -2641,7 +2641,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@plugola/generator@workspace:packages/generator"
   dependencies:
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     "@types/node": 20.8.7
     "@types/prettier": 2.7.3
     "@types/rimraf": 4.0.5
@@ -2667,7 +2667,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
@@ -2688,7 +2688,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.0.7
     "@semantic-release/release-notes-generator": 11.0.1
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     "@types/node": 20.8.7
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
@@ -2712,7 +2712,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     "@types/node": 20.8.7
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
@@ -2737,7 +2737,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     "@types/node": 20.8.7
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
@@ -2763,7 +2763,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     commitizen: 4.3.0
     cz-conventional-changelog: 3.3.0
     husky: 8.0.3
@@ -2793,7 +2793,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     "@types/node": 20.8.7
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
@@ -2816,7 +2816,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     "@types/lodash.set": 4.3.8
     "@types/node": 20.8.7
     jest: 29.7.0
@@ -2842,7 +2842,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
@@ -2866,7 +2866,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
@@ -2891,7 +2891,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.0.7
     "@semantic-release/release-notes-generator": 11.0.1
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     "@types/node": 20.8.7
     expect: 29.7.0
     jest: 29.7.0
@@ -2946,7 +2946,7 @@ __metadata:
     "@semantic-release/git": 10.0.1
     "@semantic-release/github": 8.1.0
     "@semantic-release/release-notes-generator": 10.0.3
-    "@types/jest": 29.5.6
+    "@types/jest": 29.5.11
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
@@ -3474,6 +3474,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jest@npm:29.5.11":
+  version: 29.5.11
+  resolution: "@types/jest@npm:29.5.11"
+  dependencies:
+    expect: ^29.0.0
+    pretty-format: ^29.0.0
+  checksum: f892a06ec9f0afa9a61cd7fa316ec614e21d4df1ad301b5a837787e046fcb40dfdf7f264a55e813ac6b9b633cb9d366bd5b8d1cea725e84102477b366df23fdd
+  languageName: node
+  linkType: hard
+
 "@types/jest@npm:29.5.3":
   version: 29.5.3
   resolution: "@types/jest@npm:29.5.3"
@@ -3481,16 +3491,6 @@ __metadata:
     expect: ^29.0.0
     pretty-format: ^29.0.0
   checksum: e36bb92e0b9e5ea7d6f8832baa42f087fc1697f6cd30ec309a07ea4c268e06ec460f1f0cfd2581daf5eff5763475190ec1ad8ac6520c49ccfe4f5c0a48bfa676
-  languageName: node
-  linkType: hard
-
-"@types/jest@npm:29.5.6":
-  version: 29.5.6
-  resolution: "@types/jest@npm:29.5.6"
-  dependencies:
-    expect: ^29.0.0
-    pretty-format: ^29.0.0
-  checksum: fa13a27bd1c8efd0381a419478769d0d6d3a8e93e1952d7ac3a16274e8440af6f73ed6f96ac1ff00761198badf2ee226b5ab5583a5d87a78d609ea78da5c5a24
   languageName: node
   linkType: hard
 
