@@ -3534,7 +3534,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@semantic-release/github", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:8.1.0"],\
             ["@semantic-release/release-notes-generator", "virtual:93ff9e54e7e85ba03f8777529e2e31fd687b3208f0bfd29f9526626fccebedcf25fd704ae938492bcd5692d38a16927bd020804d445cde5885dc772e9e1e1ff9#npm:10.0.3"],\
             ["@types/jest", "npm:29.5.11"],\
-            ["@types/lodash.set", "npm:4.3.8"],\
+            ["@types/lodash.set", "npm:4.3.9"],\
             ["@types/node", "npm:20.8.7"],\
             ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
             ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
@@ -4499,10 +4499,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/lodash.set", [\
-        ["npm:4.3.8", {\
-          "packageLocation": "./.yarn/cache/@types-lodash.set-npm-4.3.8-1b38b60fbe-d3bd143af5.zip/node_modules/@types/lodash.set/",\
+        ["npm:4.3.9", {\
+          "packageLocation": "./.yarn/cache/@types-lodash.set-npm-4.3.9-1ff9a494be-63fd9321c1.zip/node_modules/@types/lodash.set/",\
           "packageDependencies": [\
-            ["@types/lodash.set", "npm:4.3.8"],\
+            ["@types/lodash.set", "npm:4.3.9"],\
             ["@types/lodash", "npm:4.14.195"]\
           ],\
           "linkType": "HARD"\
