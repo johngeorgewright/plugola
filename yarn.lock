@@ -2672,7 +2672,7 @@ __metadata:
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
     semantic-release: 19.0.5
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     tslib: 2.6.2
     typescript: 5.0.4
@@ -2694,7 +2694,7 @@ __metadata:
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
     semantic-release: 21.0.2
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     ts-node: 10.9.1
     ts-toolbelt: 9.6.0
@@ -2718,7 +2718,7 @@ __metadata:
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
     semantic-release: 19.0.5
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     tslib: 2.6.2
     typescript: 5.0.4
@@ -2743,7 +2743,7 @@ __metadata:
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
     semantic-release: 19.0.5
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     ts-node: 10.9.1
     ts-toolbelt: 9.6.0
@@ -2774,7 +2774,7 @@ __metadata:
     mkdirp-infer-owner: 2.0.0
     prettier: 2.8.7
     semantic-release: 19.0.5
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-node: 10.9.1
     tslib: 2.6.2
     typescript: 5.0.4
@@ -2799,7 +2799,7 @@ __metadata:
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
     semantic-release: 19.0.5
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     ts-node: 10.9.1
     tslib: 2.6.2
@@ -2824,7 +2824,7 @@ __metadata:
     lodash.set: 4.3.2
     rimraf: 5.0.5
     semantic-release: 19.0.5
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     tslib: 2.6.2
     typescript: 5.0.4
@@ -2847,7 +2847,7 @@ __metadata:
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
     semantic-release: 19.0.5
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     tslib: 2.6.2
     typescript: 5.0.4
@@ -2871,7 +2871,7 @@ __metadata:
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
     semantic-release: 19.0.5
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     tslib: 2.6.2
     typescript: 5.0.4
@@ -2898,7 +2898,7 @@ __metadata:
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
     semantic-release: 21.0.2
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     ts-toolbelt: 9.6.0
     tslib: 2.6.2
@@ -2951,7 +2951,7 @@ __metadata:
     jest-environment-jsdom: 29.7.0
     rimraf: 5.0.5
     semantic-release: 19.0.5
-    semantic-release-monorepo: 7.0.5
+    semantic-release-monorepo: 7.0.8
     ts-jest: 29.1.2
     tslib: 2.6.2
     typescript: 5.0.4
@@ -6958,6 +6958,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"file-url@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "file-url@npm:3.0.0"
+  checksum: 4724f669ee22468f23a39e37b8349a14f94dd9abda8385920db9900a2b2ae5ad90a314d85ea0089b6f45e9d0850833a6d1e41ac15a81a5618685129c6d7c7629
+  languageName: node
+  linkType: hard
+
 "filelist@npm:^1.0.1":
   version: 1.0.2
   resolution: "filelist@npm:1.0.2"
@@ -7179,6 +7186,17 @@ __metadata:
     jsonfile: ^6.0.1
     universalify: ^2.0.0
   checksum: ba71ba32e0faa74ab931b7a0031d1523c66a73e225de7426e275e238e312d07313d2da2d33e34a52aa406c8763ade5712eb3ec9ba4d9edce652bcacdc29e6b20
+  languageName: node
+  linkType: hard
+
+"fs-extra@npm:^10.0.1":
+  version: 10.1.0
+  resolution: "fs-extra@npm:10.1.0"
+  dependencies:
+    graceful-fs: ^4.2.0
+    jsonfile: ^6.0.1
+    universalify: ^2.0.0
+  checksum: dc94ab37096f813cc3ca12f0f1b5ad6744dfed9ed21e953d72530d103cea193c2f81584a39e9dee1bea36de5ee66805678c0dddc048e8af1427ac19c00fffc50
   languageName: node
   linkType: hard
 
@@ -14442,6 +14460,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"semantic-release-monorepo@npm:7.0.8":
+  version: 7.0.8
+  resolution: "semantic-release-monorepo@npm:7.0.8"
+  dependencies:
+    debug: ^3.1.0
+    execa: ^0.8.0
+    file-url: ^3.0.0
+    fs-extra: ^10.0.1
+    get-stream: ^6.0.1
+    git-log-parser: ^1.2.0
+    p-each-series: ^2.1.0
+    p-limit: ^1.2.0
+    pkg-up: ^2.0.0
+    ramda: ^0.25.0
+    read-pkg: ^5.0.0
+    semantic-release-plugin-decorators: ^3.0.0
+    tempy: 1.0.1
+  peerDependencies:
+    semantic-release: ">=15.11.x < 20"
+  checksum: e90c137de2c82f7fa34a6d7e0c9624d56a804d1ad30257d03015512d1f39381ff09646cc1ef24e3d4877042e6ab59e2c4e463c07df1aeea0aed8a71ac1de4c06
+  languageName: node
+  linkType: hard
+
 "semantic-release-plugin-decorators@npm:^3.0.0":
   version: 3.0.1
   resolution: "semantic-release-plugin-decorators@npm:3.0.1"
@@ -15427,7 +15468,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tempy@npm:^1.0.0":
+"tempy@npm:1.0.1, tempy@npm:^1.0.0":
   version: 1.0.1
   resolution: "tempy@npm:1.0.1"
   dependencies:

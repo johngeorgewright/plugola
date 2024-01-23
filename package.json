@@ -42,7 +42,7 @@
     "mkdirp-infer-owner": "2.0.0",
     "prettier": "2.8.7",
     "semantic-release": "19.0.5",
-    "semantic-release-monorepo": "7.0.5",
+    "semantic-release-monorepo": "7.0.8",
     "ts-node": "10.9.1",
     "typescript": "5.0.4",
     "yo": "4.3.1"
