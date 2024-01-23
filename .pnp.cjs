@@ -107,7 +107,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.8.7"],\
             ["semantic-release", "npm:19.0.5"],\
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.8"],\
-            ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.1"],\
+            ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2"],\
             ["tslib", "npm:2.6.2"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"],\
             ["yo", "npm:4.3.1"]\
@@ -3403,7 +3403,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["semantic-release", "npm:21.0.2"],\
             ["semantic-release-monorepo", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:7.0.8"],\
             ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.1.2"],\
-            ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.1"],\
+            ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
             ["ts-toolbelt", "npm:9.6.0"],\
             ["tslib", "npm:2.6.2"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"]\
@@ -3456,7 +3456,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["semantic-release", "npm:19.0.5"],\
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.8"],\
             ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.1.2"],\
-            ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.1"],\
+            ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
             ["ts-toolbelt", "npm:9.6.0"],\
             ["tslib", "npm:2.6.2"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"]\
@@ -3488,7 +3488,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.8.7"],\
             ["semantic-release", "npm:19.0.5"],\
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.8"],\
-            ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.1"],\
+            ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2"],\
             ["tslib", "npm:2.6.2"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"],\
             ["yo", "npm:4.3.1"]\
@@ -3516,7 +3516,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["semantic-release", "npm:19.0.5"],\
             ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:7.0.8"],\
             ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.1.2"],\
-            ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.1"],\
+            ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
             ["tslib", "npm:2.6.2"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"]\
           ],\
@@ -17858,6 +17858,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
+        ["npm:10.9.2", {\
+          "packageLocation": "./.yarn/cache/ts-node-npm-10.9.2-3f3890b9ac-fde256c907.zip/node_modules/ts-node/",\
+          "packageDependencies": [\
+            ["ts-node", "npm:10.9.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
         ["npm:9.1.1", {\
           "packageLocation": "./.yarn/cache/ts-node-npm-9.1.1-4ad31da228-356e2647b8.zip/node_modules/ts-node/",\
           "packageDependencies": [\
@@ -17884,10 +17891,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.1", {\
-          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-4837b3c8b7/0/cache/ts-node-npm-10.9.1-6c268be7f4-090adff130.zip/node_modules/ts-node/",\
+        ["virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2", {\
+          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-ecd1b51539/0/cache/ts-node-npm-10.9.2-3f3890b9ac-fde256c907.zip/node_modules/ts-node/",\
           "packageDependencies": [\
-            ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.1"],\
+            ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
             ["@cspotcode/source-map-support", "npm:0.8.1"],\
             ["@swc/core", null],\
             ["@swc/wasm", null],\
@@ -17956,10 +17963,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.1", {\
-          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-e5c51737aa/0/cache/ts-node-npm-10.9.1-6c268be7f4-090adff130.zip/node_modules/ts-node/",\
+        ["virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2", {\
+          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-f7deb29964/0/cache/ts-node-npm-10.9.2-3f3890b9ac-fde256c907.zip/node_modules/ts-node/",\
           "packageDependencies": [\
-            ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.1"],\
+            ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2"],\
             ["@cspotcode/source-map-support", "npm:0.8.1"],\
             ["@swc/core", null],\
             ["@swc/wasm", null],\
