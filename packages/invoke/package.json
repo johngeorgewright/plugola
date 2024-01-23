@@ -29,7 +29,7 @@
     "semantic-release": "21.0.2",
     "semantic-release-monorepo": "7.0.8",
     "ts-jest": "29.1.2",
-    "ts-node": "10.9.1",
+    "ts-node": "10.9.2",
     "typescript": "5.0.4"
   },
   "dependencies": {
