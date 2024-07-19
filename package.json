@@ -13,7 +13,7 @@
     "commit": "yarn git-cz",
     "package:generate": "node --require ts-node/register $(yarn bin yo) ./packages/generator/src/package-generate",
     "package:remove": "node --require ts-node/register $(yarn bin yo) ./packages/generator/src/package-remove",
-    "prepare": "husky install",
+    "prepare": "husky",
     "release": "yarn workspaces foreach --all --interlaced --no-private --verbose --topological-dev run release",
     "start": "yarn build && yarn workspaces foreach --all --interlaced --exclude @plugola/generator --parallel --interlaced --verbose --jobs unlimited run start"
   },
@@ -24,27 +24,27 @@
   },
   "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
   "devDependencies": {
-    "@commitlint/cli": "17.8.1",
-    "@commitlint/config-conventional": "17.8.1",
-    "@semantic-release/commit-analyzer": "9.0.2",
+    "@commitlint/cli": "19.3.0",
+    "@commitlint/config-conventional": "19.2.2",
+    "@semantic-release/commit-analyzer": "13.0.0",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "8.1.0",
-    "@semantic-release/release-notes-generator": "10.0.3",
-    "@types/jest": "29.5.11",
+    "@semantic-release/github": "10.1.0",
+    "@semantic-release/release-notes-generator": "14.0.1",
+    "@types/jest": "29.5.12",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
-    "husky": "8.0.3",
-    "isbinaryfile": "5.0.0",
+    "husky": "9.1.1",
+    "isbinaryfile": "5.0.2",
     "jest-environment-jsdom": "29.7.0",
-    "json-parse-even-better-errors": "3.0.1",
-    "lint-staged": "13.3.0",
+    "json-parse-even-better-errors": "3.0.2",
+    "lint-staged": "15.2.7",
     "mkdirp-infer-owner": "2.0.0",
-    "prettier": "2.8.7",
-    "semantic-release": "19.0.5",
-    "semantic-release-monorepo": "7.0.8",
+    "prettier": "2.8.8",
+    "semantic-release": "24.0.0",
+    "semantic-release-monorepo": "8.0.2",
     "ts-node": "10.9.2",
-    "typescript": "5.0.4",
+    "typescript": "5.5.3",
     "yo": "4.3.1"
   },
   "config": {
@@ -58,7 +58,7 @@
     ]
   },
   "dependencies": {
-    "tslib": "2.6.2"
+    "tslib": "2.6.3"
   },
   "packageManager": "yarn@4.3.1"
 }

@@ -87,7 +87,7 @@ export default class MessageBus<
     abortSignal?: AbortSignal
   ): void | Promise<void> {
     const handle = () => {
-      let result: void | Promise<void>
+      let result: void | Promise<void> = undefined
 
       try {
         const interception = this.#callEventInterceptors(eventName, args)
