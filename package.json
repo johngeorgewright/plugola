@@ -9,13 +9,13 @@
   ],
   "scripts": {
     "build:generator": "yarn workspace @plugola/generator run build",
-    "clean": "yarn workspaces foreach --verbose run clean",
+    "clean": "yarn workspaces foreach --all --verbose run clean",
     "commit": "yarn git-cz",
     "package:generate": "node --require ts-node/register $(yarn bin yo) ./packages/generator/src/package-generate",
     "package:remove": "node --require ts-node/register $(yarn bin yo) ./packages/generator/src/package-remove",
     "prepare": "husky install",
-    "release": "yarn workspaces foreach --interlaced --no-private --verbose --topological-dev run release",
-    "start": "yarn build && yarn workspaces foreach --interlaced --exclude @plugola/generator --parallel --interlaced --verbose --jobs unlimited run start"
+    "release": "yarn workspaces foreach --all --interlaced --no-private --verbose --topological-dev run release",
+    "start": "yarn build && yarn workspaces foreach --all --interlaced --exclude @plugola/generator --parallel --interlaced --verbose --jobs unlimited run start"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -60,5 +60,5 @@
   "dependencies": {
     "tslib": "2.6.2"
   },
-  "packageManager": "yarn@3.7.0"
+  "packageManager": "yarn@4.3.1"
 }
