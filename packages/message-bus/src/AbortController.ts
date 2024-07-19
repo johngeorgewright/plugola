@@ -84,8 +84,6 @@ export class AbortSignalComposite implements AbortSignal {
   }
 
   static create(...abortSignals: Array<AbortSignal | undefined>) {
-    return new AbortSignalComposite(
-      new Set(abortSignals.filter((x): x is AbortSignal => !!x))
-    )
+    return new AbortSignalComposite(new Set(abortSignals.filter((x) => !!x)))
   }
 }

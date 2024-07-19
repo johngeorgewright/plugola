@@ -18,25 +18,25 @@
   },
   "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
   "devDependencies": {
-    "@semantic-release/commit-analyzer": "9.0.2",
+    "@semantic-release/commit-analyzer": "13.0.0",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "8.1.0",
-    "@semantic-release/release-notes-generator": "10.0.3",
-    "@types/jest": "29.5.11",
-    "@types/node": "20.8.7",
+    "@semantic-release/github": "10.1.0",
+    "@semantic-release/release-notes-generator": "14.0.1",
+    "@types/jest": "29.5.12",
+    "@types/node": "20.14.11",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
-    "rimraf": "5.0.5",
-    "semantic-release": "19.0.5",
-    "semantic-release-monorepo": "7.0.8",
-    "ts-jest": "29.1.2",
+    "rimraf": "6.0.1",
+    "semantic-release": "24.0.0",
+    "semantic-release-monorepo": "8.0.2",
+    "ts-jest": "29.2.3",
     "ts-node": "10.9.2",
-    "typescript": "5.0.4"
+    "typescript": "5.5.3"
   },
   "dependencies": {
-    "@johngw/async": "5.0.1",
-    "@plugola/graph": "workspace:packages/graph",
-    "tslib": "2.6.2"
+    "@johngw/async": "^5.0.1",
+    "@plugola/graph": "^workspace:*",
+    "tslib": "^2.6.3"
   }
 }

@@ -11,18 +11,18 @@ test('table', () => {
   expect(console.table(['apples', 'oranges', 'bananas']))
     .toMatchInlineSnapshot(`
     "┌─────────┬───────────┐
-    │ (index) │  Values   │
+    │ (index) │ Values    │
     ├─────────┼───────────┤
-    │    0    │ 'apples'  │
-    │    1    │ 'oranges' │
-    │    2    │ 'bananas' │
+    │ 0       │ 'apples'  │
+    │ 1       │ 'oranges' │
+    │ 2       │ 'bananas' │
     └─────────┴───────────┘
     "
   `)
 
   expect(console.table(new Person('John', 'Smith'))).toMatchInlineSnapshot(`
     "┌───────────┬─────────┐
-    │  (index)  │ Values  │
+    │ (index)   │ Values  │
     ├───────────┼─────────┤
     │ firstName │ 'John'  │
     │ lastName  │ 'Smith' │
@@ -48,9 +48,9 @@ test('table', () => {
     "┌─────────┬───────────┬──────────┐
     │ (index) │ firstName │ lastName │
     ├─────────┼───────────┼──────────┤
-    │    0    │  'John'   │ 'Smith'  │
-    │    1    │  'Jane'   │  'Doe'   │
-    │    2    │  'Emily'  │ 'Jones'  │
+    │ 0       │ 'John'    │ 'Smith'  │
+    │ 1       │ 'Jane'    │ 'Doe'    │
+    │ 2       │ 'Emily'   │ 'Jones'  │
     └─────────┴───────────┴──────────┘
     "
   `)
@@ -65,9 +65,9 @@ test('table', () => {
     "┌──────────┬───────────┬──────────┐
     │ (index)  │ firstName │ lastName │
     ├──────────┼───────────┼──────────┤
-    │  mother  │  'Jane'   │ 'Smith'  │
-    │  father  │  'John'   │ 'Smith'  │
-    │ daughter │  'Emily'  │ 'Smith'  │
+    │ mother   │ 'Jane'    │ 'Smith'  │
+    │ father   │ 'John'    │ 'Smith'  │
+    │ daughter │ 'Emily'   │ 'Smith'  │
     └──────────┴───────────┴──────────┘
     "
   `)
