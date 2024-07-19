@@ -36,6 +36,6 @@
     "typescript": "5.5.3"
   },
   "dependencies": {
-    "tslib": "2.6.3"
+    "tslib": "^2.6.3"
   }
 }

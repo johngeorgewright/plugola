@@ -35,10 +35,10 @@
     "typescript": "5.5.3"
   },
   "dependencies": {
-    "@johngw/async": "5.0.1",
-    "@johngw/async-iterator": "4.0.1",
-    "@plugola/invoke": "workspace:*",
-    "ts-toolbelt": "9.6.0",
-    "tslib": "2.6.3"
+    "@johngw/async": "^5.0.1",
+    "@johngw/async-iterator": "^4.0.1",
+    "@plugola/invoke": "^workspace:*",
+    "ts-toolbelt": "^9.6.0",
+    "tslib": "^2.6.3"
   }
 }

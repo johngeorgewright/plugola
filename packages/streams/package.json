@@ -36,9 +36,9 @@
     "typescript": "5.5.3"
   },
   "dependencies": {
-    "@johngw/async": "5.0.1",
-    "ts-toolbelt": "9.6.0",
-    "tslib": "2.6.3"
+    "@johngw/async": "^5.0.1",
+    "ts-toolbelt": "^9.6.0",
+    "tslib": "^2.6.3"
   },
   "peerDependencies": {
     "@johngw/stream": "^3.0.3"

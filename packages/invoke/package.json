@@ -33,7 +33,7 @@
     "typescript": "5.5.3"
   },
   "dependencies": {
-    "ts-toolbelt": "9.6.0",
-    "tslib": "2.6.3"
+    "ts-toolbelt": "^9.6.0",
+    "tslib": "^2.6.3"
   }
 }
