@@ -41,6 +41,10 @@ export default class PluginManager<
     this.#options = options
   }
 
+  get enabledPlugins() {
+    return [...this.#enabledPlugins]
+  }
+
   /**
    * Used for testing. This will **replace** parts of the context... not add to it.
    */
@@ -148,13 +152,23 @@ export default class PluginManager<
     await Promise.all(promises)
   }
 
-  readonly disablePlugins = (pluginNames: string[]) => {
+  /**
+   * Disable plugins, by name.
+   *
+   * @remarks
+   * By default, the method will cautiously remove plugins. IE, if they're depended
+   * on by other plugins it will **not** be disabled.
+   *
+   * However, you can force a plugin, and it's dependees, to be disabled by passing
+   * the force flag.
+   */
+  readonly disablePlugins = (pluginNames: string[], force = false) => {
     let disabled = 0
     for (const pluginName of pluginNames) {
       const plugin = this.#getPlugin(pluginName)
-      if (this.#disablePlugin(plugin)) disabled++
+      disabled += this.#disablePlugin(plugin, force)
       for (const dep of this.#dependencyGraph.dependencies(plugin))
-        if (this.#disablePlugin(dep)) disabled++
+        disabled += this.#disablePlugin(dep, force)
     }
     return disabled
   }
@@ -163,12 +177,18 @@ export default class PluginManager<
     return this.disablePlugins(Object.keys(this.#plugins))
   }
 
-  #disablePlugin(plugin: Plugin) {
-    if (!this.#enabledPlugins.has(plugin.name)) return false
-    if (this.#isDependencyOfEnabledPlugin(plugin)) return false
+  #disablePlugin(plugin: Plugin, force: boolean) {
+    let disabled = 0
+    if (!this.#enabledPlugins.has(plugin.name)) return disabled
+    if (this.#isDependencyOfEnabledPlugin(plugin)) {
+      if (force)
+        for (const dependee of this.#dependencyGraph.whichDependOn(plugin))
+          disabled += this.#disablePlugin(dependee, force)
+      else return disabled
+    }
     this.#enabledPlugins.delete(plugin.name)
     this.#abortControllers.get(plugin)?.abort()
-    return true
+    return disabled + 1
   }
 
   #isDependencyOfEnabledPlugin(dependency: Plugin) {
