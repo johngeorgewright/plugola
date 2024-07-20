@@ -2304,7 +2304,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@plugola/graph@^workspace:*, @plugola/graph@workspace:packages/graph":
+"@plugola/graph@workspace:*, @plugola/graph@workspace:packages/graph":
   version: 0.0.0-use.local
   resolution: "@plugola/graph@workspace:packages/graph"
   dependencies:
@@ -2325,7 +2325,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@plugola/invoke@^workspace:*, @plugola/invoke@workspace:*, @plugola/invoke@workspace:packages/invoke":
+"@plugola/invoke@workspace:*, @plugola/invoke@workspace:packages/invoke":
   version: 0.0.0-use.local
   resolution: "@plugola/invoke@workspace:packages/invoke"
   dependencies:
@@ -2377,7 +2377,7 @@ __metadata:
   dependencies:
     "@johngw/async": "npm:^5.0.1"
     "@johngw/async-iterator": "npm:^4.0.1"
-    "@plugola/invoke": "^workspace:*"
+    "@plugola/invoke": "workspace:*"
     "@semantic-release/commit-analyzer": "npm:13.0.0"
     "@semantic-release/exec": "npm:6.0.3"
     "@semantic-release/git": "npm:10.0.1"
@@ -2433,7 +2433,7 @@ __metadata:
   resolution: "@plugola/plugin-manager@workspace:packages/plugin-manager"
   dependencies:
     "@johngw/async": "npm:^5.0.1"
-    "@plugola/graph": "^workspace:*"
+    "@plugola/graph": "workspace:*"
     "@semantic-release/commit-analyzer": "npm:13.0.0"
     "@semantic-release/exec": "npm:6.0.3"
     "@semantic-release/git": "npm:10.0.1"
