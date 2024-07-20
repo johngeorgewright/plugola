@@ -4,6 +4,6 @@ export interface RunContext {
 
 export interface InitContext {
   signal: AbortSignal
-  enablePlugins(pluginNames: string[]): Promise<void>
-  disablePlugins(pluginNames: string[]): number
+  enablePlugins(pluginNames: string[], force?: boolean): Promise<void>
+  disablePlugins(pluginNames: string[], force?: boolean): number
 }

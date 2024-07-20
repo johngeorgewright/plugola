@@ -168,54 +168,136 @@ test('enabling plugins within the init phase', async () => {
   expect(bar).toHaveBeenCalled()
 })
 
-test('disabling plugins within the init phase', async () => {
-  const foo = jest.fn()
-  const bar = jest.fn()
+describe('disabling plugins', () => {
+  let run: jest.Mock
 
-  pluginManager.registerPlugin('bar', {
-    run: bar,
+  beforeEach(() => {
+    run = jest.fn()
+
+    pluginManager.registerPlugin('rab', {
+      run,
+    })
+
+    pluginManager.registerPlugin('bar', {
+      dependencies: ['rab'],
+      run,
+    })
+
+    pluginManager.registerPlugin('foo', {
+      dependencies: ['bar'],
+      run,
+    })
   })
 
-  pluginManager.registerPlugin('foo', {
-    init({ disablePlugins }) {
-      disablePlugins(['bar'])
-    },
-    run: foo,
+  test('disabling plugins within the init phase', async () => {
+    const foo = jest.fn()
+    const bar = jest.fn()
+
+    pluginManager.registerPlugin('bar', {
+      run: bar,
+    })
+
+    pluginManager.registerPlugin('foo', {
+      init({ disablePlugins }) {
+        disablePlugins(['bar'])
+      },
+      run: foo,
+    })
+
+    await pluginManager.enablePlugins(['foo', 'bar'])
+    await pluginManager.run()
+
+    expect(foo).toHaveBeenCalled()
+    expect(bar).not.toHaveBeenCalled()
   })
 
-  await pluginManager.enablePlugins(['foo', 'bar'])
-  await pluginManager.run()
+  test('cleaning up plugins when disabled in the init phase', async () => {
+    const foo = jest.fn()
+    const bar = jest.fn()
+    const abort = jest.fn()
 
-  expect(foo).toHaveBeenCalled()
-  expect(bar).not.toHaveBeenCalled()
-})
+    pluginManager.registerPlugin('foo', {
+      async init({ disablePlugins, signal }) {
+        await timeout(10, signal)
+        expect(disablePlugins(['bar'])).toEqual(1)
+      },
+      run: foo,
+    })
 
-test('cleaning up plugins when disabled in the init phase', async () => {
-  const foo = jest.fn()
-  const bar = jest.fn()
-  const abort = jest.fn()
+    pluginManager.registerPlugin('bar', {
+      init({ signal }) {
+        signal.addEventListener('abort', abort)
+      },
+      run: bar,
+    })
 
-  pluginManager.registerPlugin('foo', {
-    async init({ disablePlugins, signal }) {
-      await timeout(10, signal)
-      expect(disablePlugins(['bar'])).toEqual(1)
-    },
-    run: foo,
+    await pluginManager.enablePlugins(['bar', 'foo'])
+    await pluginManager.run()
+
+    expect(foo).toHaveBeenCalled()
+    expect(abort).toHaveBeenCalled()
+    expect(bar).not.toHaveBeenCalled()
   })
 
-  pluginManager.registerPlugin('bar', {
-    init({ signal }) {
-      signal.addEventListener('abort', abort)
-    },
-    run: bar,
+  test('disabled a plugin will disable its dependencies', async () => {
+    pluginManager.registerPlugin('disabler', {
+      init({ disablePlugins }) {
+        disablePlugins(['foo'])
+      },
+    })
+
+    await pluginManager.enableAllPlugins()
+    await pluginManager.run()
+
+    expect(run).not.toHaveBeenCalled()
   })
 
-  await pluginManager.enablePlugins(['bar', 'foo'])
-  await pluginManager.run()
+  test('a plugin will not be removed if its depended on by an enabled plugin', async () => {
+    pluginManager.registerPlugin('disabler', {
+      init({ disablePlugins }) {
+        disablePlugins(['rab'])
+      },
+    })
 
-  expect(foo).toHaveBeenCalled()
-  expect(abort).toHaveBeenCalled()
-  expect(bar).not.toHaveBeenCalled()
+    await pluginManager.enableAllPlugins()
+    await pluginManager.run()
+
+    expect(run).toHaveBeenCalledTimes(3)
+  })
+
+  test('disabling a plugin will disable only its dependencies that are not dependend on by other plugins', async () => {
+    pluginManager.registerPlugin('oof', {
+      dependencies: ['rab'],
+    })
+
+    pluginManager.registerPlugin('disabler', {
+      init({ disablePlugins }) {
+        disablePlugins(['foo'])
+      },
+    })
+
+    await pluginManager.enableAllPlugins()
+    await pluginManager.run()
+
+    expect(pluginManager.enabledPlugins).toHaveLength(3)
+    expect(pluginManager.enabledPlugins).toContain('rab')
+    expect(pluginManager.enabledPlugins).toContain('oof')
+    expect(pluginManager.enabledPlugins).toContain('disabler')
+    expect(run).toHaveBeenCalledTimes(1)
+  })
+
+  test('force the removal of a plugin and its dependees', async () => {
+    pluginManager.registerPlugin('disabler', {
+      init({ disablePlugins }) {
+        disablePlugins(['rab'], true)
+      },
+    })
+
+    await pluginManager.enableAllPlugins()
+    await pluginManager.run()
+
+    expect(run).not.toHaveBeenCalled()
+  })
 })
 
 test('plugins that time out', async () => {
