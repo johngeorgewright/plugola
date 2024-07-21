@@ -159,7 +159,7 @@ export default class PluginManager<
    * By default, the method will cautiously remove plugins. IE, if they're depended
    * on by other plugins it will **not** be disabled.
    *
-   * However, you can force a plugin, and it's dependees, to be disabled by passing
+   * However, you can force a plugin, and it's dependers, to be disabled by passing
    * the force flag.
    */
   readonly disablePlugins = (pluginNames: string[], force = false) => {
@@ -182,8 +182,8 @@ export default class PluginManager<
     if (!this.#enabledPlugins.has(plugin.name)) return disabled
     if (this.#isDependencyOfEnabledPlugin(plugin)) {
       if (force)
-        for (const dependee of this.#dependencyGraph.whichDependOn(plugin))
-          disabled += this.#disablePlugin(dependee, force)
+        for (const depender of this.#dependencyGraph.dependers(plugin))
+          disabled += this.#disablePlugin(depender, force)
       else return disabled
     }
     this.#enabledPlugins.delete(plugin.name)
@@ -192,7 +192,7 @@ export default class PluginManager<
   }
 
   #isDependencyOfEnabledPlugin(dependency: Plugin) {
-    for (const plugin of this.#dependencyGraph.whichDependOn(dependency))
+    for (const plugin of this.#dependencyGraph.dependers(dependency))
       if (this.#enabledPlugins.has(plugin.name)) return true
     return false
   }

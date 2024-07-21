@@ -3,11 +3,11 @@ import { Plugin } from './Plugin'
 
 export default class DependencyGraph<T extends Plugin> extends Graph<
   T,
-  'dependency' | 'dependencyTo'
+  'dependency' | 'depender'
 > {
   addDependency(source: T, dependency: T) {
     this.addEdge('dependency', source, dependency)
-    this.addEdge('dependencyTo', dependency, source)
+    this.addEdge('depender', dependency, source)
   }
 
   *names() {
@@ -20,7 +20,7 @@ export default class DependencyGraph<T extends Plugin> extends Graph<
     return this.bfs(node, 'dependency', false)
   }
 
-  whichDependOn(node: T) {
-    return this.bfs(node, 'dependencyTo', false)
+  dependers(node: T) {
+    return this.bfs(node, 'depender', false)
   }
 }

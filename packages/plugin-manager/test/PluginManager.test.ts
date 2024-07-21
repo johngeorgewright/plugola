@@ -286,7 +286,7 @@ describe('disabling plugins', () => {
     expect(run).toHaveBeenCalledTimes(1)
   })
 
-  test('force the removal of a plugin and its dependees', async () => {
+  test('force the removal of a plugin and its dependers', async () => {
     pluginManager.registerPlugin('disabler', {
       init({ disablePlugins }) {
         disablePlugins(['rab'], true)
