@@ -167,8 +167,6 @@ export default class PluginManager<
     for (const pluginName of pluginNames) {
       const plugin = this.#getPlugin(pluginName)
       disabled += this.#disablePlugin(plugin, force)
-      for (const dep of this.#dependencyGraph.dependencies(plugin))
-        disabled += this.#disablePlugin(dep, force)
     }
     return disabled
   }
@@ -177,7 +175,7 @@ export default class PluginManager<
     return this.disablePlugins(Object.keys(this.#plugins))
   }
 
-  #disablePlugin(plugin: Plugin, force: boolean) {
+  #disablePlugin(plugin: Plugin, force: boolean): number {
     let disabled = 0
     if (!this.#enabledPlugins.has(plugin.name)) return disabled
     if (this.#isDependencyOfEnabledPlugin(plugin)) {
@@ -188,6 +186,8 @@ export default class PluginManager<
     }
     this.#enabledPlugins.delete(plugin.name)
     this.#abortControllers.get(plugin)?.abort()
+    for (const dep of this.#dependencyGraph.dependencies(plugin))
+      disabled += this.#disablePlugin(dep, false) // Never force disable dependencies
     return disabled + 1
   }
 
