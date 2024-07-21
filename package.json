@@ -10,7 +10,7 @@
   "scripts": {
     "build:generator": "yarn workspace @plugola/generator run build",
     "clean": "yarn workspaces foreach --all --verbose run clean",
-    "commit": "yarn git-cz",
+    "commit": "git-cz",
     "package:generate": "node --require ts-node/register $(yarn bin yo) ./packages/generator/src/package-generate",
     "package:remove": "node --require ts-node/register $(yarn bin yo) ./packages/generator/src/package-remove",
     "prepare": "husky",

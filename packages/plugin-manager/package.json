@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@johngw/async": "^5.0.1",
-    "@plugola/graph": "workspace:*",
+    "@plugola/graph": "workspace:^",
     "tslib": "^2.6.3"
   }
 }

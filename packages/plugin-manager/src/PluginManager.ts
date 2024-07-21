@@ -21,8 +21,8 @@ export default class PluginManager<
 > {
   #plugins: Record<string, Plugin> = {}
   #dependencyGraph = new DependencyGraph<Plugin>()
-  #initialized = new Set<Plugin>()
-  #ran = new Set<Plugin>()
+  #initialized = new WeakSet<Plugin>()
+  #ran = new WeakSet<Plugin>()
   #abortControllers = new WeakMap<Plugin, AbortController>()
   #enabledPlugins = new Set<string>()
   #options: PluginManagerOptions<

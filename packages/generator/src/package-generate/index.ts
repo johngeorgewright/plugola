@@ -98,9 +98,9 @@ export = class PackageGenerator extends Generator {
     if (this.#answers.public) {
       devDependencies.push(
         '@semantic-release/commit-analyzer',
+        '@semantic-release/exec',
         '@semantic-release/git',
         '@semantic-release/github',
-        '@semantic-release/npm',
         '@semantic-release/release-notes-generator',
         'semantic-release',
         'semantic-release-monorepo'
@@ -129,6 +129,12 @@ export = class PackageGenerator extends Generator {
     this.fs.copyTpl(
       this.templatePath('README.md'),
       this.destinationPath('README.md'),
+      context
+    )
+
+    this.fs.copyTpl(
+      this.templatePath('release.config.cjs'),
+      this.destinationPath('release.config.cjs'),
       context
     )
 

@@ -9,6 +9,7 @@ export default class FileLoggerBehavior implements LoggerBehavior {
 
   constructor(fileName: string) {
     this.#writeSteam = createWriteStream(fileName, { flags: 'a' })
+    process.on('beforeExit', () => this.#writeSteam.close())
   }
 
   debug(label: string, ...args: any[]) {
