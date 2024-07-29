@@ -97,7 +97,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.5.12"],\
           ["commitizen", "npm:4.3.0"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
-          ["husky", "npm:9.1.3"],\
+          ["husky", "npm:9.1.4"],\
           ["isbinaryfile", "npm:5.0.2"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["json-parse-even-better-errors", "npm:3.0.2"],\
@@ -3103,7 +3103,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jest", "npm:29.5.12"],\
           ["commitizen", "npm:4.3.0"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
-          ["husky", "npm:9.1.3"],\
+          ["husky", "npm:9.1.4"],\
           ["isbinaryfile", "npm:5.0.2"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["json-parse-even-better-errors", "npm:3.0.2"],\
@@ -9113,10 +9113,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["husky", [\
-      ["npm:9.1.3", {\
-        "packageLocation": "./.yarn/cache/husky-npm-9.1.3-096681960a-35d7ad85a2.zip/node_modules/husky/",\
+      ["npm:9.1.4", {\
+        "packageLocation": "./.yarn/cache/husky-npm-9.1.4-45a26bd693-c43aa7cbf9.zip/node_modules/husky/",\
         "packageDependencies": [\
-          ["husky", "npm:9.1.3"]\
+          ["husky", "npm:9.1.4"]\
         ],\
         "linkType": "HARD"\
       }]\
