@@ -1492,7 +1492,7 @@ const RAW_RUNTIME_STATE =
           ["lodash.get", "npm:4.4.2"],\
           ["make-error", "npm:1.3.6"],\
           ["ts-node", "virtual:253da7984942e1709c47a9881688474cbf8e8ff6bc7cf891c04df69e1b3eb2f1685871f2bbb5c9fd5656124fe7b25365753daf9f71b033a4c09a01c821b4468a#npm:9.1.1"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "packagePeers": [\
           "@types/cosmiconfig",\
@@ -3003,7 +3003,7 @@ const RAW_RUNTIME_STATE =
           ["semantic-release", "npm:24.1.0"],\
           ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.2"],\
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3029,7 +3029,7 @@ const RAW_RUNTIME_STATE =
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
           ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
           ["ts-toolbelt", "npm:9.6.0"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3053,7 +3053,7 @@ const RAW_RUNTIME_STATE =
           ["semantic-release", "npm:24.1.0"],\
           ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.2"],\
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3082,7 +3082,7 @@ const RAW_RUNTIME_STATE =
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
           ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
           ["ts-toolbelt", "npm:9.6.0"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3141,7 +3141,7 @@ const RAW_RUNTIME_STATE =
           ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.2"],\
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
           ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3167,7 +3167,7 @@ const RAW_RUNTIME_STATE =
           ["semantic-release", "npm:24.1.0"],\
           ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.2"],\
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3190,7 +3190,7 @@ const RAW_RUNTIME_STATE =
           ["semantic-release", "npm:24.1.0"],\
           ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.2"],\
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3215,7 +3215,7 @@ const RAW_RUNTIME_STATE =
           ["semantic-release", "npm:24.1.0"],\
           ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.2"],\
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3245,7 +3245,7 @@ const RAW_RUNTIME_STATE =
           ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.2"],\
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
           ["ts-toolbelt", "npm:9.6.0"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3270,7 +3270,7 @@ const RAW_RUNTIME_STATE =
           ["semantic-release", "npm:24.0.0"],\
           ["semantic-release-monorepo", "virtual:6315578b76d32d033773d256460310918acd4ced94fef578e3152e1200d6b1bef03aa423fc7d619a760b222ddb5146263d8570eb7bd64c318ec6cc61d5582346#npm:8.0.2"],\
           ["ts-jest", "virtual:6315578b76d32d033773d256460310918acd4ced94fef578e3152e1200d6b1bef03aa423fc7d619a760b222ddb5146263d8570eb7bd64c318ec6cc61d5582346#npm:29.2.3"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.3#optional!builtin<compat/typescript>::version=5.5.3&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -3295,7 +3295,7 @@ const RAW_RUNTIME_STATE =
           ["semantic-release", "npm:24.1.0"],\
           ["semantic-release-monorepo", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:8.0.2"],\
           ["ts-jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.2.5"],\
-          ["tslib", "npm:2.6.3"],\
+          ["tslib", "npm:2.7.0"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=379a07"]\
         ],\
         "linkType": "SOFT"\
@@ -5621,7 +5621,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["camel-case", "npm:4.1.2"],\
           ["pascal-case", "npm:3.1.2"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5683,7 +5683,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["capital-case", "npm:1.0.4"],\
           ["no-case", "npm:3.0.4"],\
-          ["tslib", "npm:2.5.0"],\
+          ["tslib", "npm:2.7.0"],\
           ["upper-case-first", "npm:2.0.2"]\
         ],\
         "linkType": "HARD"\
@@ -5754,7 +5754,7 @@ const RAW_RUNTIME_STATE =
           ["path-case", "npm:3.0.4"],\
           ["sentence-case", "npm:3.0.4"],\
           ["snake-case", "npm:3.0.4"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6352,7 +6352,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["constant-case", "npm:3.0.4"],\
           ["no-case", "npm:3.0.4"],\
-          ["tslib", "npm:2.5.0"],\
+          ["tslib", "npm:2.7.0"],\
           ["upper-case", "npm:2.0.2"]\
         ],\
         "linkType": "HARD"\
@@ -7196,7 +7196,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["dot-case", "npm:3.0.4"],\
           ["no-case", "npm:3.0.4"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -9012,7 +9012,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["header-case", "npm:2.0.4"],\
           ["capital-case", "npm:1.0.4"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -11763,7 +11763,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/lower-case-npm-2.0.2-151055f1c2-83a0a5f159.zip/node_modules/lower-case/",\
         "packageDependencies": [\
           ["lower-case", "npm:2.0.2"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -12663,7 +12663,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["no-case", "npm:3.0.4"],\
           ["lower-case", "npm:2.0.2"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -13863,7 +13863,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["param-case", "npm:3.0.4"],\
           ["dot-case", "npm:3.0.4"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -14000,7 +14000,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["pascal-case", "npm:3.1.2"],\
           ["no-case", "npm:3.0.4"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -14021,7 +14021,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["path-case", "npm:3.0.4"],\
           ["dot-case", "npm:3.0.4"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -15183,7 +15183,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/rxjs-npm-7.5.5-d0546b1ccb-9c8af134bc.zip/node_modules/rxjs/",\
         "packageDependencies": [\
           ["rxjs", "npm:7.5.5"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -15516,7 +15516,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["sentence-case", "npm:3.0.4"],\
           ["no-case", "npm:3.0.4"],\
-          ["tslib", "npm:2.5.0"],\
+          ["tslib", "npm:2.7.0"],\
           ["upper-case-first", "npm:2.0.2"]\
         ],\
         "linkType": "HARD"\
@@ -15724,7 +15724,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["snake-case", "npm:3.0.4"],\
           ["dot-case", "npm:3.0.4"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -16963,13 +16963,6 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:2.6.3", {\
-        "packageLocation": "./.yarn/cache/tslib-npm-2.6.3-0fd136b3be-52109bb681.zip/node_modules/tslib/",\
-        "packageDependencies": [\
-          ["tslib", "npm:2.6.3"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:2.7.0", {\
         "packageLocation": "./.yarn/cache/tslib-npm-2.7.0-21668f5c21-9a5b47ddac.zip/node_modules/tslib/",\
         "packageDependencies": [\
@@ -17360,7 +17353,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/upper-case-npm-2.0.2-6cf3bda96c-508723a2b0.zip/node_modules/upper-case/",\
         "packageDependencies": [\
           ["upper-case", "npm:2.0.2"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -17370,7 +17363,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/upper-case-first-npm-2.0.2-8e0c5a851a-4487db4701.zip/node_modules/upper-case-first/",\
         "packageDependencies": [\
           ["upper-case-first", "npm:2.0.2"],\
-          ["tslib", "npm:2.5.0"]\
+          ["tslib", "npm:2.7.0"]\
         ],\
         "linkType": "HARD"\
       }]\
