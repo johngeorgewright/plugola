@@ -87,8 +87,8 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
-          ["@commitlint/cli", "npm:19.4.0"],\
-          ["@commitlint/config-conventional", "npm:19.2.2"],\
+          ["@commitlint/cli", "npm:19.4.1"],\
+          ["@commitlint/config-conventional", "npm:19.4.1"],\
           ["@semantic-release/commit-analyzer", "virtual:99aeaffe6ca531ee0c9ffb8a28d9b6e0af7fabd719edb8ac05e95b7aa2abb7634abe6c13c8a7566e7f0819eaf1c5a4b534ac052520c4268553838da06e14b359#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
@@ -1214,12 +1214,12 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@commitlint/cli", [\
-      ["npm:19.4.0", {\
-        "packageLocation": "./.yarn/cache/@commitlint-cli-npm-19.4.0-f98136516c-be6e7cdc11.zip/node_modules/@commitlint/cli/",\
+      ["npm:19.4.1", {\
+        "packageLocation": "./.yarn/cache/@commitlint-cli-npm-19.4.1-3163d3cb36-9199d3c658.zip/node_modules/@commitlint/cli/",\
         "packageDependencies": [\
-          ["@commitlint/cli", "npm:19.4.0"],\
+          ["@commitlint/cli", "npm:19.4.1"],\
           ["@commitlint/format", "npm:19.3.0"],\
-          ["@commitlint/lint", "npm:19.2.2"],\
+          ["@commitlint/lint", "npm:19.4.1"],\
           ["@commitlint/load", "npm:19.4.0"],\
           ["@commitlint/read", "npm:19.4.0"],\
           ["@commitlint/types", "npm:19.0.3"],\
@@ -1230,10 +1230,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@commitlint/config-conventional", [\
-      ["npm:19.2.2", {\
-        "packageLocation": "./.yarn/cache/@commitlint-config-conventional-npm-19.2.2-2bb85a8bdf-9ee17ba00f.zip/node_modules/@commitlint/config-conventional/",\
+      ["npm:19.4.1", {\
+        "packageLocation": "./.yarn/cache/@commitlint-config-conventional-npm-19.4.1-a710b4b5b3-a1bcee880f.zip/node_modules/@commitlint/config-conventional/",\
         "packageDependencies": [\
-          ["@commitlint/config-conventional", "npm:19.2.2"],\
+          ["@commitlint/config-conventional", "npm:19.4.1"],\
           ["@commitlint/types", "npm:19.0.3"],\
           ["conventional-changelog-conventionalcommits", "npm:7.0.2"]\
         ],\
@@ -1305,13 +1305,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@commitlint/lint", [\
-      ["npm:19.2.2", {\
-        "packageLocation": "./.yarn/cache/@commitlint-lint-npm-19.2.2-0724d922e2-9bf2ffa0f6.zip/node_modules/@commitlint/lint/",\
+      ["npm:19.4.1", {\
+        "packageLocation": "./.yarn/cache/@commitlint-lint-npm-19.4.1-b040193911-57f264eafb.zip/node_modules/@commitlint/lint/",\
         "packageDependencies": [\
-          ["@commitlint/lint", "npm:19.2.2"],\
+          ["@commitlint/lint", "npm:19.4.1"],\
           ["@commitlint/is-ignored", "npm:19.2.2"],\
           ["@commitlint/parse", "npm:19.0.3"],\
-          ["@commitlint/rules", "npm:19.0.3"],\
+          ["@commitlint/rules", "npm:19.4.1"],\
           ["@commitlint/types", "npm:19.0.3"]\
         ],\
         "linkType": "HARD"\
@@ -1414,10 +1414,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@commitlint/rules", [\
-      ["npm:19.0.3", {\
-        "packageLocation": "./.yarn/cache/@commitlint-rules-npm-19.0.3-9547d09d1e-218033d96b.zip/node_modules/@commitlint/rules/",\
+      ["npm:19.4.1", {\
+        "packageLocation": "./.yarn/cache/@commitlint-rules-npm-19.4.1-829008e759-c5626278aa.zip/node_modules/@commitlint/rules/",\
         "packageDependencies": [\
-          ["@commitlint/rules", "npm:19.0.3"],\
+          ["@commitlint/rules", "npm:19.4.1"],\
           ["@commitlint/ensure", "npm:19.0.3"],\
           ["@commitlint/message", "npm:19.0.0"],\
           ["@commitlint/to-lines", "npm:19.0.0"],\
@@ -3093,8 +3093,8 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@plugola/mono-repo", "workspace:."],\
-          ["@commitlint/cli", "npm:19.4.0"],\
-          ["@commitlint/config-conventional", "npm:19.2.2"],\
+          ["@commitlint/cli", "npm:19.4.1"],\
+          ["@commitlint/config-conventional", "npm:19.4.1"],\
           ["@semantic-release/commit-analyzer", "virtual:99aeaffe6ca531ee0c9ffb8a28d9b6e0af7fabd719edb8ac05e95b7aa2abb7634abe6c13c8a7566e7f0819eaf1c5a4b534ac052520c4268553838da06e14b359#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
