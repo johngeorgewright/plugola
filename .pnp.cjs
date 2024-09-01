@@ -2969,7 +2969,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@plugola/generator", "workspace:packages/generator"],\
           ["@types/jest", "npm:29.5.12"],\
-          ["@types/node", "npm:20.16.2"],\
+          ["@types/node", "npm:20.16.3"],\
           ["@types/prettier", "npm:2.7.3"],\
           ["@types/rimraf", "npm:4.0.5"],\
           ["@types/yeoman-generator", "npm:5.2.14"],\
@@ -3020,7 +3020,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.1.7"],\
           ["@semantic-release/release-notes-generator", "virtual:99aeaffe6ca531ee0c9ffb8a28d9b6e0af7fabd719edb8ac05e95b7aa2abb7634abe6c13c8a7566e7f0819eaf1c5a4b534ac052520c4268553838da06e14b359#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.12"],\
-          ["@types/node", "npm:20.16.2"],\
+          ["@types/node", "npm:20.16.3"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["rimraf", "npm:6.0.1"],\
@@ -3046,7 +3046,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.1.7"],\
           ["@semantic-release/release-notes-generator", "virtual:99aeaffe6ca531ee0c9ffb8a28d9b6e0af7fabd719edb8ac05e95b7aa2abb7634abe6c13c8a7566e7f0819eaf1c5a4b534ac052520c4268553838da06e14b359#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.12"],\
-          ["@types/node", "npm:20.16.2"],\
+          ["@types/node", "npm:20.16.3"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["rimraf", "npm:6.0.1"],\
@@ -3073,7 +3073,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.1.7"],\
           ["@semantic-release/release-notes-generator", "virtual:99aeaffe6ca531ee0c9ffb8a28d9b6e0af7fabd719edb8ac05e95b7aa2abb7634abe6c13c8a7566e7f0819eaf1c5a4b534ac052520c4268553838da06e14b359#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.12"],\
-          ["@types/node", "npm:20.16.2"],\
+          ["@types/node", "npm:20.16.3"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["rimraf", "npm:6.0.1"],\
@@ -3133,7 +3133,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.1.7"],\
           ["@semantic-release/release-notes-generator", "virtual:99aeaffe6ca531ee0c9ffb8a28d9b6e0af7fabd719edb8ac05e95b7aa2abb7634abe6c13c8a7566e7f0819eaf1c5a4b534ac052520c4268553838da06e14b359#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.12"],\
-          ["@types/node", "npm:20.16.2"],\
+          ["@types/node", "npm:20.16.3"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["rimraf", "npm:6.0.1"],\
@@ -3159,7 +3159,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/release-notes-generator", "virtual:99aeaffe6ca531ee0c9ffb8a28d9b6e0af7fabd719edb8ac05e95b7aa2abb7634abe6c13c8a7566e7f0819eaf1c5a4b534ac052520c4268553838da06e14b359#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.12"],\
           ["@types/lodash.set", "npm:4.3.9"],\
-          ["@types/node", "npm:20.16.2"],\
+          ["@types/node", "npm:20.16.3"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["lodash.set", "npm:4.3.2"],\
@@ -3236,7 +3236,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.1.7"],\
           ["@semantic-release/release-notes-generator", "virtual:99aeaffe6ca531ee0c9ffb8a28d9b6e0af7fabd719edb8ac05e95b7aa2abb7634abe6c13c8a7566e7f0819eaf1c5a4b534ac052520c4268553838da06e14b359#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.12"],\
-          ["@types/node", "npm:20.16.2"],\
+          ["@types/node", "npm:20.16.3"],\
           ["expect", "npm:29.7.0"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
@@ -4334,10 +4334,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:20.16.2", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-20.16.2-fa541092c6-fcae2ffaa6.zip/node_modules/@types/node/",\
+      ["npm:20.16.3", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-20.16.3-0b99e876b8-3b14b8b3cb.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:20.16.2"],\
+          ["@types/node", "npm:20.16.3"],\
           ["undici-types", "npm:6.19.6"]\
         ],\
         "linkType": "HARD"\
@@ -16856,7 +16856,7 @@ const RAW_RUNTIME_STATE =
           ["@tsconfig/node12", "npm:1.0.9"],\
           ["@tsconfig/node14", "npm:1.0.1"],\
           ["@tsconfig/node16", "npm:1.0.2"],\
-          ["@types/node", "npm:20.16.2"],\
+          ["@types/node", "npm:20.16.3"],\
           ["@types/swc__core", null],\
           ["@types/swc__wasm", null],\
           ["@types/typescript", null],\
