@@ -2288,7 +2288,7 @@ __metadata:
   resolution: "@plugola/generator@workspace:packages/generator"
   dependencies:
     "@types/jest": "npm:29.5.12"
-    "@types/node": "npm:20.16.3"
+    "@types/node": "npm:20.16.4"
     "@types/prettier": "npm:2.7.3"
     "@types/rimraf": "npm:4.0.5"
     "@types/yeoman-generator": "npm:5.2.14"
@@ -2335,7 +2335,7 @@ __metadata:
     "@semantic-release/github": "npm:10.3.1"
     "@semantic-release/release-notes-generator": "npm:14.0.1"
     "@types/jest": "npm:29.5.12"
-    "@types/node": "npm:20.16.3"
+    "@types/node": "npm:20.16.4"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
@@ -2359,7 +2359,7 @@ __metadata:
     "@semantic-release/github": "npm:10.3.1"
     "@semantic-release/release-notes-generator": "npm:14.0.1"
     "@types/jest": "npm:29.5.12"
-    "@types/node": "npm:20.16.3"
+    "@types/node": "npm:20.16.4"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
@@ -2384,7 +2384,7 @@ __metadata:
     "@semantic-release/github": "npm:10.3.1"
     "@semantic-release/release-notes-generator": "npm:14.0.1"
     "@types/jest": "npm:29.5.12"
-    "@types/node": "npm:20.16.3"
+    "@types/node": "npm:20.16.4"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
@@ -2440,7 +2440,7 @@ __metadata:
     "@semantic-release/github": "npm:10.3.1"
     "@semantic-release/release-notes-generator": "npm:14.0.1"
     "@types/jest": "npm:29.5.12"
-    "@types/node": "npm:20.16.3"
+    "@types/node": "npm:20.16.4"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
@@ -2464,7 +2464,7 @@ __metadata:
     "@semantic-release/release-notes-generator": "npm:14.0.1"
     "@types/jest": "npm:29.5.12"
     "@types/lodash.set": "npm:4.3.9"
-    "@types/node": "npm:20.16.3"
+    "@types/node": "npm:20.16.4"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     lodash.set: "npm:4.3.2"
@@ -2538,7 +2538,7 @@ __metadata:
     "@semantic-release/github": "npm:10.3.1"
     "@semantic-release/release-notes-generator": "npm:14.0.1"
     "@types/jest": "npm:29.5.12"
-    "@types/node": "npm:20.16.3"
+    "@types/node": "npm:20.16.4"
     expect: "npm:29.7.0"
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
@@ -3331,12 +3331,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.16.3":
-  version: 20.16.3
-  resolution: "@types/node@npm:20.16.3"
+"@types/node@npm:20.16.4":
+  version: 20.16.4
+  resolution: "@types/node@npm:20.16.4"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10/3b14b8b3cb92adc7db69f8cf351e7b6b5001e5c7cdb07470943215afeafc2952ae588c918543784e8f8e975d43d609ce0c7bced91f1b8745f1669d6137adaabc
+  checksum: 10/3c6ecc81ee77b67938004a0ffc7459ad9df242218a3eea8249036950262ba32061cfac0d7b74781d50cd9399bfd9b903c3b250caa2f4e76f526c4b55b929b670
   languageName: node
   linkType: hard
 
