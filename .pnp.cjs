@@ -95,7 +95,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
           ["@semantic-release/release-notes-generator", "virtual:8d75e278075e7854a487976fe53feabedaf1dc618a67fdbcb13a1bbaa6776bb4d1b1a781f2f9d880d1c3afc1bb14ac6dd732924fd235830410610016acf44f5c#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.13"],\
-          ["commitizen", "npm:4.3.0"],\
+          ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.6"],\
           ["isbinaryfile", "npm:5.0.2"],\
@@ -3100,7 +3100,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
           ["@semantic-release/release-notes-generator", "virtual:8d75e278075e7854a487976fe53feabedaf1dc618a67fdbcb13a1bbaa6776bb4d1b1a781f2f9d880d1c3afc1bb14ac6dd732924fd235830410610016acf44f5c#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.13"],\
-          ["commitizen", "npm:4.3.0"],\
+          ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.6"],\
           ["isbinaryfile", "npm:5.0.2"],\
@@ -6246,10 +6246,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:4.3.0", {\
-        "packageLocation": "./.yarn/cache/commitizen-npm-4.3.0-3695cdaf66-45a82b7fde.zip/node_modules/commitizen/",\
+      ["npm:4.3.1", {\
+        "packageLocation": "./.yarn/cache/commitizen-npm-4.3.1-eab8087a7a-3feeb9d235.zip/node_modules/commitizen/",\
         "packageDependencies": [\
-          ["commitizen", "npm:4.3.0"],\
+          ["commitizen", "npm:4.3.1"],\
           ["cachedir", "npm:2.3.0"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["dedent", "npm:0.7.0"],\
