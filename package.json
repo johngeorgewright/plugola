@@ -35,7 +35,7 @@
     "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
     "husky": "9.1.6",
-    "isbinaryfile": "5.0.2",
+    "isbinaryfile": "5.0.3",
     "jest-environment-jsdom": "29.7.0",
     "json-parse-even-better-errors": "3.0.2",
     "lint-staged": "15.2.10",
