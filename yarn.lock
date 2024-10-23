@@ -2412,7 +2412,7 @@ __metadata:
     commitizen: "npm:4.3.1"
     cz-conventional-changelog: "npm:3.3.0"
     husky: "npm:9.1.6"
-    isbinaryfile: "npm:5.0.3"
+    isbinaryfile: "npm:5.0.4"
     jest-environment-jsdom: "npm:29.7.0"
     json-parse-even-better-errors: "npm:3.0.2"
     lint-staged: "npm:15.2.10"
@@ -8586,10 +8586,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbinaryfile@npm:5.0.3":
-  version: 5.0.3
-  resolution: "isbinaryfile@npm:5.0.3"
-  checksum: 10/d8c4f588097379672a3d42cb7324901aa802b0105ba45a029b13930abd9b3af27aa57897654ad741ed0530ebe313175ce8962fa1be66914d20548f0866a9cb4f
+"isbinaryfile@npm:5.0.4":
+  version: 5.0.4
+  resolution: "isbinaryfile@npm:5.0.4"
+  checksum: 10/6162e900b17e6c73da6138667d6b195ed234f9fd9d073e7c8c07ee36657e63b6a69d73da55f522d45a1928f5da4642b5d25d27e24ebd3bb68b83647d594bee79
   languageName: node
   linkType: hard
 

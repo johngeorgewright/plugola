@@ -98,7 +98,7 @@ const RAW_RUNTIME_STATE =
           ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.6"],\
-          ["isbinaryfile", "npm:5.0.3"],\
+          ["isbinaryfile", "npm:5.0.4"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["json-parse-even-better-errors", "npm:3.0.2"],\
           ["lint-staged", "npm:15.2.10"],\
@@ -3103,7 +3103,7 @@ const RAW_RUNTIME_STATE =
           ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.6"],\
-          ["isbinaryfile", "npm:5.0.3"],\
+          ["isbinaryfile", "npm:5.0.4"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["json-parse-even-better-errors", "npm:3.0.2"],\
           ["lint-staged", "npm:15.2.10"],\
@@ -10097,10 +10097,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:5.0.3", {\
-        "packageLocation": "./.yarn/cache/isbinaryfile-npm-5.0.3-29737cba00-d8c4f58809.zip/node_modules/isbinaryfile/",\
+      ["npm:5.0.4", {\
+        "packageLocation": "./.yarn/cache/isbinaryfile-npm-5.0.4-a4a2071876-6162e900b1.zip/node_modules/isbinaryfile/",\
         "packageDependencies": [\
-          ["isbinaryfile", "npm:5.0.3"]\
+          ["isbinaryfile", "npm:5.0.4"]\
         ],\
         "linkType": "HARD"\
       }]\
