@@ -92,7 +92,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["commitizen", "npm:4.3.1"],\
@@ -2993,7 +2993,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
@@ -3016,7 +3016,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/node", "npm:20.17.9"],\
@@ -3042,7 +3042,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/node", "npm:20.17.9"],\
@@ -3069,7 +3069,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/node", "npm:20.17.9"],\
@@ -3097,7 +3097,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["commitizen", "npm:4.3.1"],\
@@ -3129,7 +3129,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/node", "npm:20.17.9"],\
@@ -3154,7 +3154,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/lodash.set", "npm:4.3.9"],\
@@ -3180,7 +3180,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
@@ -3205,7 +3205,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
@@ -3232,7 +3232,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/node", "npm:20.17.9"],\
@@ -3285,7 +3285,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/commit-analyzer", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:13.0.0"],\
           ["@semantic-release/exec", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:6.0.3"],\
           ["@semantic-release/git", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.0.1"],\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@semantic-release/release-notes-generator", "virtual:5f5958b05261cc64020bb11a1cac3e38fe4e1e47837ac350f43d5b43361e885b6379224c50598725aed7b43537de6eaeb5a45aed066e3dc0221dc996eb535998#npm:14.0.1"],\
           ["@types/jest", "npm:29.5.14"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
@@ -3520,17 +3520,17 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["npm:10.3.5", {\
-        "packageLocation": "./.yarn/cache/@semantic-release-github-npm-10.3.5-04b74ac0bf-4573e0b494.zip/node_modules/@semantic-release/github/",\
-        "packageDependencies": [\
-          ["@semantic-release/github", "npm:10.3.5"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
       ["npm:11.0.0", {\
         "packageLocation": "./.yarn/cache/@semantic-release-github-npm-11.0.0-515fbdec20-a9ffb7eb0c.zip/node_modules/@semantic-release/github/",\
         "packageDependencies": [\
           ["@semantic-release/github", "npm:11.0.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["npm:11.0.1", {\
+        "packageLocation": "./.yarn/cache/@semantic-release-github-npm-11.0.1-10e2ac49e2-60a145d4fc.zip/node_modules/@semantic-release/github/",\
+        "packageDependencies": [\
+          ["@semantic-release/github", "npm:11.0.1"]\
         ],\
         "linkType": "SOFT"\
       }],\
@@ -3621,10 +3621,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5", {\
-        "packageLocation": "./.yarn/__virtual__/@semantic-release-github-virtual-754cad7353/0/cache/@semantic-release-github-npm-10.3.5-04b74ac0bf-4573e0b494.zip/node_modules/@semantic-release/github/",\
+      ["virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1", {\
+        "packageLocation": "./.yarn/__virtual__/@semantic-release-github-virtual-f6a2a55d77/0/cache/@semantic-release-github-npm-11.0.1-10e2ac49e2-60a145d4fc.zip/node_modules/@semantic-release/github/",\
         "packageDependencies": [\
-          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
+          ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:11.0.1"],\
           ["@octokit/core", "npm:6.1.2"],\
           ["@octokit/plugin-paginate-rest", "virtual:52104c69414ac8a98f954003e823f4ee345bb8f7eb35b2c8693674107451eafa79a8fa9f7a19583e9b8bd032bc158ad0d34823c94c2800363fd32b288b3be954#npm:11.3.3"],\
           ["@octokit/plugin-retry", "virtual:52104c69414ac8a98f954003e823f4ee345bb8f7eb35b2c8693674107451eafa79a8fa9f7a19583e9b8bd032bc158ad0d34823c94c2800363fd32b288b3be954#npm:7.1.1"],\
