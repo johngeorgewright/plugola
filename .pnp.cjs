@@ -101,7 +101,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.4"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["json-parse-even-better-errors", "npm:3.0.2"],\
-          ["lint-staged", "npm:15.2.11"],\
+          ["lint-staged", "npm:15.3.0"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["prettier", "npm:2.8.8"],\
           ["semantic-release", "npm:24.2.0"],\
@@ -3106,7 +3106,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.4"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["json-parse-even-better-errors", "npm:3.0.2"],\
-          ["lint-staged", "npm:15.2.11"],\
+          ["lint-staged", "npm:15.3.0"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["prettier", "npm:2.8.8"],\
           ["semantic-release", "npm:24.2.0"],\
@@ -5781,6 +5781,13 @@ const RAW_RUNTIME_STATE =
           ["chalk", "npm:5.3.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:5.4.1", {\
+        "packageLocation": "./.yarn/cache/chalk-npm-5.4.1-2f3fe4660a-29df3ffcdf.zip/node_modules/chalk/",\
+        "packageDependencies": [\
+          ["chalk", "npm:5.4.1"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["change-case", [\
@@ -6840,12 +6847,12 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["virtual:a35208a143e582bb3158539d5dc1e269672846333cedd0593984f3a8722f2553efc18ed6e4d2ea6ccdc88bc379f1dad2a4469de2d67ba89f314e444a335bd181#npm:2.6.9", {\
-        "packageLocation": "./.yarn/__virtual__/debug-virtual-92e12ff279/0/cache/debug-npm-2.6.9-7d4cb597dc-e07005f2b4.zip/node_modules/debug/",\
+      ["virtual:6f87eff2f1dfc7363da5b0cbb17c2c347525a1eae4b0c21808f0bd21b40c885f339f38eabc62de6d4460721aa35cfd480922287c7f11e3a1f01aca989082ec26#npm:4.4.0", {\
+        "packageLocation": "./.yarn/__virtual__/debug-virtual-98ee9b8f96/0/cache/debug-npm-4.4.0-f6efe76023-1847944c2e.zip/node_modules/debug/",\
         "packageDependencies": [\
-          ["debug", "virtual:a35208a143e582bb3158539d5dc1e269672846333cedd0593984f3a8722f2553efc18ed6e4d2ea6ccdc88bc379f1dad2a4469de2d67ba89f314e444a335bd181#npm:2.6.9"],\
+          ["debug", "virtual:6f87eff2f1dfc7363da5b0cbb17c2c347525a1eae4b0c21808f0bd21b40c885f339f38eabc62de6d4460721aa35cfd480922287c7f11e3a1f01aca989082ec26#npm:4.4.0"],\
           ["@types/supports-color", null],\
-          ["ms", "npm:2.0.0"],\
+          ["ms", "npm:2.1.3"],\
           ["supports-color", null]\
         ],\
         "packagePeers": [\
@@ -6854,12 +6861,12 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["virtual:cb0331161405de155d5d31114c2260724ae76e36d05e7a62f8da20e21cd0aec3bb4e735c392cab50cfd8642d71bfc82908917b491c5b34fd1821ef6a67c4a77a#npm:4.4.0", {\
-        "packageLocation": "./.yarn/__virtual__/debug-virtual-da572f73c7/0/cache/debug-npm-4.4.0-f6efe76023-1847944c2e.zip/node_modules/debug/",\
+      ["virtual:a35208a143e582bb3158539d5dc1e269672846333cedd0593984f3a8722f2553efc18ed6e4d2ea6ccdc88bc379f1dad2a4469de2d67ba89f314e444a335bd181#npm:2.6.9", {\
+        "packageLocation": "./.yarn/__virtual__/debug-virtual-92e12ff279/0/cache/debug-npm-2.6.9-7d4cb597dc-e07005f2b4.zip/node_modules/debug/",\
         "packageDependencies": [\
-          ["debug", "virtual:cb0331161405de155d5d31114c2260724ae76e36d05e7a62f8da20e21cd0aec3bb4e735c392cab50cfd8642d71bfc82908917b491c5b34fd1821ef6a67c4a77a#npm:4.4.0"],\
+          ["debug", "virtual:a35208a143e582bb3158539d5dc1e269672846333cedd0593984f3a8722f2553efc18ed6e4d2ea6ccdc88bc379f1dad2a4469de2d67ba89f314e444a335bd181#npm:2.6.9"],\
           ["@types/supports-color", null],\
-          ["ms", "npm:2.1.3"],\
+          ["ms", "npm:2.0.0"],\
           ["supports-color", null]\
         ],\
         "packagePeers": [\
@@ -11448,13 +11455,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["lint-staged", [\
-      ["npm:15.2.11", {\
-        "packageLocation": "./.yarn/cache/lint-staged-npm-15.2.11-cb03311614-b3fa66401f.zip/node_modules/lint-staged/",\
+      ["npm:15.3.0", {\
+        "packageLocation": "./.yarn/cache/lint-staged-npm-15.3.0-6f87eff2f1-b19ce45064.zip/node_modules/lint-staged/",\
         "packageDependencies": [\
-          ["lint-staged", "npm:15.2.11"],\
-          ["chalk", "npm:5.3.0"],\
+          ["lint-staged", "npm:15.3.0"],\
+          ["chalk", "npm:5.4.1"],\
           ["commander", "npm:12.1.0"],\
-          ["debug", "virtual:cb0331161405de155d5d31114c2260724ae76e36d05e7a62f8da20e21cd0aec3bb4e735c392cab50cfd8642d71bfc82908917b491c5b34fd1821ef6a67c4a77a#npm:4.4.0"],\
+          ["debug", "virtual:6f87eff2f1dfc7363da5b0cbb17c2c347525a1eae4b0c21808f0bd21b40c885f339f38eabc62de6d4460721aa35cfd480922287c7f11e3a1f01aca989082ec26#npm:4.4.0"],\
           ["execa", "npm:8.0.1"],\
           ["lilconfig", "npm:3.1.3"],\
           ["listr2", "npm:8.2.5"],\
