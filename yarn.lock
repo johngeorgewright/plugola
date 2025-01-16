@@ -2415,7 +2415,7 @@ __metadata:
     isbinaryfile: "npm:5.0.4"
     jest-environment-jsdom: "npm:29.7.0"
     json-parse-even-better-errors: "npm:3.0.2"
-    lint-staged: "npm:15.3.0"
+    lint-staged: "npm:15.4.0"
     mkdirp-infer-owner: "npm:2.0.0"
     prettier: "npm:2.8.8"
     semantic-release: "npm:24.2.1"
@@ -9839,9 +9839,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:15.3.0":
-  version: 15.3.0
-  resolution: "lint-staged@npm:15.3.0"
+"lint-staged@npm:15.4.0":
+  version: 15.4.0
+  resolution: "lint-staged@npm:15.4.0"
   dependencies:
     chalk: "npm:~5.4.1"
     commander: "npm:~12.1.0"
@@ -9855,7 +9855,7 @@ __metadata:
     yaml: "npm:~2.6.1"
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: 10/b19ce450641f6cc76be8399658423f0dfa9f9a471aaa427c10bef6a1de2017f1c2547e293de908a57b9202ee20a19fd2305aec3e435cb1d4cfc1d03ace843e9f
+  checksum: 10/1fed6a273643f93da27c6152d37f30dd9a79338b8cb0a1f6673ba829f3a73362ca48e3fe2561c8cc6cbc39987d60ca9f51e6665d110d7d3b71640236a8d03444
   languageName: node
   linkType: hard
 
