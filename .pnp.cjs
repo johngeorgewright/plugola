@@ -101,7 +101,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.4"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["json-parse-even-better-errors", "npm:3.0.2"],\
-          ["lint-staged", "npm:15.4.2"],\
+          ["lint-staged", "npm:15.4.3"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["prettier", "npm:2.8.8"],\
           ["semantic-release", "npm:24.2.1"],\
@@ -3106,7 +3106,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.4"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["json-parse-even-better-errors", "npm:3.0.2"],\
-          ["lint-staged", "npm:15.4.2"],\
+          ["lint-staged", "npm:15.4.3"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["prettier", "npm:2.8.8"],\
           ["semantic-release", "npm:24.2.1"],\
@@ -6847,20 +6847,6 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:1172738fea2f971a44a2bf577981d6963fb4c0f4afcf9ebe86174d36c48cb1cdee1e17ba2c8dbadf57e7389fe1b6c3248c2424e3d017898833b988c5a2cb4739#npm:4.4.0", {\
-        "packageLocation": "./.yarn/__virtual__/debug-virtual-ef6230ed47/0/cache/debug-npm-4.4.0-f6efe76023-1847944c2e.zip/node_modules/debug/",\
-        "packageDependencies": [\
-          ["debug", "virtual:1172738fea2f971a44a2bf577981d6963fb4c0f4afcf9ebe86174d36c48cb1cdee1e17ba2c8dbadf57e7389fe1b6c3248c2424e3d017898833b988c5a2cb4739#npm:4.4.0"],\
-          ["@types/supports-color", null],\
-          ["ms", "npm:2.1.3"],\
-          ["supports-color", null]\
-        ],\
-        "packagePeers": [\
-          "@types/supports-color",\
-          "supports-color"\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["virtual:8866147795d308091c464175a42e9db9c8525e58f8ee83ac382b2a6d7dfca9f0262a439c98e1e6c97839fb23bdce1374c6611813b5e2e1c7d2aa725e24e64d29#npm:4.3.4", {\
         "packageLocation": "./.yarn/__virtual__/debug-virtual-96bb23be6c/0/cache/debug-npm-4.3.4-4513954577-0073c3bcbd.zip/node_modules/debug/",\
         "packageDependencies": [\
@@ -6881,6 +6867,20 @@ const RAW_RUNTIME_STATE =
           ["debug", "virtual:a35208a143e582bb3158539d5dc1e269672846333cedd0593984f3a8722f2553efc18ed6e4d2ea6ccdc88bc379f1dad2a4469de2d67ba89f314e444a335bd181#npm:2.6.9"],\
           ["@types/supports-color", null],\
           ["ms", "npm:2.0.0"],\
+          ["supports-color", null]\
+        ],\
+        "packagePeers": [\
+          "@types/supports-color",\
+          "supports-color"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:a6714936967661db4c50f5e9ac4985e2c78b13c770fe9816b8aaa64e55dc67458b66f033911b6e7c71096d059cd8c0f7d07daf03853191212127379996acf3f3#npm:4.4.0", {\
+        "packageLocation": "./.yarn/__virtual__/debug-virtual-875804211b/0/cache/debug-npm-4.4.0-f6efe76023-1847944c2e.zip/node_modules/debug/",\
+        "packageDependencies": [\
+          ["debug", "virtual:a6714936967661db4c50f5e9ac4985e2c78b13c770fe9816b8aaa64e55dc67458b66f033911b6e7c71096d059cd8c0f7d07daf03853191212127379996acf3f3#npm:4.4.0"],\
+          ["@types/supports-color", null],\
+          ["ms", "npm:2.1.3"],\
           ["supports-color", null]\
         ],\
         "packagePeers": [\
@@ -11492,13 +11492,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["lint-staged", [\
-      ["npm:15.4.2", {\
-        "packageLocation": "./.yarn/cache/lint-staged-npm-15.4.2-1172738fea-19f85db74d.zip/node_modules/lint-staged/",\
+      ["npm:15.4.3", {\
+        "packageLocation": "./.yarn/cache/lint-staged-npm-15.4.3-a671493696-14a6a9cb9b.zip/node_modules/lint-staged/",\
         "packageDependencies": [\
-          ["lint-staged", "npm:15.4.2"],\
+          ["lint-staged", "npm:15.4.3"],\
           ["chalk", "npm:5.4.1"],\
           ["commander", "npm:13.1.0"],\
-          ["debug", "virtual:1172738fea2f971a44a2bf577981d6963fb4c0f4afcf9ebe86174d36c48cb1cdee1e17ba2c8dbadf57e7389fe1b6c3248c2424e3d017898833b988c5a2cb4739#npm:4.4.0"],\
+          ["debug", "virtual:a6714936967661db4c50f5e9ac4985e2c78b13c770fe9816b8aaa64e55dc67458b66f033911b6e7c71096d059cd8c0f7d07daf03853191212127379996acf3f3#npm:4.4.0"],\
           ["execa", "npm:8.0.1"],\
           ["lilconfig", "npm:3.1.3"],\
           ["listr2", "npm:8.2.5"],\
