@@ -2316,7 +2316,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     tslib: "npm:^2.6.3"
@@ -2338,7 +2338,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     ts-node: "npm:10.9.2"
@@ -2362,7 +2362,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     tslib: "npm:^2.6.3"
@@ -2387,7 +2387,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     ts-node: "npm:10.9.2"
@@ -2418,7 +2418,7 @@ __metadata:
     lint-staged: "npm:15.4.3"
     mkdirp-infer-owner: "npm:2.0.0"
     prettier: "npm:2.8.8"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-node: "npm:10.9.2"
     tslib: "npm:2.8.1"
@@ -2443,7 +2443,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     ts-node: "npm:10.9.2"
@@ -2468,7 +2468,7 @@ __metadata:
     jest-environment-jsdom: "npm:29.7.0"
     lodash.set: "npm:4.3.2"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     tslib: "npm:^2.6.3"
@@ -2491,7 +2491,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     tslib: "npm:^2.6.3"
@@ -2515,7 +2515,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     tslib: "npm:^2.6.3"
@@ -2542,7 +2542,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     ts-toolbelt: "npm:^9.6.0"
@@ -2595,7 +2595,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-environment-jsdom: "npm:29.7.0"
     rimraf: "npm:6.0.1"
-    semantic-release: "npm:24.2.1"
+    semantic-release: "npm:24.2.2"
     semantic-release-monorepo: "npm:8.0.2"
     ts-jest: "npm:29.2.5"
     tslib: "npm:^2.6.3"
@@ -13503,9 +13503,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:24.2.1":
-  version: 24.2.1
-  resolution: "semantic-release@npm:24.2.1"
+"semantic-release@npm:24.2.2":
+  version: 24.2.2
+  resolution: "semantic-release@npm:24.2.2"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:^13.0.0-beta.1"
     "@semantic-release/error": "npm:^4.0.0"
@@ -13538,7 +13538,7 @@ __metadata:
     yargs: "npm:^17.5.1"
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: 10/6fe86670e37455443f9e9189c83a99772bc9b0ee88fd42160733d9f3816bb02cb5043beb6ad9af6179595373abf49ec065a2f261fea5b9fd20a37711f5dfece4
+  checksum: 10/543e0be294e59172a58ceff2f9f1a29968304af55ebc92f9e59d1e0da36d64b094fe12e469eb3c1c6ab6bb5d698624876093f78aa17702169b2770cbad029e21
   languageName: node
   linkType: hard
 
