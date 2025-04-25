@@ -2970,7 +2970,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@plugola/generator", "workspace:packages/generator"],\
           ["@types/jest", "npm:29.5.14"],\
-          ["@types/node", "npm:20.17.30"],\
+          ["@types/node", "npm:20.17.31"],\
           ["@types/prettier", "npm:2.7.3"],\
           ["@types/rimraf", "npm:4.0.5"],\
           ["@types/yeoman-generator", "npm:5.2.14"],\
@@ -3021,7 +3021,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
           ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:14.0.3"],\
           ["@types/jest", "npm:29.5.14"],\
-          ["@types/node", "npm:20.17.30"],\
+          ["@types/node", "npm:20.17.31"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["rimraf", "npm:6.0.1"],\
@@ -3047,7 +3047,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
           ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:14.0.3"],\
           ["@types/jest", "npm:29.5.14"],\
-          ["@types/node", "npm:20.17.30"],\
+          ["@types/node", "npm:20.17.31"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["rimraf", "npm:6.0.1"],\
@@ -3074,7 +3074,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
           ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:14.0.3"],\
           ["@types/jest", "npm:29.5.14"],\
-          ["@types/node", "npm:20.17.30"],\
+          ["@types/node", "npm:20.17.31"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["rimraf", "npm:6.0.1"],\
@@ -3134,7 +3134,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
           ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:14.0.3"],\
           ["@types/jest", "npm:29.5.14"],\
-          ["@types/node", "npm:20.17.30"],\
+          ["@types/node", "npm:20.17.31"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["rimraf", "npm:6.0.1"],\
@@ -3160,7 +3160,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:14.0.3"],\
           ["@types/jest", "npm:29.5.14"],\
           ["@types/lodash.set", "npm:4.3.9"],\
-          ["@types/node", "npm:20.17.30"],\
+          ["@types/node", "npm:20.17.31"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
           ["lodash.set", "npm:4.3.2"],\
@@ -3237,7 +3237,7 @@ const RAW_RUNTIME_STATE =
           ["@semantic-release/github", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.3.5"],\
           ["@semantic-release/release-notes-generator", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:14.0.3"],\
           ["@types/jest", "npm:29.5.14"],\
-          ["@types/node", "npm:20.17.30"],\
+          ["@types/node", "npm:20.17.31"],\
           ["expect", "npm:29.7.0"],\
           ["jest", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
@@ -4409,10 +4409,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:20.17.30", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-20.17.30-fc4dd33c3d-69fd3b1774.zip/node_modules/@types/node/",\
+      ["npm:20.17.31", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-20.17.31-4eac882422-a965b5918b.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:20.17.30"],\
+          ["@types/node", "npm:20.17.31"],\
           ["undici-types", "npm:6.19.6"]\
         ],\
         "linkType": "HARD"\
@@ -16971,7 +16971,7 @@ const RAW_RUNTIME_STATE =
           ["@tsconfig/node12", "npm:1.0.9"],\
           ["@tsconfig/node14", "npm:1.0.1"],\
           ["@tsconfig/node16", "npm:1.0.2"],\
-          ["@types/node", "npm:20.17.30"],\
+          ["@types/node", "npm:20.17.31"],\
           ["@types/swc__core", null],\
           ["@types/swc__wasm", null],\
           ["@types/typescript", null],\
@@ -22539,14 +22539,9 @@ class LibZipImpl {
   libzip;
   lzSource;
   zip;
-  /**
-   * A cache of indices mapped to file sources.
-   * Populated by `setFileSource` calls.
-   * Required for supporting read after write.
-   */
-  fileSources = /* @__PURE__ */ new Map();
   listings;
   symlinkCount;
+  filesShouldBeCached = true;
   constructor(opts) {
     const buffer = `buffer` in opts ? opts.buffer : opts.baseFs.readFileSync(opts.path);
     this.libzip = getInstance();
@@ -22617,7 +22612,6 @@ class LibZipImpl {
           throw this.makeLibzipError(this.libzip.getError(this.zip));
         }
       }
-      this.fileSources.set(newIndex, buffer);
       return newIndex;
     } catch (error) {
       this.libzip.source.free(lzSource);
@@ -22648,9 +22642,6 @@ class LibZipImpl {
     return this.libzip.name.locate(this.zip, name, 0);
   }
   getFileSource(index) {
-    const cachedFileSource = this.fileSources.get(index);
-    if (typeof cachedFileSource !== `undefined`)
-      return { data: cachedFileSource, compressionMethod: 0 };
     const stat = this.libzip.struct.statS();
     const rc = this.libzip.statIndex(this.zip, index, 0, 0, stat);
     if (rc === -1)
@@ -22681,7 +22672,6 @@ class LibZipImpl {
     }
   }
   deleteEntry(index) {
-    this.fileSources.delete(index);
     const rc = this.libzip.delete(this.zip, index);
     if (rc === -1) {
       throw this.makeLibzipError(this.libzip.getError(this.zip));
@@ -22816,6 +22806,12 @@ class ZipFS extends BasePortableFakeFS {
   zipImpl;
   listings = /* @__PURE__ */ new Map();
   entries = /* @__PURE__ */ new Map();
+  /**
+   * A cache of indices mapped to file sources.
+   * Populated by `setFileSource` calls.
+   * Required for supporting read after write.
+   */
+  fileSources = /* @__PURE__ */ new Map();
   symlinkCount;
   fds = /* @__PURE__ */ new Map();
   nextFd = 0;
@@ -23241,6 +23237,7 @@ class ZipFS extends BasePortableFakeFS {
     this.entries.delete(p);
     if (typeof entry === `undefined`)
       return;
+    this.fileSources.delete(entry);
     if (this.isSymbolicLink(entry)) {
       this.symlinkCount--;
     }
@@ -23301,6 +23298,7 @@ class ZipFS extends BasePortableFakeFS {
       compression = [method, this.level];
     }
     const newIndex = this.zipImpl.setFileSource(target, compression, buffer);
+    this.fileSources.set(newIndex, buffer);
     return newIndex;
   }
   isSymbolicLink(index) {
@@ -23313,8 +23311,13 @@ class ZipFS extends BasePortableFakeFS {
     return (attributes & fs.constants.S_IFMT) === fs.constants.S_IFLNK;
   }
   getFileSource(index, opts = { asyncDecompress: false }) {
+    const cachedFileSource = this.fileSources.get(index);
+    if (typeof cachedFileSource !== `undefined`)
+      return cachedFileSource;
     const { data, compressionMethod } = this.zipImpl.getFileSource(index);
     if (compressionMethod === STORE) {
+      if (this.zipImpl.filesShouldBeCached)
+        this.fileSources.set(index, data);
       return data;
     } else if (compressionMethod === DEFLATE) {
       if (opts.asyncDecompress) {
@@ -23323,12 +23326,17 @@ class ZipFS extends BasePortableFakeFS {
             if (error) {
               reject(error);
             } else {
+              if (this.zipImpl.filesShouldBeCached)
+                this.fileSources.set(index, result);
               resolve(result);
             }
           });
         });
       } else {
-        return zlib__default.default.inflateRawSync(data);
+        const decompressedData = zlib__default.default.inflateRawSync(data);
+        if (this.zipImpl.filesShouldBeCached)
+          this.fileSources.set(index, decompressedData);
+        return decompressedData;
       }
     } else {
       throw new Error(`Unsupported compression method: ${compressionMethod}`);
@@ -23793,6 +23801,7 @@ class JsZipImpl {
   fd;
   baseFs;
   entries;
+  filesShouldBeCached = false;
   constructor(opts) {
     if (`buffer` in opts)
       throw new Error(`Buffer based zip archives are not supported`);
@@ -23800,7 +23809,13 @@ class JsZipImpl {
       throw new Error(`Writable zip archives are not supported`);
     this.baseFs = opts.baseFs;
     this.fd = this.baseFs.openSync(opts.path, `r`);
-    this.entries = JsZipImpl.readZipSync(this.fd, this.baseFs, opts.size);
+    try {
+      this.entries = JsZipImpl.readZipSync(this.fd, this.baseFs, opts.size);
+    } catch (error) {
+      this.baseFs.closeSync(this.fd);
+      this.fd = `closed`;
+      throw error;
+    }
   }
   static readZipSync(fd, baseFs, fileSize) {
     if (fileSize < noCommentCDSize)
@@ -23928,6 +23943,8 @@ class JsZipImpl {
     return -1;
   }
   getFileSource(index) {
+    if (this.fd === `closed`)
+      throw new Error(`ZIP file is closed`);
     const entry = this.entries[index];
     const localHeaderBuf = Buffer.alloc(30);
     this.baseFs.readSync(
@@ -23945,6 +23962,10 @@ class JsZipImpl {
     return { data: buffer, compressionMethod: entry.compressionMethod };
   }
   discard() {
+    if (this.fd !== `closed`) {
+      this.baseFs.closeSync(this.fd);
+      this.fd = `closed`;
+    }
   }
   addDirectory(path) {
     throw new Error(`Not implemented`);
