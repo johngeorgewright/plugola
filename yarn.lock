@@ -2131,6 +2131,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/openapi-types@npm:^25.0.0":
+  version: 25.0.0
+  resolution: "@octokit/openapi-types@npm:25.0.0"
+  checksum: 10/d412a7ee77d7e3767aff1df012023b8c4d4c0d58a52c110e78557ac368b20fd01205c3f0c14e0fc2d6c0e2163b8e9931bd8d1bb59986477af49d04e6e5bbf827
+  languageName: node
+  linkType: hard
+
 "@octokit/plugin-paginate-rest@npm:^11.0.0":
   version: 11.3.3
   resolution: "@octokit/plugin-paginate-rest@npm:11.3.3"
@@ -2139,6 +2146,17 @@ __metadata:
   peerDependencies:
     "@octokit/core": ">=6"
   checksum: 10/87eeb4dd68a8207e669989cdbf9de3717b74038d630c2b803cbc7a9c44c3ff74771ce1cf45fa056b7172aaaa80fd9a0e4bf5eca06aabc19f30e7e29898f1f69e
+  languageName: node
+  linkType: hard
+
+"@octokit/plugin-paginate-rest@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "@octokit/plugin-paginate-rest@npm:12.0.0"
+  dependencies:
+    "@octokit/types": "npm:^14.0.0"
+  peerDependencies:
+    "@octokit/core": ">=6"
+  checksum: 10/302f0983e4b4746722ffcdb293529e14e00771d61a8edadaa85c38ab4f7f0b274d91bfe9b03a2a9684a45b0ca2c5b633b87bcc78269738c60f6a4d57b1c00b8f
   languageName: node
   linkType: hard
 
@@ -2184,6 +2202,18 @@ __metadata:
   peerDependencies:
     "@octokit/core": ">=6"
   checksum: 10/ff7d2f0b45e61ff688c213ad28670fceffa8d56603850beabab21cbb79021d91d8bf40cdc2062949eeb6b031c6e5ad39bcbbc40b0caa7924c81d3c90b8fb0843
+  languageName: node
+  linkType: hard
+
+"@octokit/plugin-throttling@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "@octokit/plugin-throttling@npm:10.0.0"
+  dependencies:
+    "@octokit/types": "npm:^14.0.0"
+    bottleneck: "npm:^2.15.3"
+  peerDependencies:
+    "@octokit/core": ^6.1.3
+  checksum: 10/2d20788c50c5507954ad4b34495aba6d8ef154174afa0b7d7d43a47c999b1b26309e9fb578eaa9db431188e35c9787b44f06ed4d45967e0417e03a29bb7eefc8
   languageName: node
   linkType: hard
 
@@ -2266,6 +2296,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/types@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "@octokit/types@npm:14.0.0"
+  dependencies:
+    "@octokit/openapi-types": "npm:^25.0.0"
+  checksum: 10/bff427e7f4ff32ccf62536b87e2f7b7d4f6baa543de27006dc55b0356df0274267f3a782372efda5921412b15d2b37e92f30bbacf8b09d7134699fe79a6907a1
+  languageName: node
+  linkType: hard
+
 "@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.34.0":
   version: 6.34.0
   resolution: "@octokit/types@npm:6.34.0"
@@ -2308,9 +2347,9 @@ __metadata:
   resolution: "@plugola/graph@workspace:packages/graph"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     jest: "npm:29.7.0"
@@ -2329,9 +2368,9 @@ __metadata:
   resolution: "@plugola/invoke@workspace:packages/invoke"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.17.47"
@@ -2353,9 +2392,9 @@ __metadata:
   resolution: "@plugola/logger@workspace:packages/logger"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.17.47"
@@ -2378,9 +2417,9 @@ __metadata:
     "@johngw/async-iterator": "npm:^4.0.1"
     "@plugola/invoke": "workspace:^"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.17.47"
@@ -2404,9 +2443,9 @@ __metadata:
     "@commitlint/cli": "npm:19.8.1"
     "@commitlint/config-conventional": "npm:19.8.1"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     commitizen: "npm:4.3.1"
@@ -2434,9 +2473,9 @@ __metadata:
     "@johngw/async": "npm:^5.0.1"
     "@plugola/graph": "workspace:^"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.17.47"
@@ -2457,9 +2496,9 @@ __metadata:
   resolution: "@plugola/query-params@workspace:packages/query-params"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/lodash.set": "npm:4.3.9"
@@ -2483,9 +2522,9 @@ __metadata:
     "@plugola/logger": "workspace:^"
     "@plugola/store": "workspace:^"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     jest: "npm:29.7.0"
@@ -2507,9 +2546,9 @@ __metadata:
   resolution: "@plugola/store@workspace:packages/store"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     jest: "npm:29.7.0"
@@ -2532,9 +2571,9 @@ __metadata:
     "@johngw/stream-jest": "npm:1.0.3"
     "@johngw/stream-test": "npm:1.3.1"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.17.47"
@@ -2587,9 +2626,9 @@ __metadata:
     "@johngw/map": "npm:^1.3.2"
     "@plugola/plugin-manager": "workspace:packages/plugin-manager"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.2"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     jest: "npm:29.7.0"
@@ -2705,6 +2744,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@semantic-release/exec@npm:7.1.0":
+  version: 7.1.0
+  resolution: "@semantic-release/exec@npm:7.1.0"
+  dependencies:
+    "@semantic-release/error": "npm:^4.0.0"
+    aggregate-error: "npm:^3.0.0"
+    debug: "npm:^4.0.0"
+    execa: "npm:^9.0.0"
+    lodash-es: "npm:^4.17.21"
+    parse-json: "npm:^8.0.0"
+  peerDependencies:
+    semantic-release: ">=24.1.0"
+  checksum: 10/5dbf5cdc7ee58b7515973a556825892f89ba2286f2fe5a56cd054b06ad8f6b08e27e3b87f8dc93d7c655f67be7d20899e463f09141aa1586679d1a135859a366
+  languageName: node
+  linkType: hard
+
 "@semantic-release/git@npm:10.0.1":
   version: 10.0.1
   resolution: "@semantic-release/git@npm:10.0.1"
@@ -2749,14 +2804,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/github@npm:10.3.5":
-  version: 10.3.5
-  resolution: "@semantic-release/github@npm:10.3.5"
+"@semantic-release/github@npm:11.0.2":
+  version: 11.0.2
+  resolution: "@semantic-release/github@npm:11.0.2"
   dependencies:
     "@octokit/core": "npm:^6.0.0"
-    "@octokit/plugin-paginate-rest": "npm:^11.0.0"
+    "@octokit/plugin-paginate-rest": "npm:^12.0.0"
     "@octokit/plugin-retry": "npm:^7.0.0"
-    "@octokit/plugin-throttling": "npm:^9.0.0"
+    "@octokit/plugin-throttling": "npm:^10.0.0"
     "@semantic-release/error": "npm:^4.0.0"
     aggregate-error: "npm:^5.0.0"
     debug: "npm:^4.3.4"
@@ -2770,8 +2825,8 @@ __metadata:
     p-filter: "npm:^4.0.0"
     url-join: "npm:^5.0.0"
   peerDependencies:
-    semantic-release: ">=20.1.0"
-  checksum: 10/4573e0b494d2197967356c1e0d957644bbb55c61181549a1377adf18c9f54d6d480c0608d55d59732fdd57bfbe81710c62d8331f3df4593ad1f6b81ee326ea5a
+    semantic-release: ">=24.1.0"
+  checksum: 10/f2cc89141a77c62ae76163dcfb1abda74e9a1e8b0669abb9ab6aeca51e970c934f13098e61a82e147c5490cbac37132f83721f7265b9cdc0e8d770fd489df530
   languageName: node
   linkType: hard
 
