@@ -102,7 +102,7 @@ const RAW_RUNTIME_STATE =
           ["husky", "npm:9.1.7"],\
           ["isbinaryfile", "npm:5.0.4"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
-          ["json-parse-even-better-errors", "npm:3.0.2"],\
+          ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lint-staged", "npm:15.5.2"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["prettier", "npm:2.8.8"],\
@@ -3107,7 +3107,7 @@ const RAW_RUNTIME_STATE =
           ["husky", "npm:9.1.7"],\
           ["isbinaryfile", "npm:5.0.4"],\
           ["jest-environment-jsdom", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:29.7.0"],\
-          ["json-parse-even-better-errors", "npm:3.0.2"],\
+          ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lint-staged", "npm:15.5.2"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["prettier", "npm:2.8.8"],\
@@ -11125,6 +11125,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/json-parse-even-better-errors-npm-3.0.2-3d985a6781-6f04ea6c9c.zip/node_modules/json-parse-even-better-errors/",\
         "packageDependencies": [\
           ["json-parse-even-better-errors", "npm:3.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:4.0.0", {\
+        "packageLocation": "./.yarn/cache/json-parse-even-better-errors-npm-4.0.0-04142095b2-da1ae7ef0c.zip/node_modules/json-parse-even-better-errors/",\
+        "packageDependencies": [\
+          ["json-parse-even-better-errors", "npm:4.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
