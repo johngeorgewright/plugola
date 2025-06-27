@@ -40,7 +40,7 @@
     "json-parse-even-better-errors": "3.0.2",
     "lint-staged": "15.5.2",
     "mkdirp-infer-owner": "2.0.0",
-    "prettier": "2.8.8",
+    "prettier": "3.6.2",
     "semantic-release": "24.2.5",
     "semantic-release-monorepo": "8.0.2",
     "ts-node": "10.9.2",
