@@ -2044,6 +2044,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/auth-token@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@octokit/auth-token@npm:6.0.0"
+  checksum: 10/a30f5c4c984964b57193de5b6f67169f74e4779fedbe716157dd3558dd9de3ca5c105cae521b7bd8ce1ae180773a2ef01afe2306ad5a329f4fd291eba2b7c7d1
+  languageName: node
+  linkType: hard
+
 "@octokit/core@npm:^3.5.1":
   version: 3.5.1
   resolution: "@octokit/core@npm:3.5.1"
@@ -2074,6 +2081,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/core@npm:^7.0.0":
+  version: 7.0.3
+  resolution: "@octokit/core@npm:7.0.3"
+  dependencies:
+    "@octokit/auth-token": "npm:^6.0.0"
+    "@octokit/graphql": "npm:^9.0.1"
+    "@octokit/request": "npm:^10.0.2"
+    "@octokit/request-error": "npm:^7.0.0"
+    "@octokit/types": "npm:^14.0.0"
+    before-after-hook: "npm:^4.0.0"
+    universal-user-agent: "npm:^7.0.0"
+  checksum: 10/14e7b0e9f293d9d9330e105f7acd99add5ce54001577bbeafc1533de53035a89fc755485e6e6867e9e8af8dbd6a737dfa875374abadadd40b8533235d01ecee1
+  languageName: node
+  linkType: hard
+
 "@octokit/endpoint@npm:^10.0.0":
   version: 10.1.1
   resolution: "@octokit/endpoint@npm:10.1.1"
@@ -2081,6 +2103,16 @@ __metadata:
     "@octokit/types": "npm:^13.0.0"
     universal-user-agent: "npm:^7.0.2"
   checksum: 10/6b8991b278ba7e63ddf95e7396f54e5f1347237f11fb845322ec25101764336ed0994ccb197c449b4fd4bc00ec5b78780ccbc3a0b48ba0620dcc115027a3add1
+  languageName: node
+  linkType: hard
+
+"@octokit/endpoint@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "@octokit/endpoint@npm:11.0.0"
+  dependencies:
+    "@octokit/types": "npm:^14.0.0"
+    universal-user-agent: "npm:^7.0.2"
+  checksum: 10/d7583a44f8560343b0fbd191aa9d2653e563cdd78f550c83cf7440a66edbe47bab6d0d6c52ae271bcbd35703356154ed590b22881aa8ee690f0d8f249ce6bde0
   languageName: node
   linkType: hard
 
@@ -2117,6 +2149,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/graphql@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "@octokit/graphql@npm:9.0.1"
+  dependencies:
+    "@octokit/request": "npm:^10.0.2"
+    "@octokit/types": "npm:^14.0.0"
+    universal-user-agent: "npm:^7.0.0"
+  checksum: 10/02d7ea4e2c17a4d4b7311150d0326318c756aff6cf955d9ba443a4bf26b32784832060379fc74f4537657415b262c10adb7f4a1655e15b143d19c2f099b87f16
+  languageName: node
+  linkType: hard
+
 "@octokit/openapi-types@npm:^11.2.0":
   version: 11.2.0
   resolution: "@octokit/openapi-types@npm:11.2.0"
@@ -2131,6 +2174,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/openapi-types@npm:^25.1.0":
+  version: 25.1.0
+  resolution: "@octokit/openapi-types@npm:25.1.0"
+  checksum: 10/91989a4cec12250e6b3226e9aa931c05c27d46a946725d01e6a831af3890f157210a7032f07641a156c608cc6bf6cf55a28f07179910b644966358d6d559dec6
+  languageName: node
+  linkType: hard
+
 "@octokit/plugin-paginate-rest@npm:^11.0.0":
   version: 11.3.3
   resolution: "@octokit/plugin-paginate-rest@npm:11.3.3"
@@ -2139,6 +2189,17 @@ __metadata:
   peerDependencies:
     "@octokit/core": ">=6"
   checksum: 10/87eeb4dd68a8207e669989cdbf9de3717b74038d630c2b803cbc7a9c44c3ff74771ce1cf45fa056b7172aaaa80fd9a0e4bf5eca06aabc19f30e7e29898f1f69e
+  languageName: node
+  linkType: hard
+
+"@octokit/plugin-paginate-rest@npm:^13.0.0":
+  version: 13.1.1
+  resolution: "@octokit/plugin-paginate-rest@npm:13.1.1"
+  dependencies:
+    "@octokit/types": "npm:^14.1.0"
+  peerDependencies:
+    "@octokit/core": ">=6"
+  checksum: 10/26b9b7a233b77fff31d31469879a281e651417df86799387d6563446f037c9969061b833ab0698857c9797ea856f2ef7ed6970d8fb471239879c9298bbabe200
   languageName: node
   linkType: hard
 
@@ -2187,6 +2248,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/plugin-retry@npm:^8.0.0":
+  version: 8.0.1
+  resolution: "@octokit/plugin-retry@npm:8.0.1"
+  dependencies:
+    "@octokit/request-error": "npm:^7.0.0"
+    "@octokit/types": "npm:^14.0.0"
+    bottleneck: "npm:^2.15.3"
+  peerDependencies:
+    "@octokit/core": ">=7"
+  checksum: 10/ef26a0d01f285124ca4b0cc4a5881ce8205becfcd2b5707bc2bb2d9ec07e9bf331923afef81ade234ace52d6d373e18e57b6d0839d48486abee5d0531fe974b7
+  languageName: node
+  linkType: hard
+
+"@octokit/plugin-throttling@npm:^11.0.0":
+  version: 11.0.1
+  resolution: "@octokit/plugin-throttling@npm:11.0.1"
+  dependencies:
+    "@octokit/types": "npm:^14.0.0"
+    bottleneck: "npm:^2.15.3"
+  peerDependencies:
+    "@octokit/core": ^7.0.0
+  checksum: 10/814e2051e8f706a2449f22c6e5dd28d30ed792445f15506487829eb9c68fbe02fb0518da14140e4e5dfea0197cb058c0eb0e6f49c9ad763dea8a5c5383877d2c
+  languageName: node
+  linkType: hard
+
 "@octokit/plugin-throttling@npm:^9.0.0":
   version: 9.3.1
   resolution: "@octokit/plugin-throttling@npm:9.3.1"
@@ -2216,6 +2302,28 @@ __metadata:
   dependencies:
     "@octokit/types": "npm:^13.0.0"
   checksum: 10/e4e475ec50cef8e271f39e69667d0f8eaccb2367aa56b81638c629b5bbfa2b697b40207301e5c797a63051a82d8698e7c792b4050b84e383c54300a49a01304a
+  languageName: node
+  linkType: hard
+
+"@octokit/request-error@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@octokit/request-error@npm:7.0.0"
+  dependencies:
+    "@octokit/types": "npm:^14.0.0"
+  checksum: 10/c4370d2c31f599c1f366c480d5a02bc93442e5a0e151ec5caf0d5a5b0f0f91b50ecedc945aa6ea61b4c9ed1e89153dc7727daf4317680d33e916f829da7d141b
+  languageName: node
+  linkType: hard
+
+"@octokit/request@npm:^10.0.2":
+  version: 10.0.3
+  resolution: "@octokit/request@npm:10.0.3"
+  dependencies:
+    "@octokit/endpoint": "npm:^11.0.0"
+    "@octokit/request-error": "npm:^7.0.0"
+    "@octokit/types": "npm:^14.0.0"
+    fast-content-type-parse: "npm:^3.0.0"
+    universal-user-agent: "npm:^7.0.2"
+  checksum: 10/f32a2c3fe97e0354390c0748a443e2f600a4e169b1014deb0b668ac3c52aa25cab523e87508751a1247806e3998c41f8849ad41ee3da531936975f5d32ab4c02
   languageName: node
   linkType: hard
 
@@ -2266,6 +2374,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@octokit/types@npm:^14.0.0, @octokit/types@npm:^14.1.0":
+  version: 14.1.0
+  resolution: "@octokit/types@npm:14.1.0"
+  dependencies:
+    "@octokit/openapi-types": "npm:^25.1.0"
+  checksum: 10/ea5549ca6176bd1184427141a77bca88c68f07d252d3ea1db7f9b58ec16b66391218a75a99927efb1e36a2cb00e8ed37a79b71fdc95a1117a9982516156fd997
+  languageName: node
+  linkType: hard
+
 "@octokit/types@npm:^6.0.3, @octokit/types@npm:^6.16.1, @octokit/types@npm:^6.34.0":
   version: 6.34.0
   resolution: "@octokit/types@npm:6.34.0"
@@ -2308,9 +2425,9 @@ __metadata:
   resolution: "@plugola/graph@workspace:packages/graph"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     jest: "npm:29.7.0"
@@ -2329,9 +2446,9 @@ __metadata:
   resolution: "@plugola/invoke@workspace:packages/invoke"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.19.0"
@@ -2353,9 +2470,9 @@ __metadata:
   resolution: "@plugola/logger@workspace:packages/logger"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.19.0"
@@ -2378,9 +2495,9 @@ __metadata:
     "@johngw/async-iterator": "npm:^4.0.1"
     "@plugola/invoke": "workspace:^"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.19.0"
@@ -2404,9 +2521,9 @@ __metadata:
     "@commitlint/cli": "npm:19.8.1"
     "@commitlint/config-conventional": "npm:19.8.1"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     commitizen: "npm:4.3.1"
@@ -2434,9 +2551,9 @@ __metadata:
     "@johngw/async": "npm:^5.0.1"
     "@plugola/graph": "workspace:^"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.19.0"
@@ -2457,9 +2574,9 @@ __metadata:
   resolution: "@plugola/query-params@workspace:packages/query-params"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/lodash.set": "npm:4.3.9"
@@ -2483,9 +2600,9 @@ __metadata:
     "@plugola/logger": "workspace:^"
     "@plugola/store": "workspace:^"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     jest: "npm:29.7.0"
@@ -2507,9 +2624,9 @@ __metadata:
   resolution: "@plugola/store@workspace:packages/store"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     jest: "npm:29.7.0"
@@ -2532,9 +2649,9 @@ __metadata:
     "@johngw/stream-jest": "npm:1.0.3"
     "@johngw/stream-test": "npm:1.3.1"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     "@types/node": "npm:20.19.0"
@@ -2587,9 +2704,9 @@ __metadata:
     "@johngw/map": "npm:^1.3.2"
     "@plugola/plugin-manager": "workspace:packages/plugin-manager"
     "@semantic-release/commit-analyzer": "npm:13.0.1"
-    "@semantic-release/exec": "npm:6.0.3"
+    "@semantic-release/exec": "npm:7.1.0"
     "@semantic-release/git": "npm:10.0.1"
-    "@semantic-release/github": "npm:10.3.5"
+    "@semantic-release/github": "npm:11.0.6"
     "@semantic-release/release-notes-generator": "npm:14.0.3"
     "@types/jest": "npm:29.5.14"
     jest: "npm:29.7.0"
@@ -2705,6 +2822,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@semantic-release/exec@npm:7.1.0":
+  version: 7.1.0
+  resolution: "@semantic-release/exec@npm:7.1.0"
+  dependencies:
+    "@semantic-release/error": "npm:^4.0.0"
+    aggregate-error: "npm:^3.0.0"
+    debug: "npm:^4.0.0"
+    execa: "npm:^9.0.0"
+    lodash-es: "npm:^4.17.21"
+    parse-json: "npm:^8.0.0"
+  peerDependencies:
+    semantic-release: ">=24.1.0"
+  checksum: 10/5dbf5cdc7ee58b7515973a556825892f89ba2286f2fe5a56cd054b06ad8f6b08e27e3b87f8dc93d7c655f67be7d20899e463f09141aa1586679d1a135859a366
+  languageName: node
+  linkType: hard
+
 "@semantic-release/git@npm:10.0.1":
   version: 10.0.1
   resolution: "@semantic-release/git@npm:10.0.1"
@@ -2749,29 +2882,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@semantic-release/github@npm:10.3.5":
-  version: 10.3.5
-  resolution: "@semantic-release/github@npm:10.3.5"
+"@semantic-release/github@npm:11.0.6":
+  version: 11.0.6
+  resolution: "@semantic-release/github@npm:11.0.6"
   dependencies:
-    "@octokit/core": "npm:^6.0.0"
-    "@octokit/plugin-paginate-rest": "npm:^11.0.0"
-    "@octokit/plugin-retry": "npm:^7.0.0"
-    "@octokit/plugin-throttling": "npm:^9.0.0"
+    "@octokit/core": "npm:^7.0.0"
+    "@octokit/plugin-paginate-rest": "npm:^13.0.0"
+    "@octokit/plugin-retry": "npm:^8.0.0"
+    "@octokit/plugin-throttling": "npm:^11.0.0"
     "@semantic-release/error": "npm:^4.0.0"
     aggregate-error: "npm:^5.0.0"
     debug: "npm:^4.3.4"
     dir-glob: "npm:^3.0.1"
-    globby: "npm:^14.0.0"
     http-proxy-agent: "npm:^7.0.0"
     https-proxy-agent: "npm:^7.0.0"
     issue-parser: "npm:^7.0.0"
     lodash-es: "npm:^4.17.21"
     mime: "npm:^4.0.0"
     p-filter: "npm:^4.0.0"
+    tinyglobby: "npm:^0.2.14"
     url-join: "npm:^5.0.0"
   peerDependencies:
-    semantic-release: ">=20.1.0"
-  checksum: 10/4573e0b494d2197967356c1e0d957644bbb55c61181549a1377adf18c9f54d6d480c0608d55d59732fdd57bfbe81710c62d8331f3df4593ad1f6b81ee326ea5a
+    semantic-release: ">=24.1.0"
+  checksum: 10/286a8fd19b83935ec142502282b6f8448ccbe22e711c333ed037e588333eda6ca1590b2f87bce3d5521d0ffecaba6bb193642ab174a7950835c11c248151b650
   languageName: node
   linkType: hard
 
@@ -4154,6 +4287,13 @@ __metadata:
   version: 3.0.2
   resolution: "before-after-hook@npm:3.0.2"
   checksum: 10/57dfee78930276a740559552460a83f31c605e0164f02f170f71352aa1f4f5fb2c1632ac3bcba06ba711c32bd88b7e3c82431428e0c4984fbd2336faa78cf08c
+  languageName: node
+  linkType: hard
+
+"before-after-hook@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "before-after-hook@npm:4.0.0"
+  checksum: 10/9fd52bc0c3cca0fb115e04dacbeeaacff38fa23e1af725d62392254c31ef433b15da60efcba61552e44d64e26f25ea259f72dba005115924389e88d2fd56e19f
   languageName: node
   linkType: hard
 
@@ -6510,6 +6650,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-content-type-parse@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "fast-content-type-parse@npm:3.0.0"
+  checksum: 10/8616a8aa6c9b4f8f4f3c90eaa4e7bfc2240cfa6f41f0eef5b5aa2b2c8b38bd9ad435f1488b6d817ffd725c54651e2777b882ae9dd59366e71e7896f1ec11d473
+  languageName: node
+  linkType: hard
+
 "fast-deep-equal@npm:^3.1.1, fast-deep-equal@npm:^3.1.3":
   version: 3.1.3
   resolution: "fast-deep-equal@npm:3.1.3"
@@ -6592,6 +6739,18 @@ __metadata:
   dependencies:
     bser: "npm:2.1.1"
   checksum: 10/9a03efc7d41ce3ca3d799d63505a1f7312caddf4e7737d39f2165bfe4872cbd4b87eccc9e6c57229ea08f14b4d7187896da31a7270b8da7a4aaa8fba2d3d1c42
+  languageName: node
+  linkType: hard
+
+"fdir@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "fdir@npm:6.5.0"
+  peerDependencies:
+    picomatch: ^3 || ^4
+  peerDependenciesMeta:
+    picomatch:
+      optional: true
+  checksum: 10/14ca1c9f0a0e8f4f2e9bf4e8551065a164a09545dae548c12a18d238b72e51e5a7b39bd8e5494b56463a0877672d0a6c1ef62c6fa0677db1b0c847773be939b1
   languageName: node
   linkType: hard
 
@@ -12507,6 +12666,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"picomatch@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "picomatch@npm:4.0.3"
+  checksum: 10/57b99055f40b16798f2802916d9c17e9744e620a0db136554af01d19598b96e45e2f00014c91d1b8b13874b80caa8c295b3d589a3f72373ec4aaf54baa5962d5
+  languageName: node
+  linkType: hard
+
 "pidtree@npm:^0.6.0":
   version: 0.6.0
   resolution: "pidtree@npm:0.6.0"
@@ -14738,6 +14904,16 @@ __metadata:
   version: 1.0.1
   resolution: "tinyexec@npm:1.0.1"
   checksum: 10/1f3c3281912d4ab168e067baf46627bb85a803eba0bcea113bba9fe8bdfdcc279cad08052a600d4b8fb603dd57e1af0c500e50a5e7e6b29b2574c88556f41fa6
+  languageName: node
+  linkType: hard
+
+"tinyglobby@npm:^0.2.14":
+  version: 0.2.15
+  resolution: "tinyglobby@npm:0.2.15"
+  dependencies:
+    fdir: "npm:^6.5.0"
+    picomatch: "npm:^4.0.3"
+  checksum: 10/d72bd826a8b0fa5fa3929e7fe5ba48fceb2ae495df3a231b6c5408cd7d8c00b58ab5a9c2a76ba56a62ee9b5e083626f1f33599734bed1ffc4b792406408f0ca2
   languageName: node
   linkType: hard
 
