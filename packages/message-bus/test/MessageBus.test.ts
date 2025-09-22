@@ -1,3 +1,4 @@
+import { setImmediate } from 'node:timers/promises'
 import Broker from '../src/Broker'
 import MessageBus from '../src/MessageBus'
 import { CancelEvent } from '../src/symbols'
@@ -77,19 +78,16 @@ describe('events', () => {
     expect(await result).toEqual(['hello', expect.any(AbortSignalComposite)])
   })
 
-  test('partial until listeners', (done) => {
+  test('partial until listeners', async () => {
     const fn = jest.fn()
     messageBus.start()
     broker.until('bar', 'hello').then(fn)
     broker.emit('bar', 'no')
-    setImmediate(() => {
-      expect(fn).not.toHaveBeenCalled()
-      broker.emit('bar', 'hello')
-      setImmediate(() => {
-        expect(fn).toHaveBeenCalledWith([expect.any(AbortSignalComposite)])
-        done()
-      })
-    })
+    await setImmediate()
+    expect(fn).not.toHaveBeenCalled()
+    broker.emit('bar', 'hello')
+    await setImmediate()
+    expect(fn).toHaveBeenCalledWith([expect.any(AbortSignalComposite)])
   })
 
   test('intercepting events', async () => {
