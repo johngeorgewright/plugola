@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "yarn clean && tsc",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
     "start": "tsc --watch --preserveWatchOutput",
     "release": "semantic-release && sleep 2",
     "test": "jest"

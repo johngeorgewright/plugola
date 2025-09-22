@@ -1,8 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
+    "rootDir": "./src",
     "lib": ["es2022"],
     "outDir": "dist"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [{ "path": "../invoke" }]
 }

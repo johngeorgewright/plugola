@@ -6,7 +6,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean && tsc",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
     "release": "semantic-release && sleep 2",
     "start": "tsc --watch --preserveWatchOutput",
     "test": "jest"
