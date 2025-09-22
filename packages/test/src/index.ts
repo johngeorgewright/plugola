@@ -6,16 +6,18 @@ export { TestPlugin }
 export function testPlugin<
   TestContext extends Record<string, unknown>,
   PluginContext extends Record<string, unknown>,
-  InitContext extends Record<string, unknown>,
+  EnableContext extends Record<string, unknown>,
   RunContext extends Record<string, unknown>
->(testPlugin: TestPlugin<TestContext, PluginContext, InitContext, RunContext>) {
+>(
+  testPlugin: TestPlugin<TestContext, PluginContext, EnableContext, RunContext>
+) {
   for (const [testName, plugins] of Object.entries(testPlugin.tests)) {
     describe(testName, () => {
       let testContext: TestContext | undefined
 
       let pluginManager: PluginManager<
         TestContext & PluginContext,
-        InitContext,
+        EnableContext,
         RunContext
       >
 
@@ -29,7 +31,7 @@ export function testPlugin<
               ...testPlugin.pluginContext?.(pluginName),
             }
           },
-          addInitContext: testPlugin.initContext,
+          addEnableContext: testPlugin.EnableContext,
           addRunContext: testPlugin.runContext,
         })
 

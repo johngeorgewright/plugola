@@ -11,7 +11,7 @@ test('initializing plugins', async () => {
   let result: string
 
   pluginManager.registerPlugin('mung', {
-    init() {
+    enable() {
       result = 'initializing mung'
     },
   })
@@ -24,21 +24,21 @@ test('initialize dependency tree', async () => {
   let result: string = ''
 
   pluginManager.registerPlugin('foo', {
-    init() {
+    enable() {
       result += 'foo'
     },
   })
 
   pluginManager.registerPlugin('bar', {
     dependencies: ['foo'],
-    init() {
+    enable() {
       result += 'bar'
     },
   })
 
   pluginManager.registerPlugin('mung', {
     dependencies: ['bar', 'foo'],
-    init() {
+    enable() {
       result += 'mung'
     },
   })
@@ -97,7 +97,7 @@ test('extra context', async () => {
       }
     },
 
-    addInitContext() {
+    addEnableContext() {
       return {
         bar: 'bar',
       }
@@ -111,7 +111,7 @@ test('extra context', async () => {
   })
 
   pluginManager.registerPlugin('my-plugin', {
-    init({ foo, bar }) {
+    enable({ foo, bar }) {
       expect(foo).toBe('my-plugin')
       expect(bar).toBe('bar')
     },
@@ -150,7 +150,7 @@ test('enabling plugins within the init phase', async () => {
   const bar = jest.fn()
 
   pluginManager.registerPlugin('foo', {
-    init({ enablePlugins }) {
+    enable({ enablePlugins }) {
       enablePlugins(['bar'])
     },
     run: foo,
@@ -198,7 +198,7 @@ describe('disabling plugins', () => {
     })
 
     pluginManager.registerPlugin('foo', {
-      init({ disablePlugins }) {
+      enable({ disablePlugins }) {
         disablePlugins(['bar'])
       },
       run: foo,
@@ -217,7 +217,7 @@ describe('disabling plugins', () => {
     const abort = jest.fn()
 
     pluginManager.registerPlugin('foo', {
-      async init({ disablePlugins, signal }) {
+      async enable({ disablePlugins, signal }) {
         await timeout(10, signal)
         expect(disablePlugins(['bar'])).toEqual(1)
       },
@@ -225,7 +225,7 @@ describe('disabling plugins', () => {
     })
 
     pluginManager.registerPlugin('bar', {
-      init({ signal }) {
+      enable({ signal }) {
         signal.addEventListener('abort', abort)
       },
       run: bar,
@@ -241,7 +241,7 @@ describe('disabling plugins', () => {
 
   test('disabled a plugin will disable its dependencies', async () => {
     pluginManager.registerPlugin('disabler', {
-      init({ disablePlugins }) {
+      enable({ disablePlugins }) {
         disablePlugins(['foo'])
       },
     })
@@ -254,7 +254,7 @@ describe('disabling plugins', () => {
 
   test('a plugin will not be removed if its depended on by an enabled plugin', async () => {
     pluginManager.registerPlugin('disabler', {
-      init({ disablePlugins }) {
+      enable({ disablePlugins }) {
         disablePlugins(['rab'])
       },
     })
@@ -271,7 +271,7 @@ describe('disabling plugins', () => {
     })
 
     pluginManager.registerPlugin('disabler', {
-      init({ disablePlugins }) {
+      enable({ disablePlugins }) {
         disablePlugins(['foo'])
       },
     })
@@ -288,7 +288,7 @@ describe('disabling plugins', () => {
 
   test('force the removal of a plugin and its dependers', async () => {
     pluginManager.registerPlugin('disabler', {
-      init({ disablePlugins }) {
+      enable({ disablePlugins }) {
         disablePlugins(['rab'], true)
       },
     })
@@ -306,7 +306,7 @@ test('plugins that time out', async () => {
   pluginManager = new PluginManager({ pluginTimeout: 100 })
 
   pluginManager.registerPlugin('foo', {
-    async init({ signal }) {
+    async enable({ signal }) {
       signal.addEventListener('abort', () => abort('init'))
     },
     async run({ signal }) {

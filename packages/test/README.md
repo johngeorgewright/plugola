@@ -17,7 +17,7 @@ testPlugin({
     }
   },
 
-  initContext() {
+  EnableContext() {
     return {}
   },
 
