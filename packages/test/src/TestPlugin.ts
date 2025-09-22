@@ -7,7 +7,7 @@ export interface TestPlugin<
   RunContext extends Record<string, unknown>
 > {
   afterRun?(testContext: TestContext): any
-  EnableContext?(pluginName: string): EnableContext
+  enableContext?(pluginName: string): EnableContext
   pluginContext?(pluginName: string): PluginContext
   runContext?(pluginName: string): RunContext
   testContext?(): TestContext

@@ -44,7 +44,7 @@ test('initialize dependency tree', async () => {
   })
 
   await pluginManager.enablePlugins(['mung'])
-  expect(result!).toBe('foobarmung')
+  expect(result).toBe('foobarmung')
 })
 
 test('running normal plugins', async () => {
@@ -86,7 +86,7 @@ test('running with a dependency tree', async () => {
 
   await pluginManager.enablePlugins(['mung'])
   await pluginManager.run()
-  expect(result!).toBe('foobarmung')
+  expect(result).toBe('foobarmung')
 })
 
 test('extra context', async () => {

@@ -29,9 +29,9 @@ export function testPlugin<
             return {
               ...testContext,
               ...testPlugin.pluginContext?.(pluginName),
-            }
+            } as TestContext & PluginContext
           },
-          addEnableContext: testPlugin.EnableContext,
+          addEnableContext: testPlugin.enableContext,
           addRunContext: testPlugin.runContext,
         })
 
