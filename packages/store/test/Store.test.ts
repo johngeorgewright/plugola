@@ -44,3 +44,12 @@ test('stale subscribers', () => {
   store.dispatch('bar', null)
   expect(subscriber).toHaveBeenCalledWith('bar', null, { foo: 'bar' })
 })
+
+test('action listeners', () => {
+  const subscriber = jest.fn()
+  store.on('bar', subscriber)
+  store.dispatch('bar', null)
+  store.dispatch('bar', null)
+  expect(subscriber).toHaveBeenCalledTimes(1)
+  expect(subscriber).toHaveBeenCalledWith(null, { foo: 'bar' })
+})
