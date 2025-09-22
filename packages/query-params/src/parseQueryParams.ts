@@ -1,4 +1,4 @@
-import type { QueryParam, QueryParams } from './queryParams'
+import type { QueryParam, QueryParams } from './queryParams.js'
 
 interface Options {
   /**

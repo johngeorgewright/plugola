@@ -1,22 +1,22 @@
 import { updateMap } from '@johngw/map'
 import {
   PluginManager,
-  InitContext,
+  EnableContext,
   Plugin,
   RunContext,
 } from '@plugola/plugin-manager'
 
 export default class VendorPluginManager<
   ExtraContext extends Record<string, unknown>,
-  ExtraInitContext extends Record<string, unknown>,
+  ExtraEnableContext extends Record<string, unknown>,
   ExtraRunContext extends Record<string, unknown>
-> extends PluginManager<ExtraContext, ExtraInitContext, ExtraRunContext> {
+> extends PluginManager<ExtraContext, ExtraEnableContext, ExtraRunContext> {
   #automaticallyAuthorizedPlugins = new Set<string>()
   #vendors: Map<number, string[]> = new Map()
 
   override registerPlugin(
     plugin: Plugin<
-      InitContext & ExtraContext & ExtraInitContext,
+      EnableContext & ExtraContext & ExtraEnableContext,
       RunContext & ExtraContext & ExtraRunContext
     >
   ): void
@@ -25,7 +25,7 @@ export default class VendorPluginManager<
     name: string,
     plugin: Omit<
       Plugin<
-        InitContext & ExtraContext & ExtraInitContext,
+        EnableContext & ExtraContext & ExtraEnableContext,
         RunContext & ExtraContext & ExtraRunContext
       >,
       'name'
@@ -36,12 +36,12 @@ export default class VendorPluginManager<
     nameOrPlugin:
       | string
       | Plugin<
-          InitContext & ExtraContext & ExtraInitContext,
+          EnableContext & ExtraContext & ExtraEnableContext,
           RunContext & ExtraContext & ExtraRunContext
         >,
     plugin?: Omit<
       Plugin<
-        InitContext & ExtraContext & ExtraInitContext,
+        EnableContext & ExtraContext & ExtraEnableContext,
         RunContext & ExtraContext & ExtraRunContext
       >,
       'name'
@@ -51,7 +51,7 @@ export default class VendorPluginManager<
       nameOrPlugin as string,
       plugin as Omit<
         Plugin<
-          InitContext & ExtraContext & ExtraInitContext,
+          EnableContext & ExtraContext & ExtraEnableContext,
           RunContext & ExtraContext & ExtraRunContext
         >,
         'name'
@@ -62,7 +62,7 @@ export default class VendorPluginManager<
       ? (nameOrPlugin as string)
       : (
           nameOrPlugin as Plugin<
-            InitContext & ExtraContext & ExtraInitContext,
+            EnableContext & ExtraContext & ExtraEnableContext,
             RunContext & ExtraContext & ExtraRunContext
           >
         ).name
@@ -75,7 +75,7 @@ export default class VendorPluginManager<
     vendorIds: number[],
     plugin: Omit<
       Plugin<
-        InitContext & ExtraContext & ExtraInitContext,
+        EnableContext & ExtraContext & ExtraEnableContext,
         RunContext & ExtraContext & ExtraRunContext
       >,
       'name'

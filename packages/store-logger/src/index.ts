@@ -1,5 +1,5 @@
 import type { Store } from '@plugola/store'
-import type { Logger } from '@plugola/logger'
+import type Logger from '@plugola/logger/Logger'
 
 export default function storeLogger(
   store: Store<any, any>,

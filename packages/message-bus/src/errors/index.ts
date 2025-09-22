@@ -1,1 +1,1 @@
-export * from './InvokableNotRegisteredError'
+export * from './InvokableNotRegisteredError.js'

@@ -1,6 +1,6 @@
-import type Broker from '../Broker'
 import type { L } from 'ts-toolbelt'
-import type { AddAbortSignal } from './MessageBus'
+import type Broker from '../Broker.js'
+import type { AddAbortSignal } from './MessageBus.js'
 
 export type EventGeneratorsT = Record<
   string,

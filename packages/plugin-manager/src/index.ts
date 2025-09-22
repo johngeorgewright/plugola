@@ -1,4 +1,7 @@
-export { default as PluginManager, PluginManagerOptions } from './PluginManager'
-export { RunContext, InitContext } from './Context'
-export { Plugin } from './Plugin'
-export * from './PluginManagerUtils'
+export {
+  default as PluginManager,
+  PluginManagerOptions,
+} from './PluginManager.js'
+export { RunContext, EnableContext } from './Context.js'
+export { Plugin } from './Plugin.js'
+export * from './PluginManagerUtils.js'

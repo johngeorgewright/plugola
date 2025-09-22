@@ -1,5 +1,5 @@
-import LoggerBehavior from './LoggerBehavior'
-import { TabularData } from './types'
+import LoggerBehavior from './LoggerBehavior.js'
+import { TabularData } from './types.js'
 
 export default class Logger {
   readonly #behaviors: LoggerBehavior[]

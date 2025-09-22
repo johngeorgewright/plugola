@@ -1,4 +1,4 @@
-import LoggerBehavior from './LoggerBehavior'
+import LoggerBehavior from './LoggerBehavior.js'
 
 export default class DisabledLoggerBehavior implements LoggerBehavior {
   debug() {}

@@ -1,25 +1,27 @@
-import Broker from '../src/Broker'
-import MessageBus from '../src/MessageBus'
-import { CancelEvent } from '../src/symbols'
+import { beforeEach, describe, expect, Mock, test, vi } from 'vitest'
+import { setImmediate } from 'node:timers/promises'
+import Broker from '../src/Broker.js'
+import MessageBus from '../src/MessageBus.js'
+import { CancelEvent } from '../src/symbols.js'
 import { AbortError, timeout } from '@johngw/async'
-import MessageBusError from '../src/MessageBusError'
-import { AbortSignalComposite } from '../src/AbortController'
-import { CreateEvents } from '../src/types/events'
-import { CreateInvokablesDict } from '../src/types/invokables'
-import { CreateEventGenerators } from '../src/types/generators'
+import MessageBusError from '../src/MessageBusError.js'
+import { AbortSignalComposite } from '../src/AbortController.js'
+import { CreateEvents } from '../src/types/events.js'
+import { CreateInvokablesDict } from '../src/types/invokables.js'
+import { CreateEventGenerators } from '../src/types/generators.js'
 
 describe('events', () => {
   type Events = CreateEvents<{ foo: []; bar: [string]; mung: [string, number] }>
   let messageBus: MessageBus<Events, {}, {}>
   let broker: Broker<Events, {}, {}>
-  let foo: jest.Mock<void, []>
-  let bar: jest.Mock<void, [string]>
+  let foo: Mock<() => void>
+  let bar: Mock<(x: string) => void>
 
   beforeEach(() => {
     messageBus = new MessageBus()
     broker = messageBus.broker('test')
-    foo = jest.fn()
-    bar = jest.fn()
+    foo = vi.fn()
+    bar = vi.fn()
     broker.on('foo', foo)
     broker.on('bar', bar)
   })
@@ -51,7 +53,7 @@ describe('events', () => {
   })
 
   test('can wait for all asynchronous listeners', async () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     messageBus.start()
     broker.on('foo', async () => {
       await timeout()
@@ -62,7 +64,7 @@ describe('events', () => {
   })
 
   test('once listeners', () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     messageBus.start()
     broker.once('foo', fn)
     broker.emit('foo')
@@ -77,19 +79,16 @@ describe('events', () => {
     expect(await result).toEqual(['hello', expect.any(AbortSignalComposite)])
   })
 
-  test('partial until listeners', (done) => {
-    const fn = jest.fn()
+  test('partial until listeners', async () => {
+    const fn = vi.fn()
     messageBus.start()
     broker.until('bar', 'hello').then(fn)
     broker.emit('bar', 'no')
-    setImmediate(() => {
-      expect(fn).not.toHaveBeenCalled()
-      broker.emit('bar', 'hello')
-      setImmediate(() => {
-        expect(fn).toHaveBeenCalledWith([expect.any(AbortSignalComposite)])
-        done()
-      })
-    })
+    await setImmediate()
+    expect(fn).not.toHaveBeenCalled()
+    broker.emit('bar', 'hello')
+    await setImmediate()
+    expect(fn).toHaveBeenCalledWith([expect.any(AbortSignalComposite)])
   })
 
   test('intercepting events', async () => {
@@ -110,7 +109,7 @@ describe('events', () => {
   })
 
   test('partial subscribers', () => {
-    const fn = jest.fn()
+    const fn = vi.fn()
     messageBus.start()
     broker.on('mung', 'face', fn)
     broker.emit('mung', 'mung', 1)
@@ -127,7 +126,7 @@ describe('events', () => {
   })
 
   test('aborting cancels queued emits', async () => {
-    const onAbort = jest.fn()
+    const onAbort = vi.fn()
     broker.emit('foo')
     broker.abort()
     messageBus.onError(onAbort)
@@ -207,14 +206,14 @@ describe('invokables', () => {
   }>
   let messageBus: MessageBus<{}, {}, Invokables>
   let broker: Broker<{}, {}, Invokables>
-  let foo: jest.Mock<string>
-  let bar: jest.Mock<string, [string]>
+  let foo: Mock<() => string>
+  let bar: Mock<(x: string) => string>
 
   beforeEach(() => {
     messageBus = new MessageBus()
     broker = messageBus.broker('test')
-    foo = jest.fn(() => 'foo')
-    bar = jest.fn((x: string) => x + '1')
+    foo = vi.fn(() => 'foo')
+    bar = vi.fn((x: string) => x + '1')
     broker.register('foo', foo)
     broker.register('bar', bar)
     broker.register(
@@ -301,29 +300,31 @@ describe('error handling', () => {
     broker = messageBus.broker('test')
   })
 
-  test('immediately throing errors inside subscribers', (done) => {
-    messageBus.start()
-    messageBus.onError((error) => {
-      expect(error).toBeInstanceOf(MessageBusError)
-      expect(error.message).toBe('test[foo]: Foo errored')
-      done()
-    })
-    broker.on('foo', () => {
-      throw new Error('Foo errored')
-    })
-    broker.emit('foo')
-  })
+  test('immediately throing errors inside subscribers', () =>
+    new Promise<void>((resolve) => {
+      messageBus.start()
+      messageBus.onError((error) => {
+        expect(error).toBeInstanceOf(MessageBusError)
+        expect(error.message).toBe('test[foo]: Foo errored')
+        resolve()
+      })
+      broker.on('foo', () => {
+        throw new Error('Foo errored')
+      })
+      broker.emit('foo')
+    }))
 
-  test('queuing errors inside subscribers', (done) => {
-    messageBus.onError((error) => {
-      expect(error).toBeInstanceOf(MessageBusError)
-      expect(error.message).toBe('test[foo]: Foo errored')
-      done()
-    })
-    broker.on('foo', () => {
-      throw new Error('Foo errored')
-    })
-    broker.emit('foo')
-    messageBus.start()
-  })
+  test('queuing errors inside subscribers', () =>
+    new Promise<void>((resolve) => {
+      messageBus.onError((error) => {
+        expect(error).toBeInstanceOf(MessageBusError)
+        expect(error.message).toBe('test[foo]: Foo errored')
+        resolve()
+      })
+      broker.on('foo', () => {
+        throw new Error('Foo errored')
+      })
+      broker.emit('foo')
+      messageBus.start()
+    }))
 })

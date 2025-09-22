@@ -1,4 +1,5 @@
-import Graph from '../src/Graph'
+import Graph from '../src/Graph.js'
+import { beforeEach, expect, test } from 'vitest'
 
 let graph: Graph<string, 'like'>
 

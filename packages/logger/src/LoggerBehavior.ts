@@ -1,4 +1,4 @@
-import { TabularData } from './types'
+import { TabularData } from './types.js'
 
 export default interface LoggerBehavior {
   debug(label: string, ...args: any[]): void

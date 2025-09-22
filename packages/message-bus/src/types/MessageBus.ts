@@ -1,7 +1,7 @@
 import type { L } from 'ts-toolbelt'
-import type Broker from '../Broker'
-import type MessageBus from '../MessageBus'
-import type MessageBusError from '../MessageBusError'
+import type Broker from '../Broker.js'
+import type MessageBus from '../MessageBus.js'
+import type MessageBusError from '../MessageBusError.js'
 
 export interface Unsubscriber {
   (): void

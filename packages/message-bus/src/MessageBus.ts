@@ -4,11 +4,11 @@ import {
   combineIterators,
   iteratorRace,
 } from '@johngw/async-iterator'
-import { init, last, removeItem, replaceLastItem } from './array'
-import Broker from './Broker'
-import MessageBusError from './MessageBusError'
-import { amend } from './object'
-import { CancelEvent } from './symbols'
+import { init, last, removeItem, replaceLastItem } from './array.js'
+import Broker from './Broker.js'
+import MessageBusError from './MessageBusError.js'
+import { amend } from './object.js'
+import { CancelEvent } from './symbols.js'
 import {
   EventInterceptorArgs,
   EventInterceptors,
@@ -18,21 +18,21 @@ import {
   Subscribers,
   UntilArgs,
   UntilRtn,
-} from './types/events'
+} from './types/events.js'
 import {
   EventGeneratorArgs,
   EventGenerators,
   EventGeneratorsT,
-} from './types/generators'
+} from './types/generators.js'
 import {
   InvokerInterceptorArgs,
   InvokerInterceptors,
   Invokers,
-} from './types/invokables'
-import { Stringable, UnpackResolvableValue } from './types/util'
-import { ErrorHandler, Unsubscriber } from './types/MessageBus'
-import { AbortSignalComposite, fromSignal } from './AbortController'
-import { InvokableNotRegisteredError } from './errors/InvokableNotRegisteredError'
+} from './types/invokables.js'
+import { Stringable, UnpackResolvableValue } from './types/util.js'
+import { ErrorHandler, Unsubscriber } from './types/MessageBus.js'
+import { AbortSignalComposite, fromSignal } from './AbortController.js'
+import { InvokableNotRegisteredError } from './errors/InvokableNotRegisteredError.js'
 import {
   InvokablesDict,
   InvokerFn,

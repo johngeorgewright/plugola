@@ -1,4 +1,7 @@
 export class Store<Actions extends BaseActions, State> {
+  #actionListeners: Partial<
+    Record<keyof Actions, ActionListener<Actions[keyof Actions], State>[]>
+  > = {}
   #dispatching = false
   #listeners: Listener<Actions, State>[] = []
   #staleListeners: Listener<Actions, State>[] = []
@@ -40,19 +43,24 @@ export class Store<Actions extends BaseActions, State> {
     }
   }
 
-  subscribe(listener: Listener<Actions, State>) {
+  on<Action extends keyof Actions>(
+    action: Action,
+    listener: ActionListener<Actions[Action], State>
+  ): Unsubscriber {
+    this.#actionListeners[action] ??= []
+    return this.#subscribe(this.#actionListeners[action], listener)
+  }
+
+  subscribe(listener: Listener<Actions, State>): Unsubscriber {
     if (this.#running) listener('__init__', null, this.#state)
     return this.#subscribe(this.#listeners, listener)
   }
 
-  subscribeToStaleEvents(listener: Listener<Actions, State>) {
+  subscribeToStaleEvents(listener: Listener<Actions, State>): Unsubscriber {
     return this.#subscribe(this.#staleListeners, listener)
   }
 
-  #subscribe(
-    listeners: Listener<Actions, State>[],
-    listener: Listener<Actions, State>
-  ) {
+  #subscribe<T>(listeners: T[], listener: T): Unsubscriber {
     listeners.push(listener)
 
     return () => {
@@ -72,6 +80,9 @@ export class Store<Actions extends BaseActions, State> {
     action: Action,
     param: Actions[Action]
   ) {
+    if (this.#actionListeners[action])
+      for (const listener of this.#actionListeners[action])
+        listener(param, this.#state)
     for (const listener of this.#listeners) listener(action, param, this.#state)
   }
 
@@ -103,4 +114,12 @@ export interface Listener<Actions extends BaseActions, State> {
     param: Actions[Action],
     state: Readonly<State>
   ): any
+}
+
+export interface ActionListener<Param, State> {
+  (param: Param, state: Readonly<State>): any
+}
+
+export interface Unsubscriber {
+  (): void
 }

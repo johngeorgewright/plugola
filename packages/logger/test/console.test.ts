@@ -1,4 +1,5 @@
-import console from '../src/console'
+import { expect, test } from 'vitest'
+import console from '../src/console.js'
 
 test('table', () => {
   class Person {

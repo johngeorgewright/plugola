@@ -1,4 +1,4 @@
-import parseQueryParams from './parseQueryParams'
+import parseQueryParams from './parseQueryParams.js'
 
 export type QueryParam =
   | string

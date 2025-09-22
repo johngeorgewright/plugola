@@ -1,4 +1,4 @@
-import { Unsubscriber } from './types/MessageBus'
+import { Unsubscriber } from './types/MessageBus.js'
 
 export default class SubscriptionDisposer {
   #unsubscribers = new Set<Unsubscriber>()

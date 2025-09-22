@@ -65,14 +65,20 @@ export class AbortSignalComposite implements AbortSignal {
     return result
   }
 
-  addEventListener: AbortSignal['addEventListener'] = (...args) => {
-    for (const abortSignal of this.#abortSignals)
+  addEventListener: AbortSignal['addEventListener'] = (...args: any[]) => {
+    for (const abortSignal of this.#abortSignals) {
+      // @ts-ignore A spread argument must either have a tuple type or be passed to a rest parameter.
       abortSignal.addEventListener(...args)
+    }
   }
 
-  removeEventListener: AbortSignal['removeEventListener'] = (...args) => {
-    for (const abortSignal of this.#abortSignals)
+  removeEventListener: AbortSignal['removeEventListener'] = (
+    ...args: any[]
+  ) => {
+    for (const abortSignal of this.#abortSignals) {
+      // @ts-ignore A spread argument must either have a tuple type or be passed to a rest parameter.
       abortSignal.removeEventListener(...args)
+    }
   }
 
   onAbort(fn: () => any) {

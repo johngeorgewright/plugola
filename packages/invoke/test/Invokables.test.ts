@@ -1,4 +1,5 @@
-import { AbortError, CreateInvokablesDict, Invokables } from '../src'
+import { AbortError, CreateInvokablesDict, Invokables } from '@plugola/invoke'
+import { beforeEach, expect, Mock, test, vi } from 'vitest'
 
 let invokables: Invokables<
   CreateInvokablesDict<{
@@ -8,13 +9,13 @@ let invokables: Invokables<
     never: { args: []; return: Promise<never> }
   }>
 >
-let foo: jest.Mock<string>
-let bar: jest.Mock<string, [string]>
+let foo: Mock<() => string>
+let bar: Mock<(x: string) => string>
 
 beforeEach(() => {
   invokables = new Invokables()
-  foo = jest.fn(() => 'foo')
-  bar = jest.fn((x: string) => x + '1')
+  foo = vi.fn(() => 'foo')
+  bar = vi.fn((x: string) => x + '1')
   invokables.register('foo', foo)
   invokables.register('bar', bar)
   invokables.register(

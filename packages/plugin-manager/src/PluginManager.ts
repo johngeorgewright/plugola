@@ -1,22 +1,22 @@
-import { RunContext, InitContext } from './Context'
-import { Plugin } from './Plugin'
+import { RunContext, EnableContext } from './Context.js'
+import { Plugin } from './Plugin.js'
 import { race, timeout } from '@johngw/async'
-import DependencyGraph from './DependencyGraph'
+import DependencyGraph from './DependencyGraph.js'
 
 export interface PluginManagerOptions<
   ExtraContext extends Record<string, unknown>,
-  ExtraInitContext extends Record<string, unknown>,
+  ExtraEnableContext extends Record<string, unknown>,
   ExtraRunContext extends Record<string, unknown>
 > {
   addContext?(pluginName: string): ExtraContext
-  addInitContext?(pluginName: string): ExtraInitContext
+  addEnableContext?(pluginName: string): ExtraEnableContext
   addRunContext?(pluginName: string): ExtraRunContext
   pluginTimeout?: number
 }
 
 export default class PluginManager<
   ExtraContext extends Record<string, unknown>,
-  ExtraInitContext extends Record<string, unknown>,
+  ExtraEnableContext extends Record<string, unknown>,
   ExtraRunContext extends Record<string, unknown>
 > {
   #plugins: Record<string, Plugin> = {}
@@ -27,14 +27,14 @@ export default class PluginManager<
   #enabledPlugins = new Set<string>()
   #options: PluginManagerOptions<
     ExtraContext,
-    ExtraInitContext,
+    ExtraEnableContext,
     ExtraRunContext
   >
 
   constructor(
     options: PluginManagerOptions<
       ExtraContext,
-      ExtraInitContext,
+      ExtraEnableContext,
       ExtraRunContext
     > = {}
   ) {
@@ -51,7 +51,7 @@ export default class PluginManager<
   withOptions(
     options: PluginManagerOptions<
       ExtraContext,
-      ExtraInitContext,
+      ExtraEnableContext,
       ExtraRunContext
     >
   ) {
@@ -62,11 +62,11 @@ export default class PluginManager<
           ...this.#options.addContext?.(pluginName),
           ...options.addContext?.(pluginName),
         } as ExtraContext),
-      addInitContext: (pluginName) =>
+      addEnableContext: (pluginName) =>
         ({
-          ...this.#options.addInitContext?.(pluginName),
-          ...options.addInitContext?.(pluginName),
-        } as ExtraInitContext),
+          ...this.#options.addEnableContext?.(pluginName),
+          ...options.addEnableContext?.(pluginName),
+        } as ExtraEnableContext),
       addRunContext: (pluginName) =>
         ({
           ...this.#options.addRunContext?.(pluginName),
@@ -81,7 +81,7 @@ export default class PluginManager<
 
   registerPlugin(
     plugin: Plugin<
-      InitContext & ExtraContext & ExtraInitContext,
+      EnableContext & ExtraContext & ExtraEnableContext,
       RunContext & ExtraContext & ExtraRunContext
     >
   ): void
@@ -90,7 +90,7 @@ export default class PluginManager<
     name: string,
     plugin: Omit<
       Plugin<
-        InitContext & ExtraContext & ExtraInitContext,
+        EnableContext & ExtraContext & ExtraEnableContext,
         RunContext & ExtraContext & ExtraRunContext
       >,
       'name'
@@ -101,12 +101,12 @@ export default class PluginManager<
     nameOrPlugin:
       | string
       | Plugin<
-          InitContext & ExtraContext & ExtraInitContext,
+          EnableContext & ExtraContext & ExtraEnableContext,
           RunContext & ExtraContext & ExtraRunContext
         >,
     plugin?: Omit<
       Plugin<
-        InitContext & ExtraContext & ExtraInitContext,
+        EnableContext & ExtraContext & ExtraEnableContext,
         RunContext & ExtraContext & ExtraRunContext
       >,
       'name'
@@ -116,7 +116,7 @@ export default class PluginManager<
       plugin
         ? { name: nameOrPlugin as string, ...plugin }
         : (nameOrPlugin as Plugin<
-            InitContext & ExtraContext & ExtraInitContext,
+            EnableContext & ExtraContext & ExtraEnableContext,
             RunContext & ExtraContext & ExtraRunContext
           >)
     )
@@ -221,7 +221,7 @@ export default class PluginManager<
   }
 
   async #initPlugin(plugin: Plugin) {
-    if (this.#initialized.has(plugin) || !plugin.init) return
+    if (this.#initialized.has(plugin) || !plugin.enable) return
 
     const { signal } = this.#abortController(plugin)
     if (signal.aborted) return
@@ -236,7 +236,7 @@ export default class PluginManager<
 
     await this.#pluginRace(
       plugin,
-      () => plugin.init!(this.#createInitContext(plugin, signal)),
+      () => plugin.enable!(this.#createEnableContext(plugin, signal)),
       plugin.initTimeout || this.#options.pluginTimeout
     )
   }
@@ -289,12 +289,12 @@ export default class PluginManager<
     await Promise.all(promises)
   }
 
-  #createInitContext(plugin: Plugin, signal: AbortSignal) {
+  #createEnableContext(plugin: Plugin, signal: AbortSignal) {
     return {
       enablePlugins: this.enablePlugins,
       disablePlugins: this.disablePlugins,
       ...this.#createContext(plugin, signal),
-      ...(this.#options.addInitContext?.(plugin.name) || {}),
+      ...(this.#options.addEnableContext?.(plugin.name) || {}),
     }
   }
 

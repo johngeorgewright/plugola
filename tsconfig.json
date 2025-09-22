@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "Node16",
+    "module": "nodenext",
     "lib": ["dom", "es2022"],
     "importHelpers": true,
     "declaration": true,
@@ -12,7 +12,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noImplicitOverride": true,
-    "moduleResolution": "Node16",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "resolveJsonModule": true
   }

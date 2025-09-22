@@ -1,7 +1,7 @@
-import type Broker from '../Broker'
-import type { CancelEvent } from '../symbols'
 import type { L } from 'ts-toolbelt'
-import type { AddAbortSignal } from './MessageBus'
+import type Broker from '../Broker.js'
+import type { CancelEvent } from '../symbols.js'
+import type { AddAbortSignal } from './MessageBus.js'
 
 export type EventsT = Record<string, unknown[]>
 

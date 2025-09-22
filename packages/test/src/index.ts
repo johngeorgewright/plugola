@@ -1,21 +1,24 @@
 import { PluginManager } from '@plugola/plugin-manager'
-import { TestPlugin } from './TestPlugin'
+import { afterAll, beforeAll, describe, test } from 'vitest'
+import { TestPlugin } from './TestPlugin.js'
 
 export { TestPlugin }
 
 export function testPlugin<
   TestContext extends Record<string, unknown>,
   PluginContext extends Record<string, unknown>,
-  InitContext extends Record<string, unknown>,
+  EnableContext extends Record<string, unknown>,
   RunContext extends Record<string, unknown>
->(testPlugin: TestPlugin<TestContext, PluginContext, InitContext, RunContext>) {
+>(
+  testPlugin: TestPlugin<TestContext, PluginContext, EnableContext, RunContext>
+) {
   for (const [testName, plugins] of Object.entries(testPlugin.tests)) {
     describe(testName, () => {
       let testContext: TestContext | undefined
 
       let pluginManager: PluginManager<
         TestContext & PluginContext,
-        InitContext,
+        EnableContext,
         RunContext
       >
 
@@ -27,9 +30,9 @@ export function testPlugin<
             return {
               ...testContext,
               ...testPlugin.pluginContext?.(pluginName),
-            }
+            } as TestContext & PluginContext
           },
-          addInitContext: testPlugin.initContext,
+          addEnableContext: testPlugin.enableContext,
           addRunContext: testPlugin.runContext,
         })
 
