@@ -1,5 +1,6 @@
-import PluginManager from '../src/PluginManager'
 import { timeout } from '@johngw/async'
+import { beforeEach, describe, expect, Mock, test, vi } from 'vitest'
+import PluginManager from '../src/PluginManager.js'
 
 let pluginManager: PluginManager<{}, {}, {}>
 
@@ -127,8 +128,8 @@ test('extra context', async () => {
 })
 
 test('only run enabled plugins', async () => {
-  const foo = jest.fn()
-  const bar = jest.fn()
+  const foo = vi.fn()
+  const bar = vi.fn()
 
   pluginManager.registerPlugin('foo', {
     run: foo,
@@ -146,8 +147,8 @@ test('only run enabled plugins', async () => {
 })
 
 test('enabling plugins within the init phase', async () => {
-  const foo = jest.fn()
-  const bar = jest.fn()
+  const foo = vi.fn()
+  const bar = vi.fn()
 
   pluginManager.registerPlugin('foo', {
     enable({ enablePlugins }) {
@@ -169,10 +170,10 @@ test('enabling plugins within the init phase', async () => {
 })
 
 describe('disabling plugins', () => {
-  let run: jest.Mock
+  let run: Mock
 
   beforeEach(() => {
-    run = jest.fn()
+    run = vi.fn()
 
     pluginManager.registerPlugin('rab', {
       run,
@@ -190,8 +191,8 @@ describe('disabling plugins', () => {
   })
 
   test('disabling plugins within the init phase', async () => {
-    const foo = jest.fn()
-    const bar = jest.fn()
+    const foo = vi.fn()
+    const bar = vi.fn()
 
     pluginManager.registerPlugin('bar', {
       run: bar,
@@ -212,9 +213,9 @@ describe('disabling plugins', () => {
   })
 
   test('cleaning up plugins when disabled in the init phase', async () => {
-    const foo = jest.fn()
-    const bar = jest.fn()
-    const abort = jest.fn()
+    const foo = vi.fn()
+    const bar = vi.fn()
+    const abort = vi.fn()
 
     pluginManager.registerPlugin('foo', {
       async enable({ disablePlugins, signal }) {
@@ -301,7 +302,7 @@ describe('disabling plugins', () => {
 })
 
 test('plugins that time out', async () => {
-  const abort = jest.fn<void, [string]>()
+  const abort = vi.fn<(reason: string) => void>()
 
   pluginManager = new PluginManager({ pluginTimeout: 100 })
 
@@ -324,7 +325,7 @@ test('plugins that time out', async () => {
 })
 
 test('replacing context', async () => {
-  const run = jest.fn()
+  const run = vi.fn()
 
   const pluginManager = new PluginManager({
     addContext: () => ({ foo: 'bar' }),

@@ -1,4 +1,4 @@
-import { Stringable } from './types/util'
+import { Stringable } from './types/util.js'
 
 export default class MessageBusError extends Error {
   constructor(

@@ -1,6 +1,8 @@
+// import { fromCollection, toArray } from '@johngw/stream'
+import { Streams } from '@plugola/streams'
+import { beforeEach, expect, test } from 'vitest'
+import { expectTimeline } from './stream-vitest.js'
 import { fromCollection, toArray } from '@johngw/stream'
-import { Streams } from '../src'
-import '@johngw/stream-jest'
 
 let streams: Streams<{
   subjects: {
@@ -28,9 +30,7 @@ beforeEach(() => {
 })
 
 test('subscribing to a stream before it has been controlled', async () => {
-  const promise = expect(streams.fork('foo')).toMatchTimeline(`
-    -hello-world-
-  `)
+  const promise = streams.fork('foo').pipeTo(expectTimeline('-hello-world-'))
 
   const controller = streams.control('foo')
   controller.enqueue('hello')
@@ -50,9 +50,7 @@ test('subscribing to a stream after it has been controlled', async () => {
 
   streams.start()
 
-  await expect(streams.fork('foo')).toMatchTimeline(`
-    -hello-world-
-  `)
+  await streams.fork('foo').pipeTo(expectTimeline('-hello-world-'))
 })
 
 test('recall streams', async () => {

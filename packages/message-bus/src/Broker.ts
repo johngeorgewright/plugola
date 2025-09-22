@@ -1,16 +1,19 @@
 import { InvokablesDict, InvokerRegistrationArgs } from '@plugola/invoke'
-import type MessageBus from './MessageBus'
-import SubscriptionDisposer from './SubscriptionDisposer'
+import type MessageBus from './MessageBus.js'
+import SubscriptionDisposer from './SubscriptionDisposer.js'
 import type {
   EventInterceptorArgs,
   EventsT,
   SubscriberArgs,
   UntilArgs,
   UntilRtn,
-} from './types/events'
-import type { EventGeneratorArgs, EventGeneratorsT } from './types/generators'
-import type { InvokerInterceptorArgs } from './types/invokables'
-import { ErrorHandler, Unsubscriber } from './types/MessageBus'
+} from './types/events.js'
+import type {
+  EventGeneratorArgs,
+  EventGeneratorsT,
+} from './types/generators.js'
+import type { InvokerInterceptorArgs } from './types/invokables.js'
+import { ErrorHandler, Unsubscriber } from './types/MessageBus.js'
 
 export default class Broker<
   Events extends EventsT = EventsT,

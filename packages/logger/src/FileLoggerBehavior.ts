@@ -1,7 +1,7 @@
-import LoggerBehavior from './LoggerBehavior'
+import LoggerBehavior from './LoggerBehavior.js'
 import { createWriteStream, WriteStream } from 'fs'
-import { TabularData } from './types'
-import consoleDump from './console'
+import { TabularData } from './types.js'
+import consoleDump from './console.js'
 
 export default class FileLoggerBehavior implements LoggerBehavior {
   readonly #writeSteam: WriteStream

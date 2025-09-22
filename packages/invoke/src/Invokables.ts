@@ -1,15 +1,15 @@
 import { L } from 'ts-toolbelt'
-import { init, last, removeItem } from './array'
-import { AbortError } from './errors/AbortError'
-import { InvokableRegisteredError } from './errors/InvokableRegisteredError'
-import { InvokableNotRegisteredError } from './errors/InvokableNotRegisteredError'
+import { init, last, removeItem } from './array.js'
+import { AbortError } from './errors/AbortError.js'
+import { InvokableRegisteredError } from './errors/InvokableRegisteredError.js'
+import { InvokableNotRegisteredError } from './errors/InvokableNotRegisteredError.js'
 import {
   InvokablesDict,
   InvokerFn,
   InvokerRegistrationArgs,
   Invokers,
   Unsubscriber,
-} from './types'
+} from './types.js'
 
 export class Invokables<Dict extends InvokablesDict> {
   #invokers: Invokers<Dict> = {}

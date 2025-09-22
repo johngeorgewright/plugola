@@ -1,5 +1,6 @@
 import { PluginManager } from '@plugola/plugin-manager'
-import { TestPlugin } from './TestPlugin'
+import { afterAll, beforeAll, describe, test } from 'vitest'
+import { TestPlugin } from './TestPlugin.js'
 
 export { TestPlugin }
 

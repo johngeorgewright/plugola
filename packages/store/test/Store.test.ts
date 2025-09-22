@@ -1,4 +1,5 @@
-import { BaseActions, Store } from '../src/Store'
+import { beforeEach, expect, test, vi } from 'vitest'
+import { BaseActions, Store } from '../src/Store.js'
 
 interface Actions extends BaseActions {
   foo: string
@@ -30,14 +31,14 @@ test('state management', () => {
 })
 
 test('subscribing to state changes', () => {
-  const onUpdate = jest.fn()
+  const onUpdate = vi.fn()
   store.subscribe(onUpdate)
   store.dispatch('bar', null)
   expect(onUpdate).toHaveBeenCalledWith('bar', null, { foo: 'bar' })
 })
 
 test('stale subscribers', () => {
-  const subscriber = jest.fn()
+  const subscriber = vi.fn()
   store.subscribeToStaleEvents(subscriber)
   store.dispatch('bar', null)
   expect(subscriber).not.toHaveBeenCalled()
@@ -46,7 +47,7 @@ test('stale subscribers', () => {
 })
 
 test('action listeners', () => {
-  const subscriber = jest.fn()
+  const subscriber = vi.fn()
   store.on('bar', subscriber)
   store.dispatch('bar', null)
   store.dispatch('bar', null)

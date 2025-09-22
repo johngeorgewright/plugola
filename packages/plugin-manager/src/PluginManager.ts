@@ -1,7 +1,7 @@
-import { RunContext, EnableContext } from './Context'
-import { Plugin } from './Plugin'
+import { RunContext, EnableContext } from './Context.js'
+import { Plugin } from './Plugin.js'
 import { race, timeout } from '@johngw/async'
-import DependencyGraph from './DependencyGraph'
+import DependencyGraph from './DependencyGraph.js'
 
 export interface PluginManagerOptions<
   ExtraContext extends Record<string, unknown>,

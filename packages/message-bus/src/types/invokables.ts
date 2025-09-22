@@ -1,5 +1,5 @@
 import type { InvokablesDict, InvokerFn } from '@plugola/invoke'
-import type Broker from '../Broker'
+import type Broker from '../Broker.js'
 import type { L } from 'ts-toolbelt'
 
 export {

@@ -1,5 +1,5 @@
-import type { RunContext, EnableContext } from './Context'
-import type PluginManager from './PluginManager'
+import type { RunContext, EnableContext } from './Context.js'
+import type PluginManager from './PluginManager.js'
 
 export type PluginManagerEnableContext<
   PM extends PluginManager<any, any, any>

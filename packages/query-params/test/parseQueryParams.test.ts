@@ -1,5 +1,6 @@
 import set from 'lodash.set'
-import parseQueryParams from '../src/parseQueryParams'
+import { expect, test } from 'vitest'
+import parseQueryParams from '../src/parseQueryParams.js'
 
 test('strings', () => {
   expect(parseQueryParams('?foo=bar&mung=face')).toEqual({

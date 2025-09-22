@@ -1,4 +1,5 @@
-import { testPlugin } from '../src'
+import { expect } from 'vitest'
+import { testPlugin } from '../src/index.js'
 import { Invokables } from '@plugola/invoke'
 
 testPlugin({

@@ -1,7 +1,7 @@
 import { InvokablesDict } from '@plugola/invoke'
-import MessageBus from '../MessageBus'
-import { EventsT } from '../types/events'
-import { EventGeneratorsT } from '../types/generators'
+import MessageBus from '../MessageBus.js'
+import { EventsT } from '../types/events.js'
+import { EventGeneratorsT } from '../types/generators.js'
 
 export class InvokableNotRegisteredError<
   Events extends EventsT,
