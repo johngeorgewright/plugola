@@ -1,13 +1,13 @@
 import * as pathHelper from 'path'
 import { readdir, writeFile } from 'fs/promises'
 import Generator from 'yeoman-generator'
-import { validateGenerationFromRoot } from '../validation'
+import { validateGenerationFromRoot } from '../validation.ts'
 import prettier from 'prettier'
 import { rimraf } from 'rimraf'
 
-export = class RemovePackageGenerator extends Generator {
+export default class RemovePackageGenerator extends Generator {
   #vsCodeWS = 'plugola.code-workspace'
-  #packagesPath = pathHelper.resolve(__dirname, '..', '..', '..')
+  #packagesPath = pathHelper.resolve(import.meta.dirname, '..', '..', '..')
   #answers: { names?: string[] } = {}
 
   initializing() {
@@ -29,7 +29,7 @@ export = class RemovePackageGenerator extends Generator {
 
   async #getPackages() {
     return (await readdir(this.#packagesPath, { withFileTypes: true })).filter(
-      (entry) => entry.isDirectory() && entry.name !== 'generator'
+      (entry) => entry.isDirectory() && entry.name !== 'generator',
     )
   }
 
@@ -39,23 +39,50 @@ export = class RemovePackageGenerator extends Generator {
     }
 
     await this.#updateVSCodeWS(this.#vsCodeWS)
+    await this.#updateReleasePleaseConfig()
   }
 
   async #updateVSCodeWS(file: string) {
-    const vsCodeWS = JSON.parse(this.fs.read(file))
+    const vsCodeWSJSON = this.fs.read(file)
+    if (!vsCodeWSJSON) return
+
+    const vsCodeWS = JSON.parse(vsCodeWSJSON)
 
     vsCodeWS.folders = vsCodeWS.folders.filter(
       (folder: any) =>
-        !this.#answers.names?.find((name) => folder.name.endsWith(`/${name}`))
+        !this.#answers.names?.find((name) => folder.name.endsWith(`/${name}`)),
     )
 
     const prettierOptions = (await prettier.resolveConfig(file)) || {}
     prettierOptions.parser = 'json'
 
-    writeFile(file, prettier.format(JSON.stringify(vsCodeWS), prettierOptions))
+    writeFile(
+      file,
+      await prettier.format(JSON.stringify(vsCodeWS), prettierOptions),
+    )
+  }
+
+  async #updateReleasePleaseConfig() {
+    const file = 'release-please-config.json'
+
+    const json = this.fs.read(file)
+    if (!json) return
+
+    const config = JSON.parse(json)
+
+    for (const name of this.#answers.names ?? [])
+      delete config.packages[`packages/${name}`]
+
+    const prettierOptions = (await prettier.resolveConfig(file)) || {}
+    prettierOptions.parser = 'json'
+
+    writeFile(
+      file,
+      await prettier.format(JSON.stringify(config), prettierOptions),
+    )
   }
 
   async install() {
-    this.spawnCommandSync('yarn', [])
+    this.spawn('yarn', [])
   }
 }

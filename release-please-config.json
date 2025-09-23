@@ -15,12 +15,7 @@
     "packages/test": {},
     "packages/vendor-plugin-manager": {}
   },
-  "plugins": [
-    {
-      "type": "node-workspace",
-      "updatePeerDependencies": true
-    }
-  ],
+  "plugins": [{ "type": "node-workspace", "updatePeerDependencies": true }],
   "release-type": "node",
   "tag-separator": "-"
 }
