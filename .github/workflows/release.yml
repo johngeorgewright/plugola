@@ -14,6 +14,39 @@ concurrency:
 
 jobs:
   release-please:
+    outputs:
+      paths: ${{ steps.release-please.outputs.paths }}
+      releases_created: ${{ steps.release-please.outputs.releases_created }}
     runs-on: ubuntu-latest
     steps:
-      - uses: googleapis/release-please-action@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+      - run: yarn install --immutable
+      - run: yarn build
+      - run: yarn test
+      - id: release-please
+        uses: googleapis/release-please-action@v4
+
+  npm:
+    needs: [release-please]
+    if: needs.release-please.outputs.releases_created == 'true'
+    runs-on: ubuntu-latest
+    environment: npm
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+      - run: yarn install --immutable
+      - run: yarn build
+      - env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: | # shell
+          echo '${{ needs.release-please.outputs.paths }}' | jq -r '.[]' | while read -r path
+          do
+            cd $path
+            yarn npm publish
+            cd -
+          done
