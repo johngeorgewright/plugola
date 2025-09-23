@@ -1,13 +1,1 @@
-{
-  "@plugola/graph": "3.0.0",
-  "@plugola/invoke": "2.0.0",
-  "@plugola/logger": "5.0.0",
-  "@plugola/message-bus": "6.0.0",
-  "@plugola/plugin-manager": "7.0.0",
-  "@plugola/query-params": "3.0.0",
-  "@plugola/store": "8.0.0",
-  "@plugola/store-logger": "3.0.0",
-  "@plugola/streams": "2.0.0",
-  "@plugola/test": "2.0.0",
-  "@plugola/vendor-plugin-manager": "4.0.0"
-}
+{}
