@@ -91,6 +91,7 @@ const RAW_RUNTIME_STATE =
           ["@commitlint/cli", "npm:19.8.1"],\
           ["@commitlint/config-conventional", "npm:19.8.1"],\
           ["@plugola/mono-repo", "workspace:."],\
+          ["ci-info", "npm:4.3.0"],\
           ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
@@ -99,6 +100,7 @@ const RAW_RUNTIME_STATE =
           ["lerna", "npm:9.0.0"],\
           ["lint-staged", "npm:16.2.0"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
+          ["nx", "virtual:a7fd5c22482ff07c6fd5208a27dd187bd0974c60cc7019599d66b6db8f939dbf6ae2ab9a5ef8e97e9919dc2ae44363cb815b1bbb0f8495727033026d23f48b73#npm:21.5.3"],\
           ["prettier", "npm:3.6.2"],\
           ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2"],\
           ["tslib", "npm:2.8.1"],\
@@ -2768,6 +2770,7 @@ const RAW_RUNTIME_STATE =
           ["@commitlint/cli", "npm:19.8.1"],\
           ["@commitlint/config-conventional", "npm:19.8.1"],\
           ["@plugola/mono-repo", "workspace:."],\
+          ["ci-info", "npm:4.3.0"],\
           ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
@@ -2776,6 +2779,7 @@ const RAW_RUNTIME_STATE =
           ["lerna", "npm:9.0.0"],\
           ["lint-staged", "npm:16.2.0"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
+          ["nx", "virtual:a7fd5c22482ff07c6fd5208a27dd187bd0974c60cc7019599d66b6db8f939dbf6ae2ab9a5ef8e97e9919dc2ae44363cb815b1bbb0f8495727033026d23f48b73#npm:21.5.3"],\
           ["prettier", "npm:3.6.2"],\
           ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2"],\
           ["tslib", "npm:2.8.1"],\
@@ -4967,6 +4971,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/ci-info-npm-4.0.0-90a0683096-c983bb7ff1.zip/node_modules/ci-info/",\
         "packageDependencies": [\
           ["ci-info", "npm:4.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:4.3.0", {\
+        "packageLocation": "./.yarn/cache/ci-info-npm-4.3.0-2894137978-01e359032a.zip/node_modules/ci-info/",\
+        "packageDependencies": [\
+          ["ci-info", "npm:4.3.0"]\
         ],\
         "linkType": "HARD"\
       }]\

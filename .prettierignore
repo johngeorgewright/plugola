@@ -3,3 +3,5 @@ dist
 .pnp.cjs
 *.validator.ts
 .yarn/*
+
+/.nx/workspace-data

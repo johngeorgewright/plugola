@@ -2277,6 +2277,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": "npm:19.8.1"
     "@commitlint/config-conventional": "npm:19.8.1"
+    ci-info: "npm:4.3.0"
     commitizen: "npm:4.3.1"
     cz-conventional-changelog: "npm:3.3.0"
     husky: "npm:9.1.7"
@@ -2285,6 +2286,7 @@ __metadata:
     lerna: "npm:^9.0.0"
     lint-staged: "npm:16.2.0"
     mkdirp-infer-owner: "npm:2.0.0"
+    nx: "npm:21.5.3"
     prettier: "npm:3.6.2"
     ts-node: "npm:10.9.2"
     tslib: "npm:2.8.1"
@@ -4208,6 +4210,13 @@ __metadata:
   version: 3.0.0
   resolution: "chownr@npm:3.0.0"
   checksum: 10/b63cb1f73d171d140a2ed8154ee6566c8ab775d3196b0e03a2a94b5f6a0ce7777ee5685ca56849403c8d17bd457a6540672f9a60696a6137c7a409097495b82c
+  languageName: node
+  linkType: hard
+
+"ci-info@npm:4.3.0":
+  version: 4.3.0
+  resolution: "ci-info@npm:4.3.0"
+  checksum: 10/01e359032a34782fa2503530dd350c3ffaecede7d9ea0b120efa2ddda4c8dc80d8c2566caf1ea2287c739fad2bf277c65f70063a21f31f66203b889039c70eea
   languageName: node
   linkType: hard
 
@@ -10570,7 +10579,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@npm:>=21.5.3 < 22.0.0":
+"nx@npm:21.5.3, nx@npm:>=21.5.3 < 22.0.0":
   version: 21.5.3
   resolution: "nx@npm:21.5.3"
   dependencies:
