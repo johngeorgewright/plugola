@@ -4,7 +4,7 @@
   "packages/logger": "5.0.0",
   "packages/message-bus": "6.0.0",
   "packages/plugin-manager": "7.0.0",
-  "./pacakges/query-params": "3.0.0",
+  "packages/query-params": "3.0.0",
   "packages/store": "8.0.0",
   "packages/store-logger": "3.0.0",
   "packages/streams": "2.0.0",
