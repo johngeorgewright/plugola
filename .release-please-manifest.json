@@ -1,1 +1,1 @@
-{}
+{"packages/graph":"1.0.0","packages/invoke":"1.0.0","packages/logger":"1.0.0","packages/message-bus":"1.0.0","packages/plugin-manager":"1.0.0","packages/query-params":"1.0.0","packages/store":"1.0.0","packages/store-logger":"1.0.0","packages/streams":"1.0.0","packages/test":"1.0.0","packages/vendor-plugin-manager":"1.0.0"}
