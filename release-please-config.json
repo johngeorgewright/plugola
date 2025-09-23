@@ -2,17 +2,17 @@
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "include-v-in-tag": true,
   "packages": {
-    "./packages/graph": {},
-    "./packages/invoke": {},
-    "./packages/logger": {},
-    "./packages/message-bus": {},
-    "./packages/plugin-manager": {},
-    "./pacakges/query-params": {},
-    "./packages/store": {},
-    "./packages/store-logger": {},
-    "./packages/streams": {},
-    "./packages/test": {},
-    "./packages/vendor-plugin-manager": {}
+    "packages/graph": {},
+    "packages/invoke": {},
+    "packages/logger": {},
+    "packages/message-bus": {},
+    "packages/plugin-manager": {},
+    "packages/query-params": {},
+    "packages/store": {},
+    "packages/store-logger": {},
+    "packages/streams": {},
+    "packages/test": {},
+    "packages/vendor-plugin-manager": {}
   },
   "plugins": [
     {
