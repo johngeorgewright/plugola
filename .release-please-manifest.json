@@ -9,5 +9,6 @@
   "@plugola/store-logger": "3.0.0",
   "@plugola/streams": "2.0.0",
   "@plugola/test": "2.0.0",
-  "@plugola/vendor-plugin-manager": "4.0.0"
+  "@plugola/vendor-plugin-manager": "4.0.0",
+  ".": "0.0.0"
 }

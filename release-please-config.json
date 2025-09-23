@@ -12,7 +12,14 @@
     "packages/store-logger": {},
     "packages/streams": {},
     "packages/test": {},
-    "packages/vendor-plugin-manager": {}
+    "packages/vendor-plugin-manager": {},
+    ".": {
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": false,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false
+    }
   },
   "plugins": [
     {
