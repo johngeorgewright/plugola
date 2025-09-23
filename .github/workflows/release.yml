@@ -2,109 +2,16 @@ name: Release
 
 on:
   push:
-    branches: [master]
-  workflow_dispatch:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
 
 jobs:
-  build:
-    name: Build
+  release-please:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22, 24]
     steps:
-      - name: Checkout project
-        uses: actions/checkout@v5
-
-      - name: NVM
-        id: nvm
-        run: echo "version=$(cat .nvmrc)" >> $GITHUB_OUTPUT
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Restore cache
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-
-
-      - name: Yarn
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install --immutable
-
-      - name: Build
-        run: yarn build
-
-      - name: Test
-        run: yarn test
-
-      - name: Upload dists
-        uses: actions/upload-artifact@v4
-        if: matrix.node-version == steps.nvm.outputs.version
-        with:
-          if-no-files-found: error
-          name: dists
-          path: packages/**/dist
-
-  publish-npm:
-    name: NPM
-    needs: [build]
-    runs-on: ubuntu-latest
-    environment: npm
-    concurrency:
-      group: release
-    steps:
-      - name: Checkout project
-        uses: actions/checkout@v5
-        with:
-          token: ${{ secrets.PUSH_TOKEN }}
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
-
-      - name: Setup Registries
-        run: |
-          yarn config set --home 'npmRegistries["https://registry.npmjs.org"].npmAuthToken' '${{ secrets.NPM_TOKEN }}'
-          yarn config set --home npmPublishRegistry https://registry.npmjs.org
-
-      - name: Restore cache
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-
-
-      - name: Yarn
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install --immutable
-
-      - name: Download dists
-        uses: actions/download-artifact@v5
-        with:
-          name: dists
-          path: ~/dists
-
-      - name: Move dists to project
-        run: |
-          for package in ~/dists/*
-          do 
-            mv "$package/dist" "packages/${package/$HOME\/dists\//}"
-          done
-
-      - name: Release
-        run: yarn release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: googleapis/release-please-action@v4
