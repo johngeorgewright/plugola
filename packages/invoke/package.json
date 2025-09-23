@@ -10,7 +10,6 @@
     "build": "yarn clean && tsc",
     "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
     "start": "tsc --watch --preserveWatchOutput",
-    "release": "semantic-release && sleep 2",
     "test": "vitest --run"
   },
   "license": "MIT",
@@ -19,15 +18,8 @@
   },
   "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
   "devDependencies": {
-    "@semantic-release/commit-analyzer": "13.0.1",
-    "@semantic-release/exec": "7.1.0",
-    "@semantic-release/git": "10.0.1",
-    "@semantic-release/github": "11.0.6",
-    "@semantic-release/release-notes-generator": "14.1.0",
     "@types/node": "24.5.2",
     "rimraf": "6.0.1",
-    "semantic-release": "24.2.9",
-    "semantic-release-monorepo": "8.0.2",
     "ts-node": "10.9.2",
     "typescript": "5.9.2",
     "vitest": "3.2.4"
