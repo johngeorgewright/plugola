@@ -1,13 +1,13 @@
 {
-  "packages/graph": "3.0.0",
-  "packages/invoke": "2.0.0",
-  "packages/logger": "5.0.0",
-  "packages/message-bus": "6.0.0",
-  "packages/plugin-manager": "7.0.0",
-  "packages/query-params": "3.0.0",
-  "packages/store": "8.0.0",
-  "packages/store-logger": "3.0.0",
-  "packages/streams": "2.0.0",
-  "packages/test": "2.0.0",
-  "packages/vendor-plugin-manager": "4.0.0"
+  "packages/graph": "4.0.0",
+  "packages/invoke": "3.0.0",
+  "packages/logger": "6.0.0",
+  "packages/message-bus": "7.0.0",
+  "packages/plugin-manager": "8.0.0",
+  "packages/query-params": "4.0.0",
+  "packages/store": "9.0.0",
+  "packages/store-logger": "4.0.0",
+  "packages/streams": "3.0.0",
+  "packages/test": "3.0.0",
+  "packages/vendor-plugin-manager": "5.0.0"
 }
