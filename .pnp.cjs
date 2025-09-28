@@ -98,7 +98,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.6"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.0"],\
-          ["lint-staged", "npm:16.2.1"],\
+          ["lint-staged", "npm:16.2.2"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:a7fd5c22482ff07c6fd5208a27dd187bd0974c60cc7019599d66b6db8f939dbf6ae2ab9a5ef8e97e9919dc2ae44363cb815b1bbb0f8495727033026d23f48b73#npm:21.5.3"],\
           ["prettier", "npm:3.6.2"],\
@@ -2605,7 +2605,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.6"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.0"],\
-          ["lint-staged", "npm:16.2.1"],\
+          ["lint-staged", "npm:16.2.2"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:a7fd5c22482ff07c6fd5208a27dd187bd0974c60cc7019599d66b6db8f939dbf6ae2ab9a5ef8e97e9919dc2ae44363cb815b1bbb0f8495727033026d23f48b73#npm:21.5.3"],\
           ["prettier", "npm:3.6.2"],\
@@ -9479,11 +9479,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["lint-staged", [\
-      ["npm:16.2.1", {\
-        "packageLocation": "./.yarn/cache/lint-staged-npm-16.2.1-db04f97ee1-b604de3ca2.zip/node_modules/lint-staged/",\
+      ["npm:16.2.2", {\
+        "packageLocation": "./.yarn/cache/lint-staged-npm-16.2.2-23fa330d82-8a6dc0a54f.zip/node_modules/lint-staged/",\
         "packageDependencies": [\
           ["commander", "npm:14.0.1"],\
-          ["lint-staged", "npm:16.2.1"],\
+          ["lint-staged", "npm:16.2.2"],\
           ["listr2", "npm:9.0.4"],\
           ["micromatch", "npm:4.0.8"],\
           ["nano-spawn", "npm:1.0.3"],\
