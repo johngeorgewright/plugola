@@ -33,7 +33,7 @@ describe('events', () => {
     expect(foo).toHaveBeenCalled()
     expect(bar).toHaveBeenCalledWith(
       'hello world',
-      expect.any(AbortSignalComposite)
+      expect.any(AbortSignalComposite),
     )
   })
 
@@ -48,7 +48,7 @@ describe('events', () => {
     expect(foo).toHaveBeenCalled()
     expect(bar).toHaveBeenCalledWith(
       'hello world',
-      expect.any(AbortSignalComposite)
+      expect.any(AbortSignalComposite),
     )
   })
 
@@ -102,7 +102,7 @@ describe('events', () => {
     messageBus.start()
     broker.interceptEvent(
       'foo',
-      async (): Promise<typeof CancelEvent> => CancelEvent
+      async (): Promise<typeof CancelEvent> => CancelEvent,
     )
     await broker.emit('foo')
     expect(foo).not.toHaveBeenCalled()
@@ -134,7 +134,7 @@ describe('events', () => {
     expect(foo).not.toHaveBeenCalled()
     expect(onAbort).toHaveBeenCalled()
     expect(onAbort.mock.calls[0][0].message).toBe(
-      'test[foo]: Async operation was aborted'
+      'test[foo]: Async operation was aborted',
     )
   })
 })
@@ -221,7 +221,7 @@ describe('invokables', () => {
       (abortSignal) =>
         new Promise((_, reject) => {
           abortSignal.onabort = () => reject(new AbortError())
-        })
+        }),
     )
   })
 
@@ -245,7 +245,7 @@ describe('invokables', () => {
     } catch (error) {
       expect(error).toHaveProperty(
         'message',
-        'Cannot find matching invoker for "not register".'
+        'Cannot find matching invoker for "not register".',
       )
       return
     }
