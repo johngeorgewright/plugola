@@ -174,9 +174,12 @@ export default class PluginManager<
 
     const optionalDependencies: string[] = []
 
-    for (const { name } of this.#dependencyGraph.optionalDependencies(plugin)) {
-      if (!this.#enabledPlugins.has(name) && this.#pluginsToEnable.has(name))
-        optionalDependencies.push(name)
+    for (const dependencyName of plugin.optionalDependencies) {
+      if (
+        !this.#enabledPlugins.has(dependencyName) &&
+        this.#pluginsToEnable.has(dependencyName)
+      )
+        optionalDependencies.push(dependencyName)
     }
 
     if (optionalDependencies.length)
