@@ -15,7 +15,7 @@ concurrency:
 jobs:
   release-please:
     outputs:
-      paths: ${{ steps.release-please.outputs.paths }}
+      paths: ${{ steps.release-please.outputs.paths_released }}
       releases_created: ${{ steps.release-please.outputs.releases_created }}
     runs-on: ubuntu-latest
     steps:
