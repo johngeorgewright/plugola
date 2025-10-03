@@ -19,7 +19,7 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
       - name: Yarn
-        run: yarn
+        run: yarn install --no-immutable
       - name: Commit files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
