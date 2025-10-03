@@ -48,6 +48,32 @@ test('initialize dependency tree', async () => {
   expect(result).toBe('foobarmung')
 })
 
+test('initialize optional dependency tree', async () => {
+  let result: string = ''
+
+  pluginManager.registerPlugin('foo', {
+    enable() {
+      result += 'foo'
+    },
+  })
+
+  pluginManager.registerPlugin('bar', {
+    enable() {
+      result += 'bar'
+    },
+  })
+
+  pluginManager.registerPlugin('mung', {
+    optionalDependencies: ['bar', 'foo'],
+    enable() {
+      result += 'mung'
+    },
+  })
+
+  await pluginManager.enablePlugins(['mung', 'foo'])
+  expect(result).toBe('foomung')
+})
+
 test('running normal plugins', async () => {
   let result: string
 
@@ -146,7 +172,7 @@ test('only run enabled plugins', async () => {
   expect(bar).not.toHaveBeenCalled()
 })
 
-test('enabling plugins within the init phase', async () => {
+test('enabling plugins within the enable phase', async () => {
   const foo = vi.fn()
   const bar = vi.fn()
 
@@ -190,7 +216,7 @@ describe('disabling plugins', () => {
     })
   })
 
-  test('disabling plugins within the init phase', async () => {
+  test('disabling plugins within the enable phase', async () => {
     const foo = vi.fn()
     const bar = vi.fn()
 
@@ -212,7 +238,7 @@ describe('disabling plugins', () => {
     expect(bar).not.toHaveBeenCalled()
   })
 
-  test('cleaning up plugins when disabled in the init phase', async () => {
+  test('cleaning up plugins when disabled in the enable phase', async () => {
     const foo = vi.fn()
     const bar = vi.fn()
     const abort = vi.fn()
