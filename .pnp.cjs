@@ -91,7 +91,7 @@ const RAW_RUNTIME_STATE =
           ["@commitlint/cli", "npm:20.1.0"],\
           ["@commitlint/config-conventional", "npm:20.0.0"],\
           ["@plugola/mono-repo", "workspace:."],\
-          ["ci-info", "npm:4.3.0"],\
+          ["ci-info", "npm:4.3.1"],\
           ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
@@ -2668,7 +2668,7 @@ const RAW_RUNTIME_STATE =
           ["@commitlint/cli", "npm:20.1.0"],\
           ["@commitlint/config-conventional", "npm:20.0.0"],\
           ["@plugola/mono-repo", "workspace:."],\
-          ["ci-info", "npm:4.3.0"],\
+          ["ci-info", "npm:4.3.1"],\
           ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
@@ -5008,10 +5008,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:4.3.0", {\
-        "packageLocation": "./.yarn/cache/ci-info-npm-4.3.0-2894137978-01e359032a.zip/node_modules/ci-info/",\
+      ["npm:4.3.1", {\
+        "packageLocation": "./.yarn/cache/ci-info-npm-4.3.1-8b1cdd917c-9dc952bef6.zip/node_modules/ci-info/",\
         "packageDependencies": [\
-          ["ci-info", "npm:4.3.0"]\
+          ["ci-info", "npm:4.3.1"]\
         ],\
         "linkType": "HARD"\
       }]\
