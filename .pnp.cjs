@@ -98,7 +98,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.6"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.0"],\
-          ["lint-staged", "npm:16.2.3"],\
+          ["lint-staged", "npm:16.2.4"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.4"],\
           ["prettier", "npm:3.6.2"],\
@@ -2675,7 +2675,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.6"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.0"],\
-          ["lint-staged", "npm:16.2.3"],\
+          ["lint-staged", "npm:16.2.4"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.4"],\
           ["prettier", "npm:3.6.2"],\
@@ -9570,14 +9570,14 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["lint-staged", [\
-      ["npm:16.2.3", {\
-        "packageLocation": "./.yarn/cache/lint-staged-npm-16.2.3-d2e7d68634-7c83cb478a.zip/node_modules/lint-staged/",\
+      ["npm:16.2.4", {\
+        "packageLocation": "./.yarn/cache/lint-staged-npm-16.2.4-9199f5ada5-e4ce8e6b07.zip/node_modules/lint-staged/",\
         "packageDependencies": [\
           ["commander", "npm:14.0.1"],\
-          ["lint-staged", "npm:16.2.3"],\
+          ["lint-staged", "npm:16.2.4"],\
           ["listr2", "npm:9.0.4"],\
           ["micromatch", "npm:4.0.8"],\
-          ["nano-spawn", "npm:1.0.3"],\
+          ["nano-spawn", "npm:2.0.0"],\
           ["pidtree", "npm:0.6.0"],\
           ["string-argv", "npm:0.3.2"],\
           ["yaml", "npm:2.8.1"]\
@@ -10782,10 +10782,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["nano-spawn", [\
-      ["npm:1.0.3", {\
-        "packageLocation": "./.yarn/cache/nano-spawn-npm-1.0.3-820da1ed9f-72c56e68ae.zip/node_modules/nano-spawn/",\
+      ["npm:2.0.0", {\
+        "packageLocation": "./.yarn/cache/nano-spawn-npm-2.0.0-96abe72805-117d35d7bd.zip/node_modules/nano-spawn/",\
         "packageDependencies": [\
-          ["nano-spawn", "npm:1.0.3"]\
+          ["nano-spawn", "npm:2.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
