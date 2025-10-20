@@ -32,7 +32,7 @@
     "isbinaryfile": "5.0.6",
     "json-parse-even-better-errors": "4.0.0",
     "lerna": "^9.0.0",
-    "lint-staged": "16.2.4",
+    "lint-staged": "16.2.5",
     "mkdirp-infer-owner": "2.0.0",
     "nx": "21.6.5",
     "prettier": "3.6.2",
