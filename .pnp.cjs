@@ -2617,7 +2617,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./packages/invoke/",\
         "packageDependencies": [\
           ["@plugola/invoke", "workspace:packages/invoke"],\
-          ["@types/node", "npm:24.8.1"],\
+          ["@types/node", "npm:24.9.1"],\
           ["rimraf", "npm:6.0.1"],\
           ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
           ["ts-toolbelt", "npm:9.6.0"],\
@@ -2633,7 +2633,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./packages/logger/",\
         "packageDependencies": [\
           ["@plugola/logger", "workspace:packages/logger"],\
-          ["@types/node", "npm:24.8.1"],\
+          ["@types/node", "npm:24.9.1"],\
           ["rimraf", "npm:6.0.1"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -2650,7 +2650,7 @@ const RAW_RUNTIME_STATE =
           ["@johngw/async-iterator", "npm:4.0.1"],\
           ["@plugola/invoke", "workspace:packages/invoke"],\
           ["@plugola/message-bus", "workspace:packages/message-bus"],\
-          ["@types/node", "npm:24.8.1"],\
+          ["@types/node", "npm:24.9.1"],\
           ["rimraf", "npm:6.0.1"],\
           ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
           ["ts-toolbelt", "npm:9.6.0"],\
@@ -2694,7 +2694,7 @@ const RAW_RUNTIME_STATE =
           ["@johngw/async", "npm:5.0.1"],\
           ["@plugola/graph", "workspace:packages/graph"],\
           ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],\
-          ["@types/node", "npm:24.8.1"],\
+          ["@types/node", "npm:24.9.1"],\
           ["rimraf", "npm:6.0.1"],\
           ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
           ["tslib", "npm:2.8.1"],\
@@ -2710,7 +2710,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@plugola/query-params", "workspace:packages/query-params"],\
           ["@types/lodash.set", "npm:4.3.9"],\
-          ["@types/node", "npm:24.8.1"],\
+          ["@types/node", "npm:24.9.1"],\
           ["lodash.set", "npm:4.3.2"],\
           ["rimraf", "npm:6.0.1"],\
           ["tslib", "npm:2.8.1"],\
@@ -2756,7 +2756,7 @@ const RAW_RUNTIME_STATE =
           ["@johngw/stream", "npm:3.1.0"],\
           ["@johngw/stream-test", "npm:1.3.1"],\
           ["@plugola/streams", "workspace:packages/streams"],\
-          ["@types/node", "npm:24.8.1"],\
+          ["@types/node", "npm:24.9.1"],\
           ["rimraf", "npm:6.0.1"],\
           ["ts-toolbelt", "npm:9.6.0"],\
           ["tslib", "npm:2.8.1"],\
@@ -3511,14 +3511,6 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/node", "npm:24.5.2"],\
           ["undici-types", "npm:7.12.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:24.8.1", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-24.8.1-bc0371b5f2-4f94446676.zip/node_modules/@types/node/",\
-        "packageDependencies": [\
-          ["@types/node", "npm:24.8.1"],\
-          ["undici-types", "npm:7.14.0"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -14546,7 +14538,7 @@ const RAW_RUNTIME_STATE =
           ["@tsconfig/node12", "npm:1.0.9"],\
           ["@tsconfig/node14", "npm:1.0.1"],\
           ["@tsconfig/node16", "npm:1.0.2"],\
-          ["@types/node", "npm:24.8.1"],\
+          ["@types/node", "npm:24.9.1"],\
           ["@types/swc__core", null],\
           ["@types/swc__wasm", null],\
           ["@types/typescript", null],\
@@ -14859,13 +14851,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/undici-types-npm-7.12.0-af0c725921-4a0f927c98.zip/node_modules/undici-types/",\
         "packageDependencies": [\
           ["undici-types", "npm:7.12.0"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:7.14.0", {\
-        "packageLocation": "./.yarn/cache/undici-types-npm-7.14.0-d9eb643e6a-0f8709b214.zip/node_modules/undici-types/",\
-        "packageDependencies": [\
-          ["undici-types", "npm:7.14.0"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -15295,7 +15280,7 @@ const RAW_RUNTIME_STATE =
           ["@types/jiti", null],\
           ["@types/less", null],\
           ["@types/lightningcss", null],\
-          ["@types/node", "npm:24.8.1"],\
+          ["@types/node", "npm:24.9.1"],\
           ["@types/sass", null],\
           ["@types/sass-embedded", null],\
           ["@types/stylus", null],\
@@ -15435,7 +15420,7 @@ const RAW_RUNTIME_STATE =
           ["@types/edge-runtime__vm", null],\
           ["@types/happy-dom", null],\
           ["@types/jsdom", null],\
-          ["@types/node", "npm:24.8.1"],\
+          ["@types/node", "npm:24.9.1"],\
           ["@types/vitest__browser", null],\
           ["@types/vitest__ui", null],\
           ["@vitest/browser", null],\
