@@ -98,7 +98,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.6"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.0"],\
-          ["lint-staged", "npm:16.2.5"],\
+          ["lint-staged", "npm:16.2.6"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.5"],\
           ["prettier", "npm:3.6.2"],\
@@ -2675,7 +2675,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.6"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.0"],\
-          ["lint-staged", "npm:16.2.5"],\
+          ["lint-staged", "npm:16.2.6"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.5"],\
           ["prettier", "npm:3.6.2"],\
@@ -9570,12 +9570,12 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["lint-staged", [\
-      ["npm:16.2.5", {\
-        "packageLocation": "./.yarn/cache/lint-staged-npm-16.2.5-165aa01d68-9a1019d2d9.zip/node_modules/lint-staged/",\
+      ["npm:16.2.6", {\
+        "packageLocation": "./.yarn/cache/lint-staged-npm-16.2.6-0ee184c358-c419f13471.zip/node_modules/lint-staged/",\
         "packageDependencies": [\
           ["commander", "npm:14.0.1"],\
-          ["lint-staged", "npm:16.2.5"],\
-          ["listr2", "npm:9.0.4"],\
+          ["lint-staged", "npm:16.2.6"],\
+          ["listr2", "npm:9.0.5"],\
           ["micromatch", "npm:4.0.8"],\
           ["nano-spawn", "npm:2.0.0"],\
           ["pidtree", "npm:0.6.0"],\
@@ -9586,13 +9586,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["listr2", [\
-      ["npm:9.0.4", {\
-        "packageLocation": "./.yarn/cache/listr2-npm-9.0.4-fc5d287291-8d8665d2ef.zip/node_modules/listr2/",\
+      ["npm:9.0.5", {\
+        "packageLocation": "./.yarn/cache/listr2-npm-9.0.5-8443b39154-b78ffd6044.zip/node_modules/listr2/",\
         "packageDependencies": [\
           ["cli-truncate", "npm:5.1.0"],\
           ["colorette", "npm:2.0.20"],\
           ["eventemitter3", "npm:5.0.1"],\
-          ["listr2", "npm:9.0.4"],\
+          ["listr2", "npm:9.0.5"],\
           ["log-update", "npm:6.1.0"],\
           ["rfdc", "npm:1.4.1"],\
           ["wrap-ansi", "npm:9.0.0"]\
