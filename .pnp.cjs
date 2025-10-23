@@ -96,7 +96,7 @@ const RAW_RUNTIME_STATE =
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
           ["isbinaryfile", "npm:5.0.6"],\
-          ["json-parse-even-better-errors", "npm:4.0.0"],\
+          ["json-parse-even-better-errors", "npm:5.0.0"],\
           ["lerna", "npm:9.0.0"],\
           ["lint-staged", "npm:16.2.6"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
@@ -2673,7 +2673,7 @@ const RAW_RUNTIME_STATE =
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
           ["isbinaryfile", "npm:5.0.6"],\
-          ["json-parse-even-better-errors", "npm:4.0.0"],\
+          ["json-parse-even-better-errors", "npm:5.0.0"],\
           ["lerna", "npm:9.0.0"],\
           ["lint-staged", "npm:16.2.6"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
@@ -9246,6 +9246,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/json-parse-even-better-errors-npm-4.0.0-04142095b2-da1ae7ef0c.zip/node_modules/json-parse-even-better-errors/",\
         "packageDependencies": [\
           ["json-parse-even-better-errors", "npm:4.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:5.0.0", {\
+        "packageLocation": "./.yarn/cache/json-parse-even-better-errors-npm-5.0.0-50b52ec7fb-b5aeaa65e0.zip/node_modules/json-parse-even-better-errors/",\
+        "packageDependencies": [\
+          ["json-parse-even-better-errors", "npm:5.0.0"]\
         ],\
         "linkType": "HARD"\
       }]\
