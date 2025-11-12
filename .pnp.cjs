@@ -95,7 +95,7 @@ const RAW_RUNTIME_STATE =
           ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
-          ["isbinaryfile", "npm:5.0.6"],\
+          ["isbinaryfile", "npm:5.0.7"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.0"],\
           ["lint-staged", "npm:16.2.6"],\
@@ -2672,7 +2672,7 @@ const RAW_RUNTIME_STATE =
           ["commitizen", "npm:4.3.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
-          ["isbinaryfile", "npm:5.0.6"],\
+          ["isbinaryfile", "npm:5.0.7"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.0"],\
           ["lint-staged", "npm:16.2.6"],\
@@ -9067,6 +9067,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/isbinaryfile-npm-5.0.6-f47c7fc37d-d7338c6e07.zip/node_modules/isbinaryfile/",\
         "packageDependencies": [\
           ["isbinaryfile", "npm:5.0.6"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:5.0.7", {\
+        "packageLocation": "./.yarn/cache/isbinaryfile-npm-5.0.7-5fdc8a3333-af240b2a80.zip/node_modules/isbinaryfile/",\
+        "packageDependencies": [\
+          ["isbinaryfile", "npm:5.0.7"]\
         ],\
         "linkType": "HARD"\
       }]\
