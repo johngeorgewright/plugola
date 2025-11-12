@@ -2584,7 +2584,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./packages/generator/",\
         "packageDependencies": [\
           ["@plugola/generator", "workspace:packages/generator"],\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["@types/prettier", "npm:3.0.0"],\
           ["@types/rimraf", "npm:4.0.5"],\
           ["@types/yeoman-generator", "npm:6.0.0"],\
@@ -3351,7 +3351,7 @@ const RAW_RUNTIME_STATE =
           ["@types/cacheable-request", "npm:6.0.2"],\
           ["@types/http-cache-semantics", "npm:4.0.1"],\
           ["@types/keyv", "npm:3.1.4"],\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["@types/responselike", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
@@ -3372,7 +3372,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-conventional-commits-parser-npm-5.0.0-cc661330d3-0992617c72.zip/node_modules/@types/conventional-commits-parser/",\
         "packageDependencies": [\
           ["@types/conventional-commits-parser", "npm:5.0.0"],\
-          ["@types/node", "npm:24.10.0"]\
+          ["@types/node", "npm:24.10.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3438,7 +3438,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-keyv-npm-3.1.3-8864e3cbf3-b5f8aa592c.zip/node_modules/@types/keyv/",\
         "packageDependencies": [\
           ["@types/keyv", "npm:3.1.3"],\
-          ["@types/node", "npm:24.10.0"]\
+          ["@types/node", "npm:24.10.1"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -3446,7 +3446,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-keyv-npm-3.1.4-a8082ea56b-e009a2bfb5.zip/node_modules/@types/keyv/",\
         "packageDependencies": [\
           ["@types/keyv", "npm:3.1.4"],\
-          ["@types/node", "npm:24.10.0"]\
+          ["@types/node", "npm:24.10.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3506,10 +3506,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:24.10.0", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-24.10.0-293a9fc97d-bc3abd9adc.zip/node_modules/@types/node/",\
+      ["npm:24.10.1", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-24.10.1-d514f50dfd-ddac8c97be.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["undici-types", "npm:7.16.0"]\
         ],\
         "linkType": "HARD"\
@@ -3570,7 +3570,7 @@ const RAW_RUNTIME_STATE =
       ["npm:1.0.0", {\
         "packageLocation": "./.yarn/cache/@types-responselike-npm-1.0.0-85dd08af42-e497238945.zip/node_modules/@types/responselike/",\
         "packageDependencies": [\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["@types/responselike", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
@@ -3590,7 +3590,7 @@ const RAW_RUNTIME_STATE =
       ["npm:0.0.33", {\
         "packageLocation": "./.yarn/cache/@types-through-npm-0.0.33-000c353976-fd0b73f873.zip/node_modules/@types/through/",\
         "packageDependencies": [\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["@types/through", "npm:0.0.33"]\
         ],\
         "linkType": "HARD"\
@@ -3601,7 +3601,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-vinyl-npm-2.0.12-9599832b7b-3fb407972a.zip/node_modules/@types/vinyl/",\
         "packageDependencies": [\
           ["@types/expect", "npm:1.20.4"],\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["@types/vinyl", "npm:2.0.12"]\
         ],\
         "linkType": "HARD"\
@@ -10166,7 +10166,7 @@ const RAW_RUNTIME_STATE =
       ["npm:4.1.2", {\
         "packageLocation": "./.yarn/cache/mem-fs-npm-4.1.2-0de5182143-4cfb463109.zip/node_modules/mem-fs/",\
         "packageDependencies": [\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["@types/vinyl", "npm:2.0.12"],\
           ["mem-fs", "npm:4.1.2"],\
           ["vinyl", "npm:3.0.1"],\
@@ -10188,7 +10188,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/ejs", "npm:3.1.5"],\
           ["@types/mem-fs", null],\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["binaryextensions", "npm:6.11.0"],\
           ["commondir", "npm:1.0.1"],\
           ["deep-extend", "npm:0.6.0"],\
@@ -10214,7 +10214,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/ejs", "npm:3.1.5"],\
           ["@types/mem-fs", null],\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["binaryextensions", "npm:6.11.0"],\
           ["commondir", "npm:1.0.1"],\
           ["deep-extend", "npm:0.6.0"],\
@@ -11835,7 +11835,7 @@ const RAW_RUNTIME_STATE =
       ["npm:4.1.6", {\
         "packageLocation": "./.yarn/cache/p-transform-npm-4.1.6-9e0eae1679-b3b2f277c6.zip/node_modules/p-transform/",\
         "packageDependencies": [\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["p-queue", "npm:7.4.1"],\
           ["p-transform", "npm:4.1.6"],\
           ["readable-stream", "npm:4.7.0"]\
@@ -16078,7 +16078,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/lodash-es", "npm:4.17.12"],\
           ["@types/mem-fs", null],\
-          ["@types/node", "npm:24.10.0"],\
+          ["@types/node", "npm:24.10.1"],\
           ["@types/yeoman__types", null],\
           ["@yeoman/namespace", "npm:1.0.1"],\
           ["@yeoman/types", null],\
@@ -19103,28 +19103,40 @@ class FileHandle {
   sync() {
     throw new Error(`Method not implemented.`);
   }
-  async read(bufferOrOptions, offset, length, position) {
+  async read(bufferOrOptions, offsetOrOptions, length, position) {
     try {
       this[kRef](this.read);
       let buffer;
-      if (!Buffer.isBuffer(bufferOrOptions)) {
-        bufferOrOptions ??= {};
-        buffer = bufferOrOptions.buffer ?? Buffer.alloc(16384);
-        offset = bufferOrOptions.offset || 0;
-        length = bufferOrOptions.length ?? buffer.byteLength;
-        position = bufferOrOptions.position ?? null;
+      let offset;
+      if (!ArrayBuffer.isView(bufferOrOptions)) {
+        buffer = bufferOrOptions?.buffer ?? Buffer.alloc(16384);
+        offset = bufferOrOptions?.offset ?? 0;
+        length = bufferOrOptions?.length ?? buffer.byteLength - offset;
+        position = bufferOrOptions?.position ?? null;
+      } else if (typeof offsetOrOptions === `object` && offsetOrOptions !== null) {
+        buffer = bufferOrOptions;
+        offset = offsetOrOptions?.offset ?? 0;
+        length = offsetOrOptions?.length ?? buffer.byteLength - offset;
+        position = offsetOrOptions?.position ?? null;
       } else {
         buffer = bufferOrOptions;
+        offset = offsetOrOptions ?? 0;
+        length ??= 0;
       }
-      offset ??= 0;
-      length ??= 0;
       if (length === 0) {
         return {
           bytesRead: length,
           buffer
         };
       }
-      const bytesRead = await this[kBaseFs].readPromise(this.fd, buffer, offset, length, position);
+      const bytesRead = await this[kBaseFs].readPromise(
+        this.fd,
+        // FIXME: FakeFS should support ArrayBufferViews directly
+        Buffer.isBuffer(buffer) ? buffer : Buffer.from(buffer.buffer, buffer.byteOffset, buffer.byteLength),
+        offset,
+        length,
+        position
+      );
       return {
         bytesRead,
         buffer
@@ -22029,6 +22041,7 @@ function applyPatch(pnpapi, opts) {
       const optionNames = new Set(Object.keys(options));
       optionNames.delete(`paths`);
       optionNames.delete(`plugnplay`);
+      optionNames.delete(`conditions`);
       if (optionNames.size > 0) {
         throw makeError(
           ErrorCode.UNSUPPORTED,
@@ -22057,11 +22070,15 @@ function applyPatch(pnpapi, opts) {
       const issuerApi = apiPath !== null ? opts.manager.getApiEntry(apiPath, true).instance : null;
       try {
         if (issuerApi !== null) {
-          resolution = issuerApi.resolveRequest(request, path !== null ? `${path}/` : null);
+          resolution = issuerApi.resolveRequest(request, path !== null ? `${path}/` : null, {
+            conditions: options?.conditions
+          });
         } else {
           if (path === null)
             throw new Error(`Assertion failed: Expected the path to be set`);
-          resolution = originalModuleResolveFilename.call(require$$0.Module, request, module || makeFakeParent(path), isMain);
+          resolution = originalModuleResolveFilename.call(require$$0.Module, request, module || makeFakeParent(path), isMain, {
+            conditions: options?.conditions
+          });
         }
       } catch (error) {
         firstError = firstError || error;
