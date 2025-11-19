@@ -98,7 +98,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.7"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.1"],\
-          ["lint-staged", "npm:16.2.6"],\
+          ["lint-staged", "npm:16.2.7"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.9"],\
           ["prettier", "npm:3.6.2"],\
@@ -2690,7 +2690,7 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.7"],\
           ["json-parse-even-better-errors", "npm:4.0.0"],\
           ["lerna", "npm:9.0.1"],\
-          ["lint-staged", "npm:16.2.6"],\
+          ["lint-staged", "npm:16.2.7"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.9"],\
           ["prettier", "npm:3.6.2"],\
@@ -5278,10 +5278,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:14.0.1", {\
-        "packageLocation": "./.yarn/cache/commander-npm-14.0.1-2b32a92fa0-783115e940.zip/node_modules/commander/",\
+      ["npm:14.0.2", {\
+        "packageLocation": "./.yarn/cache/commander-npm-14.0.2-538b84c387-2d202db5e5.zip/node_modules/commander/",\
         "packageDependencies": [\
-          ["commander", "npm:14.0.1"]\
+          ["commander", "npm:14.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -9554,11 +9554,11 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["lint-staged", [\
-      ["npm:16.2.6", {\
-        "packageLocation": "./.yarn/cache/lint-staged-npm-16.2.6-0ee184c358-c419f13471.zip/node_modules/lint-staged/",\
+      ["npm:16.2.7", {\
+        "packageLocation": "./.yarn/cache/lint-staged-npm-16.2.7-9ab2185fb2-c1fd768530.zip/node_modules/lint-staged/",\
         "packageDependencies": [\
-          ["commander", "npm:14.0.1"],\
-          ["lint-staged", "npm:16.2.6"],\
+          ["commander", "npm:14.0.2"],\
+          ["lint-staged", "npm:16.2.7"],\
           ["listr2", "npm:9.0.5"],\
           ["micromatch", "npm:4.0.8"],\
           ["nano-spawn", "npm:2.0.0"],\
