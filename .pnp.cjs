@@ -2604,7 +2604,7 @@ const RAW_RUNTIME_STATE =
           ["@types/rimraf", "npm:4.0.5"],\
           ["@types/yeoman-generator", "npm:6.0.0"],\
           ["change-case", "npm:5.4.4"],\
-          ["mem-fs", "npm:4.1.2"],\
+          ["mem-fs", "npm:4.1.3"],\
           ["prettier", "npm:3.7.4"],\
           ["rimraf", "npm:6.1.2"],\
           ["tslib", "npm:2.8.1"],\
@@ -10165,6 +10165,17 @@ const RAW_RUNTIME_STATE =
           ["vinyl-file", "npm:5.0.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:4.1.3", {\
+        "packageLocation": "./.yarn/cache/mem-fs-npm-4.1.3-d2950474b1-97fa0a811c.zip/node_modules/mem-fs/",\
+        "packageDependencies": [\
+          ["@types/node", "npm:25.0.6"],\
+          ["@types/vinyl", "npm:2.0.12"],\
+          ["mem-fs", "npm:4.1.3"],\
+          ["vinyl", "npm:3.0.1"],\
+          ["vinyl-file", "npm:5.0.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["mem-fs-editor", [\
@@ -10189,6 +10200,32 @@ const RAW_RUNTIME_STATE =
           ["isbinaryfile", "npm:5.0.3"],\
           ["mem-fs", "npm:4.1.2"],\
           ["mem-fs-editor", "virtual:19b346a7ba4798ec04ed223a40616ea1be5a6f2f20e17b9cc6085f90401b192dc9937577d282d6d2ae6c0f057bb00a880e609841c1a3988346d6f53bb1248e91#npm:11.1.4"],\
+          ["minimatch", "npm:9.0.5"],\
+          ["multimatch", "npm:7.0.0"],\
+          ["normalize-path", "npm:3.0.0"],\
+          ["textextensions", "npm:6.11.0"],\
+          ["vinyl", "npm:3.0.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/mem-fs",\
+          "mem-fs"\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["virtual:77154afd3b51bc1d228be989a2086a37c02ac304ff8a472ecf8147708bd24ea67c1dd74bca35cb99f3dae9c60bf30f93c592a70762306f2a197a63a027ea1f01#npm:11.1.4", {\
+        "packageLocation": "./.yarn/__virtual__/mem-fs-editor-virtual-dbf07fe580/0/cache/mem-fs-editor-npm-11.1.4-39f8449201-46ddeab2fc.zip/node_modules/mem-fs-editor/",\
+        "packageDependencies": [\
+          ["@types/ejs", "npm:3.1.5"],\
+          ["@types/mem-fs", null],\
+          ["@types/node", "npm:25.0.6"],\
+          ["binaryextensions", "npm:6.11.0"],\
+          ["commondir", "npm:1.0.1"],\
+          ["deep-extend", "npm:0.6.0"],\
+          ["ejs", "npm:3.1.10"],\
+          ["globby", "npm:14.1.0"],\
+          ["isbinaryfile", "npm:5.0.3"],\
+          ["mem-fs", "npm:4.1.3"],\
+          ["mem-fs-editor", "virtual:77154afd3b51bc1d228be989a2086a37c02ac304ff8a472ecf8147708bd24ea67c1dd74bca35cb99f3dae9c60bf30f93c592a70762306f2a197a63a027ea1f01#npm:11.1.4"],\
           ["minimatch", "npm:9.0.5"],\
           ["multimatch", "npm:7.0.0"],\
           ["normalize-path", "npm:3.0.0"],\
@@ -16145,8 +16182,8 @@ const RAW_RUNTIME_STATE =
           ["json-schema", "npm:0.4.0"],\
           ["latest-version", "npm:9.0.0"],\
           ["lodash-es", "npm:4.17.21"],\
-          ["mem-fs", "npm:4.1.2"],\
-          ["mem-fs-editor", "virtual:19b346a7ba4798ec04ed223a40616ea1be5a6f2f20e17b9cc6085f90401b192dc9937577d282d6d2ae6c0f057bb00a880e609841c1a3988346d6f53bb1248e91#npm:11.1.4"],\
+          ["mem-fs", "npm:4.1.3"],\
+          ["mem-fs-editor", "virtual:77154afd3b51bc1d228be989a2086a37c02ac304ff8a472ecf8147708bd24ea67c1dd74bca35cb99f3dae9c60bf30f93c592a70762306f2a197a63a027ea1f01#npm:11.1.4"],\
           ["minimist", "npm:1.2.8"],\
           ["read-package-up", "npm:11.0.0"],\
           ["semver", "npm:7.7.2"],\
