@@ -35,7 +35,7 @@
     "lint-staged": "16.2.7",
     "mkdirp-infer-owner": "2.0.0",
     "nx": "21.6.10",
-    "prettier": "3.7.4",
+    "prettier": "3.8.0",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
     "yo": "5.1.0"
