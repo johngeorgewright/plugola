@@ -1236,6 +1236,13 @@ const RAW_RUNTIME_STATE =
           ]]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:9.0.0", {\
+        "packageLocation": "./.yarn/cache/@isaacs-cliui-npm-9.0.0-f5b610cfb2-8ea3d1009f.zip/node_modules/@isaacs/cliui/",\
+        "packageDependencies": [\
+          ["@isaacs/cliui", "npm:9.0.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@isaacs/fs-minipass", [\
@@ -2605,7 +2612,7 @@ const RAW_RUNTIME_STATE =
           ["change-case", "npm:5.4.4"],\
           ["mem-fs", "npm:4.1.3"],\
           ["prettier", "npm:3.8.1"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["yeoman-generator", "virtual:a58b2b25f01677cfb3a9cd4e4d274526187eb012964f52805295463a2665a7c1a12fb18addd3ceb966ef8873216da7d1c3d5f3b97dbf38238181ed7d83b87a9f#npm:7.5.1"]\
@@ -2618,7 +2625,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./packages/graph/",\
         "packageDependencies": [\
           ["@plugola/graph", "workspace:packages/graph"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["vitest", "virtual:7dcce002505e8b25fcc7d9aded561762eba22018cbc2445f2a843fe27a1d96222e93deafbe5aa4a5481cd2b5631cb3c329c49097aafa0f98997657211ef440c6#npm:3.2.4"]\
@@ -2632,7 +2639,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@plugola/invoke", "workspace:packages/invoke"],\
           ["@types/node", "npm:24.9.1"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
           ["ts-toolbelt", "npm:9.6.0"],\
           ["tslib", "npm:2.8.1"],\
@@ -2648,7 +2655,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@plugola/logger", "workspace:packages/logger"],\
           ["@types/node", "npm:24.9.1"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["vitest", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:3.2.4"]\
@@ -2665,7 +2672,7 @@ const RAW_RUNTIME_STATE =
           ["@plugola/invoke", "workspace:packages/invoke"],\
           ["@plugola/message-bus", "workspace:packages/message-bus"],\
           ["@types/node", "npm:24.9.1"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
           ["ts-toolbelt", "npm:9.6.0"],\
           ["tslib", "npm:2.8.1"],\
@@ -2709,7 +2716,7 @@ const RAW_RUNTIME_STATE =
           ["@plugola/graph", "workspace:packages/graph"],\
           ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],\
           ["@types/node", "npm:24.9.1"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["ts-node", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:10.9.2"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -2726,7 +2733,7 @@ const RAW_RUNTIME_STATE =
           ["@types/lodash.set", "npm:4.3.9"],\
           ["@types/node", "npm:24.9.1"],\
           ["lodash.set", "npm:4.3.2"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["vitest", "virtual:6960e3cb938a8d635875b0146033cc7a2321a9cf779c3a68425d47dd9c1082da416f36de936be63dc7eb22d445ee496e618d8f6a62da8809434407fff3015728#npm:3.2.4"]\
@@ -2739,7 +2746,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./packages/store/",\
         "packageDependencies": [\
           ["@plugola/store", "workspace:packages/store"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["vitest", "virtual:7dcce002505e8b25fcc7d9aded561762eba22018cbc2445f2a843fe27a1d96222e93deafbe5aa4a5481cd2b5631cb3c329c49097aafa0f98997657211ef440c6#npm:3.2.4"]\
@@ -2754,7 +2761,7 @@ const RAW_RUNTIME_STATE =
           ["@plugola/logger", "workspace:packages/logger"],\
           ["@plugola/store", "workspace:packages/store"],\
           ["@plugola/store-logger", "workspace:packages/store-logger"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
           ["vitest", "virtual:7dcce002505e8b25fcc7d9aded561762eba22018cbc2445f2a843fe27a1d96222e93deafbe5aa4a5481cd2b5631cb3c329c49097aafa0f98997657211ef440c6#npm:3.2.4"]\
@@ -2771,7 +2778,7 @@ const RAW_RUNTIME_STATE =
           ["@johngw/stream-test", "npm:1.3.1"],\
           ["@plugola/streams", "workspace:packages/streams"],\
           ["@types/node", "npm:24.9.1"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["ts-toolbelt", "npm:9.6.0"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -2803,7 +2810,7 @@ const RAW_RUNTIME_STATE =
           ["@johngw/map", "npm:1.3.2"],\
           ["@plugola/plugin-manager", "workspace:packages/plugin-manager"],\
           ["@plugola/vendor-plugin-manager", "workspace:packages/vendor-plugin-manager"],\
-          ["rimraf", "npm:6.1.2"],\
+          ["rimraf", "npm:6.1.3"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"]\
         ],\
@@ -4374,6 +4381,14 @@ const RAW_RUNTIME_STATE =
           ["balanced-match", "npm:1.0.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:4.0.2", {\
+        "packageLocation": "./.yarn/cache/balanced-match-npm-4.0.2-8236a65990-862d6e1483.zip/node_modules/balanced-match/",\
+        "packageDependencies": [\
+          ["balanced-match", "npm:4.0.2"],\
+          ["jackspeak", "npm:4.2.3"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["bare-events", [\
@@ -4530,6 +4545,14 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["balanced-match", "npm:1.0.2"],\
           ["brace-expansion", "npm:2.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:5.0.2", {\
+        "packageLocation": "./.yarn/cache/brace-expansion-npm-5.0.2-9598014784-18d382c091.zip/node_modules/brace-expansion/",\
+        "packageDependencies": [\
+          ["balanced-match", "npm:4.0.2"],\
+          ["brace-expansion", "npm:5.0.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7661,6 +7684,16 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
+      ["npm:13.0.3", {\
+        "packageLocation": "./.yarn/cache/glob-npm-13.0.3-f06360294f-38a9c78de0.zip/node_modules/glob/",\
+        "packageDependencies": [\
+          ["glob", "npm:13.0.3"],\
+          ["minimatch", "npm:10.2.0"],\
+          ["minipass", "npm:7.1.2"],\
+          ["path-scurry", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:7.1.4", {\
         "packageLocation": "./.yarn/cache/glob-npm-7.1.4-8bd8317a74-776bcc3137.zip/node_modules/glob/",\
         "packageDependencies": [\
@@ -9078,6 +9111,14 @@ const RAW_RUNTIME_STATE =
           ["jackspeak", "npm:4.1.1"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:4.2.3", {\
+        "packageLocation": "./.yarn/cache/jackspeak-npm-4.2.3-f109d7d54c-b88e3fe5fa.zip/node_modules/jackspeak/",\
+        "packageDependencies": [\
+          ["@isaacs/cliui", "npm:9.0.0"],\
+          ["jackspeak", "npm:4.2.3"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["jake", [\
@@ -10421,6 +10462,14 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@isaacs/brace-expansion", "npm:5.0.0"],\
           ["minimatch", "npm:10.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:10.2.0", {\
+        "packageLocation": "./.yarn/cache/minimatch-npm-10.2.0-63c4781adf-3ceceac1c6.zip/node_modules/minimatch/",\
+        "packageDependencies": [\
+          ["brace-expansion", "npm:5.0.2"],\
+          ["minimatch", "npm:10.2.0"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -13220,6 +13269,15 @@ const RAW_RUNTIME_STATE =
           ["glob", "npm:13.0.0"],\
           ["package-json-from-dist", "npm:1.0.1"],\
           ["rimraf", "npm:6.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:6.1.3", {\
+        "packageLocation": "./.yarn/cache/rimraf-npm-6.1.3-409ea7254f-dd98ec2ad7.zip/node_modules/rimraf/",\
+        "packageDependencies": [\
+          ["glob", "npm:13.0.3"],\
+          ["package-json-from-dist", "npm:1.0.1"],\
+          ["rimraf", "npm:6.1.3"]\
         ],\
         "linkType": "HARD"\
       }]\
