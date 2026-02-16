@@ -96,7 +96,7 @@ const RAW_RUNTIME_STATE =
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
           ["isbinaryfile", "npm:5.0.7"],\
-          ["json-parse-even-better-errors", "npm:4.0.0"],\
+          ["json-parse-even-better-errors", "npm:5.0.0"],\
           ["lerna", "npm:9.0.4"],\
           ["lint-staged", "npm:16.2.7"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
@@ -2694,7 +2694,7 @@ const RAW_RUNTIME_STATE =
           ["cz-conventional-changelog", "npm:3.3.0"],\
           ["husky", "npm:9.1.7"],\
           ["isbinaryfile", "npm:5.0.7"],\
-          ["json-parse-even-better-errors", "npm:4.0.0"],\
+          ["json-parse-even-better-errors", "npm:5.0.0"],\
           ["lerna", "npm:9.0.4"],\
           ["lint-staged", "npm:16.2.7"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
