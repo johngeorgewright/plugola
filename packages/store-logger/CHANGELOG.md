@@ -1,6 +1,6 @@
 # Changelog
 
-## [4.0.2](https://github.com/johngeorgewright/plugola/compare/vendor-plugin-manager-v4.0.1...vendor-plugin-manager-v4.0.2) (2026-02-16)
+## [3.0.1](https://github.com/johngeorgewright/plugola/compare/store-logger-v3.0.0...store-logger-v3.0.1) (2026-02-16)
 
 
 ### Bug Fixes
@@ -14,17 +14,8 @@
 
 * The following workspace dependencies were updated
   * devDependencies
-    * @plugola/plugin-manager bumped to 8.0.1
+    * @plugola/logger bumped to 5.0.1
+    * @plugola/store bumped to 8.0.1
   * peerDependencies
-    * @plugola/plugin-manager bumped from ^8.0.0 to ^8.0.1
-
-## [4.0.1](https://github.com/johngeorgewright/plugola/compare/vendor-plugin-manager-v4.0.0...vendor-plugin-manager-v4.0.1) (2025-10-03)
-
-
-### Dependencies
-
-* The following workspace dependencies were updated
-  * devDependencies
-    * @plugola/plugin-manager bumped to 8.0.0
-  * peerDependencies
-    * @plugola/plugin-manager bumped from ^5.3.0 to ^8.0.0
+    * @plugola/logger bumped from ^3.0.0 to ^5.0.1
+    * @plugola/store bumped from ^6.0.2 to ^8.0.1

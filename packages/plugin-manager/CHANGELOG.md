@@ -1,5 +1,21 @@
 # Changelog
 
+## [8.0.1](https://github.com/johngeorgewright/plugola/compare/plugin-manager-v8.0.0...plugin-manager-v8.0.1) (2026-02-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rimraf to v6.1.0 ([#763](https://github.com/johngeorgewright/plugola/issues/763)) ([b3a3c57](https://github.com/johngeorgewright/plugola/commit/b3a3c57ad0a0addbbe9e86a6eadb3433fd81dfa7))
+* **deps:** update dependency rimraf to v6.1.2 ([#773](https://github.com/johngeorgewright/plugola/issues/773)) ([7db735a](https://github.com/johngeorgewright/plugola/commit/7db735a43aefcbaf33adbd2e714a367d3ee802d9))
+* **deps:** update dependency rimraf to v6.1.3 ([#806](https://github.com/johngeorgewright/plugola/issues/806)) ([8fe27c4](https://github.com/johngeorgewright/plugola/commit/8fe27c432d88fadf3d0a5bad5dd0e67b83cd582d))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @plugola/graph bumped to 3.0.1
+
 ## [8.0.0](https://github.com/johngeorgewright/plugola/compare/plugin-manager-v7.0.0...plugin-manager-v8.0.0) (2025-10-03)
 
 
