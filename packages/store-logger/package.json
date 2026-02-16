@@ -1,6 +1,6 @@
 {
   "name": "@plugola/store-logger",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Logger/debugger for the store",
   "type": "module",
   "exports": {
@@ -27,7 +27,7 @@
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
-    "@plugola/logger": "^3.0.0",
-    "@plugola/store": "^6.0.2"
+    "@plugola/logger": "^5.0.1",
+    "@plugola/store": "^8.0.1"
   }
 }

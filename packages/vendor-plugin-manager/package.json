@@ -1,6 +1,6 @@
 {
   "name": "@plugola/vendor-plugin-manager",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "A drop-in replacement for the plugin manager that handles CMP vendors",
   "type": "module",
   "exports": {
@@ -26,6 +26,6 @@
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
-    "@plugola/plugin-manager": "^8.0.0"
+    "@plugola/plugin-manager": "^8.0.1"
   }
 }
