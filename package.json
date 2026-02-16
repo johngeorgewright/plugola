@@ -38,7 +38,7 @@
     "prettier": "3.8.1",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
-    "yo": "5.1.0"
+    "yo": "6.0.0"
   },
   "config": {
     "commitizen": {
