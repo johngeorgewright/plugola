@@ -2605,7 +2605,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./packages/generator/",\
         "packageDependencies": [\
           ["@plugola/generator", "workspace:packages/generator"],\
-          ["@types/node", "npm:24.10.15"],\
+          ["@types/node", "npm:24.11.0"],\
           ["@types/prettier", "npm:3.0.0"],\
           ["@types/rimraf", "npm:4.0.5"],\
           ["@types/yeoman-generator", "npm:6.0.0"],\
@@ -3454,10 +3454,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:24.10.15", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-24.10.15-79624e3f25-e6be2220f5.zip/node_modules/@types/node/",\
+      ["npm:24.11.0", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-24.11.0-e944c4230d-d2f4f898c6.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:24.10.15"],\
+          ["@types/node", "npm:24.11.0"],\
           ["undici-types", "npm:7.16.0"]\
         ],\
         "linkType": "HARD"\
@@ -16211,7 +16211,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/lodash-es", "npm:4.17.12"],\
           ["@types/mem-fs", null],\
-          ["@types/node", "npm:24.10.15"],\
+          ["@types/node", "npm:24.11.0"],\
           ["@types/yeoman__types", null],\
           ["@yeoman/namespace", "npm:1.0.1"],\
           ["@yeoman/types", null],\
