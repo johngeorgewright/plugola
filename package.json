@@ -24,7 +24,7 @@
   "homepage": "https://github.com/johngeorgewright/ts-mono-repo#readme",
   "devDependencies": {
     "@commitlint/cli": "20.4.2",
-    "@commitlint/config-conventional": "20.4.2",
+    "@commitlint/config-conventional": "20.4.3",
     "ci-info": "4.4.0",
     "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
