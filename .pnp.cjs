@@ -100,7 +100,7 @@ const RAW_RUNTIME_STATE =
           ["lerna", "npm:9.0.5"],\
           ["lint-staged", "npm:16.3.2"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
-          ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.10"],\
+          ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:22.5.4"],\
           ["prettier", "npm:3.8.1"],\
           ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2"],\
           ["tslib", "npm:2.8.1"],\
@@ -2087,161 +2087,161 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@nx/nx-darwin-arm64", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-darwin-arm64-npm-21.6.10-4e7179fcb0/node_modules/@nx/nx-darwin-arm64/",\
-        "packageDependencies": [\
-          ["@nx/nx-darwin-arm64", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-darwin-arm64-npm-22.0.3-e7770638e1/node_modules/@nx/nx-darwin-arm64/",\
         "packageDependencies": [\
           ["@nx/nx-darwin-arm64", "npm:22.0.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-darwin-arm64-npm-22.5.4-c3ea4f3e72/node_modules/@nx/nx-darwin-arm64/",\
+        "packageDependencies": [\
+          ["@nx/nx-darwin-arm64", "npm:22.5.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@nx/nx-darwin-x64", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-darwin-x64-npm-21.6.10-d642e1ce92/node_modules/@nx/nx-darwin-x64/",\
-        "packageDependencies": [\
-          ["@nx/nx-darwin-x64", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-darwin-x64-npm-22.0.3-d85027d21f/node_modules/@nx/nx-darwin-x64/",\
         "packageDependencies": [\
           ["@nx/nx-darwin-x64", "npm:22.0.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-darwin-x64-npm-22.5.4-7c4ddb3d48/node_modules/@nx/nx-darwin-x64/",\
+        "packageDependencies": [\
+          ["@nx/nx-darwin-x64", "npm:22.5.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@nx/nx-freebsd-x64", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-freebsd-x64-npm-21.6.10-a4c2549861/node_modules/@nx/nx-freebsd-x64/",\
-        "packageDependencies": [\
-          ["@nx/nx-freebsd-x64", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-freebsd-x64-npm-22.0.3-626c705a5a/node_modules/@nx/nx-freebsd-x64/",\
         "packageDependencies": [\
           ["@nx/nx-freebsd-x64", "npm:22.0.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-freebsd-x64-npm-22.5.4-8503df0df4/node_modules/@nx/nx-freebsd-x64/",\
+        "packageDependencies": [\
+          ["@nx/nx-freebsd-x64", "npm:22.5.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@nx/nx-linux-arm-gnueabihf", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-arm-gnueabihf-npm-21.6.10-b8600f52b4/node_modules/@nx/nx-linux-arm-gnueabihf/",\
-        "packageDependencies": [\
-          ["@nx/nx-linux-arm-gnueabihf", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-linux-arm-gnueabihf-npm-22.0.3-1bab1385d5/node_modules/@nx/nx-linux-arm-gnueabihf/",\
         "packageDependencies": [\
           ["@nx/nx-linux-arm-gnueabihf", "npm:22.0.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-arm-gnueabihf-npm-22.5.4-16d0531889/node_modules/@nx/nx-linux-arm-gnueabihf/",\
+        "packageDependencies": [\
+          ["@nx/nx-linux-arm-gnueabihf", "npm:22.5.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@nx/nx-linux-arm64-gnu", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-arm64-gnu-npm-21.6.10-8d60a96463/node_modules/@nx/nx-linux-arm64-gnu/",\
-        "packageDependencies": [\
-          ["@nx/nx-linux-arm64-gnu", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-linux-arm64-gnu-npm-22.0.3-6d6f90dbce/node_modules/@nx/nx-linux-arm64-gnu/",\
         "packageDependencies": [\
           ["@nx/nx-linux-arm64-gnu", "npm:22.0.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-arm64-gnu-npm-22.5.4-b91ecd1a58/node_modules/@nx/nx-linux-arm64-gnu/",\
+        "packageDependencies": [\
+          ["@nx/nx-linux-arm64-gnu", "npm:22.5.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@nx/nx-linux-arm64-musl", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-arm64-musl-npm-21.6.10-58654a7d37/node_modules/@nx/nx-linux-arm64-musl/",\
-        "packageDependencies": [\
-          ["@nx/nx-linux-arm64-musl", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-linux-arm64-musl-npm-22.0.3-084e3d72b7/node_modules/@nx/nx-linux-arm64-musl/",\
         "packageDependencies": [\
           ["@nx/nx-linux-arm64-musl", "npm:22.0.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-arm64-musl-npm-22.5.4-b48e9f73b7/node_modules/@nx/nx-linux-arm64-musl/",\
+        "packageDependencies": [\
+          ["@nx/nx-linux-arm64-musl", "npm:22.5.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@nx/nx-linux-x64-gnu", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-x64-gnu-npm-21.6.10-7696f955f1/node_modules/@nx/nx-linux-x64-gnu/",\
-        "packageDependencies": [\
-          ["@nx/nx-linux-x64-gnu", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-linux-x64-gnu-npm-22.0.3-6ecc86f39e/node_modules/@nx/nx-linux-x64-gnu/",\
         "packageDependencies": [\
           ["@nx/nx-linux-x64-gnu", "npm:22.0.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-x64-gnu-npm-22.5.4-b49dab2e98/node_modules/@nx/nx-linux-x64-gnu/",\
+        "packageDependencies": [\
+          ["@nx/nx-linux-x64-gnu", "npm:22.5.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@nx/nx-linux-x64-musl", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-x64-musl-npm-21.6.10-9ae2cf455c/node_modules/@nx/nx-linux-x64-musl/",\
-        "packageDependencies": [\
-          ["@nx/nx-linux-x64-musl", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-linux-x64-musl-npm-22.0.3-18cdf9a4b8/node_modules/@nx/nx-linux-x64-musl/",\
         "packageDependencies": [\
           ["@nx/nx-linux-x64-musl", "npm:22.0.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-linux-x64-musl-npm-22.5.4-b7c12a9884/node_modules/@nx/nx-linux-x64-musl/",\
+        "packageDependencies": [\
+          ["@nx/nx-linux-x64-musl", "npm:22.5.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@nx/nx-win32-arm64-msvc", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-win32-arm64-msvc-npm-21.6.10-3a8aa864bc/node_modules/@nx/nx-win32-arm64-msvc/",\
-        "packageDependencies": [\
-          ["@nx/nx-win32-arm64-msvc", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-win32-arm64-msvc-npm-22.0.3-ba5dcab077/node_modules/@nx/nx-win32-arm64-msvc/",\
         "packageDependencies": [\
           ["@nx/nx-win32-arm64-msvc", "npm:22.0.3"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-win32-arm64-msvc-npm-22.5.4-c85f05a3fc/node_modules/@nx/nx-win32-arm64-msvc/",\
+        "packageDependencies": [\
+          ["@nx/nx-win32-arm64-msvc", "npm:22.5.4"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@nx/nx-win32-x64-msvc", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/@nx-nx-win32-x64-msvc-npm-21.6.10-39434c9b81/node_modules/@nx/nx-win32-x64-msvc/",\
-        "packageDependencies": [\
-          ["@nx/nx-win32-x64-msvc", "npm:21.6.10"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/@nx-nx-win32-x64-msvc-npm-22.0.3-59ac50870b/node_modules/@nx/nx-win32-x64-msvc/",\
         "packageDependencies": [\
           ["@nx/nx-win32-x64-msvc", "npm:22.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/@nx-nx-win32-x64-msvc-npm-22.5.4-86a6cb5aa0/node_modules/@nx/nx-win32-x64-msvc/",\
+        "packageDependencies": [\
+          ["@nx/nx-win32-x64-msvc", "npm:22.5.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2698,7 +2698,7 @@ const RAW_RUNTIME_STATE =
           ["lerna", "npm:9.0.5"],\
           ["lint-staged", "npm:16.3.2"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
-          ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.10"],\
+          ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:22.5.4"],\
           ["prettier", "npm:3.8.1"],\
           ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2"],\
           ["tslib", "npm:2.8.1"],\
@@ -8380,13 +8380,6 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:5.3.2", {\
-        "packageLocation": "./.yarn/cache/ignore-npm-5.3.2-346d3ba017-cceb6a4570.zip/node_modules/ignore/",\
-        "packageDependencies": [\
-          ["ignore", "npm:5.3.2"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
       ["npm:7.0.5", {\
         "packageLocation": "./.yarn/cache/ignore-npm-7.0.5-dea34ee430-f134b96a4d.zip/node_modules/ignore/",\
         "packageDependencies": [\
@@ -10506,6 +10499,14 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
+      ["npm:10.2.4", {\
+        "packageLocation": "./.yarn/cache/minimatch-npm-10.2.4-11f0605299-aea4874e52.zip/node_modules/minimatch/",\
+        "packageDependencies": [\
+          ["brace-expansion", "npm:5.0.2"],\
+          ["minimatch", "npm:10.2.4"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:3.0.4", {\
         "packageLocation": "./.yarn/cache/minimatch-npm-3.0.4-6e76f51c23-3b3f17f765.zip/node_modules/minimatch/",\
         "packageDependencies": [\
@@ -11404,17 +11405,17 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["nx", [\
-      ["npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/nx-virtual-5ad4ac189c/node_modules/nx/",\
-        "packageDependencies": [\
-          ["nx", "npm:21.6.10"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
       ["npm:22.0.3", {\
         "packageLocation": "./.yarn/unplugged/nx-virtual-f022bcc277/node_modules/nx/",\
         "packageDependencies": [\
           ["nx", "npm:22.0.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/nx-virtual-797793625c/node_modules/nx/",\
+        "packageDependencies": [\
+          ["nx", "npm:22.5.4"]\
         ],\
         "linkType": "SOFT"\
       }],\
@@ -11480,20 +11481,20 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.10", {\
-        "packageLocation": "./.yarn/unplugged/nx-virtual-5ad4ac189c/node_modules/nx/",\
+      ["virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:22.5.4", {\
+        "packageLocation": "./.yarn/unplugged/nx-virtual-797793625c/node_modules/nx/",\
         "packageDependencies": [\
           ["@napi-rs/wasm-runtime", "npm:0.2.4"],\
-          ["@nx/nx-darwin-arm64", "npm:21.6.10"],\
-          ["@nx/nx-darwin-x64", "npm:21.6.10"],\
-          ["@nx/nx-freebsd-x64", "npm:21.6.10"],\
-          ["@nx/nx-linux-arm-gnueabihf", "npm:21.6.10"],\
-          ["@nx/nx-linux-arm64-gnu", "npm:21.6.10"],\
-          ["@nx/nx-linux-arm64-musl", "npm:21.6.10"],\
-          ["@nx/nx-linux-x64-gnu", "npm:21.6.10"],\
-          ["@nx/nx-linux-x64-musl", "npm:21.6.10"],\
-          ["@nx/nx-win32-arm64-msvc", "npm:21.6.10"],\
-          ["@nx/nx-win32-x64-msvc", "npm:21.6.10"],\
+          ["@nx/nx-darwin-arm64", "npm:22.5.4"],\
+          ["@nx/nx-darwin-x64", "npm:22.5.4"],\
+          ["@nx/nx-freebsd-x64", "npm:22.5.4"],\
+          ["@nx/nx-linux-arm-gnueabihf", "npm:22.5.4"],\
+          ["@nx/nx-linux-arm64-gnu", "npm:22.5.4"],\
+          ["@nx/nx-linux-arm64-musl", "npm:22.5.4"],\
+          ["@nx/nx-linux-x64-gnu", "npm:22.5.4"],\
+          ["@nx/nx-linux-x64-musl", "npm:22.5.4"],\
+          ["@nx/nx-win32-arm64-msvc", "npm:22.5.4"],\
+          ["@nx/nx-win32-x64-msvc", "npm:22.5.4"],\
           ["@swc-node/register", null],\
           ["@swc/core", null],\
           ["@types/swc-node__register", null],\
@@ -11502,28 +11503,29 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/parsers", "npm:3.0.2"],\
           ["@zkochan/js-yaml", "npm:0.0.7"],\
           ["axios", "npm:1.12.2"],\
-          ["chalk", "npm:4.1.2"],\
           ["cli-cursor", "npm:3.1.0"],\
           ["cli-spinners", "npm:2.6.1"],\
           ["cliui", "npm:8.0.1"],\
           ["dotenv", "npm:16.4.7"],\
           ["dotenv-expand", "npm:11.0.7"],\
+          ["ejs", "npm:3.1.10"],\
           ["enquirer", "npm:2.3.6"],\
           ["figures", "npm:3.2.0"],\
           ["flat", "npm:5.0.2"],\
           ["front-matter", "npm:4.0.2"],\
-          ["ignore", "npm:5.3.2"],\
+          ["ignore", "npm:7.0.5"],\
           ["jest-diff", "npm:30.1.2"],\
           ["jsonc-parser", "npm:3.2.0"],\
           ["lines-and-columns", "npm:2.0.3"],\
-          ["minimatch", "npm:9.0.3"],\
+          ["minimatch", "npm:10.2.4"],\
           ["node-machine-id", "npm:1.1.12"],\
           ["npm-run-path", "npm:4.0.1"],\
-          ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:21.6.10"],\
+          ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:22.5.4"],\
           ["open", "npm:8.4.0"],\
           ["ora", "npm:5.3.0"],\
+          ["picocolors", "npm:1.1.1"],\
           ["resolve.exports", "npm:2.0.3"],\
-          ["semver", "npm:7.5.3"],\
+          ["semver", "npm:7.7.3"],\
           ["string-width", "npm:4.2.3"],\
           ["tar-stream", "npm:2.2.0"],\
           ["tmp", "npm:0.2.5"],\
