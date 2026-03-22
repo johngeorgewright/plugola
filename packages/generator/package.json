@@ -13,10 +13,11 @@
   "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@types/node": "^24.5.2",
+    "@types/node": "^24.12.0",
     "@types/prettier": "3.0.0",
     "@types/rimraf": "4.0.5",
     "@types/yeoman-generator": "6.0.0",
+    "@vitest/runner": "4.1.0",
     "prettier": "3.8.1",
     "typescript": "5.9.3"
   },
