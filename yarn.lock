@@ -2100,8 +2100,8 @@ __metadata:
     typescript: "npm:5.9.3"
     vitest: "npm:4.1.0"
   peerDependencies:
-    "@plugola/logger": ^3.0.0
-    "@plugola/store": ^6.0.2
+    "@plugola/logger": ^5.0.1
+    "@plugola/store": ^8.0.1
   languageName: unknown
   linkType: soft
 
@@ -2149,7 +2149,7 @@ __metadata:
     typescript: "npm:5.9.3"
     vitest: "npm:4.1.0"
   peerDependencies:
-    "@plugola/plugin-manager": ^8.0.0
+    "@plugola/plugin-manager": ^8.0.1
     vitest: ^3.2.4
   languageName: unknown
   linkType: soft
@@ -2165,7 +2165,7 @@ __metadata:
     tslib: "npm:^2.8.1"
     typescript: "npm:5.9.3"
   peerDependencies:
-    "@plugola/plugin-manager": ^8.0.0
+    "@plugola/plugin-manager": ^8.0.1
   languageName: unknown
   linkType: soft
 
