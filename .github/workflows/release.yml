@@ -13,25 +13,48 @@ concurrency:
   group: release
 
 jobs:
-  release-please:
+  release-github:
     outputs:
       paths: ${{ steps.release-please.outputs.paths_released }}
       releases_created: ${{ steps.release-please.outputs.releases_created }}
+      pr: ${{ steps.release-please.outputs.pr }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version-file: .nvmrc
-      - run: yarn install --immutable
-      - run: yarn build
-      - run: yarn test
       - id: release-please
         uses: googleapis/release-please-action@v4
 
+  release-update-lockfile:
+    needs: release-github
+    if: needs.release-github.outputs.pr
+    runs-on: dmg-arc-ubuntu
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ fromJson(needs.release-github.outputs.pr).headBranchName }}
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+      - uses: ./.github/actions/setup-git
+      - run: yarn --no-immutable
+      - id: yarn-lock-changes
+        run: | # shell
+          if git diff --quiet yarn.lock; then
+            echo "No lockfile changes"
+          else
+            echo "Detected lockfile changes"
+            echo "changes=true" >> $GITHUB_TOKEN
+            git add yarn.lock .pnp.cjs .yarn
+            git commit -m "chore: update lockfile"
+          fi
+      - if: steps.yarn-lock-changes.outputs.changes == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PUSH_TOKEN }}
+
   npm:
-    needs: [release-please]
-    if: needs.release-please.outputs.releases_created == 'true'
+    needs: release-github
+    if: needs.release-github.outputs.releases_created == 'true'
     runs-on: ubuntu-latest
     environment: npm
     steps:
@@ -44,7 +67,7 @@ jobs:
       - env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: | # shell
-          echo '${{ needs.release-please.outputs.paths }}' | jq -r '.[]' | while read -r path
+          echo '${{ needs.release-github.outputs.paths }}' | jq -r '.[]' | while read -r path
           do
             cd $path
             yarn npm publish
