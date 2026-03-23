@@ -5,7 +5,6 @@ import MessageBus from '../src/MessageBus.js'
 import { CancelEvent } from '../src/symbols.js'
 import { AbortError, timeout } from '@johngw/async'
 import MessageBusError from '../src/MessageBusError.js'
-import { AbortSignalComposite } from '../src/AbortController.js'
 import { CreateEvents } from '../src/types/events.js'
 import { CreateInvokablesDict } from '../src/types/invokables.js'
 import { CreateEventGenerators } from '../src/types/generators.js'
@@ -31,10 +30,7 @@ describe('events', () => {
     broker.emit('foo')
     broker.emit('bar', 'hello world')
     expect(foo).toHaveBeenCalled()
-    expect(bar).toHaveBeenCalledWith(
-      'hello world',
-      expect.any(AbortSignalComposite),
-    )
+    expect(bar).toHaveBeenCalledWith('hello world', expect.any(AbortSignal))
   })
 
   test('queued events', () => {
@@ -46,10 +42,7 @@ describe('events', () => {
 
     messageBus.start()
     expect(foo).toHaveBeenCalled()
-    expect(bar).toHaveBeenCalledWith(
-      'hello world',
-      expect.any(AbortSignalComposite),
-    )
+    expect(bar).toHaveBeenCalledWith('hello world', expect.any(AbortSignal))
   })
 
   test('can wait for all asynchronous listeners', async () => {
@@ -76,7 +69,7 @@ describe('events', () => {
     messageBus.start()
     const result = broker.until('bar')
     broker.emit('bar', 'hello')
-    expect(await result).toEqual(['hello', expect.any(AbortSignalComposite)])
+    expect(await result).toEqual(['hello', expect.any(AbortSignal)])
   })
 
   test('partial until listeners', async () => {
@@ -88,14 +81,14 @@ describe('events', () => {
     expect(fn).not.toHaveBeenCalled()
     broker.emit('bar', 'hello')
     await setImmediate()
-    expect(fn).toHaveBeenCalledWith([expect.any(AbortSignalComposite)])
+    expect(fn).toHaveBeenCalledWith([expect.any(AbortSignal)])
   })
 
   test('intercepting events', async () => {
     messageBus.start()
     broker.interceptEvent('bar', (x) => [x + '1'])
     await broker.emit('bar', 'hello')
-    expect(bar).toHaveBeenCalledWith('hello1', expect.any(AbortSignalComposite))
+    expect(bar).toHaveBeenCalledWith('hello1', expect.any(AbortSignal))
   })
 
   test('cancelling events with interception', async () => {
@@ -115,7 +108,7 @@ describe('events', () => {
     broker.emit('mung', 'mung', 1)
     broker.emit('mung', 'face', 2)
     expect(fn).toHaveBeenCalledTimes(1)
-    expect(fn).toHaveBeenCalledWith(2, expect.any(AbortSignalComposite))
+    expect(fn).toHaveBeenCalledWith(2, expect.any(AbortSignal))
   })
 
   test('aborting removes subscribers', () => {
