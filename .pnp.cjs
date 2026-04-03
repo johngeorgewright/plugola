@@ -2383,7 +2383,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./packages/generator/",\
         "packageDependencies": [\
           ["@plugola/generator", "workspace:packages/generator"],\
-          ["@types/node", "npm:24.12.1"],\
+          ["@types/node", "npm:24.12.2"],\
           ["@types/prettier", "npm:3.0.0"],\
           ["@types/rimraf", "npm:4.0.5"],\
           ["@types/yeoman-generator", "npm:6.0.0"],\
@@ -3194,7 +3194,7 @@ const RAW_RUNTIME_STATE =
           ["@types/cacheable-request", "npm:6.0.2"],\
           ["@types/http-cache-semantics", "npm:4.0.1"],\
           ["@types/keyv", "npm:3.1.4"],\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["@types/responselike", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
@@ -3271,7 +3271,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-keyv-npm-3.1.3-8864e3cbf3-b5f8aa592c.zip/node_modules/@types/keyv/",\
         "packageDependencies": [\
           ["@types/keyv", "npm:3.1.3"],\
-          ["@types/node", "npm:25.5.1"]\
+          ["@types/node", "npm:25.5.2"]\
         ],\
         "linkType": "HARD"\
       }],\
@@ -3279,7 +3279,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-keyv-npm-3.1.4-a8082ea56b-e009a2bfb5.zip/node_modules/@types/keyv/",\
         "packageDependencies": [\
           ["@types/keyv", "npm:3.1.4"],\
-          ["@types/node", "npm:25.5.1"]\
+          ["@types/node", "npm:25.5.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3338,18 +3338,18 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:24.12.1", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-24.12.1-13eabe7b4f-07c6d3949e.zip/node_modules/@types/node/",\
+      ["npm:24.12.2", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-24.12.2-c1d68de38c-99b9f15e67.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:24.12.1"],\
+          ["@types/node", "npm:24.12.2"],\
           ["undici-types", "npm:7.16.0"]\
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:25.5.1", {\
-        "packageLocation": "./.yarn/cache/@types-node-npm-25.5.1-c0d51978f9-c4605105a4.zip/node_modules/@types/node/",\
+      ["npm:25.5.2", {\
+        "packageLocation": "./.yarn/cache/@types-node-npm-25.5.2-cef63bb6b3-11782030f9.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["undici-types", "npm:7.18.2"]\
         ],\
         "linkType": "HARD"\
@@ -3394,7 +3394,7 @@ const RAW_RUNTIME_STATE =
       ["npm:1.0.0", {\
         "packageLocation": "./.yarn/cache/@types-responselike-npm-1.0.0-85dd08af42-e497238945.zip/node_modules/@types/responselike/",\
         "packageDependencies": [\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["@types/responselike", "npm:1.0.0"]\
         ],\
         "linkType": "HARD"\
@@ -3414,7 +3414,7 @@ const RAW_RUNTIME_STATE =
       ["npm:0.0.33", {\
         "packageLocation": "./.yarn/cache/@types-through-npm-0.0.33-000c353976-fd0b73f873.zip/node_modules/@types/through/",\
         "packageDependencies": [\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["@types/through", "npm:0.0.33"]\
         ],\
         "linkType": "HARD"\
@@ -3425,7 +3425,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-vinyl-npm-2.0.12-9599832b7b-3fb407972a.zip/node_modules/@types/vinyl/",\
         "packageDependencies": [\
           ["@types/expect", "npm:1.20.4"],\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["@types/vinyl", "npm:2.0.12"]\
         ],\
         "linkType": "HARD"\
@@ -10044,7 +10044,7 @@ const RAW_RUNTIME_STATE =
       ["npm:4.1.2", {\
         "packageLocation": "./.yarn/cache/mem-fs-npm-4.1.2-0de5182143-4cfb463109.zip/node_modules/mem-fs/",\
         "packageDependencies": [\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["@types/vinyl", "npm:2.0.12"],\
           ["mem-fs", "npm:4.1.2"],\
           ["vinyl", "npm:3.0.1"],\
@@ -10055,7 +10055,7 @@ const RAW_RUNTIME_STATE =
       ["npm:4.1.4", {\
         "packageLocation": "./.yarn/cache/mem-fs-npm-4.1.4-aec666399e-6be599a6ff.zip/node_modules/mem-fs/",\
         "packageDependencies": [\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["@types/vinyl", "npm:2.0.12"],\
           ["mem-fs", "npm:4.1.4"],\
           ["vinyl", "npm:3.0.1"],\
@@ -10077,7 +10077,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/ejs", "npm:3.1.5"],\
           ["@types/mem-fs", null],\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["binaryextensions", "npm:6.11.0"],\
           ["commondir", "npm:1.0.1"],\
           ["deep-extend", "npm:0.6.0"],\
@@ -10103,7 +10103,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/ejs", "npm:3.1.5"],\
           ["@types/mem-fs", null],\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["binaryextensions", "npm:6.11.0"],\
           ["commondir", "npm:1.0.1"],\
           ["deep-extend", "npm:0.6.0"],\
@@ -10129,7 +10129,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/ejs", "npm:3.1.5"],\
           ["@types/mem-fs", null],\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["binaryextensions", "npm:6.11.0"],\
           ["commondir", "npm:1.0.1"],\
           ["deep-extend", "npm:0.6.0"],\
@@ -11784,7 +11784,7 @@ const RAW_RUNTIME_STATE =
       ["npm:4.1.6", {\
         "packageLocation": "./.yarn/cache/p-transform-npm-4.1.6-9e0eae1679-b3b2f277c6.zip/node_modules/p-transform/",\
         "packageDependencies": [\
-          ["@types/node", "npm:25.5.1"],\
+          ["@types/node", "npm:25.5.2"],\
           ["p-queue", "npm:7.4.1"],\
           ["p-transform", "npm:4.1.6"],\
           ["readable-stream", "npm:4.7.0"]\
@@ -15986,7 +15986,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@types/lodash-es", "npm:4.17.12"],\
           ["@types/mem-fs", null],\
-          ["@types/node", "npm:24.12.1"],\
+          ["@types/node", "npm:24.12.2"],\
           ["@types/yeoman__types", null],\
           ["@yeoman/namespace", "npm:1.0.1"],\
           ["@yeoman/types", null],\
