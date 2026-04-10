@@ -100,7 +100,7 @@ const RAW_RUNTIME_STATE =
           ["lint-staged", "npm:16.4.0"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:22.6.4"],\
-          ["prettier", "npm:3.8.1"],\
+          ["prettier", "npm:3.8.2"],\
           ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -2390,7 +2390,7 @@ const RAW_RUNTIME_STATE =
           ["@vitest/runner", "npm:4.1.4"],\
           ["change-case", "npm:5.4.4"],\
           ["mem-fs", "npm:4.1.4"],\
-          ["prettier", "npm:3.8.1"],\
+          ["prettier", "npm:3.8.2"],\
           ["rimraf", "npm:6.1.3"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -2481,7 +2481,7 @@ const RAW_RUNTIME_STATE =
           ["lint-staged", "npm:16.4.0"],\
           ["mkdirp-infer-owner", "npm:2.0.0"],\
           ["nx", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:22.6.4"],\
-          ["prettier", "npm:3.8.1"],\
+          ["prettier", "npm:3.8.2"],\
           ["ts-node", "virtual:ef53acb3e556e8586e85c1524cb077098189b6b2054df55a6469ac7b17eed141e3b3b6643ec3fd30e875186b47092db3ae7758e00c1259fc7e8530c9d83d4575#npm:10.9.2"],\
           ["tslib", "npm:2.8.1"],\
           ["typescript", "patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"],\
@@ -12375,10 +12375,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:3.8.1", {\
-        "packageLocation": "./.yarn/unplugged/prettier-npm-3.8.1-04022a855f/node_modules/prettier/",\
+      ["npm:3.8.2", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.8.2-9004f3b431/node_modules/prettier/",\
         "packageDependencies": [\
-          ["prettier", "npm:3.8.1"]\
+          ["prettier", "npm:3.8.2"]\
         ],\
         "linkType": "HARD"\
       }]\
